@@ -1,18 +1,18 @@
 {
-  "verified_at": "2026-10-08T15:58:42.652Z",
+  "verified_at": "2026-10-08T16:34:07.685Z",
   "build": {
     "status": "passed",
-    "fingerprint": "3425da74377ed319c58d31cdfd430dc1a3c4f2ff41c97e904d99b236d4a9ab0f",
+    "fingerprint": "e4c47bc16ebb2ffecfb977849793eb512a95962cf19822d10ece226648069c63",
     "htmlPages": 45,
     "indexablePages": 43,
     "articles": 24,
     "regions": 8
   },
   "external_links": {
-    "checkedAt": "2026-10-08T15:46:25.329Z",
+    "checkedAt": "2026-10-08T16:28:00.511Z",
     "status": "passed",
-    "total": 50,
-    "passed": 50,
+    "total": 19,
+    "passed": 19,
     "failed": 0
   },
   "browser": {
@@ -25,6 +25,11 @@
     "origin": "https://okurinochizu.web.app",
     "passed": true,
     "responses": 18
+  },
+  "editorial_live": {
+    "passed": true,
+    "responses": 37,
+    "scope": "All 24 guides, 8 regions, and 5 public indexes/policy pages match the deployed build; one provider sentence at the article end"
   },
   "deployment": {
     "project": "okurinochizu",

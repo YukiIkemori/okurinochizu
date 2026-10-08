@@ -1,16 +1,14 @@
 import content from './content.json';
-import sourceRegistry from './sources.json';
-import type { Article, Region, Source } from './types';
+import type { Article, Region } from './types';
 
 export const site = {
   name: 'おくりの地図',
   url: 'https://okurinochizu.jp',
-  description: '長野県の東信と群馬県の西毛、8地域の葬儀・家族葬・お墓・終活を案内する情報メディア。費用、病院からの搬送、自治体の手続きまで、出典とともにわかりやすく。',
+  description: '長野県の東信と群馬県の西毛、8地域の葬儀・家族葬・お墓・終活を案内する情報メディア。費用、病院からの搬送、自治体の手続きまで、わかりやすくまとめます。',
   gaId: import.meta.env.PUBLIC_GA_MEASUREMENT_ID || 'G-YH2YL4ZMCH',
 };
 export const articles = content.articles as Article[];
 export const regions = content.regions as Region[];
-export const sources = sourceRegistry as Source[];
 export const categories = [
   { slug: 'urgent', name: 'いま、必要なこと', short: '搬送・最初の手順', description: '病院からの搬送、安置、最初の連絡。急いでいるときに、ひとつずつ確認できる案内です。', number: '01' },
   { slug: 'funeral', name: '葬儀を考える', short: '家族葬・葬儀社選び', description: '家族葬、一日葬、直葬の違いと、葬儀社を選ぶときの確認事項を整理します。', number: '02' },

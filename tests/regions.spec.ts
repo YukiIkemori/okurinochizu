@@ -6,15 +6,19 @@ const regions = [
   ['miyota', '御代田町'], ['tateshina', '立科町'], ['annaka', '安中市'], ['tomioka', '富岡市'],
 ];
 
-test('all eight regional guides offer official sources and a Tsubasa destination', async ({ page }) => {
+test('all eight regional guides keep one quiet Tsubasa referral at the end', async ({ page }) => {
   await isolateAnalytics(page);
   for (const [slug, name] of regions) {
     const response = await page.goto(`/regions/${slug}/`);
     expect(response?.status(), `${name} must have a published page`).toBe(200);
     await expect(page.getByRole('heading', { level: 1 })).toContainText(name);
-    await expect(page.locator('#sources-heading')).toBeVisible();
+    await expect(page.locator('#sources-heading, .sources')).toHaveCount(0);
     const officialLinks = page.locator('[data-provider-link]');
-    expect(await officialLinks.count()).toBeGreaterThan(0);
+    await expect(officialLinks).toHaveCount(1);
+    await expect(page.locator('.article-head [data-provider-link]')).toHaveCount(0);
+    await expect(page.locator('.article-body > :last-child')).toHaveClass('referral');
+    expect(await page.locator('.article-head').textContent()).not.toContain('つばさ');
+    expect(await page.locator('.prose-section').allTextContents()).not.toEqual(expect.arrayContaining([expect.stringContaining('つばさ')]));
     for (const href of await officialLinks.evaluateAll(links => links.map(link => (link as HTMLAnchorElement).href))) {
       expect(['so-gi.com', 'www.so-gi.com']).toContain(new URL(href).hostname);
     }

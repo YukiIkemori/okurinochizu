@@ -47,27 +47,21 @@ test('consent enables the supplied GA property and a meaningful provider referra
   });
 });
 
-test('regional referrals and source links retain regional attribution, and revoking consent stops events', async ({ page }) => {
+test('a regional end referral retains attribution, and revoking consent stops events', async ({ page }) => {
   await isolateAnalytics(page);
   await page.goto('/regions/saku/');
   await page.locator('[data-consent="granted"]').click();
-  const intro = '[data-provider-link][data-placement="region-intro"]';
-  await preventExternalNavigation(page, intro);
-  await page.locator(intro).click();
-  let events = (await layer(page)).filter(entry => entry[1] === 'provider_referral_click');
+  const referral = '.referral [data-provider-link][data-placement="article-end"]';
+  await preventExternalNavigation(page, referral);
+  await page.locator(referral).click();
+  const events = (await layer(page)).filter(entry => entry[1] === 'provider_referral_click');
   expect(events).toHaveLength(1);
-  expect(events[0][2]).toMatchObject({ content_slug: 'saku', region: 'saku', intent: 'regional-funeral', placement: 'region-intro' });
-  const source = '[data-provider-link][data-placement="source"]';
-  await preventExternalNavigation(page, source);
-  await page.locator(source).first().click();
-  events = (await layer(page)).filter(entry => entry[1] === 'provider_referral_click');
-  expect(events).toHaveLength(2);
-  expect(events[1][2]).toMatchObject({ content_slug: 'saku', region: 'saku', intent: 'source', placement: 'source' });
+  expect(events[0][2]).toMatchObject({ content_slug: 'saku', region: 'saku', intent: 'regional-funeral', placement: 'article-end' });
   await page.getByRole('button', { name: 'アクセス解析の設定', exact: true }).click();
   await page.locator('[data-consent="denied"]').click();
   expect(await page.evaluate(id => (window as unknown as Record<string, unknown>)['ga-disable-' + id], measurementId)).toBe(true);
-  await page.locator(intro).click();
-  expect((await layer(page)).filter(entry => entry[1] === 'provider_referral_click')).toHaveLength(2);
+  await page.locator(referral).click();
+  expect((await layer(page)).filter(entry => entry[1] === 'provider_referral_click')).toHaveLength(1);
   await page.reload();
   await expect(page.locator('script[src*="googletagmanager.com"]')).toHaveCount(0);
 });

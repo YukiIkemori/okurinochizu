@@ -2,6 +2,7 @@
 import type { Referral } from '../data/types';
 interface Props { referral: Referral; slug?: string; region?: string; intent?: string; placement?: string; }
 const { referral, slug = '', region = '', intent = '', placement = 'article-end' } = Astro.props;
+const prompt = intent === 'cemetery' ? 'お墓・供養についての相談は、' : intent === 'planning' ? '葬儀の事前相談は、' : intent === 'urgent' ? '搬送や葬儀についての相談は、' : '葬儀についての相談は、';
 const destination = new URL(referral.href);
 if (destination.hostname !== 'so-gi.com' && destination.hostname !== 'www.so-gi.com') throw new Error('Unexpected referral host');
 destination.searchParams.set('utm_source', 'okurinochizu');
@@ -9,12 +10,4 @@ destination.searchParams.set('utm_medium', 'referral');
 destination.searchParams.set('utm_campaign', 'reader-guide');
 destination.searchParams.set('utm_content', [slug || region || 'home', placement].join('-'));
 ---
-<aside class="referral" aria-label="公式情報で次の一歩を確認する">
-  <p class="eyebrow">必要になったら、公式情報へ</p>
-  <h2>{referral.label}</h2>
-  <p>{referral.note}</p>
-  <a class="text-link" href={destination.toString()} rel="noopener" data-provider-link data-content-slug={slug} data-region={region} data-intent={intent} data-placement={placement}>
-    つばさ公益社の公式サイトで確認する <span aria-hidden="true">↗</span>
-  </a>
-  <p class="disclosure">つばさ公益社への無償の送客支援として紹介しています。広告収入・紹介報酬は受け取っていません。</p>
-</aside>
+<p class="referral">{prompt}<a href={destination.toString()} rel="noopener" data-provider-link data-content-slug={slug} data-region={region} data-intent={intent} data-placement={placement}>つばさ公益社</a>へ。</p>

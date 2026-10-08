@@ -12,7 +12,7 @@ const warnings = [];
 const fail = (page, message) => problems.push({ page, message });
 const normalize = value => String(value || '').replace(/\s+/g, ' ').trim();
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-const today = new Date().toISOString().slice(0, 10);
+const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 const validDate = date => datePattern.test(date || '') && !Number.isNaN(Date.parse(date)) && date <= today;
 const hasCredentialParameter = url => [...url.searchParams.keys()].some(key => /(?:token|secret|password|api[_-]?key|credential)/i.test(key));
 const content = JSON.parse(await readFile('src/data/content.json', 'utf8'));
@@ -119,6 +119,13 @@ for (const [route, { $, ids }] of pages) {
   if (new Set(idList).size !== idList.length) fail(route, 'Duplicate HTML IDs.');
   if (!ids.has('main')) fail(route, 'Skip link target #main is missing.');
   const bodyText = normalize($('main').text());
+  if ($('.sources, #sources-heading, .disclosure').length || /出典|確認日|公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ公益社との関係/.test(normalize($('body').text()))) fail(route, 'Removed source/disclosure copy remains in the public page.');
+  if (route.startsWith('/guides/') && articleBySlug.has(route.split('/')[2]) || route.startsWith('/regions/') && regionBySlug.has(route.split('/')[2])) {
+    if ($('[data-provider-link]').length !== 1 || $('.referral [data-provider-link]').length !== 1) fail(route, 'Guide/region must have only one provider link in its end note.');
+    if (!$('.article-body').children().last().hasClass('referral')) fail(route, 'Provider note must appear at the end of the article.');
+    if ($('.article-head [data-provider-link]').length || $('.referral h2, .referral .eyebrow').length) fail(route, 'Prominent provider promotion remains.');
+    if (/つばさ|公益社/.test(normalize($('.article-head, .prose-section, .faq, .answer, .region-focus').text()))) fail(route, 'Provider name is woven into the editorial body.');
+  }
   if (/\b(?:TODO|TBD|Lorem ipsum)\b|ここに(?:本文|文章|記事)を(?:入力|挿入)/i.test(bodyText)) fail(route, 'Unfinished placeholder text is visible.');
   for (const node of $('a[href],area[href],svg a[href],link[href],script[src],img[src],source[src],form[action]').toArray()) {
     const element = $(node);
@@ -182,7 +189,7 @@ for (const [route, { $, ids }] of pages) {
     const structuredFAQs = faqs[0]?.mainEntity || [];
     if (structuredFAQs.length !== questions.length) fail(route, 'FAQ JSON-LD count differs from visible FAQs.');
     structuredFAQs.forEach((faq, index) => { if (normalize(faq.name) !== questions[index]?.q || normalize(faq.acceptedAnswer?.text) !== questions[index]?.a) fail(route, 'FAQ JSON-LD differs from the visible answer.'); });
-    if (!$('.sources a').length) fail(route, 'Guide has no visible primary-source links.');
+    if (schema.citation !== undefined) fail(route, 'Removed source citations remain in public structured data.');
   }
   for (const schema of data.filter(s => s?.['@type'] === 'CollectionPage')) {
     const items = schema.mainEntity?.itemListElement || [];
