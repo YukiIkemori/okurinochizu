@@ -1,8 +1,8 @@
 {
-  "verified_at": "2026-10-08T16:34:07.685Z",
+  "verified_at": "2026-10-08T16:53:46.374Z",
   "build": {
     "status": "passed",
-    "fingerprint": "e4c47bc16ebb2ffecfb977849793eb512a95962cf19822d10ece226648069c63",
+    "fingerprint": "972eafcd7236d787f48ea2ab76d662f0065483da6bfcf5ea445110bf29ada7cc",
     "htmlPages": 45,
     "indexablePages": 43,
     "articles": 24,
@@ -19,22 +19,39 @@
     "expected": 15,
     "unexpected": 0,
     "skipped": 0,
-    "flaky": 0
+    "flaky": 0,
+    "workers": 1
+  },
+  "layout": {
+    "passed": true,
+    "viewport_widths": [
+      1920,
+      1440,
+      1280,
+      1100,
+      1024,
+      1000,
+      768,
+      375,
+      320
+    ]
+  },
+  "privacy_presentation": {
+    "verified_pages": 45,
+    "settings_location": "/privacy/",
+    "footer_settings_removed": true,
+    "about_analytics_copy_removed": true
   },
   "live": {
     "origin": "https://okurinochizu.web.app",
     "passed": true,
-    "responses": 18
-  },
-  "editorial_live": {
-    "passed": true,
-    "responses": 37,
-    "scope": "All 24 guides, 8 regions, and 5 public indexes/policy pages match the deployed build; one provider sentence at the article end"
+    "responses": 18,
+    "changed_page_and_css_checks": 4
   },
   "deployment": {
     "project": "okurinochizu",
     "hosting": "okurinochizu",
     "result": "Firebase CLI release complete",
-    "custom_domain": "Firebase custom domain resources created; DNS setup pending"
+    "custom_domain": "Not rechecked in this update; live verification uses the Firebase web.app domain"
   }
 }

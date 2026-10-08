@@ -17,7 +17,8 @@ test('analytics requires explicit consent and preserves a refusal across visits'
   await page.goto('/regions/saku/');
   await expect(page.locator('#consent-banner')).toBeHidden();
   expect(tags).toEqual([]);
-  await page.getByRole('button', { name: 'アクセス解析の設定', exact: true }).click();
+  await page.goto('/privacy/');
+  await page.getByRole('button', { name: 'アクセス解析の設定を開く', exact: true }).click();
   await expect(page.locator('#consent-banner')).toBeVisible();
   await expect(page.locator('[data-consent="denied"]')).toBeFocused();
 });
@@ -57,11 +58,14 @@ test('a regional end referral retains attribution, and revoking consent stops ev
   const events = (await layer(page)).filter(entry => entry[1] === 'provider_referral_click');
   expect(events).toHaveLength(1);
   expect(events[0][2]).toMatchObject({ content_slug: 'saku', region: 'saku', intent: 'regional-funeral', placement: 'article-end' });
-  await page.getByRole('button', { name: 'アクセス解析の設定', exact: true }).click();
+  await page.goto('/privacy/');
+  await page.getByRole('button', { name: 'アクセス解析の設定を開く', exact: true }).click();
   await page.locator('[data-consent="denied"]').click();
   expect(await page.evaluate(id => (window as unknown as Record<string, unknown>)['ga-disable-' + id], measurementId)).toBe(true);
+  await page.goto('/regions/saku/');
+  await preventExternalNavigation(page, referral);
   await page.locator(referral).click();
-  expect((await layer(page)).filter(entry => entry[1] === 'provider_referral_click')).toHaveLength(1);
+  expect((await layer(page)).filter(entry => entry[1] === 'provider_referral_click')).toHaveLength(0);
   await page.reload();
   await expect(page.locator('script[src*="googletagmanager.com"]')).toHaveCount(0);
 });
