@@ -1,0 +1,744 @@
+{
+  "checkedAt": "2026-10-08",
+  "method": "HTTP GET over verified TLS; rendered HTML text or e-Gov API law_full_text read. Search-result snippets used only for discovery, not as sole evidence.",
+  "sourceCount": 46,
+  "allReferencedSourcesResolved": true,
+  "failedDiscoveryRequests": [
+    {
+      "url": "https://www.kyoukaikenpo.or.jp/g3/sb3100/r149/",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.kyoukaikenpo.or.jp/g3/sb3100/",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "observations": [
+    "協会けんぽ旧URLは404。検索で現行一次資料を発見し本体を取得して置き換えた。",
+    "価格・制度の条件は今後変更されるため、最終費用・適用資格は担当窓口で確認する。",
+    "民間施設の紹介と送客はつばさ公益社だけ。公的火葬場は手続き・使用料の根拠として参照する。",
+    "救命・患者等搬送と、死亡確認後の葬儀社搬送を消防庁・つばさ公式の本体原文に基づいて区別。消防庁小冊子の119番案内も確認済み。"
+  ],
+  "sources": [
+    {
+      "id": "annaka-benefit",
+      "publicUrl": "https://www.city.annaka.lg.jp/page/1638.html",
+      "requestedUrl": "https://www.city.annaka.lg.jp/page/1638.html",
+      "finalUrl": "https://www.city.annaka.lg.jp/page/1638.html",
+      "httpStatus": 200,
+      "sourceTitle": "国民健康保険の給付について - 安中市ホームページ",
+      "checkedAt": "2026-10-08",
+      "bytes": 67349,
+      "sha256": "10a37d60a360d968b490c3f129cf86ee39643b6f8c2db38beb300ebf700c5df6",
+      "verification": "primary-source-body-read",
+      "summary": "国保加入者の死亡時に葬祭を行った人へ50,000円。加入3か月未満の場合は以前の保険給付を確認。領収書・会葬礼状等の書類を確認。",
+      "evidenceExcerpts": [
+        "葬祭費の支給 国民健康保険に加入している人が死亡されたとき、葬祭を行った人に支給されます。 支給金額は、50,000円です。 ※亡くなられた人の加入期間が3か月未満の場合、以前加入していた保険から給付される場合がありますのでご確認ください。 申請に必要なもの 国保の資格確認書もしくは資格情報のお知らせ（※1）・葬祭を行った人の預金口座のわかるもの（※2）・葬祭を行った人がわかるもの（※3） ※1 世帯主が死亡された場合は全員の健康保険証"
+      ]
+    },
+    {
+      "id": "annaka-crematorium",
+      "publicUrl": "https://www.city.annaka.lg.jp/page/1537.html",
+      "requestedUrl": "https://www.city.annaka.lg.jp/page/1537.html",
+      "finalUrl": "https://www.city.annaka.lg.jp/page/1537.html",
+      "httpStatus": 200,
+      "sourceTitle": "安中市斎場　すみれケ丘聖苑 - 安中市ホームページ",
+      "checkedAt": "2026-10-08",
+      "bytes": 36843,
+      "sha256": "0fdb1573fc90a6ad19451782cfbccec849522f9eeadcfe4d2a9275db08bf95cc",
+      "verification": "primary-source-body-read",
+      "summary": "2026年4月1日更新の使用料表で、12歳以上の火葬は市民無料、市民以外35,000円。電話予約後の死亡届・施設手続きが掲載。葬儀全体の無料とは表現しない。",
+      "evidenceExcerpts": [
+        "年齢12年以上の死体 1体 無料 35,000円 年齢12年未満の死体 1体 無料 20,000円 生後1月未満の死体および4月以上の死胎 1体 無料 10,000円 改葬遺体 1体 無料 10,000円 手術肢体、胞衣等 1個 3,200円 15,270円 式場 小式場 ※式場を200平方メートルかつ120席以下で使用する場合 1回 10,690円 32,080円 大式場 1回 21,380円 64,160円 待合室 和室 1回 1,"
+      ]
+    },
+    {
+      "id": "burial-law",
+      "publicUrl": "https://laws.e-gov.go.jp/law/323AC0000000048",
+      "requestedUrl": "https://laws.e-gov.go.jp/api/2/law_data/323AC0000000048",
+      "finalUrl": "https://laws.e-gov.go.jp/api/2/law_data/323AC0000000048",
+      "httpStatus": 200,
+      "sourceTitle": "e-Gov法令検索｜墓地、埋葬等に関する法律",
+      "checkedAt": "2026-10-08",
+      "bytes": 63003,
+      "sha256": "46a70fcdc743745ccc4dfb5353e51d7836768a0a54ffc61bf43a8763915fb55a",
+      "verification": "primary-source-body-read",
+      "summary": "現行施行版の第3条で原則死亡後24時間、第4条で墓地外埋蔵禁止、第5条で埋火葬・改葬許可と管轄、第14条で管理者の許可証受理を確認。公開リンクは法令検索画面。",
+      "evidenceExcerpts": [
+        "第三条埋葬又は火葬は、他の法令に別段の定があるものを除く外、死亡又は死産後二十四時間を経過した後でなければ、これを行つてはならない。但し、妊娠七箇月に満たない死産のときは、この限りでない。 第四条埋葬又は焼骨の埋蔵は、墓地以外の区域に、これを行つてはならない。２火葬は、火葬場以外の施設でこれを行つてはならない。 第五条埋葬、火葬又は改葬を行おうとする者は、厚生労働省令で定めるところにより、市町村長（特別区の区長を含む。以下同じ。）の許可",
+        "第五条埋葬、火葬又は改葬を行おうとする者は、厚生労働省令で定めるところにより、市町村長（特別区の区長を含む。以下同じ。）の許可を受けなければならない。２前項の許可は、埋葬及び火葬に係るものにあつては死亡若しくは死産の届出を受理し、死亡の報告若しくは死産の通知を受け、又は船舶の船長から死亡若しくは死産に関する航海日誌の謄本の送付を受けた市町村長が、改葬に係るものにあつては死体又は焼骨の現に存する地の市町村長が行なうものとする。 第六条及び",
+        "第十四条墓地の管理者は、第八条の規定による埋葬許可証、改葬許可証又は火葬許可証を受理した後でなければ、埋葬又は焼骨の埋蔵をさせてはならない。２納骨堂の管理者は、第八条の規定による火葬許可証又は改葬許可証を受理した後でなければ、焼骨を収蔵してはならない。３火葬場の管理者は、第八条の規定による火葬許可証又は改葬許可証を受理した後でなければ、火葬を行つてはならない。 第十五条墓地、納骨堂又は火葬場の管理者は、省令の定めるところにより、図面、帳"
+      ],
+      "lawRevision": "323AC0000000048_20250601_504AC0000000068",
+      "lawEnforcementStatus": "CurrentEnforced"
+    },
+    {
+      "id": "family-register-law",
+      "publicUrl": "https://laws.e-gov.go.jp/law/322AC0000000224",
+      "requestedUrl": "https://laws.e-gov.go.jp/api/2/law_data/322AC0000000224",
+      "finalUrl": "https://laws.e-gov.go.jp/api/2/law_data/322AC0000000224",
+      "httpStatus": 200,
+      "sourceTitle": "e-Gov法令検索｜戸籍法 第86条・第87条",
+      "checkedAt": "2026-10-08",
+      "bytes": 336029,
+      "sha256": "1ae43a1ba78eebca2781d036fedd779faff593f6747ec6c8cb96edf63645ac20",
+      "verification": "primary-source-body-read",
+      "summary": "現行施行版の第86条で国内7日以内（国外3か月）、診断書・検案書の添付、第87条で届出人の原則を確認。APIの法令本文を検証し、公開リンクは法令検索画面。",
+      "evidenceExcerpts": [
+        "第八十六条死亡の届出は、届出義務者が、死亡の事実を知つた日から七日以内（国外で死亡があつたときは、その事実を知つた日から三箇月以内）に、これをしなければならない。届書には、次の事項を記載し、診断書又は検案書を添付しなければならない。一死亡の年月日時分及び場所二その他法務省令で定める事項やむを得ない事由によつて診断書又は検案書を得ることができないときは、死亡の事実を証すべき書面を以てこれに代えることができる。この場合には、届書に診断書又は",
+        "第八十七条次の者は、その順序に従つて、死亡の届出をしなければならない。ただし、順序にかかわらず届出をすることができる。第一同居の親族第二その他の同居者第三家主、地主又は家屋若しくは土地の管理人死亡の届出は、同居の親族以外の親族、後見人、保佐人、補助人、任意後見人及び任意後見受任者も、これをすることができる。 第八十八条死亡の届出は、死亡地でこれをすることができる。死亡地が明らかでないときは死体が最初に発見された地で、汽車その他の交通機関"
+      ],
+      "lawRevision": "322AC0000000224_20260903_508AC0000000027",
+      "lawEnforcementStatus": "CurrentEnforced"
+    },
+    {
+      "id": "fdma-emergency",
+      "publicUrl": "https://www.fdma.go.jp/mission/enrichment/appropriate/appropriate003.html",
+      "requestedUrl": "https://www.fdma.go.jp/mission/enrichment/appropriate/appropriate003.html",
+      "finalUrl": "https://www.fdma.go.jp/mission/enrichment/appropriate/appropriate003.html",
+      "httpStatus": 200,
+      "sourceTitle": "全国版救急受診アプリ　（愛称「Q助」）　 | 救急車の適時・適切な利用（適正利用） | 総務省消防庁",
+      "checkedAt": "2026-10-08",
+      "bytes": 25534,
+      "sha256": "eb7b455c288dc0b95af327aaf82e93bf65775fc8cab7f4fd7907317b17aeb3e2",
+      "verification": "primary-source-body-read",
+      "summary": "緊急度に応じて「今すぐ救急車を呼びましょう」等の対応を示す消防庁のQ助を確認。死亡と断定する自己診断は勧めない。",
+      "evidenceExcerpts": [
+        "緊急度に応じた必要な対応（「今すぐ救急車を呼びましょう」、「できるだけ早めに医療機関を受診しましょう」「緊急ではありませんが医療機関を受診しましょう」又は「引き続き、注意して様子をみてください」）が表示されます。 その後、医療機関の検索（厚生労働省の「医療情報ネット」にリンク）や、受診手段の検索（一般社団法人全国ハイヤー・タクシー連合会の「都道府県協会一覧」（タクシー検索）と消防庁の「各都道府県のホームページに掲載されている事業所一覧（"
+      ]
+    },
+    {
+      "id": "karuizawa-benefit",
+      "publicUrl": "https://www.town.karuizawa.lg.jp/page/1136.html",
+      "requestedUrl": "https://www.town.karuizawa.lg.jp/page/1136.html",
+      "finalUrl": "https://www.town.karuizawa.lg.jp/page/1136.html",
+      "httpStatus": 200,
+      "sourceTitle": "国保で受けられるおもな給付 - 軽井沢町公式ホームページ（住民課）",
+      "checkedAt": "2026-10-08",
+      "bytes": 32680,
+      "sha256": "ca5430e6d3f362f1ddb842d1372268855f574d3d51366971a67779a7ce39a12f",
+      "verification": "primary-source-body-read",
+      "summary": "国保被保険者死亡時、葬祭を行う喪主へ50,000円。資格情報書類・葬祭領収書・本人確認書類を確認。",
+      "evidenceExcerpts": [
+        "葬祭費の支給 被保険者が死亡したとき 葬祭を行う人（喪主）へ 50,000円支給します。 亡くなられた方の資格情報書類 葬祭の領収書 申請者の身分 証明書 海外療養費の支給 海外で診療を受けたとき 申請により国保の給付範囲で支給します。 資格情報書類 診療内容明細書（翻訳文が必要） 領収書（翻訳文が必要） 振込口座がわかるもの 旅券、航空券その他の海外に渡航した事実が確認できる書類 保険者が海外療養の内容について当該海外療養費を担当した"
+      ]
+    },
+    {
+      "id": "karuizawa-death",
+      "publicUrl": "https://www.town.karuizawa.lg.jp/page/1764.html",
+      "requestedUrl": "https://www.town.karuizawa.lg.jp/page/1764.html",
+      "finalUrl": "https://www.town.karuizawa.lg.jp/page/1764.html",
+      "httpStatus": 200,
+      "sourceTitle": "おくやみガイドブックをご活用ください - 軽井沢町公式ホームページ（住民課）",
+      "checkedAt": "2026-10-08",
+      "bytes": 25150,
+      "sha256": "4e2a55eac5a9087fba5c06f2f4df2848d553916c2c2ea202ac5a664ec96d8823",
+      "verification": "primary-source-body-read",
+      "summary": "町が死亡後手続きをまとめたおくやみガイドブックのPDFを提供することを確認。ページ存在以上の全手続きの一括完了を保証しない。"
+    },
+    {
+      "id": "kenpo-burial",
+      "publicUrl": "https://www.kyoukaikenpo.or.jp/benefit/burial_charges/index.html",
+      "requestedUrl": "https://www.kyoukaikenpo.or.jp/benefit/burial_charges/index.html",
+      "finalUrl": "https://www.kyoukaikenpo.or.jp/benefit/burial_charges/index.html",
+      "httpStatus": 200,
+      "sourceTitle": "埋葬料・埋葬費｜給付と手続き｜協会けんぽ",
+      "checkedAt": "2026-10-08",
+      "bytes": 32136,
+      "sha256": "15d498fc486ff70ad875b9d7fed9886fb108bd9472cac7d99bbe3ea969ab6656",
+      "verification": "primary-source-body-read",
+      "summary": "現行ページで埋葬料50,000円、埋葬料対象者がいない場合の実費（50,000円範囲）、資格喪失後3か月等の扱いを確認。国保葬祭費と区別。",
+      "evidenceExcerpts": [
+        "支給額 被保険者により生計を維持されていた方※1が申請 埋葬料50,000円が支給される 被保険者と生計維持関係にない「埋葬を行った方」が申請 （埋葬料を申請できる方がいない場合のみ） 50,000円の範囲内で実際に埋葬に要した費用※2が支給される 生計を維持されていた方 被保険者によって生活費の一部でも維持されている方であればよく、民法上の親族や遺族であることは問われません。また、被保険者が世帯主であるか、同一世帯であるかも問われませ",
+        "資格喪失後の支給について 被保険者が資格喪失後に亡くなり、次のいずれかに該当する場合は、埋葬料または埋葬費が支給されます。 なお、被保険者の資格喪失後に被扶養者だったご家族が亡くなった場合については、家族埋葬料は支給されません。 また、被保険者が資格喪失後に亡くなり埋葬料または埋葬費が支給されるケースに該当する場合であっても、資格喪失後に加入した健康保険で埋葬料を請求している場合は支給されません。 （1）被保険者だった方が資格喪失後3か"
+      ]
+    },
+    {
+      "id": "kokusen-funeral",
+      "publicUrl": "https://www.kokusen.go.jp/news/data/n-20260603_2.html",
+      "requestedUrl": "https://www.kokusen.go.jp/news/data/n-20260603_2.html",
+      "finalUrl": "https://www.kokusen.go.jp/news/data/n-20260603_2.html",
+      "httpStatus": 200,
+      "sourceTitle": "依然として多い葬儀サービスの料金トラブル－「家族葬だから安い」と思っていませんか？－_国民生活センター",
+      "checkedAt": "2026-10-08",
+      "bytes": 16082,
+      "sha256": "6da6550f4bb9d8972ee1a7480061678a74ad9da79b15d6a72fddadcf5cf4aa86",
+      "verification": "primary-source-body-read",
+      "summary": "2026年6月3日公表。家族葬でも費用が増える事例、希望・予算・見積もりの確認を勧める公的注意喚起を確認。"
+    },
+    {
+      "id": "komoro-death",
+      "publicUrl": "https://www.city.komoro.lg.jp/soshikikarasagasu/shiminseikatsubu/shiminka/1/2/5/1123.html",
+      "requestedUrl": "https://www.city.komoro.lg.jp/soshikikarasagasu/shiminseikatsubu/shiminka/1/2/5/1123.html",
+      "finalUrl": "https://www.city.komoro.lg.jp/soshikikarasagasu/shiminseikatsubu/shiminka/1/2/5/1123.html",
+      "httpStatus": 200,
+      "sourceTitle": "死亡(死亡届)／小諸市オフィシャルサイト",
+      "checkedAt": "2026-10-08",
+      "bytes": 44038,
+      "sha256": "1d8ed8bc438ffa7cde0f5e94ec3b6c18d301c01f417176e4e3cdcc7f47986b93",
+      "verification": "primary-source-body-read",
+      "summary": "国内死亡の事実を知った日を含め7日以内、死亡届提出地・必要物、時間外仮予約と本予約、死亡後の保険・年金等の案内を確認。",
+      "evidenceExcerpts": [
+        "届出期間 死亡の事実を知った日を含めて7日（国外で死亡した場合、死亡したことを知った日から3ケ月）以内。 届出地 死亡した方の本籍地、死亡地、届出人の所在地のいずれかの市区町村役場 届出人 親族、同居者、家主、地主、家屋もしくは土地管理人、公設所の長など。 （ここで言う届出人とは、死亡を届け出る方のことであり、市役所への提出は代理人でも可能です。） 届出に必要なもの 死亡診断書（病院が発行してくれます。） 証明手数料300円 佐久平斎場",
+        "死亡届後の手続き 戸籍と住民票の消除の手続は、死亡届を受け付けてから1週間程度かかる場合があります。 世帯主が死亡した場合、住民票の世帯主変更の届出が必要な場合があります。 ご遺族の方は、国民健康保険（社会保険の場合は勤務先）や、年金などの関連手続を行っていただく必要があります。 ※詳細については、死亡届を提出いただいた際にご説明します。 関連ページ 不動産の相続登記（長野地方法務局のページへ）（外部サイトにリンクします） 身近な人を突"
+      ]
+    },
+    {
+      "id": "miyota-death",
+      "publicUrl": "https://www.town.miyota.nagano.jp/category/koseki/2058.html",
+      "requestedUrl": "https://www.town.miyota.nagano.jp/category/koseki/2058.html",
+      "finalUrl": "https://www.town.miyota.nagano.jp/category/koseki/2058.html",
+      "httpStatus": 200,
+      "sourceTitle": "死亡（死亡届） | 御代田町",
+      "checkedAt": "2026-10-08",
+      "bytes": 22801,
+      "sha256": "88ca52fc6f5414589b7b2ee499c9431a385338ce52c9c345f1185af6d68b7df0",
+      "verification": "primary-source-body-read",
+      "summary": "国内死亡は事実を知った日から7日以内。死亡届・死亡診断書、埋火葬手数料300円、時間外受付、予約と許可証の流れを確認。",
+      "evidenceExcerpts": [
+        "届出期間 死亡の事実を知った日から７日以内（外国で死亡があったときは、その事実を知った日から３ヶ月以内） ※期間の末日が、日曜その他の休日または届出市町村の休日にあたるときは、当該日の翌日が届出等の期間の末日になります。 届出人 １．同居の親族 ２．その他の同居者 ３．死亡したところの家屋管理人や家主等 ４．後見人、保佐人、補助人、任意後見人及び任意後見受任者 ※資格を証する書面（登記事項証明書または裁判所の謄本）の添付が必要です。 届",
+        "必要な物 死亡届（死亡診断書も必要です。） 埋火葬手数料 300円（市区町村によって変わります。届出市区町村にお問い合わせください。）※令和３年９月１日から押印義務が廃止になりましたが、任意の押印は可能です。 受付時間 平日8時30分から17時15分（町民課住民係の窓口） 時間外および土・日・祝日・年末年始休業（宿直室時間外受付窓口） 手続きの流れ ※以下の流れは、葬儀業者が死亡届出を代行しない場合や葬儀業者を通さずに手続きをおこなう場"
+      ]
+    },
+    {
+      "id": "osaka-mutual-aid",
+      "publicUrl": "https://www.city.osaka.lg.jp/lnet/page/0000233504.html",
+      "requestedUrl": "https://www.city.osaka.lg.jp/lnet/page/0000233504.html",
+      "finalUrl": "https://www.city.osaka.lg.jp/lnet/page/0000233504.html",
+      "httpStatus": 200,
+      "sourceTitle": "大阪市消費者センター：冠婚葬祭互助会とのトラブルに注意！ （注意喚起情報　トラブルバイバイ♪）",
+      "checkedAt": "2026-10-08",
+      "bytes": 33112,
+      "sha256": "e671d674b3b42790be9072ebff0b19de57a66a766e8eb1fa1b776e7157f7ef7b",
+      "verification": "primary-source-body-read",
+      "summary": "互助会は預金と異なる前払契約で、満期でもサービスを利用せず解約すると所定の手数料が差し引かれるとの公的説明を確認。",
+      "evidenceExcerpts": [
+        "銀行等への預金とは違って前払いの契約のため、満期になっていても冠婚葬祭のサービスを利用せずに解約する場合は、所定の解約手数料が差し引かれます。 長期に渡る契約になりますので、入会する前に約款を確認し、重要事項の説明を受けたうえで、納得してから入会しましょう。入会した場合、必ず家族には話しておきましょう。 おかしいなと思った時は、一人で悩まず大阪市消費者センターにご相談ください。 くわしくは、大阪市消費者センターホームページ｢消費生活相談"
+      ]
+    },
+    {
+      "id": "saitama-mutual-aid",
+      "publicUrl": "https://www.pref.saitama.lg.jp/b0304/shohisoudan/jirei/sonota/20240625.html",
+      "requestedUrl": "https://www.pref.saitama.lg.jp/b0304/shohisoudan/jirei/sonota/20240625.html",
+      "finalUrl": "https://www.pref.saitama.lg.jp/b0304/shohisoudan/jirei/sonota/20240625.html",
+      "httpStatus": 200,
+      "sourceTitle": "冠婚葬祭互助会の契約・解約トラブルにご注意 - 埼玉県",
+      "checkedAt": "2026-10-08",
+      "bytes": 19184,
+      "sha256": "ada95c1964b5e6530324634fb06ab0f283a12346e688492786ede1cc75f5c715",
+      "verification": "primary-source-body-read",
+      "summary": "預貯金とは異なり利息が付かない、解約手数料、追加費用、見積り確認、複数での打合せを勧める注意喚起を確認。",
+      "evidenceExcerpts": [
+        "預貯金とは異なり利息は付きません。また、サービスを利用せずに解約する場合は原則、約款に従った解約手数料が差し引かれます。将来的なサービスの契約ですので、加入の必要性を十分検討し、契約内容や解約条件をよく確認しましょう。 互助会会員であっても、実際の葬儀や結婚式の際には追加費用（例えば、会食費、ドライアイス代、返礼品代等）が必要となる場合があります。参列者数で費用が増減する項目は特に注意して、見積りをよく確認しましょう。 特に葬儀の際は、"
+      ]
+    },
+    {
+      "id": "saku-benefit",
+      "publicUrl": "https://www.city.saku.nagano.jp/kurashi/zeikin_hokenryo/kokuho_nenkin_kouki/kokuho/kokuhokyuuhukankei/kyufu.html",
+      "requestedUrl": "https://www.city.saku.nagano.jp/kurashi/zeikin_hokenryo/kokuho_nenkin_kouki/kokuho/kokuhokyuuhukankei/kyufu.html",
+      "finalUrl": "https://www.city.saku.nagano.jp/kurashi/zeikin_hokenryo/kokuho_nenkin_kouki/kokuho/kokuhokyuuhukankei/kyufu.html",
+      "httpStatus": 200,
+      "sourceTitle": "国保で受けられる給付 | 佐久市ホームページ",
+      "checkedAt": "2026-10-08",
+      "bytes": 77028,
+      "sha256": "0541cd87e0f032e59fa72932343ce4397644c5a73e8a648fe0b5a1be678ffb89",
+      "verification": "primary-source-body-read",
+      "summary": "国保の被保険者死亡時、葬祭を行った人へ5万円。葬祭翌日から2年経過で不支給、口座振込の案内を確認。",
+      "evidenceExcerpts": [
+        "葬祭費として5万円が支給されます。葬祭を行った日の翌日から2年を経過すると支給されませんので、お早めに支給申請手続きを行ってください。また、支給は口座振込となりますので、葬祭を行った方の預金口座番号をお知らせください。 移送費 重病人が医師の指示により緊急に移送されたとき、その費用（最も経済的な経路・方法での実費）が支給されます。ただし、保険者が必要と認めた場合に限ります。 高額療養費 1か月の医療費の自己負担額が限度額を超えた場合、超",
+        "葬祭を行った日の翌日から2年を経過すると支給されませんので、お早めに支給申請手続きを行ってください。また、支給は口座振込となりますので、葬祭を行った方の預金口座番号をお知らせください。 移送費 重病人が医師の指示により緊急に移送されたとき、その費用（最も経済的な経路・方法での実費）が支給されます。ただし、保険者が必要と認めた場合に限ります。 高額療養費 1か月の医療費の自己負担額が限度額を超えた場合、超えた分を高額療養費として支給します"
+      ]
+    },
+    {
+      "id": "saku-crematorium",
+      "publicUrl": "https://www.areasaku.or.jp/crematorium/",
+      "requestedUrl": "https://www.areasaku.or.jp/crematorium/",
+      "finalUrl": "https://www.areasaku.or.jp/crematorium/",
+      "httpStatus": 200,
+      "sourceTitle": "佐久平斎場（火葬場） -  佐久広域連合",
+      "checkedAt": "2026-10-08",
+      "bytes": 20665,
+      "sha256": "06d5fef3d4b3321b3be39591c87db3858f6fd9961a2355ec2adf36a9cb0d8f87",
+      "verification": "primary-source-body-read",
+      "summary": "所在地佐久市長土呂875番地1、佐久市から受託し佐久広域連合が管理運営する火葬場。令和8年5月1日利用案内へのリンクを確認。"
+    },
+    {
+      "id": "tateshina-benefit",
+      "publicUrl": "https://www.town.tateshina.nagano.jp/section/reiki_int/reiki_honbun/e730RG00000318.html",
+      "requestedUrl": "https://www.town.tateshina.nagano.jp/section/reiki_int/reiki_honbun/e730RG00000318.html",
+      "finalUrl": "https://www.town.tateshina.nagano.jp/section/reiki_int/reiki_honbun/e730RG00000318.html",
+      "httpStatus": 200,
+      "sourceTitle": "立科町国民健康保険条例",
+      "checkedAt": "2026-10-08",
+      "bytes": 104043,
+      "sha256": "b075ea9e3bf62d2dc47b835ebfc721ebeacdd6b89786a58b5c7dec8ce38ebc40",
+      "verification": "primary-source-body-read",
+      "summary": "町国保条例第7条で葬祭を行う者へ50,000円。ほかの制度の相当給付がある場合は行わないという規定を確認。",
+      "evidenceExcerpts": [
+        "第7条) 第5章 保健事業(第8条・第9条) 第6章 国民健康保険税(第10条) 第7章 基金(第11条―第16条) 第8章 雑則(第17条) 第9章 罰則(第18条―第21条) 附則 第1章 立科町が行う国民健康保険 (立科町が行う国民健康保険) 第1条 立科町が行う国民健康保険については、法令に定めがあるもののほか、この条例の定めるところによる。 第2章 国民健康保険運営協議会 (国民健康保険運営協議会の委員の定数) 第2条 国民健"
+      ]
+    },
+    {
+      "id": "tateshina-death",
+      "publicUrl": "https://www.town.tateshina.nagano.jp/seikatsu/okuyami/1732.html",
+      "requestedUrl": "https://www.town.tateshina.nagano.jp/seikatsu/okuyami/1732.html",
+      "finalUrl": "https://www.town.tateshina.nagano.jp/seikatsu/okuyami/1732.html",
+      "httpStatus": 200,
+      "sourceTitle": "死亡後の手続きについて／立科町",
+      "checkedAt": "2026-10-08",
+      "bytes": 42809,
+      "sha256": "87bb25d765d2f7e307805fd699599d4869f6190cd70d22ccb8d193196ee9075a",
+      "verification": "primary-source-body-read",
+      "summary": "世帯主、年金、保険、土地・家屋、農地・農業者年金、上下水道などの該当項目を確認。戸籍反映には約1週間。"
+    },
+    {
+      "id": "tomioka-benefit",
+      "publicUrl": "https://www.city.tomioka.lg.jp/www/contents/1000000002408/index.html",
+      "requestedUrl": "https://www.city.tomioka.lg.jp/www/contents/1000000002408/index.html",
+      "finalUrl": "https://www.city.tomioka.lg.jp/www/contents/1000000002408/index.html",
+      "httpStatus": 200,
+      "sourceTitle": "【国民健康保険】国保からの給付 | 富岡市",
+      "checkedAt": "2026-10-08",
+      "bytes": 43043,
+      "sha256": "c22ed98711e5ef141197eb894070355249171d54e10f41c40001b9e32a0dfd5e",
+      "verification": "primary-source-body-read",
+      "summary": "国保加入者の死亡時に申請で葬祭を行った喪主へ5万円。健康保険資格喪失後3か月以内の死亡など、以前の保険給付を受けられる場合の重複不可、必要書類と窓口を確認。",
+      "evidenceExcerpts": [
+        "5万円以上の人が一人でもいる世帯の人（基礎控除後の所得の合計が、210万円以下の世帯を除く）。 ただし、次に該当する場合は、申請により2割負担になります。 収入の合計が、70歳以上の国保加入者が2人以上で520万円（1人で383万円）未満である場合。 収入が383万円以上となる70歳以上の国保加入者が1人の場合で、旧国保被保険者（同一世帯で国保から後期高齢者医療制度に移行した人）を含めた収入の合計が520万円未満である場合。 ページトッ"
+      ]
+    },
+    {
+      "id": "tomioka-death",
+      "publicUrl": "https://www.city.tomioka.lg.jp/www/contents/1639555641108/index.html",
+      "requestedUrl": "https://www.city.tomioka.lg.jp/www/contents/1639555641108/index.html",
+      "finalUrl": "https://www.city.tomioka.lg.jp/www/contents/1639555641108/index.html",
+      "httpStatus": 200,
+      "sourceTitle": "「おくやみ窓口」をご利用ください | 富岡市",
+      "checkedAt": "2026-10-08",
+      "bytes": 24240,
+      "sha256": "216357b07cda44be0446f30a4a53e0612668531b9dc08e84ac72638613eafe8b",
+      "verification": "primary-source-body-read",
+      "summary": "おくやみ窓口と予約、対象・持ち物の案内を確認。すべての役所・民間手続きが一度で完結するとは表現しない。"
+    },
+    {
+      "id": "tsubasa-call",
+      "publicUrl": "https://so-gi.com/call",
+      "requestedUrl": "https://so-gi.com/call",
+      "finalUrl": "https://so-gi.com/call",
+      "httpStatus": 200,
+      "sourceTitle": "緊急の方へ - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 96664,
+      "sha256": "75a8d61f58cfd480da614352db270247e52b690ad354f0a0e0403b431b6f2182",
+      "verification": "primary-source-body-read",
+      "summary": "24時間365日窓口、名前・迎え場所・迎え時間・安置先の確認事項と、医師等へ先に確認する案内を確認。到着時間は本メディアで保証しない。",
+      "evidenceExcerpts": [
+        "ご葬儀を依頼される際は下記をお知らせください。 お亡くなりになられた方のお名前 お迎え場所（施設名・住所） お迎え時間（死亡診断書が発行された後、ご移動となります。医師や看護師に時間の確認をお願いします） 電話を掛けていただいている方のお名前 ご安置をする場所（基本的につばさホールにご安置します） 病院にいる方へ まずはお電話ください。 病院から葬儀社を紹介される場合がありますが、お断りしても失礼にはあたりませんので、ご安心ください。 "
+      ]
+    },
+    {
+      "id": "tsubasa-direct",
+      "publicUrl": "https://so-gi.com/price/fukushiso2019",
+      "requestedUrl": "https://so-gi.com/price/fukushiso2019",
+      "finalUrl": "https://so-gi.com/price/fukushiso2019",
+      "httpStatus": 200,
+      "sourceTitle": "つばさの直葬 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 152982,
+      "sha256": "eb9bc9826d7619533e80ccab9c00fc28f49ebd62c36245ee1683e52d81a3261b",
+      "verification": "primary-source-body-read",
+      "summary": "見出し「つばさの直葬」と、搬送・安置・お別れなどの掲載内容を確認。URL末尾はfukushiso2019だがページ本文は直葬。 直葬・福祉葬は事前相談が必要と本文に明記されている。",
+      "evidenceExcerpts": [
+        "つばさの直葬・福祉葬は事前相談が必要となります。"
+      ]
+    },
+    {
+      "id": "tsubasa-ending-note",
+      "publicUrl": "https://so-gi.com/topics/566",
+      "requestedUrl": "https://so-gi.com/topics/566",
+      "finalUrl": "https://so-gi.com/topics/566",
+      "httpStatus": 200,
+      "sourceTitle": "エンディングノートの書き方 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 120065,
+      "sha256": "aa519eebccbe01a8e9153605b70f2e467ffe19b8a899b457dd1ab26a92436fe5",
+      "verification": "primary-source-body-read",
+      "summary": "葬儀・お墓・資産・連絡先などの希望を整理するノートの解説を確認。法的な遺言として扱わない。"
+    },
+    {
+      "id": "tsubasa-family",
+      "publicUrl": "https://so-gi.com/price/kazokuso2019",
+      "requestedUrl": "https://so-gi.com/price/kazokuso2019",
+      "finalUrl": "https://so-gi.com/price/kazokuso2019",
+      "httpStatus": 200,
+      "sourceTitle": "つばさの家族葬 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 161972,
+      "sha256": "28327004f318d064e6b69cc13cb210ff83d9ef2b820eeb811e2071ae9fc0dba5",
+      "verification": "primary-source-body-read",
+      "summary": "家族葬の内容、施設での過ごし方、費用・日数の案内を確認。参列人数目安を家族葬の定義として固定しない。"
+    },
+    {
+      "id": "tsubasa-grave-closure",
+      "publicUrl": "https://so-gi.com/jyumokuso/hakajimai-go-ikotsu",
+      "requestedUrl": "https://so-gi.com/jyumokuso/hakajimai",
+      "finalUrl": "https://so-gi.com/jyumokuso/hakajimai-go-ikotsu",
+      "httpStatus": 200,
+      "sourceTitle": "墓じまい後の遺骨、どこへ？取り出したお骨の納め先ガイド - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 120151,
+      "sha256": "49fef3a96c8deafbcc961c3ced5493040a40e2f24da98c2243ed494b08989a15",
+      "verification": "primary-source-body-read",
+      "summary": "墓じまい後の納骨先を検討する事業者案内を確認。改葬許可の法的説明はe-Govと上田市の一次資料を優先。"
+    },
+    {
+      "id": "tsubasa-halls",
+      "publicUrl": "https://so-gi.com/hall",
+      "requestedUrl": "https://so-gi.com/hall",
+      "finalUrl": "https://so-gi.com/hall",
+      "httpStatus": 200,
+      "sourceTitle": "施設案内 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 104978,
+      "sha256": "46fd3cf5b133fa79f4717caa285d485c94d51214204fbfcbc0a0673b2694df26",
+      "verification": "primary-source-body-read",
+      "summary": "つばさのホール名と所在地を確認。他社ホールを紹介する出典ではない。"
+    },
+    {
+      "id": "tsubasa-inquiry",
+      "publicUrl": "https://so-gi.com/inquiry",
+      "requestedUrl": "https://so-gi.com/inquiry/",
+      "finalUrl": "https://so-gi.com/inquiry",
+      "httpStatus": 200,
+      "sourceTitle": "資料請求 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 100881,
+      "sha256": "7e4e6c9c3873fc3172294b1a2fd16c81a487a0cae0351fa60c6425f25c0dbbd3",
+      "verification": "primary-source-body-read",
+      "summary": "相談・資料請求フォームが存在し、葬儀・樹木葬などの案内があることを確認。急ぎの対応や相談契約条件を保証しない。"
+    },
+    {
+      "id": "tsubasa-karuizawa",
+      "publicUrl": "https://so-gi.com/nagano/karuizawa",
+      "requestedUrl": "https://so-gi.com/nagano/karuizawa",
+      "finalUrl": "https://so-gi.com/nagano/karuizawa",
+      "httpStatus": 200,
+      "sourceTitle": "軽井沢町にお住まいの方へ お葬式・葬儀なら家族葬のつばさで安心。地域最安6.8万円〜 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 267325,
+      "sha256": "2c1c377eac16949917b94d78f225d9d751a8f6295a2141d6ba944b9afd8029e5",
+      "verification": "primary-source-body-read",
+      "summary": "軽井沢町の地域対応案内を確認。案内があることを町内施設の存在や当日の確実な対応と同一視しない。"
+    },
+    {
+      "id": "tsubasa-komoro",
+      "publicUrl": "https://so-gi.com/nagano/komoro",
+      "requestedUrl": "https://so-gi.com/nagano/komoro",
+      "finalUrl": "https://so-gi.com/nagano/komoro",
+      "httpStatus": 200,
+      "sourceTitle": "小諸市にお住まいの方へ お葬式・葬儀なら家族葬のつばさが安心。地域最安6.8万円〜 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 224936,
+      "sha256": "bbe6fc05b0d0ea50e6f7ffea3b500ed3362b6aaa8b69ab4e764981616354e977",
+      "verification": "primary-source-body-read",
+      "summary": "小諸南町の所在地が小諸市南町2-5-16であることを確認。"
+    },
+    {
+      "id": "tsubasa-komoro-tree",
+      "publicUrl": "https://so-gi.com/jyumokuso/jyumokuso-komoro",
+      "requestedUrl": "https://so-gi.com/jyumokuso/jyumokuso-komoro",
+      "finalUrl": "https://so-gi.com/jyumokuso/jyumokuso-komoro",
+      "httpStatus": 200,
+      "sourceTitle": "小諸ひらはら樹木葬霊園 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 143900,
+      "sha256": "b44930bca30f0aed0080144fcf235ec98da468dcd252d0f21a7679b1143cda5e",
+      "verification": "primary-source-body-read",
+      "summary": "所在地は小諸市八満691-44。「さくら」「ひまわり」は最後の方の納骨から13年後に合祀、延長は別途費用。骨壺の大きさ、人数、銘板料金の条件を確認。",
+      "evidenceExcerpts": [
+        "住所長野県小諸市八満691-44 電話0267-73-9800 管理不要 最安水準 維持費0 永代供養 宗教不問 広大な敷地 注意事項 個別区画の希望する区画番号をお伝えいただければ、ご予約状況をご案内致します。 霊園内は火気厳禁です。喫煙はご遠慮下さい。 ゴミはお持ち帰り下さい。 マナーのご理解とご協力をお願いいたします マップで見る 小諸ひらはら樹木葬霊園の区画 2名様区画（さくら） 収納年数は13年です（以降は合祀墓に埋葬し永代供",
+        "最後の方が納骨されてから13年後に合祀となります 契約延長も可能です（別途費用がかかります） さくらは7寸のご遺骨壷を2個収蔵することができます。3名様以上収蔵の場合、粉骨または分骨が必要です（粉骨費用別途） 3名以上でご契約いただく場合は追加費用（1名様ごとに11万円）がかかります 最上段 50万円（税込） 2〜4段目 55万円（税込） 下段 45万円（税込） 1名様区画（ひまわり） 収納年数は13年です（以降は合祀墓に埋葬し永代供養"
+      ]
+    },
+    {
+      "id": "tsubasa-local-custom",
+      "publicUrl": "https://so-gi.com/topics/436",
+      "requestedUrl": "https://so-gi.com/topics/436",
+      "finalUrl": "https://so-gi.com/topics/436",
+      "httpStatus": 200,
+      "sourceTitle": "生活改善方式について〜佐久市・小諸市の葬儀風習と知っておきたい香典マナー - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 119656,
+      "sha256": "6a40e876c559ae6a37d10a74082202dc0d702200a1f5c5b0c9ee7c58611cda9a",
+      "verification": "primary-source-body-read",
+      "summary": "佐久・小諸の生活改善方式、香典・返礼の申し合わせに関する事業者解説を確認。全世帯に共通する義務として扱わない。"
+    },
+    {
+      "id": "tsubasa-miyota",
+      "publicUrl": "https://so-gi.com/nagano/miyota",
+      "requestedUrl": "https://so-gi.com/nagano/miyota",
+      "finalUrl": "https://so-gi.com/nagano/miyota",
+      "httpStatus": 200,
+      "sourceTitle": "北佐久郡御代田町にお住まいの方へ お葬式・葬儀なら家族葬のつばさが安心。地域最安6.8万円から - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 267578,
+      "sha256": "36f4cba1e5637418d57f4fef921afbc6f18972c8286711716bee95d4e747751d",
+      "verification": "primary-source-body-read",
+      "summary": "御代田町の地域対応案内を確認。近隣施設の所在地と町内施設の存在を区別する。"
+    },
+    {
+      "id": "tsubasa-music",
+      "publicUrl": "https://so-gi.com/relief/grief/ongakusou",
+      "requestedUrl": "https://so-gi.com/relief/grief/ongakusou",
+      "finalUrl": "https://so-gi.com/relief/grief/ongakusou",
+      "httpStatus": 200,
+      "sourceTitle": "つばさの奏葬式（献奏）〜無宗教時代のお葬式に想いを込める音楽のお別れ会 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 107776,
+      "sha256": "21f75c64dd1612369f682712bbf73f8b1ab1dc12f7706677a7621f6dcb9a6d63",
+      "verification": "primary-source-body-read",
+      "summary": "奏葬式、献奏、無宗教の音楽でのお別れの説明を確認。会場・権利処理・費用は個別相談にする。"
+    },
+    {
+      "id": "tsubasa-mutual-aid",
+      "publicUrl": "https://so-gi.com/relief/cancel",
+      "requestedUrl": "https://so-gi.com/relief/cancel",
+      "finalUrl": "https://so-gi.com/relief/cancel",
+      "httpStatus": 200,
+      "sourceTitle": "互助会解約 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 106062,
+      "sha256": "4303d3ae04f6d6e44a340c0470e18aac56571adea69838005ab8225f783861bf",
+      "verification": "primary-source-body-read",
+      "summary": "解約代行の事業者案内を確認。現金返金と特典の扱いを区別し、解約条件の一般論は大阪市・埼玉県一次資料を優先。"
+    },
+    {
+      "id": "tsubasa-nishikaruizawa",
+      "publicUrl": "https://so-gi.com/jyumokuso/nishikaruizawa-jyumokusou",
+      "requestedUrl": "https://so-gi.com/jyumokuso/nishikaruizawa-jyumokusou",
+      "finalUrl": "https://so-gi.com/jyumokuso/nishikaruizawa-jyumokusou",
+      "httpStatus": 200,
+      "sourceTitle": "西軽井沢樹木葬霊園 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 143648,
+      "sha256": "bb0575063cdf35d9e118cb93ed65df09ead39c89a04c724c0875b17bd74305e9",
+      "verification": "primary-source-body-read",
+      "summary": "所在地は長野県北佐久郡御代田町草越112。共同区画90,000円、個別区画13年・33年の各プランと彫刻等の別料金が掲載されている。",
+      "evidenceExcerpts": [
+        "住所長野県北佐久郡御代田町草越112 電話050-5306-0305 管理不要 最安水準 維持費0 永代供養 宗教不問 広大な敷地 注意事項 霊園内個別区画エリアでは石版の上を歩くようお願いいたします。芝の部分には既に埋葬されている区画もございます。 個別区画の希望する区画番号をお伝えいただければ、ご予約状況をご案内致します。 霊園内は火気厳禁です。喫煙はご遠慮下さい。 ゴミはお持ち帰り下さい。 マナーのご理解とご協力をお願いいたします",
+        "共同区画 後継者がいない方にお勧めです。 菩提樹のそばに、他の方のご遺骨と一緒に合祀いたします。 お一人様 90,000円（税込） 個別区画 後継者がいない方にお勧めです。 菩提樹のそばに、他の方のご遺骨と一緒に合祀いたします。 おひとり様安心プラン 13年：330,000円（税込） 33年：550,000円（税込） ※33年には墓誌プレート付帯 ご夫婦安心プラン 13年：660,000円（税込） 33年：880,000円（税込） ※3"
+      ]
+    },
+    {
+      "id": "tsubasa-otai",
+      "publicUrl": "https://so-gi.com/nagano/saku/otai",
+      "requestedUrl": "https://so-gi.com/nagano/saku/otai",
+      "finalUrl": "https://so-gi.com/nagano/saku/otai",
+      "httpStatus": 200,
+      "sourceTitle": "【公式】家族葬のつばさホール小田井",
+      "checkedAt": "2026-10-08",
+      "bytes": 185495,
+      "sha256": "56c824b57398aadde840888461fed724578d7af5bb4c506e00fe2b85dd35f0c6",
+      "verification": "primary-source-body-read",
+      "summary": "所在地は長野県佐久市小田井906。御代田町内の施設とは書かない。",
+      "evidenceExcerpts": [
+        "住所長野県佐久市小田井906 アクセスしなの鉄道「御代田駅」2.6km (車で5分) 北陸新幹線「佐久平駅」2.4km(車で12分) 佐久平斎場5.2km(車で9分) 電話0267-73-9800 駐車場20台可 火葬式 家族葬 一般葬 お別れ式 宿泊施設あり ホールのご案内を動画で見る 家族葬のつばさホール小田井の特徴 施設の特徴 シックで穏やかな雰囲気の式場。畳を敷き、宿泊施設の充実したお部屋。「近しい方々と落ち着いたお葬式をしたい"
+      ]
+    },
+    {
+      "id": "tsubasa-prices",
+      "publicUrl": "https://so-gi.com/price",
+      "requestedUrl": "https://so-gi.com/price",
+      "finalUrl": "https://so-gi.com/price",
+      "httpStatus": 200,
+      "sourceTitle": "プランと費用 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 174985,
+      "sha256": "2058fc2234309781d24a7a6690f1f45761d4259a930e7037ed7825f6293304f6",
+      "verification": "primary-source-body-read",
+      "summary": "複数プラン、利用日数、搬送・安置・面会・役所手続きなどの内訳を確認。同一ページに異なる料金表が併記されているため、単一の全国一律価格・総額として転載しない。"
+    },
+    {
+      "id": "tsubasa-remains-kit",
+      "publicUrl": "https://so-gi.com/jyumokuso/kit",
+      "requestedUrl": "https://so-gi.com/jyumokuso/kit",
+      "finalUrl": "https://so-gi.com/jyumokuso/kit",
+      "httpStatus": 200,
+      "sourceTitle": "通販樹木葬「おくるだけ樹木葬」 埋葬キット - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 134798,
+      "sha256": "97d39afb55035294d73996dcc1db99208ad9dbcbc1a6da71cc420cf0fd8dbfdb",
+      "verification": "primary-source-body-read",
+      "summary": "ゆうパック専用キット、発送・納骨・完了報告の流れを確認。共同区画の所在地と税込165,000円の掲載があるが、記事では最新の受入条件・必要書類を確認するよう案内する。"
+    },
+    {
+      "id": "tsubasa-saku",
+      "publicUrl": "https://so-gi.com/nagano/saku",
+      "requestedUrl": "https://so-gi.com/nagano/saku",
+      "finalUrl": "https://so-gi.com/nagano/saku",
+      "httpStatus": 200,
+      "sourceTitle": "佐久市で葬儀・お葬式なら家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 263390,
+      "sha256": "47d1e7bf1bce9b7dfdab3ce285ad566ed04f1ccdbfa4e7fcd9c5e33f19bb63ce",
+      "verification": "primary-source-body-read",
+      "summary": "佐久平・佐久中央・小田井・臼田・望月の掲載を確認。周辺の小諸南町も地域ページに含まれるため、市内施設と混同しない。"
+    },
+    {
+      "id": "tsubasa-tateshina",
+      "publicUrl": "https://so-gi.com/nagano/tateshina",
+      "requestedUrl": "https://so-gi.com/nagano/tateshina",
+      "finalUrl": "https://so-gi.com/nagano/tateshina",
+      "httpStatus": 200,
+      "sourceTitle": "立科町にお住まいの方へ お葬式・葬儀なら家族葬のつばさで安心。地域最安6.8万円〜 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 250258,
+      "sha256": "d603f32d37b5331e11bb059668aa79342d313d8753a8db2f47b6a411edc83ec6",
+      "verification": "primary-source-body-read",
+      "summary": "立科町の地域対応案内を確認。実際に使用する施設・搬送範囲を直接聞く構成にする。"
+    },
+    {
+      "id": "tsubasa-tomioka",
+      "publicUrl": "https://so-gi.com/gunma/tomioka",
+      "requestedUrl": "https://so-gi.com/gunma/tomioka",
+      "finalUrl": "https://so-gi.com/gunma/tomioka",
+      "httpStatus": 200,
+      "sourceTitle": "富岡市にお住まいの方へ お葬式・葬儀なら家族葬のつばさで安心。地域最安6.8万円〜 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 260289,
+      "sha256": "be451aaa4e993c94a4ccf312d5535d129e67f78b712984f21c1e32021b599254",
+      "verification": "primary-source-body-read",
+      "summary": "富岡市の葬儀・プラン・施設案内を確認。群馬の利用条件を長野の価格で一律に断定しない。"
+    },
+    {
+      "id": "tsubasa-tomioka-hall",
+      "publicUrl": "https://so-gi.com/gunma/tomioka/hall-tomioka",
+      "requestedUrl": "https://so-gi.com/gunma/tomioka/hall-tomioka",
+      "finalUrl": "https://so-gi.com/gunma/tomioka/hall-tomioka",
+      "httpStatus": 200,
+      "sourceTitle": "【公式】家族葬のつばさホール富岡",
+      "checkedAt": "2026-10-08",
+      "bytes": 173763,
+      "sha256": "ed33611ab7735a2d15f8d47cd331f92c8be587561b0175a0c5c509df1b4718f1",
+      "verification": "primary-source-body-read",
+      "summary": "所在地群馬県富岡市七日市911-1、駐車場、家族室・宿泊設備の事業者案内を確認。安中市内の施設や安中全域対応はこの資料から断定できない。",
+      "evidenceExcerpts": [
+        "住所群馬県富岡市七日市911-1 アクセス上信電鉄「西富岡駅」450m（徒歩５分） 電話050-5497-5000 駐車場22台可 火葬式 家族葬 一般葬 お別れ式 宿泊施設あり 家族葬のつばさホール富岡の特徴 施設の特徴 国道254号線沿い、富岡製糸場にほど近く、幹線道路沿いで市役所にも近い便利な立地にあります。家族葬のために再設計されたモダン建築の2階建て建物です。1階・2階の大部分をご家族の過ごす家族室として使用し、大切な方ととも"
+      ]
+    },
+    {
+      "id": "tsubasa-tree",
+      "publicUrl": "https://so-gi.com/jyumokuso",
+      "requestedUrl": "https://so-gi.com/jyumokuso",
+      "finalUrl": "https://so-gi.com/jyumokuso",
+      "httpStatus": 200,
+      "sourceTitle": "家族葬のつばさホールの樹木葬霊園 - 家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 162548,
+      "sha256": "fe293c51eafb1cee615038f6a8cffc652119c376a41429596dd85420040aab12",
+      "verification": "primary-source-body-read",
+      "summary": "西軽井沢・小諸ひらはらの霊園案内、個別・共同区画、永代供養・維持費の事業者説明を確認。"
+    },
+    {
+      "id": "tsubasa-ueda",
+      "publicUrl": "https://so-gi.com/nagano/ueda",
+      "requestedUrl": "https://so-gi.com/nagano/ueda",
+      "finalUrl": "https://so-gi.com/nagano/ueda",
+      "httpStatus": 200,
+      "sourceTitle": "上田市で葬儀・お葬式なら家族葬のつばさホール【公式】",
+      "checkedAt": "2026-10-08",
+      "bytes": 220200,
+      "sha256": "844b05849e0fa9e042dbbcc354757e4da725b58a9e24bb30471006a8d8d7a923",
+      "verification": "primary-source-body-read",
+      "summary": "上田踏入・上田神畑・秋和・丸子腰越を確認。東大屋は東御市の所在地なので上田市内施設として扱わない。"
+    },
+    {
+      "id": "ueda-benefit",
+      "publicUrl": "https://www.city.ueda.nagano.jp/soshiki/kokuhonenkin/3364.html",
+      "requestedUrl": "https://www.city.ueda.nagano.jp/soshiki/kokuhonenkin/3364.html",
+      "finalUrl": "https://www.city.ueda.nagano.jp/soshiki/kokuhonenkin/3364.html",
+      "httpStatus": 200,
+      "sourceTitle": "葬祭費の支給 - 上田市ホームページ（国保年金課）",
+      "checkedAt": "2026-10-08",
+      "bytes": 24514,
+      "sha256": "6848459e1bca482a79c759214a2a19cc94f9ce0086e4ec56206e676f1d53f84c",
+      "verification": "primary-source-body-read",
+      "summary": "国保の被保険者が死亡した場合、葬祭を行った喪主に5万円。葬祭翌日から2年以内。以前の健康保険給付による対象外条件と必要書類を確認。",
+      "evidenceExcerpts": [
+        "支給額 5万円（申請から支給まで1か月程度を要しますので、ご了承ください） 申請期限 葬祭を行った日の翌日から2年以内 葬祭費支給申請書 （国保）葬祭費支給申請書 申請に必要なもの 亡くなられた方の国保の被保険者記号番号の分かる物（保険証、資格確認書、資格情報のお知らせ、マイナンバーカードなど） 葬儀を行ったことが確認できるもの（領収書など） 振込先の預金口座番号の分かるもの（預金通帳など）。ただし、葬儀を行った方（喪主）以外の口座を指",
+        "葬祭を行った日の翌日から2年以内 葬祭費支給申請書 （国保）葬祭費支給申請書 申請に必要なもの 亡くなられた方の国保の被保険者記号番号の分かる物（保険証、資格確認書、資格情報のお知らせ、マイナンバーカードなど） 葬儀を行ったことが確認できるもの（領収書など） 振込先の預金口座番号の分かるもの（預金通帳など）。ただし、葬儀を行った方（喪主）以外の口座を指定する場合は、喪主の印鑑（朱肉方式）が必要です。 来庁者の身分確認書類 その他 後期高"
+      ]
+    },
+    {
+      "id": "ueda-death",
+      "publicUrl": "https://www.city.ueda.nagano.jp/soshiki/simin/83309.html",
+      "requestedUrl": "https://www.city.ueda.nagano.jp/soshiki/simin/83309.html",
+      "finalUrl": "https://www.city.ueda.nagano.jp/soshiki/simin/83309.html",
+      "httpStatus": 200,
+      "sourceTitle": "死亡に伴うお手続き - 上田市ホームページ（市民課）",
+      "checkedAt": "2026-10-08",
+      "bytes": 28773,
+      "sha256": "ccf88f0043439b8b203a473391102f0e705f920b8851c95c189a4791dcd34560",
+      "verification": "primary-source-body-read",
+      "summary": "死亡に伴う手続き、おくやみハンドブックと手続きナビ、戸籍への反映に日数を要する案内を確認。"
+    },
+    {
+      "id": "ueda-reburial",
+      "publicUrl": "https://www.city.ueda.nagano.jp/soshiki/simin/90807.html",
+      "requestedUrl": "https://www.city.ueda.nagano.jp/soshiki/simin/90807.html",
+      "finalUrl": "https://www.city.ueda.nagano.jp/soshiki/simin/90807.html",
+      "httpStatus": 200,
+      "sourceTitle": "改葬許可証の申請について - 上田市ホームページ（市民課）",
+      "checkedAt": "2026-10-08",
+      "bytes": 24984,
+      "sha256": "39124fd5be180f82b08ffe88b49f43ebe8340a1b0550f67ba4334f77b124a68d",
+      "verification": "primary-source-body-read",
+      "summary": "改葬は遺骨が現在ある市区町村長の許可が必要。申請書・受入証明書のコピー等、1人分につき1枚、分骨の区別を確認。",
+      "evidenceExcerpts": [
+        "改葬を行うには、現在、遺骨が埋葬・納骨されている場所の市区町村長の許可が必要です。 必要書類 改葬許可証交付申請書 [PDFファイル／67KB]（記入例 [PDFファイル／95KB]） 受入証明書のコピー（永代使用許可証、墓地権利証等、受け入れる証明ができれば可。） 返信用封筒（郵送による申請の場合のみ。宛名をご記入のうえ、切手を貼ってください。） 留意事項 改葬を行う遺骨１人分につき１枚、申請書の提出が必要です。 遺骨の一部を移す分骨",
+        "必要書類 改葬許可証交付申請書 [PDFファイル／67KB]（記入例 [PDFファイル／95KB]） 受入証明書のコピー（永代使用許可証、墓地権利証等、受け入れる証明ができれば可。） 返信用封筒（郵送による申請の場合のみ。宛名をご記入のうえ、切手を貼ってください。） 留意事項 改葬を行う遺骨１人分につき１枚、申請書の提出が必要です。 遺骨の一部を移す分骨につきましては、市区町村長の許可は必要ありません。墓地の管理者へお問い合わせください"
+      ]
+    }
+  ],
+  "supplementalSources": [
+    {
+      "id": "fdma-patient-transport",
+      "url": "https://www.fdma.go.jp/mission/enrichment/appropriate/appropriate013.html",
+      "httpStatus": 200,
+      "title": "患者等搬送事業 | 救急車の適時・適切な利用（適正利用） | 総務省消防庁",
+      "checkedAt": "2026-10-08",
+      "bytes": 22154,
+      "sha256": "f05dc908cc9f7bf052d0b2cddad15a604f88256201a7365b0ffcc34bba446640",
+      "summary": "患者等搬送事業の対象は寝たきりの高齢者・身体障害者・傷病者等の入退院・通院・転院・施設送迎で、緊急性のない方。病院で死亡確認・死亡診断書発行後の葬儀社による搬送と区別する一次資料。",
+      "evidenceExcerpts": [
+        "患者等搬送事業は、寝たきりの高齢者、身体障害者、傷病者等を対象に、これらの方の医療機関への入退院、通院及び転院並びに社会福祉施設への送迎に際し、ベッド等を備えた専用車を用いて搬送を実施する事業です。緊急性のない方を搬送対象としています。"
+      ]
+    },
+    {
+      "id": "fdma-emergency-booklet",
+      "url": "https://www.fdma.go.jp/mission/enrichment/appropriate/appropriate005.html",
+      "artifactUrl": "https://www.fdma.go.jp/mission/enrichment/appropriate/item/appropriate005_01_syou_sashi_pdf.zip",
+      "artifactHttpStatus": 200,
+      "title": "消防庁｜緊急度について知識を深めましょう（平成29年3月）",
+      "checkedAt": "2026-10-08",
+      "artifactSha256": "9e2dc06b739b1fbbd00c9f60be623093701ef3424af58b6fc65cfb52f94553a3",
+      "extractedPdfSha256": "0421be8387170719c6d07acde2b624a0f4fa6265a191562b397020ee126dd98b",
+      "summary": "公式ページの小冊子ZIPからPDFを取得して本文確認。119は命を救う番号、呼吸などの状態を正直に伝える案内を確認。発行は2017年の補助資料であり現行の地域運用を断定しない。",
+      "evidenceExcerpts": [
+        "119 は命を救う番号です。",
+        "通報時には遠慮をしないで、正直に症状を伝えてください。"
+      ]
+    }
+  ],
+  "medicalTransportScope": {
+    "article": "hospital-transport",
+    "sources": [
+      "tsubasa-call",
+      "fdma-emergency",
+      "fdma-patient-transport",
+      "fdma-emergency-booklet"
+    ],
+    "conclusion": "本記事の病院搬送は、医師の死亡確認と書類準備後に葬儀社が行う死亡後の移動。救命のための救急搬送や、緊急性のない傷病者の患者等搬送とは区別する。反応・呼吸に異常があり死亡確認を受けていない場合は、自己判断で死亡と断定せず医療・119番を先にする。",
+    "deceasedTransportEvidence": "つばさ公式：お迎え時間（死亡診断書が発行された後、ご移動となります。医師や看護師に時間の確認をお願いします）"
+  }
+}

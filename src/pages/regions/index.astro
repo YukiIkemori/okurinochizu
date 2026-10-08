@@ -1,0 +1,10 @@
+---
+import Base from '../../layouts/Base.astro';
+import RegionMap from '../../components/RegionMap.astro';
+import { regions, regionUrl } from '../../data/site';
+---
+<Base title="長野県東信・群馬県西毛の8地域の葬儀・お墓案内" description="佐久市、上田市、小諸市、軽井沢町、御代田町、立科町、安中市、富岡市。地域別に家族葬、火葬場、葬祭費の窓口、お墓の選び方を案内します。" breadcrumbs={[{ name: '地域から探す' }]}>
+  <div class="wrap"><header class="page-intro"><p class="eyebrow">この土地で、おくる</p><h1>お住まいの地域から。</h1><p class="lead">近くの葬儀社を探すときも、お墓を考えるときも。<br />市町村の公式情報と、地域ごとの確認事項をまとめました。</p></header>
+    <section class="index-section feature-grid"><div>{['長野県', '群馬県'].map(pref => <div class="region-group"><h2>{pref}</h2><ol class="article-list">{regions.filter(r => r.prefecture === pref).map(r => <li><div><h3><a href={regionUrl(r.slug)}>{r.name}<span class="arrow" aria-hidden="true">↗</span></a></h3><p class="article-summary">{r.focus}</p></div></li>)}</ol></div>)}</div><RegionMap /></section>
+  </div>
+</Base>

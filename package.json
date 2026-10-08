@@ -1,0 +1,30 @@
+{
+  "name": "okurinochizu",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev --host 0.0.0.0",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build && node scripts/validate-build.mjs",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview --host 0.0.0.0",
+    "test": "playwright test",
+    "validate:links": "node scripts/check-external-links.mjs",
+    "deploy": "npm run check && npm run build && node scripts/release-gate.mjs && node scripts/deploy.mjs"
+  },
+  "dependencies": {
+    "astro": "7.3.7"
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=9.6.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.11.1",
+    "@playwright/test": "1.64.0",
+    "cheerio": "1.1.2",
+    "firebase-tools": "15.33.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,292 @@
+[
+  {
+    "id": "annaka-benefit",
+    "title": "安中市｜国民健康保険の給付",
+    "url": "https://www.city.annaka.lg.jp/page/1638.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "annaka-crematorium",
+    "title": "安中市｜火葬の利用手続き・使用料",
+    "url": "https://www.city.annaka.lg.jp/page/1537.html",
+    "checkedAt": "2026-10-08",
+    "note": "公的な火葬手続きと使用料の出典です。葬儀社のプラン料金とは別に確認してください。"
+  },
+  {
+    "id": "burial-law",
+    "title": "e-Gov法令検索｜墓地、埋葬等に関する法律",
+    "url": "https://laws.e-gov.go.jp/law/323AC0000000048",
+    "checkedAt": "2026-10-08",
+    "note": "埋火葬・改葬の許可、墓地の原則などを確認した法令です。"
+  },
+  {
+    "id": "family-register-law",
+    "title": "e-Gov法令検索｜戸籍法 第86条・第87条",
+    "url": "https://laws.e-gov.go.jp/law/322AC0000000224",
+    "checkedAt": "2026-10-08",
+    "note": "死亡届の期限・届出人の原則を確認した法令です。個別事情は自治体窓口へ確認してください。"
+  },
+  {
+    "id": "fdma-emergency",
+    "title": "総務省消防庁｜救急車の適時・適切な利用とQ助",
+    "url": "https://www.fdma.go.jp/mission/enrichment/appropriate/appropriate003.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "karuizawa-benefit",
+    "title": "軽井沢町｜国保で受けられるおもな給付",
+    "url": "https://www.town.karuizawa.lg.jp/page/1136.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "karuizawa-death",
+    "title": "軽井沢町｜おくやみガイドブック",
+    "url": "https://www.town.karuizawa.lg.jp/page/1764.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "kenpo-burial",
+    "title": "全国健康保険協会｜埋葬料・埋葬費",
+    "url": "https://www.kyoukaikenpo.or.jp/benefit/burial_charges/index.html",
+    "checkedAt": "2026-10-08",
+    "note": "国民健康保険の葬祭費とは別の制度です。対象者と申請先を確認してください。"
+  },
+  {
+    "id": "kokusen-funeral",
+    "title": "国民生活センター｜葬儀サービスの料金トラブル",
+    "url": "https://www.kokusen.go.jp/news/data/n-20260603_2.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "komoro-death",
+    "title": "小諸市｜死亡（死亡届）",
+    "url": "https://www.city.komoro.lg.jp/soshikikarasagasu/shiminseikatsubu/shiminka/1/2/5/1123.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "miyota-death",
+    "title": "御代田町｜死亡（死亡届）",
+    "url": "https://www.town.miyota.nagano.jp/category/koseki/2058.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "osaka-mutual-aid",
+    "title": "大阪市消費者センター｜冠婚葬祭互助会の注意点",
+    "url": "https://www.city.osaka.lg.jp/lnet/page/0000233504.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "saitama-mutual-aid",
+    "title": "埼玉県｜冠婚葬祭互助会の契約・解約トラブル",
+    "url": "https://www.pref.saitama.lg.jp/b0304/shohisoudan/jirei/sonota/20240625.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "saku-benefit",
+    "title": "佐久市｜国保で受けられる給付",
+    "url": "https://www.city.saku.nagano.jp/kurashi/zeikin_hokenryo/kokuho_nenkin_kouki/kokuho/kokuhokyuuhukankei/kyufu.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "saku-crematorium",
+    "title": "佐久広域連合｜佐久平斎場（火葬場）",
+    "url": "https://www.areasaku.or.jp/crematorium/",
+    "checkedAt": "2026-10-08",
+    "note": "公的な火葬手続きの出典です。最新の利用案内と住民区分を確認してください。"
+  },
+  {
+    "id": "tateshina-benefit",
+    "title": "立科町｜国民健康保険条例 第7条（葬祭費）",
+    "url": "https://www.town.tateshina.nagano.jp/section/reiki_int/reiki_honbun/e730RG00000318.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tateshina-death",
+    "title": "立科町｜死亡後の手続き",
+    "url": "https://www.town.tateshina.nagano.jp/seikatsu/okuyami/1732.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tomioka-benefit",
+    "title": "富岡市｜国民健康保険の給付",
+    "url": "https://www.city.tomioka.lg.jp/www/contents/1000000002408/index.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tomioka-death",
+    "title": "富岡市｜おくやみ窓口",
+    "url": "https://www.city.tomioka.lg.jp/www/contents/1639555641108/index.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-call",
+    "title": "つばさ公益社｜緊急の方へ",
+    "url": "https://so-gi.com/call",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-direct",
+    "title": "つばさ公益社｜つばさの直葬",
+    "url": "https://so-gi.com/price/fukushiso2019",
+    "checkedAt": "2026-10-08",
+    "note": "公式には直葬・福祉葬は事前相談が必要と記載されています。適用条件と、面会・お別れ等の内容を確認してください。"
+  },
+  {
+    "id": "tsubasa-ending-note",
+    "title": "つばさ公益社｜エンディングノートの書き方",
+    "url": "https://so-gi.com/topics/566",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-family",
+    "title": "つばさ公益社｜つばさの家族葬",
+    "url": "https://so-gi.com/price/kazokuso2019",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-grave-closure",
+    "title": "つばさ公益社｜墓じまい後の遺骨の納め先",
+    "url": "https://so-gi.com/jyumokuso/hakajimai-go-ikotsu",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-halls",
+    "title": "つばさ公益社｜施設案内",
+    "url": "https://so-gi.com/hall",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-inquiry",
+    "title": "つばさ公益社｜資料請求・相談窓口",
+    "url": "https://so-gi.com/inquiry",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-karuizawa",
+    "title": "つばさ公益社｜軽井沢町の葬儀案内",
+    "url": "https://so-gi.com/nagano/karuizawa",
+    "checkedAt": "2026-10-08",
+    "note": "地域の対応案内です。実際に利用する施設名と所在地は直接確認してください。"
+  },
+  {
+    "id": "tsubasa-komoro",
+    "title": "つばさ公益社｜小諸市の葬儀案内",
+    "url": "https://so-gi.com/nagano/komoro",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-komoro-tree",
+    "title": "つばさ公益社｜小諸ひらはら樹木葬霊園",
+    "url": "https://so-gi.com/jyumokuso/jyumokuso-komoro",
+    "checkedAt": "2026-10-08",
+    "note": "区画ごとの料金・人数・収蔵期間を確認してください。一般的な最低価格とは区別します。"
+  },
+  {
+    "id": "tsubasa-local-custom",
+    "title": "つばさ公益社｜生活改善方式について",
+    "url": "https://so-gi.com/topics/436",
+    "checkedAt": "2026-10-08",
+    "note": "地域の風習の解説であり、自治体全体に共通する制度や義務を示すものではありません。"
+  },
+  {
+    "id": "tsubasa-miyota",
+    "title": "つばさ公益社｜御代田町の葬儀案内",
+    "url": "https://so-gi.com/nagano/miyota",
+    "checkedAt": "2026-10-08",
+    "note": "地域の対応案内です。実際に利用する施設名と所在地は直接確認してください。"
+  },
+  {
+    "id": "tsubasa-music",
+    "title": "つばさ公益社｜奏葬式・音楽葬の案内",
+    "url": "https://so-gi.com/relief/grief/ongakusou",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-mutual-aid",
+    "title": "つばさ公益社｜互助会解約のサポート",
+    "url": "https://so-gi.com/relief/cancel",
+    "checkedAt": "2026-10-08",
+    "note": "事業者のサポート案内です。返金や解約の一般的な注意点は公的な消費生活情報も確認してください。"
+  },
+  {
+    "id": "tsubasa-nishikaruizawa",
+    "title": "つばさ公益社｜西軽井沢樹木葬霊園",
+    "url": "https://so-gi.com/jyumokuso/nishikaruizawa-jyumokusou",
+    "checkedAt": "2026-10-08",
+    "note": "所在地は軽井沢町ではなく御代田町です。区画・個別期間・合祀条件を契約前に確認してください。"
+  },
+  {
+    "id": "tsubasa-otai",
+    "title": "つばさ公益社｜つばさホール小田井",
+    "url": "https://so-gi.com/nagano/saku/otai",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-prices",
+    "title": "つばさ公益社｜プランと費用",
+    "url": "https://so-gi.com/price",
+    "checkedAt": "2026-10-08",
+    "note": "掲載価格には適用条件があり、複数の料金表も掲載されています。最新の条件と税込総額を直接確認してください。"
+  },
+  {
+    "id": "tsubasa-remains-kit",
+    "title": "つばさ公益社｜「おくるだけ樹木葬」埋葬キット",
+    "url": "https://so-gi.com/jyumokuso/kit",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-saku",
+    "title": "つばさ公益社｜佐久市の葬儀案内",
+    "url": "https://so-gi.com/nagano/saku",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-tateshina",
+    "title": "つばさ公益社｜立科町の葬儀案内",
+    "url": "https://so-gi.com/nagano/tateshina",
+    "checkedAt": "2026-10-08",
+    "note": "地域の対応案内です。実際に利用する施設名と所在地は直接確認してください。"
+  },
+  {
+    "id": "tsubasa-tomioka",
+    "title": "つばさ公益社｜富岡市の葬儀案内",
+    "url": "https://so-gi.com/gunma/tomioka",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-tomioka-hall",
+    "title": "つばさ公益社｜つばさホール富岡",
+    "url": "https://so-gi.com/gunma/tomioka/hall-tomioka",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-tree",
+    "title": "つばさ公益社｜樹木葬霊園",
+    "url": "https://so-gi.com/jyumokuso",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "tsubasa-ueda",
+    "title": "つばさ公益社｜上田市の葬儀案内",
+    "url": "https://so-gi.com/nagano/ueda",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "ueda-benefit",
+    "title": "上田市｜葬祭費の支給（国民健康保険）",
+    "url": "https://www.city.ueda.nagano.jp/soshiki/kokuhonenkin/3364.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "ueda-death",
+    "title": "上田市｜死亡に伴うお手続き",
+    "url": "https://www.city.ueda.nagano.jp/soshiki/simin/83309.html",
+    "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "ueda-reburial",
+    "title": "上田市｜改葬許可証の申請について",
+    "url": "https://www.city.ueda.nagano.jp/soshiki/simin/90807.html",
+    "checkedAt": "2026-10-08"
+  }
+]

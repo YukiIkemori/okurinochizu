@@ -1,0 +1,17 @@
+---
+import type { Section } from '../data/types';
+interface Props { sections: Section[]; }
+const { sections } = Astro.props;
+---
+{sections.map(section => (
+  <section id={section.id} class="prose-section">
+    <h2>{section.heading}</h2>
+    {section.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+    {section.bullets && <ul class="check-list">{section.bullets.map(item => <li>{item}</li>)}</ul>}
+    {section.table && <div class="table-scroll" tabindex="0" role="region" aria-label={section.heading + 'の比較表'}><table>
+      <thead><tr>{section.table.headers.map(label => <th scope="col">{label}</th>)}</tr></thead>
+      <tbody>{section.table.rows.map(row => <tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody>
+    </table></div>}
+    {section.note && <p class="editor-note">{section.note}</p>}
+  </section>
+))}

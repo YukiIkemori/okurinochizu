@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+interface Props {
+  title: string; description?: string; noindex?: boolean;
+  breadcrumbs?: { name: string; url?: string }[];
+  schema?: Record<string, unknown>[];
+}
+const { title, description = site.description, noindex = false, breadcrumbs = [], schema = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).toString();
+const fullTitle = title === site.name ? site.name + '｜長野・群馬の葬儀、お墓、終活の地域案内' : title + '｜' + site.name;
+const verification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const structuredData = [
+  { '@context': 'https://schema.org', '@type': 'WebSite', '@id': site.url + '/#website', name: site.name, url: site.url, inLanguage: 'ja', description: site.description },
+  ...schema,
+  ...(breadcrumbs.length ? [{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ name: 'ホーム', url: '/' }, ...breadcrumbs].map((crumb, index) => ({ '@type': 'ListItem', position: index + 1, name: crumb.name, item: crumb.url ? new URL(crumb.url, site.url).toString() : canonical })) }] : []),
+];
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+    <meta name="theme-color" content="#28473b" />
+    {verification && <meta name="google-site-verification" content={verification} />}
+    <meta property="og:type" content={Astro.url.pathname.startsWith('/guides/') ? 'article' : 'website'} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content={site.url + '/og-image.png'} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="おくりの地図 — 葬儀、お墓、終活の地域案内" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData).replaceAll('<', '\\u003c')} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へ移動</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="/" class="brand" aria-label="おくりの地図 ホーム">
+          <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><path d="M20 4C11 4 6 11 6 18c0 10 14 18 14 18s14-8 14-18C34 11 29 4 20 4Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M13 20c5-7 9-7 14-3M20 12v14" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+          <span>おくりの地図<small>葬儀、お墓、終活の地域案内</small></span>
+        </a>
+        <nav class="desktop-nav" aria-label="メインナビゲーション">
+          <a href="/regions/">地域から探す</a><a href="/guides/">知っておきたいこと</a><a href="/search/" class="search-link">記事を探す <span aria-hidden="true">⌕</span></a>
+        </nav>
+        <details class="mobile-menu">
+          <summary aria-label="メニューを開く"><span></span><span></span><span class="sr-only">メニュー</span></summary>
+          <nav aria-label="モバイルナビゲーション"><a href="/regions/">地域から探す</a><a href="/guides/">知っておきたいこと</a><a href="/search/">記事を探す</a><a href="/guides/hospital-transport/">急いで搬送が必要なとき</a></nav>
+        </details>
+      </div>
+    </header>
+    {breadcrumbs.length > 0 && <nav class="breadcrumbs wrap" aria-label="パンくず"><ol><li><a href="/">ホーム</a></li>{breadcrumbs.map(crumb => <li>{crumb.url ? <a href={crumb.url}>{crumb.name}</a> : <span aria-current="page">{crumb.name}</span>}</li>)}</ol></nav>}
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div class="wrap footer-top">
+        <div><a class="footer-brand" href="/">おくりの地図</a><p>大切な人をおくる、その前に。<br />長野県東信・群馬県西毛の地域案内。</p></div>
+        <nav aria-label="フッターナビゲーション"><a href="/regions/">8地域の案内</a><a href="/guides/">すべての記事</a><a href="/about/">このメディアについて</a><a href="/privacy/">プライバシー</a><button type="button" data-consent-settings>アクセス解析の設定</button></nav>
+      </div>
+      <div class="wrap footer-bottom"><p>つばさ公益社への無償の送客支援を目的とした情報メディアです。広告収入・紹介報酬はありません。</p><small>© 2026 おくりの地図</small></div>
+    </footer>
+    <div id="analytics-config" data-measurement-id={site.gaId} hidden></div>
+    <aside class="consent-banner" id="consent-banner" aria-labelledby="consent-title" hidden>
+      <div><h2 id="consent-title">アクセス解析について</h2><p>記事の改善と公式サイトへの移動数の計測に、Google Analyticsを使用します。選択はいつでも変更できます。<a href="/privacy/">詳しく読む</a></p></div>
+      <div class="consent-actions"><button type="button" data-consent="denied">解析しない</button><button type="button" data-consent="granted" class="primary-button">利用を許可</button></div>
+    </aside>
+    <script>
+      import '../scripts/analytics';
+    </script>
+  </body>
+</html>

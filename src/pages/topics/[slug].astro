@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleList from '../../components/ArticleList.astro';
+import { articles, categories, site, articleUrl } from '../../data/site';
+export function getStaticPaths() { return categories.map(category => ({ params: { slug: category.slug }, props: { category } })); }
+const { category } = Astro.props;
+const selected = articles.filter(a => a.category === category.slug);
+const schema = [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: category.name, url: site.url + '/topics/' + category.slug + '/', mainEntity: { '@type': 'ItemList', itemListElement: selected.map((a, index) => ({ '@type': 'ListItem', position: index + 1, name: a.title, url: site.url + articleUrl(a.slug) })) } }];
+---
+<Base title={category.name} description={category.description} breadcrumbs={[{ name: '知っておきたいこと', url: '/guides/' }, { name: category.name }]} schema={schema}>
+  <div class="wrap"><header class="page-intro"><p class="eyebrow">{category.short}</p><h1>{category.name}</h1><p class="lead">{category.description}</p></header>
+  <nav class="topic-navigation" aria-label="記事のテーマ">{categories.map(c => <a href={'/topics/' + c.slug + '/'} aria-current={c.slug === category.slug ? 'page' : undefined}>{c.name}</a>)}</nav>
+  <section class="index-section"><ArticleList items={selected} /></section></div>
+</Base>
