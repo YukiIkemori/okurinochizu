@@ -35,7 +35,7 @@ npm run deploy
 - トップページ、代表記事、8 自治体ページが 200 で表示される。
 - 存在しない URL は 404 になり、トップページへ書き換わらない。
 - `robots.txt` と `sitemap.xml` が取得でき、canonical は正式ドメインを指す。
-- GA 同意前にタグが読み込まれず、同意後につばさ公益社へのクリックが `provider_referral_click` になる。
+- GA が初期設定で有効になり、つばさ公益社へのクリックが `provider_referral_click` になる。プライバシーページで停止すると以後の計測と後続ページのタグ読み込みが止まり、再開できる。
 - レスポンシブ表示、セキュリティヘッダー、HTML 再検証と静的アセットのキャッシュが有効になる。
 
 ## 独自ドメイン
@@ -48,7 +48,7 @@ npm run deploy
 
 ## GA4 と Search Console
 
-GA4 測定 ID は `G-YH2YL4ZMCH`。同意後にページ閲覧と `provider_referral_click` を送信する。クリックには `provider`、`destination_url`、`content_slug`、`region`、`intent`、`placement` を付ける。クリックは問い合わせ・契約の成立とは区別する。GA4 側でこのイベントをキーイベントに設定し、必要なパラメータをイベントスコープのカスタムディメンションとして登録すると、記事・地域・配置別に評価できる。GA4 管理画面へログインする認証情報はリポジトリにはない。
+GA4 測定 ID は `G-YH2YL4ZMCH`。初期設定でページ閲覧と `provider_referral_click` を送信し、保存済みの停止設定を優先する。停止・再開の操作はプライバシーページに集約する。クリックには `provider`、`destination_url`、`content_slug`、`region`、`intent`、`placement` を付ける。クリックは問い合わせ・契約の成立とは区別する。GA4 側でこのイベントをキーイベントに設定し、必要なパラメータをイベントスコープのカスタムディメンションとして登録すると、記事・地域・配置別に評価できる。拡張計測の「サイト内検索」は無効にする。GA4 管理画面へログインする認証情報はリポジトリにはない。
 
 Search Console は `okurinochizu.jp` のドメインプロパティを作成し、発行された TXT で DNS 所有権確認する方法が推奨。URL プレフィックスによる HTML メタ確認の場合は、発行された値を `PUBLIC_GOOGLE_SITE_VERIFICATION` に設定して再ビルド・再公開する。未設定でもページ構造に影響しない。所有権確認後、`https://okurinochizu.jp/sitemap.xml` を送信する。GA4 管理画面のプロダクトリンクから、確認済み Search Console プロパティを関連付ける。この関連付けには各管理画面の権限が必要になる。
 

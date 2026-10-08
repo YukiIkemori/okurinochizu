@@ -1,18 +1,15 @@
 ---
 import type { Article } from '../data/types';
-import { articleUrl, categoryName } from '../data/site';
-interface Props { items: Article[]; numbered?: boolean; }
-const { items, numbered = false } = Astro.props;
+import { articleUrl, articleListTitle } from '../data/site';
+interface Props { items: Article[]; headingLevel?: 2 | 3; }
+const { items, headingLevel = 3 } = Astro.props;
+const Heading = headingLevel === 2 ? 'h2' : 'h3';
 ---
-<ol class:list={['article-list', { numbered }]}>
-  {items.map((item, index) => (
+<ol class="article-list">
+  {items.map(item => (
     <li>
-      {numbered && <span class="list-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>}
-      <div>
-        <p class="eyebrow">{categoryName(item.category)}</p>
-        <h3><a href={articleUrl(item.slug)}>{item.title}<span class="arrow" aria-hidden="true">↗</span></a></h3>
-        <p class="article-summary">{item.description}</p>
-      </div>
+      <Heading><a href={articleUrl(item.slug)}>{articleListTitle(item)}</a></Heading>
+      <p class="article-summary">{item.description}</p>
     </li>
   ))}
 </ol>

@@ -1,8 +1,8 @@
 {
-  "verified_at": "2026-10-08T16:53:46.374Z",
+  "verified_at": "2026-10-08T17:58:40.701Z",
   "build": {
     "status": "passed",
-    "fingerprint": "972eafcd7236d787f48ea2ab76d662f0065483da6bfcf5ea445110bf29ada7cc",
+    "fingerprint": "61285226bc9219a0e9b89de2522c8f0ba7e4e3c2af20a8dbd6416490d87cbd54",
     "htmlPages": 45,
     "indexablePages": 43,
     "articles": 24,
@@ -16,42 +16,50 @@
     "failed": 0
   },
   "browser": {
+    "startTime": "2026-10-08T17:54:22.428Z",
+    "duration": 15244.888,
     "expected": 15,
-    "unexpected": 0,
     "skipped": 0,
+    "unexpected": 0,
     "flaky": 0,
     "workers": 1
   },
   "layout": {
     "passed": true,
     "viewport_widths": [
-      1920,
       1440,
-      1280,
-      1100,
-      1024,
-      1000,
-      768,
       375,
       320
-    ]
+    ],
+    "conditions": 24,
+    "html_pages": 45,
+    "article_list_rows": 196,
+    "removed_elements_remaining": 0,
+    "single_column": true
   },
   "privacy_presentation": {
     "verified_pages": 45,
     "settings_location": "/privacy/",
-    "footer_settings_removed": true,
-    "about_analytics_copy_removed": true
+    "privacy_link_location": "/about/",
+    "footer_navigation": [
+      "/about/"
+    ],
+    "initial_analytics": "enabled unless a saved refusal exists",
+    "global_banner_removed": true
   },
   "live": {
-    "origin": "https://okurinochizu.web.app",
+    "origin": "https://okurinochizu.jp",
     "passed": true,
-    "responses": 18,
-    "changed_page_and_css_checks": 4
+    "responses": 45,
+    "firebase_origin": "https://okurinochizu.web.app",
+    "firebase_html_responses": 45,
+    "css_matches": true,
+    "standard_checks": 18
   },
   "deployment": {
     "project": "okurinochizu",
     "hosting": "okurinochizu",
     "result": "Firebase CLI release complete",
-    "custom_domain": "Not rechecked in this update; live verification uses the Firebase web.app domain"
+    "custom_domain": "HTTPS 200 and all 45 HTML responses match the verified build"
   }
 }

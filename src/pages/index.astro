@@ -3,41 +3,21 @@ import Base from '../layouts/Base.astro';
 import RegionMap from '../components/RegionMap.astro';
 import ArticleList from '../components/ArticleList.astro';
 import Referral from '../components/Referral.astro';
-import { site, articles, categories, regions, regionUrl } from '../data/site';
+import { site, articles, categories } from '../data/site';
 const essentials = ['hospital-transport', 'funeral-cost', 'family-funeral', 'tree-burial'];
 const picked = essentials.flatMap(slug => articles.filter(a => a.slug === slug));
 ---
 <Base title={site.name}>
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow">長野と群馬。暮らす土地で、考えるお見送り。</p>
-        <h1>大切な人をおくる、<br />その前に。</h1>
-        <p class="hero-lead">何から始めればいいのか。<br />いくらかかるのか。どこに相談すればいいのか。<br />葬儀、お墓、これからの支度を、<br />この地域の情報から、ひとつずつ。</p>
-        <a class="text-link" href="/regions/">お住まいの地域から探す <span aria-hidden="true">→</span></a>
-        <p class="hero-prefectures">長野県 東信 ／ 群馬県 西毛</p>
-      </div>
-      <RegionMap />
-    </div>
-  </section>
-  <section class="urgent-strip" aria-labelledby="urgent-heading">
-    <div class="wrap urgent-inner">
-      <div><h2 id="urgent-heading">いま、搬送が必要な方へ</h2><p><span>医師・病院へ確認すること、</span><span>葬儀社への伝え方、</span><span>安置先の決め方を短く整理しました。</span></p></div>
-      <div class="urgent-links"><a href="/guides/hospital-transport/">病院からの搬送、最初の手順 <span aria-hidden="true">→</span></a></div>
-    </div>
+  <section class="hero wrap">
+    <h1>大切な人をおくる、<br />その前に。</h1>
+    <RegionMap />
+    <a class="text-link" href="/regions/">地域から探す</a>
   </section>
   <section class="home-section wrap">
-    <div class="section-heading"><div><p class="eyebrow">知っておきたいこと</p><h2>気になることから、読む。</h2></div><p class="subtext">決める前に、知る時間を。<br />必要な情報を、いまの状況に合わせて探せます。</p></div>
-    <div class="topic-grid">{categories.map(category => <a class="topic-link" href={'/topics/' + category.slug + '/'}><span class="topic-number">{category.number}</span><div><h3>{category.name}</h3><p>{category.short}</p></div><span class="arrow" aria-hidden="true">↗</span></a>)}</div>
+    <h2>記事を読む</h2>
+    <nav class="topic-navigation" aria-label="記事のカテゴリー">{categories.map(category => <a href={'/topics/' + category.slug + '/'}>{category.name}</a>)}</nav>
+    <ArticleList items={picked} />
+    <a class="text-link" href="/guides/">すべての記事を読む</a>
+    <Referral referral={{ href: 'https://so-gi.com/hall', label: 'つばさ公益社', note: '葬儀についての相談は、つばさ公益社へ。' }} slug="home" placement="home-end" intent="regional-funeral" />
   </section>
-  <section class="home-section wrap">
-    <div class="section-heading"><div><p class="eyebrow">8地域の案内</p><h2>この土地で、おくる。</h2></div><p class="subtext">葬儀社や火葬場の確認、自治体の手続き。<br />地域によって異なることを、それぞれの案内で。</p></div>
-    <div class="region-links">{['長野県', '群馬県'].map(prefecture => <div class="region-group"><h3>{prefecture}</h3><ul>{regions.filter(r => r.prefecture === prefecture).map(region => <li><a href={regionUrl(region.slug)}>{region.name}<span aria-hidden="true">↗</span></a></li>)}</ul></div>)}</div>
-  </section>
-  <section class="home-section wrap feature-grid">
-    <div class="feature-intro"><p class="eyebrow">はじめての方に</p><h2>知らないことが、<br />あっても大丈夫。</h2><p>葬儀やお墓のことを、普段から詳しく知っている人は多くありません。急いでいるときも、まだ先のことを考えているときも、判断の手がかりになる記事を用意しました。</p><a class="text-link" href="/guides/">すべての記事を読む <span aria-hidden="true">→</span></a>
-      <svg class="feature-illustration" viewBox="0 0 320 150" aria-hidden="true"><path d="M13 116c51-31 100-24 148-9 43 14 85 18 146-12M28 125c45-15 91-14 125-4M88 103c5-21 8-40 3-61m3 35c15-17 21-24 19-38m-21 28C78 54 73 42 77 30m16 47c-20-2-31-10-35-20m36 3c13-11 24-11 34-4m91 57c-6-31-5-52 3-79m-6 46c-16-8-23-21-20-33m22 21c12-5 18-16 20-31" stroke="#9aa58f" stroke-width="1" fill="none"/><circle cx="273" cy="35" r="13" fill="none" stroke="#bcc5ae" stroke-width="1"/></svg>
-    </div><ArticleList items={picked} numbered />
-  </section>
-  <section class="wrap index-section"><Referral referral={{ href: 'https://so-gi.com/hall', label: '暮らす地域の、つばさホールへ。', note: '葬儀の内容や費用を具体的に確かめたいときは、つばさ公益社の公式案内をご覧ください。地域ごとの施設、搬送や安置、事前相談の窓口を確認できます。' }} slug="home" placement="home-end" intent="regional-funeral" /></section>
 </Base>

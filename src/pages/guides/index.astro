@@ -4,7 +4,7 @@ import ArticleList from '../../components/ArticleList.astro';
 import { articles, categories } from '../../data/site';
 ---
 <Base title="葬儀・お墓・終活の記事一覧" description="家族葬の選び方、葬儀費用の見積もり、病院からの搬送、樹木葬、互助会解約、自治体への届出。必要な情報をテーマごとに探せます。" breadcrumbs={[{ name: '知っておきたいこと' }]}>
-  <div class="wrap"><header class="page-intro"><p class="eyebrow">知っておきたいこと</p><h1>お見送りの、手がかり。</h1><p class="lead">最初の連絡から、葬儀、お墓、これからの支度まで。<br />いま必要なことから、読んでみてください。</p></header>
-  <nav class="topic-navigation" aria-label="記事のテーマ">{categories.map(c => <a href={'#' + c.slug}>{c.name}</a>)}</nav>
-  <div class="index-section">{categories.map(c => <section id={c.slug}><h2>{c.name}</h2><ArticleList items={articles.filter(a => a.category === c.slug)} /></section>)}</div></div>
+  <div class="wrap"><header class="page-intro"><h1>記事一覧</h1></header>
+  <nav class="topic-navigation" aria-label="記事のテーマ">{categories.map(c => <a href={'/topics/' + c.slug + '/'}>{c.name}</a>)}</nav>
+  <div class="index-section"><ArticleList items={articles} headingLevel={2} /></div></div>
 </Base>

@@ -12,13 +12,12 @@ const schema = [{ '@context': 'https://schema.org', '@type': 'WebPage', name: ti
 ---
 <Base title={title} description={region.description} breadcrumbs={[{ name: '地域から探す', url: '/regions/' }, { name: region.name }]} schema={schema}>
   <article class="wrap article-shell">
-    <header class="article-head"><p class="eyebrow">{region.prefecture} ／ 地域の案内</p><h1>{region.name}で、<br />葬儀とお墓を考える。</h1><p class="article-lead">{region.lead}</p></header>
-    <div class="article-body"><p class="region-focus">{region.focus}</p>
-      <details class="toc-mobile"><summary>この地域で確認したいこと</summary><ol>{region.sections.map(s => <li><a href={'#' + s.id}>{s.heading}</a></li>)}</ol></details>
+    <header class="article-head"><h1>{region.name}の葬儀・お墓</h1><p class="article-lead">{region.lead}</p></header>
+    <div class="article-body">
       <Sections sections={region.sections} />
       <section class="related-articles"><h2>{region.name}で考えるときの関連記事</h2><ArticleList items={related} /></section>
       <nav class="topic-navigation" aria-label="ほかの地域">{regions.filter(r => r.slug !== region.slug).map(r => <a href={regionUrl(r.slug)}>{r.name}</a>)}</nav>
       <Referral referral={region.referral} slug={region.slug} region={region.slug} intent="regional-funeral" />
-    </div><aside class="toc"><p>この地域で確認したいこと</p><ol>{region.sections.map(s => <li><a href={'#' + s.id}>{s.heading}</a></li>)}</ol></aside>
+    </div>
   </article>
 </Base>

@@ -48,14 +48,14 @@ const structuredData = [
       <div class="header-inner">
         <a href="/" class="brand" aria-label="おくりの地図 ホーム">
           <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><path d="M20 4C11 4 6 11 6 18c0 10 14 18 14 18s14-8 14-18C34 11 29 4 20 4Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M13 20c5-7 9-7 14-3M20 12v14" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
-          <span>おくりの地図<small>葬儀、お墓、終活の地域案内</small></span>
+          <span>おくりの地図</span>
         </a>
         <nav class="desktop-nav" aria-label="メインナビゲーション">
-          <a href="/regions/">地域から探す</a><a href="/guides/">知っておきたいこと</a><a href="/search/" class="search-link">記事を探す <span aria-hidden="true">⌕</span></a>
+          <a href="/regions/">地域から探す</a><a href="/guides/">知っておきたいこと</a>
         </nav>
         <details class="mobile-menu">
           <summary aria-label="メニューを開く"><span></span><span></span><span class="sr-only">メニュー</span></summary>
-          <nav aria-label="モバイルナビゲーション"><a href="/regions/">地域から探す</a><a href="/guides/">知っておきたいこと</a><a href="/search/">記事を探す</a><a href="/guides/hospital-transport/">急いで搬送が必要なとき</a></nav>
+          <nav aria-label="モバイルナビゲーション"><a href="/regions/">地域から探す</a><a href="/guides/">知っておきたいこと</a><a href="/guides/hospital-transport/">急いで搬送が必要なとき</a></nav>
         </details>
       </div>
     </header>
@@ -63,16 +63,12 @@ const structuredData = [
     <main id="main"><slot /></main>
     <footer class="site-footer">
       <div class="wrap footer-top">
-        <div><a class="footer-brand" href="/">おくりの地図</a><p>大切な人をおくる、その前に。<br />長野県東信・群馬県西毛の地域案内。</p></div>
-        <nav aria-label="フッターナビゲーション"><a href="/regions/">8地域の案内</a><a href="/guides/">すべての記事</a><a href="/about/">このメディアについて</a><a href="/privacy/">プライバシー</a></nav>
+        <a class="footer-brand" href="/">おくりの地図</a>
+        <nav aria-label="フッターナビゲーション"><a href="/about/">このメディアについて</a></nav>
       </div>
       <div class="wrap footer-bottom"><small>© 2026 おくりの地図</small></div>
     </footer>
     <div id="analytics-config" data-measurement-id={site.gaId} hidden></div>
-    <aside class="consent-banner" id="consent-banner" aria-labelledby="consent-title" hidden>
-      <div><h2 id="consent-title">アクセス解析を許可しますか？</h2><p><a href="/privacy/">プライバシー</a></p></div>
-      <div class="consent-actions"><button type="button" data-consent="denied">解析しない</button><button type="button" data-consent="granted" class="primary-button">利用を許可</button></div>
-    </aside>
     <script>
       import '../scripts/analytics';
     </script>

@@ -1,13 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
-import { articles, regions, categories, articleUrl, regionUrl, categoryName } from '../data/site';
+import { articles, regions, categories, articleUrl, regionUrl, articleListTitle } from '../data/site';
 const entries = [
-  ...articles.map(a => ({ title: a.title, description: a.description, url: articleUrl(a.slug), category: a.category, regions: a.regions, label: categoryName(a.category), text: [a.title, a.description, a.answer, ...a.keywords, ...a.sections.flatMap(s => [s.heading, ...s.paragraphs, ...(s.bullets || [])])].join(' ') })),
-  ...regions.map(r => ({ title: r.name + 'の葬儀・家族葬・お墓案内', description: r.description, url: regionUrl(r.slug), category: 'region', regions: [r.slug], label: r.prefecture + ' ／ 地域の案内', text: [r.name, r.description, r.focus, ...r.sections.flatMap(s => [s.heading, ...s.paragraphs])].join(' ') })),
+  ...articles.map(a => ({ title: articleListTitle(a), description: a.description, url: articleUrl(a.slug), category: a.category, regions: a.regions, text: [a.title, a.description, a.answer, ...a.keywords, ...a.sections.flatMap(s => [s.heading, ...s.paragraphs, ...(s.bullets || [])])].join(' ') })),
+  ...regions.map(r => ({ title: r.name + 'の葬儀・家族葬・お墓案内', description: r.description, url: regionUrl(r.slug), category: 'region', regions: [r.slug], text: [r.name, r.description, r.focus, ...r.sections.flatMap(s => [s.heading, ...s.paragraphs])].join(' ') })),
 ];
 ---
 <Base title="記事を探す" description="家族葬、葬儀費用、搬送、樹木葬、互助会。キーワード、地域、テーマから記事を探せます。" noindex breadcrumbs={[{ name: '記事を探す' }]}>
-  <div class="wrap"><header class="page-intro"><p class="eyebrow">記事を探す</p><h1>知りたいことを、<br />言葉から。</h1><p class="lead">「家族葬」「樹木葬」「見積もり」など、気になる言葉で検索できます。</p></header>
+  <div class="wrap"><header class="page-intro"><h1>記事を探す</h1></header>
     <section class="index-section">
       <form class="search-form" id="search-form" action="/search/" method="get" role="search">
         <div><label for="query">キーワード</label><input id="query" type="search" name="q" autocomplete="off" maxlength="100" placeholder="家族葬、費用、搬送など" /></div>
@@ -17,7 +17,7 @@ const entries = [
       </form>
       <noscript><p>検索での絞り込みにはJavaScriptが必要です。以下の記事一覧、または<a href="/regions/">地域別の案内</a>からお選びください。</p></noscript>
       <p class="search-count" id="search-count" role="status" aria-live="polite">{entries.length}件の記事・地域案内</p>
-      <ol class="article-list" id="search-results">{entries.map(entry => <li data-search-entry data-search-text={entry.text} data-search-category={entry.category} data-search-regions={entry.regions.join(',')}><div><p class="eyebrow">{entry.label}</p><h3><a href={entry.url}>{entry.title}<span class="arrow" aria-hidden="true">↗</span></a></h3><p class="article-summary">{entry.description}</p></div></li>)}</ol>
+      <ol class="article-list" id="search-results">{entries.map(entry => <li data-search-entry data-search-text={entry.text} data-search-category={entry.category} data-search-regions={entry.regions.join(',')}><h2><a href={entry.url}>{entry.title}</a></h2><p class="article-summary">{entry.description}</p></li>)}</ol>
       <div id="search-empty" class="search-empty" hidden><p>該当する記事が見つかりませんでした。<br />言葉を短くするか、地域・テーマの絞り込みを解除してお試しください。</p><a href="/guides/">すべての記事を見る</a></div>
     </section>
   </div>

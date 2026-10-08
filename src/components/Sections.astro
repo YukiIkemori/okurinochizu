@@ -12,6 +12,6 @@ const { sections } = Astro.props;
       <thead><tr>{section.table.headers.map(label => <th scope="col">{label}</th>)}</tr></thead>
       <tbody>{section.table.rows.map(row => <tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody>
     </table></div>}
-    {section.note && <p class="editor-note">{section.note}</p>}
+    {section.note && <p>{section.note}</p>}
   </section>
 ))}

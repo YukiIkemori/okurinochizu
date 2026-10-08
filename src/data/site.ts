@@ -18,5 +18,6 @@ export const categories = [
   { slug: 'procedures', name: '手続きと参列', short: '届出・香典・遠方の家族', description: '死亡届、火葬許可、参列の連絡。役所の手続きと、人への伝え方を確認します。', number: '06' },
 ];
 export const articleUrl = (slug: string) => '/guides/' + slug + '/';
+export const articleListTitle = (article: Article) => article.title.split('｜')[0].trim();
 export const regionUrl = (slug: string) => '/regions/' + slug + '/';
 export const categoryName = (slug: string) => categories.find(c => c.slug === slug)?.name || slug;

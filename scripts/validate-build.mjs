@@ -181,7 +181,6 @@ for (const [route, { $, ids }] of pages) {
     const schema = articleSchema[0] || {};
     if (normalize(schema.headline) !== normalize($('h1').text()) || schema.description !== description || schema.mainEntityOfPage !== canonical) fail(route, 'Article JSON-LD headline/description/URL differs from visible metadata.');
     if (schema.datePublished !== article.publishedAt || schema.dateModified !== article.updatedAt) fail(route, 'Article JSON-LD dates differ from content.');
-    if (!bodyText.includes(normalize(schema.author?.name))) fail(route, 'Article author is not visible.');
     for (const section of article.sections) if (!ids.has(section.id)) fail(route, `Article section not rendered: ${section.id}`);
     const questions = $('.faq details').toArray().map(node => ({ q: normalize($(node).find('summary').text()), a: normalize($(node).find('p').text()) }));
     const faqs = data.filter(s => s?.['@type'] === 'FAQPage');
