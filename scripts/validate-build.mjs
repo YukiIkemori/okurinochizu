@@ -17,6 +17,7 @@ const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tokyo', year: '
 const validDate = date => datePattern.test(date || '') && !Number.isNaN(Date.parse(date)) && date <= today;
 const hasCredentialParameter = url => [...url.searchParams.keys()].some(key => /(?:token|secret|password|api[_-]?key|credential)/i.test(key));
 const content = JSON.parse(await readFile('src/data/content.json', 'utf8'));
+const operator = JSON.parse(await readFile('src/data/operator.json', 'utf8'));
 const sources = JSON.parse(await readFile('src/data/sources.json', 'utf8'));
 const registry = Array.isArray(sources) ? sources : sources.sources;
 if (!Array.isArray(registry)) throw new Error('src/data/sources.json must contain a source array.');
@@ -217,7 +218,7 @@ for (const [route, { $, ids }] of pages) {
         if (element.attr('data-provider-link') === undefined) fail(route, `Unmeasured Tsubasa link: ${raw}`);
         if (!element.attr('data-placement') || !element.attr('data-intent')) fail(route, `Tsubasa link lacks placement/intent metadata: ${raw}`);
       } else if (element.attr('data-provider-link') !== undefined) fail(route, `Provider tracking is attached to a non-Tsubasa URL: ${raw}`);
-      else if (!sourceURLs.has(url.origin + url.pathname) && !privacyURLs.has(url.origin + url.pathname)) fail(route, `External link is not a verified source or privacy resource: ${raw}`);
+      else if (!sourceURLs.has(url.origin + url.pathname) && !privacyURLs.has(url.origin + url.pathname) && !(route === '/about/' && url.href === operator.url)) fail(route, `External link is not a verified source, privacy resource or about-page operator URL: ${raw}`);
     }
   }
   const ogImage = $('meta[property="og:image"]').attr('content');

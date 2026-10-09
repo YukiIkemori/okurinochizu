@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { site } from '../data/site';
+import operator from '../data/operator.json';
 interface Props {
   title: string; description?: string; noindex?: boolean;
   breadcrumbs?: { name: string; url?: string }[];
@@ -66,7 +67,7 @@ const structuredData = [
         <a class="footer-brand" href="/">おくりの地図</a>
         <nav aria-label="フッターナビゲーション"><a href="/about/">このメディアについて</a></nav>
       </div>
-      <div class="wrap footer-bottom"><small>© 2026 おくりの地図</small></div>
+      <div class="wrap footer-bottom"><small>© 2026 おくりの地図</small><small class="footer-operator">{operator.name}</small></div>
     </footer>
     <div id="analytics-config" data-measurement-id={site.gaId} hidden></div>
     <script>
