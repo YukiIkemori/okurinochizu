@@ -1,8 +1,8 @@
 {
-  "verified_at": "2026-10-09T03:26:58.993Z",
+  "verified_at": "2026-10-09T04:22:35.204Z",
   "build": {
     "status": "passed",
-    "fingerprint": "def2ce03932d091df4a9a19b129c6095ccd1622e88e0c1bd6cc3536e4b9cd2c9",
+    "fingerprint": "b2320c3145c4e1346c45684bc9af4dd686de27d7ce08d99e4630febb30d24543",
     "htmlPages": 39,
     "indexablePages": 37,
     "articles": 24,
@@ -17,8 +17,8 @@
     "url_set_unchanged": true
   },
   "browser": {
-    "startTime": "2026-10-09T03:22:47.536Z",
-    "duration": 15861.588000000002,
+    "startTime": "2026-10-09T04:17:10.777Z",
+    "duration": 15428.27,
     "expected": 15,
     "skipped": 0,
     "unexpected": 0,
@@ -29,15 +29,19 @@
     "passed": true,
     "viewport_widths": [
       1440,
+      1024,
+      768,
       375,
       320
     ],
-    "conditions": 24,
+    "conditions": 26,
     "html_pages": 39,
     "article_list_rows": 174,
     "article_body_columns": 1,
     "home_desktop_columns": 2,
-    "home_mobile_columns": 1
+    "home_mobile_columns": 1,
+    "home_hero_desktop_columns": 2,
+    "home_hero_mobile_columns": 1
   },
   "navigation": {
     "reachable_indexable_pages": 37,
@@ -62,9 +66,10 @@
     "origin": "https://okurinochizu.jp",
     "passed": true,
     "html_responses": 39,
+    "webp_assets": 16,
     "css_assets": 1,
     "redirects": 12,
-    "total_checks": 54,
+    "total_checks": 70,
     "standard_checks": 18,
     "firebase_home_match": true
   },
@@ -72,6 +77,21 @@
     "project": "okurinochizu",
     "hosting": "okurinochizu",
     "result": "Firebase CLI release complete",
-    "custom_domain": "All current HTML and CSS match the verified build; retired category URLs return 301 to /guides/"
+    "custom_domain": "All current HTML, CSS and 16 WebP assets match the verified build; retired category URLs return 301 to /guides/"
+  },
+  "photography": {
+    "original_assets": 4,
+    "pictured_pages": 36,
+    "image_placements": 68,
+    "lazy_images": 32,
+    "responsive_webp_assets": 16,
+    "responsive_widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "decorative_alt": "",
+    "visible_captions": 0
   }
 }

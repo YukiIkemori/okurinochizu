@@ -1,9 +1,13 @@
 ---
 import type { Section } from '../data/types';
-interface Props { sections: Section[]; }
-const { sections } = Astro.props;
+import type { EditorialKind } from '../data/visuals';
+import EditorialImage from './EditorialImage.astro';
+interface Props { sections: Section[]; interlude?: EditorialKind; }
+const { sections, interlude } = Astro.props;
 ---
-{sections.map(section => (
+{sections.map((section, index) => (
+  <>
+  {interlude && index === Math.floor(sections.length / 2) && <EditorialImage kind={interlude} variant="interlude" />}
   <section id={section.id} class="prose-section">
     <h2>{section.heading}</h2>
     {section.paragraphs.map(paragraph => <p>{paragraph}</p>)}
@@ -14,4 +18,5 @@ const { sections } = Astro.props;
     </table></div>}
     {section.note && <p>{section.note}</p>}
   </section>
+  </>
 ))}

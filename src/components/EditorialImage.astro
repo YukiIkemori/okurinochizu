@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import { editorialImages, type EditorialKind } from '../data/visuals';
+interface Props {
+  kind: EditorialKind;
+  variant?: 'hero' | 'header' | 'interlude';
+  loading?: 'eager' | 'lazy';
+}
+const { kind, variant = 'header', loading = variant === 'interlude' ? 'lazy' : 'eager' } = Astro.props;
+const sizes = variant === 'hero'
+  ? '(min-width: 1240px) 580px, (min-width: 761px) 48vw, calc(100vw - 40px)'
+  : '(min-width: 848px) 760px, calc(100vw - 40px)';
+---
+<picture class={'editorial-image editorial-image--' + variant}>
+  <Image src={editorialImages[kind]} alt="" widths={[480, 800, 1200, 1536]} sizes={sizes} format="webp" quality={78} loading={loading} decoding="async" fetchpriority={variant === 'hero' ? 'high' : 'auto'} />
+</picture>

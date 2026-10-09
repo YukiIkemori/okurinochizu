@@ -120,3 +120,24 @@
 .search-form{grid-template-columns:1fr}
 .search-form>div,.search-form>button{grid-column:auto}
 }
+
+/* Photography follows the reading layout without captions or frames. */
+.editorial-image{display:block;width:100%;margin:0;overflow:hidden}
+.editorial-image img{display:block;width:100%;height:auto;object-fit:cover;object-position:center}
+.editorial-image--hero img{aspect-ratio:3/2}
+.editorial-image--header{margin-top:24px}
+.editorial-image--header img{aspect-ratio:27/10}
+.editorial-image--interlude{margin-block:32px}
+.editorial-image--interlude img{aspect-ratio:5/2}
+.hero.hero-visual.wrap{width:min(1140px,calc(100% - 88px));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:36px;padding-block:36px}
+.hero.hero-visual>h1{min-width:0;margin:0}
+.hero.hero-visual>.editorial-image{min-width:0}
+@media(min-width:761px) and (max-width:1100px){
+  .hero.hero-visual.wrap{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px}
+}
+@media(max-width:760px){
+  .hero.hero-visual.wrap{width:calc(100% - 40px);grid-template-columns:minmax(0,1fr);gap:24px;padding-block:24px}
+  .editorial-image--header{margin-top:20px}
+  .editorial-image--header img,.editorial-image--interlude img{aspect-ratio:2/1}
+  .editorial-image--interlude{margin-block:24px}
+}
