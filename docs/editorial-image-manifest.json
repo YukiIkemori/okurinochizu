@@ -1,0 +1,682 @@
+[
+  {
+    "key": "about-header",
+    "source": "src/assets/editorial/flowers.png",
+    "subject": "白いコスモスと陶器",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "d4a78fbbbd01416556929b84ab3a4944298da8f4d22ae59283f97b3b78963d17",
+    "originalFile": "flowers.png",
+    "originalSha256": "d4a78fbbbd01416556929b84ab3a4944298da8f4d22ae59283f97b3b78963d17"
+  },
+  {
+    "key": "guide-choose-funeral-company-header",
+    "source": "src/assets/editorial/unique/guide-choose-funeral-company-header.webp",
+    "subject": "家庭の窓辺にある木とリネンの椅子",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "8a96bd8770ba971e5528b750ecab09b0ea933b65780535bae47219fb9c8e7b82",
+    "originalFile": "exec-ef97d758-9795-4261-9005-15de26db8f64.png",
+    "originalSha256": "a6e6b531ee2ab4e8529dca1d3c52517b547ca42660e1ee00bab00314e7c54a10"
+  },
+  {
+    "key": "guide-choose-funeral-company-interlude",
+    "source": "src/assets/editorial/unique/guide-choose-funeral-company-interlude.webp",
+    "subject": "オリーブ色の革の書類袋",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "46c5993ef59b5df070b1f7ddc79ae09083a75cb1a1170851a6b3fd86375209c3",
+    "originalFile": "exec-c50be56e-53e4-46d9-9e17-9960c6aacabe.png",
+    "originalSha256": "97f5990cb5b5c1e251ee187d05cbf248d996dafb6789b78f7f8bf1a3b96cd7d6"
+  },
+  {
+    "key": "guide-cremation-permit-header",
+    "source": "src/assets/editorial/unique/guide-cremation-permit-header.webp",
+    "subject": "一枚の無地の紙と小さな石のペーパーウェイト",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "883d980a9b4499403644569738e124afe4826f32e1d5c7b092c33aa865084666",
+    "originalFile": "exec-b6679866-ea92-483d-9bd2-52b5153cba62.png",
+    "originalSha256": "ffb96f896d9dd31f38b0c2ef29019242f5ebe911300f847c9d48eab82c984cc3"
+  },
+  {
+    "key": "guide-cremation-permit-interlude",
+    "source": "src/assets/editorial/unique/guide-cremation-permit-interlude.webp",
+    "subject": "無地の書類を保管する蓋付きの木箱",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "35ca5249539563cb1ce730e91b624fd20baf0c3ad99e6c7f15eea5fa23680610",
+    "originalFile": "exec-59d771c8-d071-4636-a5ef-cbb975bc6b93.png",
+    "originalSha256": "c0f025d24d3dea38c28abb51ad69bdd0a3a5d23642afa17f4df8d770942c53c5"
+  },
+  {
+    "key": "guide-death-procedures-header",
+    "source": "src/assets/editorial/unique/guide-death-procedures-header.webp",
+    "subject": "無地の書類を整理するアコーディオン式フォルダー",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "bb410a1969efc72bf09972174e9d2cfe245b3afea5e6a388237bd7c200dcc062",
+    "originalFile": "exec-18c031da-b3c5-494b-97eb-d3551a24b66e.png",
+    "originalSha256": "db8b8fc073b851cae1cc69827791e7fe2c177624624c204964c5c016eef52e66"
+  },
+  {
+    "key": "guide-death-procedures-interlude",
+    "source": "src/assets/editorial/unique/guide-death-procedures-interlude.webp",
+    "subject": "木の引き出しに分けて収めた無地の封筒",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "dbc87ad69c0d9a1a4c75cb978a6574c2e3092b55a3771d45c8ab7f5b4b8ab487",
+    "originalFile": "exec-8192de04-03f6-421b-93c5-e5d1660025f7.png",
+    "originalSha256": "99770b79f79865a5a54c1a7cdbef730233a72c7fea38ca23c52891c196b96003"
+  },
+  {
+    "key": "guide-direct-cremation-header",
+    "source": "src/assets/editorial/unique/guide-direct-cremation-header.webp",
+    "subject": "露を含む庭の小さな白い花",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "48c4b9be4f3a4fd0a3c4e51ae710c9611100f43cc5d5d7d554ec56e0863e15d6",
+    "originalFile": "exec-077c5366-7681-4520-b3b7-8ecc5f5cf866.png",
+    "originalSha256": "d533241a4fdde260ce7e4fa323d045ec4b62d707394a5ec2587ceb35ac1eee0c"
+  },
+  {
+    "key": "guide-direct-cremation-interlude",
+    "source": "src/assets/editorial/unique/guide-direct-cremation-interlude.webp",
+    "subject": "木のベンチのリネンクッション",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "8a801ec5744c11362f3566d3d8ea1581dd0cdc284ae8bca9f9d81a8bc9cff977",
+    "originalFile": "exec-b0d333a3-7d47-40d6-a893-5ea052dd2694.png",
+    "originalSha256": "0322ee643d63f6397ceff260f82484b5fec0f3e13064f585ac78c136d19170de"
+  },
+  {
+    "key": "guide-distant-family-header",
+    "source": "src/assets/editorial/unique/guide-distant-family-header.webp",
+    "subject": "窓辺のベンチに置かれた無地の旅行鞄",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "e1b363a98cc6c38ed0a96427bd04d7d336759fcafdd48e0b4cb4e2808e1d4533",
+    "originalFile": "exec-e3ffb909-97f0-49a4-a481-a5716984fa21.png",
+    "originalSha256": "450dc06831a27f30725ff7f10112139527da9ae44ed291e2fcabb6304c75fe7a"
+  },
+  {
+    "key": "guide-distant-family-interlude",
+    "source": "src/assets/editorial/unique/guide-distant-family-interlude.webp",
+    "subject": "車窓から見る穏やかな田園と山並み",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "47d7e1ac845efe1c573de9648876c8455631b9a0191b09cac71e8afa2215a255",
+    "originalFile": "exec-50f59b56-74e1-405a-83fb-ea80451247c6.png",
+    "originalSha256": "e1ed4a31e1f7e9df8b203a32cd0de9dcefa977fc32e3d404ac5623e8a6e7fe49"
+  },
+  {
+    "key": "guide-ending-note-header",
+    "source": "src/assets/editorial/unique/guide-ending-note-header.webp",
+    "subject": "無地の布張り手帳と一本のペン",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "c91d8b03bbf65ba525414ca467cef8a8decf81d50b10755fa5d44befda4b0f18",
+    "originalFile": "exec-a4bd1895-c628-4c2c-8e3f-0384403f9352.png",
+    "originalSha256": "3e96b316100e0c69c4753016f008dcd75038adc5c48e48631ef057f175f523e0"
+  },
+  {
+    "key": "guide-ending-note-interlude",
+    "source": "src/assets/editorial/unique/guide-ending-note-interlude.webp",
+    "subject": "家族に残す無地の布製書類ポーチ",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "6f5e026042af3ca381402b063a52b55ffb90f0037823005800bd96f6b72d4494",
+    "originalFile": "exec-7508c47f-01e0-4f4a-bcae-c91b7fed249c.png",
+    "originalSha256": "01684ff6cce6bbc699b77ec71d498056233560bd2e3c925af30c4f1663184758"
+  },
+  {
+    "key": "guide-estimate-checklist-header",
+    "source": "src/assets/editorial/unique/guide-estimate-checklist-header.webp",
+    "subject": "無地の紙束と滑らかな川石の文鎮",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "57d9add3aa1aa903621c1337863b3c0d6a61de3217d6d242f365f0bdf35a3a8d",
+    "originalFile": "exec-90edc122-dfa4-4887-a6cf-256431b28477.png",
+    "originalSha256": "74df7a0a692e5ed16622a35cdc61b78abefe20742ea0ed2bd2e136dd5f56963c"
+  },
+  {
+    "key": "guide-estimate-checklist-interlude",
+    "source": "src/assets/editorial/unique/guide-estimate-checklist-interlude.webp",
+    "subject": "淡い木面に置いた真鍮の書類クリップ",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "3774d1f2b7573c1499cf372c25ae13a4e4525a1259e23943841cd6880f1d7897",
+    "originalFile": "exec-5fff6eeb-8ca0-44e5-91e0-3fb5895c49ad.png",
+    "originalSha256": "5484a7838939980c9e3930f088e6af23c29c3962c6f5fe3e223b83ebed9a1bdf"
+  },
+  {
+    "key": "guide-family-funeral-header",
+    "source": "src/assets/editorial/unique/guide-family-funeral-header.webp",
+    "subject": "家庭の小さな丸い食卓と空いた木の椅子",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "a179d0e4868ae21b685e463af0a36bd3ec39b040b96675a9a404d7ca70158af3",
+    "originalFile": "exec-36ca31bc-736b-4280-82d1-f82ae5b0f0ef.png",
+    "originalSha256": "2b27d3d00dc9e4fb9d5edc33680acfb5bf85f29fefb5e5b5f4af5bb47c0c1916"
+  },
+  {
+    "key": "guide-family-funeral-interlude",
+    "source": "src/assets/editorial/unique/guide-family-funeral-interlude.webp",
+    "subject": "アイボリーの布の上の貝殻の小皿",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "fe158a8e0d36eeb40f1b189062bc82e9a3b41e762df49efb180a8bc327ce6648",
+    "originalFile": "exec-daddf6e0-7d96-4e56-9047-e64cf4b2b8c3.png",
+    "originalSha256": "4c3db7ac486a9cd25b0a8b82f5e67fde6d6b4d62be3617e190401beba78a2a79"
+  },
+  {
+    "key": "guide-first-day-header",
+    "source": "src/assets/editorial/unique/guide-first-day-header.webp",
+    "subject": "読書用眼鏡と無地の小さな木箱",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "bfc1ffb781823d52407464144ce0c20bf916b1cd635c8e53af73bea67256ffc5",
+    "originalFile": "exec-c47c2476-508d-4327-9a7a-05d3c3403291.png",
+    "originalSha256": "47898bfefc61ecbf2b96a72a396a3c121bae3e779f5be574a3d02c7516988071"
+  },
+  {
+    "key": "guide-first-day-interlude",
+    "source": "src/assets/editorial/unique/guide-first-day-interlude.webp",
+    "subject": "朝露をまとった草と柔らかな穂",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "da2fcb84660b3e5263772a79d44859b5c79dde0b841256ca49dec2588455758e",
+    "originalFile": "exec-97962ede-db7b-45e1-b68a-9891ff610d8d.png",
+    "originalSha256": "e29d13dd041fd5666ca1e56ed7dde5688639db82bee3be852be0d06da0aa4a6b"
+  },
+  {
+    "key": "guide-funeral-benefit-header",
+    "source": "src/assets/editorial/unique/guide-funeral-benefit-header.webp",
+    "subject": "籐の浅いトレーに整えた無地の書類",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "3f9f434b2d5ff2f05ea28b0642bf6b54d6b2cf4a19162de0f3247b8c87cc9955",
+    "originalFile": "exec-ea63f157-9d2f-4c68-93cf-b620de56b120.png",
+    "originalSha256": "87426688612ee87ab5b17f8f284f64f3290b1ac25247660006627a5724542cdf"
+  },
+  {
+    "key": "guide-funeral-benefit-interlude",
+    "source": "src/assets/editorial/unique/guide-funeral-benefit-interlude.webp",
+    "subject": "窓辺の水入りガラスと揺れる光",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "1dc8f770bffa87afe3cc9cf0519725664f818fad8ef1d9145b49d266f67189e1",
+    "originalFile": "exec-33477e2f-0707-4ef8-ada2-9b5b75a4c3cd.png",
+    "originalSha256": "a71dd91dcfb2244331cb1b96c524c14073b9799b5f6ed720ae3a27fbe17978bc"
+  },
+  {
+    "key": "guide-funeral-cost-header",
+    "source": "src/assets/editorial/unique/guide-funeral-cost-header.webp",
+    "subject": "石の窓台に並ぶ三つの無地封筒",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "2b326cc25d4a37c9831123600102b42d49817f7539569c2231a04f0f2a572413",
+    "originalFile": "exec-fe507c61-aa1d-4a44-8a0b-59af1d0dd4c9.png",
+    "originalSha256": "7531d53156ee5f83a715de60746cbcc4d13f15e12e53f7ae0e34fdd6f4e4f741"
+  },
+  {
+    "key": "guide-funeral-cost-interlude",
+    "source": "src/assets/editorial/unique/guide-funeral-cost-interlude.webp",
+    "subject": "綿紐で束ねたアイボリーのリネン",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "5dea91f04315e5f788654aaeecad126f2337733dacbdef9c349c66a546f5e0f7",
+    "originalFile": "exec-5a3b6bef-fa3a-4b8d-aeeb-2e7613bcae28.png",
+    "originalSha256": "926aaaa58c45eeda3ef317ace0e411df70db1efc66945f3a33f74ecfaf8882cf"
+  },
+  {
+    "key": "guide-funeral-etiquette-header",
+    "source": "src/assets/editorial/unique/guide-funeral-etiquette-header.webp",
+    "subject": "低い陶の花器に生けた一輪の白菊",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "356f6c099ec6e6869ae6e362565c1513642333b8f0114c9d6d287d0f1e6b4720",
+    "originalFile": "exec-4a930c0f-38a3-43fa-82fa-8853893571be.png",
+    "originalSha256": "a8ff4c4b361529bdb9fd2189566f99f6492627a56ef8259d985b45495dde81f0"
+  },
+  {
+    "key": "guide-funeral-etiquette-interlude",
+    "source": "src/assets/editorial/unique/guide-funeral-etiquette-interlude.webp",
+    "subject": "チャコール色の礼服の袖と白いハンカチ",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "ca82be205d05df4a761780b0ce3c3ae83f8d8ac4999e7c909842677c9685fc30",
+    "originalFile": "exec-6610524f-95b0-4f45-bfca-df5a721d980a.png",
+    "originalSha256": "45738e084b5ba4838cf0c259c5f3f8e2315bafc0d8d4f712e7a089320cf370e2"
+  },
+  {
+    "key": "guide-grave-closure-header",
+    "source": "src/assets/editorial/unique/guide-grave-closure-header.webp",
+    "subject": "irregular stream stones with low green moss",
+    "width": 2060,
+    "height": 763,
+    "sha256": "2e6cde823e6ded708c2a68cd91030259e072c336386d519c5e8e3ad956176d9f",
+    "originalFile": "exec-7169e841-1d9d-4435-9f6f-27324a6ad28a.png",
+    "originalSha256": "cc413f30d097be0747ae571a26032d1c3fa3e38959cd9fb2254596b1ff395f73"
+  },
+  {
+    "key": "guide-grave-closure-interlude",
+    "source": "src/assets/editorial/unique/guide-grave-closure-interlude.webp",
+    "subject": "fresh unfurling fern beside wet garden soil after rain",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "2f3a5c5b26bb9cb558133b65db77018573779f3aa367b60bc239d44f7474d77b",
+    "originalFile": "exec-c9d7b064-e769-4b31-9c8d-2e851ad9d7bc.png",
+    "originalSha256": "8ec4ebde937a2493c60390e1c5467254eb6afbe6d2b6bae8fd44299a7a834d8a"
+  },
+  {
+    "key": "guide-grave-selection-header",
+    "source": "src/assets/editorial/unique/guide-grave-selection-header.webp",
+    "subject": "three slender wild grass seed heads in an open field",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "cf2fc21b5a16ee93edf544fc039c37def6bf135774540944e2e5f35295b76b4c",
+    "originalFile": "exec-edb660cf-a47c-4dd2-8cb2-e9a18ad82ad5.png",
+    "originalSha256": "2b755170ed3d991657fc43d0d276b6dc02d074d1d3ee4623a0687d0f95e0121d"
+  },
+  {
+    "key": "guide-grave-selection-interlude",
+    "source": "src/assets/editorial/unique/guide-grave-selection-interlude.webp",
+    "subject": "pale lichen growing on weathered fallen wood",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "727de2ee7041d278b1672dc6b4a37a51cbc2ded807185dd5dffffa2253720b35",
+    "originalFile": "exec-65b2b9a2-ddd5-4342-ba0e-ead8b960ee13.png",
+    "originalSha256": "9b05b7f332b370699069834035a91de67a1fa458ebfda093d7d664f342cbb2fc"
+  },
+  {
+    "key": "guide-home-death-header",
+    "source": "src/assets/editorial/unique/guide-home-death-header.webp",
+    "subject": "自宅の窓辺の籐の椅子",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "823e9667cb7f6dd1cd18ae63fa05bef356015448fd8996f8f2c6714c5efb3525",
+    "originalFile": "exec-e5e3456c-b0c8-417a-ad06-21261f643424.png",
+    "originalSha256": "5292f588996342d68b44f879e38dd5af999bd531e1378621eec55b17a0c77d55"
+  },
+  {
+    "key": "guide-home-death-interlude",
+    "source": "src/assets/editorial/unique/guide-home-death-interlude.webp",
+    "subject": "木のスツールに畳んだウールの毛布",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "e77173a68c43b6ef964d5c0a6624128eedf6ce3fffc06fc38979f998e6b6bf30",
+    "originalFile": "exec-63a76306-1140-4fb5-8bdf-71cf0b903a92.png",
+    "originalSha256": "30f8653fd2710c25144af5a1f8eebb42486ab94178958c8b40af29c5a52eac89"
+  },
+  {
+    "key": "guide-hospital-transport-header",
+    "source": "src/assets/editorial/unique/guide-hospital-transport-header.webp",
+    "subject": "無地のリネン製の小さな旅行鞄と木のベンチ",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "a550e761eb159b5afe4164455740d2c85129cee223c87b471abd3c06b662f2f7",
+    "originalFile": "exec-83623472-50d8-47f5-bd8b-b292b02675bf.png",
+    "originalSha256": "a203b6b55212182cf3b7c6fb3828b5750959608151dfa6ff90cc27bf5d78b218"
+  },
+  {
+    "key": "guide-hospital-transport-interlude",
+    "source": "src/assets/editorial/unique/guide-hospital-transport-interlude.webp",
+    "subject": "木の浅いトレーの川石と淡いリネン",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "b43eec46e04a4a74877238017e99303e7f2c0a3e4adaaadbaea9d1b6a014cd34",
+    "originalFile": "exec-81a222df-e573-4d42-85ba-69b880c15106.png",
+    "originalSha256": "a23f9aaaf8d4680f84e08fbb197471d050b03f6c5f144577d9177a0ddf9f76d7"
+  },
+  {
+    "key": "guide-local-tree-burial-header",
+    "source": "src/assets/editorial/unique/guide-local-tree-burial-header.webp",
+    "subject": "pale cherry blossom branch against a soft hillside",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "4dae685e289e11159d33f5db229e2bcc291db81a75e43f3ec4fc260084972665",
+    "originalFile": "exec-5f5a5587-31a3-4368-84fe-0cd1acc73ca8.png",
+    "originalSha256": "f7a2c28b7a570de40f60c9ae24eb8ec9336e8408a98f9381606d8da1794d9fa2"
+  },
+  {
+    "key": "guide-local-tree-burial-interlude",
+    "source": "src/assets/editorial/unique/guide-local-tree-burial-interlude.webp",
+    "subject": "small white meadow flowers and uneven fresh grasses",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "31aa8121e6bb3ea71067e0bb2621482cc4055d5a3ce19f25b2b5a36890c37f91",
+    "originalFile": "exec-a8b09fea-3008-482c-932b-8561485398cc.png",
+    "originalSha256": "e07c9fac26d0f141d373565bf948474b4d84e222bcaab3c98dbac9e238742759"
+  },
+  {
+    "key": "guide-mutual-aid-cancellation-header",
+    "source": "src/assets/editorial/unique/guide-mutual-aid-cancellation-header.webp",
+    "subject": "深緑の蛇腹式書類ファイル",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "cef9f19da718848efcefeb2b9e56304e0840731f56bab0c08017ededfa161ebb",
+    "originalFile": "exec-6fcbbf09-b5c7-4d70-8ef5-1e06370415f3.png",
+    "originalSha256": "ca5fc57d6e67e50c82717c6ffa1d9b5bbbf5f61b6c79c8ee5ae791cfa8dc1b34"
+  },
+  {
+    "key": "guide-mutual-aid-cancellation-interlude",
+    "source": "src/assets/editorial/unique/guide-mutual-aid-cancellation-interlude.webp",
+    "subject": "少し開いた無垢材の小引き出し",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "3451a638f26d06444e5788a45b7e26b55806d9a12737a6fa3d6cbf6cac465c51",
+    "originalFile": "exec-6ad76674-d245-4533-9333-15d7348f8634.png",
+    "originalSha256": "95e99f215ae06079c18264a50f8774abf8e6e18d1382db4426a6e22b442c9fa2"
+  },
+  {
+    "key": "guide-one-day-funeral-header",
+    "source": "src/assets/editorial/unique/guide-one-day-funeral-header.webp",
+    "subject": "木とガラスの砂時計",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "d553c7c43a359d25171d8acc5736f244d6af2dc05d10c294c80a9d3047da721f",
+    "originalFile": "exec-f9297480-ccb7-4442-920e-81622dce2f87.png",
+    "originalSha256": "cf31d2e0d4b41e63f51d397297436bb0361c6140256c256fa62ba9caaf8e6ce9"
+  },
+  {
+    "key": "guide-one-day-funeral-interlude",
+    "source": "src/assets/editorial/unique/guide-one-day-funeral-interlude.webp",
+    "subject": "丸石の間を流れる小さな水",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "f482d63e70906db20e5cce991befa32e78ec4754f05eba35cf944faef710d544",
+    "originalFile": "exec-daf5f3d7-c7c6-4d9a-b90b-9192056fa622.png",
+    "originalSha256": "57786f01425dec19e9e9085e69d67dcef7f9ffcc49f979c280125d83592a8b31"
+  },
+  {
+    "key": "guide-perpetual-care-header",
+    "source": "src/assets/editorial/unique/guide-perpetual-care-header.webp",
+    "subject": "still pond surface with reflected warm sky and sparse reeds",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "c5948d4a2e8338eca9898c316b682eab3a8d22cb896783b577b7fbc307424988",
+    "originalFile": "exec-310daaae-8c11-41c2-ad73-5c24e212b5de.png",
+    "originalSha256": "6a4c310cbfc301593ea2216894cde1b962da370c2e8fd11c70b350424f95db2c"
+  },
+  {
+    "key": "guide-perpetual-care-interlude",
+    "source": "src/assets/editorial/unique/guide-perpetual-care-interlude.webp",
+    "subject": "single acorn resting on damp moss",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "d0d585558641e7b73ec108790acedd3ed61d4df0fb0be42a974aae743cb985e1",
+    "originalFile": "exec-47f2606b-44a8-4269-aecb-fa73c660948a.png",
+    "originalSha256": "66a465d77bf58d3e194140e7cb9ad722dfa36994c4e4dedbd9a3a174ae5f3aec"
+  },
+  {
+    "key": "guide-preconsultation-header",
+    "source": "src/assets/editorial/unique/guide-preconsultation-header.webp",
+    "subject": "自然光の窓辺に向かい合う二脚の椅子",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "8aec42d61b3f6de73c1127787d049ccd0bc981749178c0c34a5c571ae50b808c",
+    "originalFile": "exec-9eae095f-a3ea-41d3-a506-80e4b20a4167.png",
+    "originalSha256": "a5e346f172263de74692bd56728b50bde289915cfd4ec0c11fbbf9b2ef589051"
+  },
+  {
+    "key": "guide-preconsultation-interlude",
+    "source": "src/assets/editorial/unique/guide-preconsultation-interlude.webp",
+    "subject": "少し開いた木の扉と真鍮の取っ手",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "6b49fb4f4fe3d79002a0682880cf6283bb8fa2a987515c4316a821462e28f633",
+    "originalFile": "exec-9cab1db4-0d7d-4e1b-8a01-0902103bac34.png",
+    "originalSha256": "c39b2e2cbd2f4161c5a9cc80541fc9f6861adda879332755d2bd489d45a4b218"
+  },
+  {
+    "key": "guide-remains-delivery-header",
+    "source": "src/assets/editorial/unique/guide-remains-delivery-header.webp",
+    "subject": "single ivory magnolia bud on a slender branch",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "b45f1f0bddab3232fcb2f55a9a43ef6211f7d0a5b5af0b1c910bf47239fe40e8",
+    "originalFile": "exec-1e5b8975-94a2-47bb-96af-0a97223901b7.png",
+    "originalSha256": "92bc69e8020ee56960de7e4487a4b223af77dc0ae15763012fa4bcaf928cfc80"
+  },
+  {
+    "key": "guide-remains-delivery-interlude",
+    "source": "src/assets/editorial/unique/guide-remains-delivery-interlude.webp",
+    "subject": "small stream ripple passing one fallen amber leaf",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "f5174a640c43a5e5815b2c2d6a687812101e3d4c3bfc989517c2eca70f2d4ebb",
+    "originalFile": "exec-ae22af33-08d1-43dc-9bf9-09a270cc4455.png",
+    "originalSha256": "c98dd0d0cb1cc85636d372ed9c93e581cb14d2c44f5e5e4a67adb62e329be806"
+  },
+  {
+    "key": "guide-secular-funeral-header",
+    "source": "src/assets/editorial/unique/guide-secular-funeral-header.webp",
+    "subject": "文字のないレコードと無地の紙ジャケット",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "34e356198b218beb6bb3587aeb1f8d7d8ca1cdc261221ee3144e2f8445e386e2",
+    "originalFile": "exec-46efa03e-ebe0-4a06-9b0b-5ca6f360750c.png",
+    "originalSha256": "f8b1bdc92f980c3402f4a272416621698fb6c1e79563323a597ee2aa8b0ada93"
+  },
+  {
+    "key": "guide-secular-funeral-interlude",
+    "source": "src/assets/editorial/unique/guide-secular-funeral-interlude.webp",
+    "subject": "チェロの胴と弓の静かな部分写真",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "12be9b0b92302ab6d3dc7e2b9af4817e161f6e073c3a44e9697b33600b750ec5",
+    "originalFile": "exec-64d8e2ab-4e07-42c1-9ecb-136eb241b6a2.png",
+    "originalSha256": "2841f792f610db24d08402c112d0c5eaa61a84d1c16edf7911bbc70e3cefa5ac"
+  },
+  {
+    "key": "guide-tree-burial-header",
+    "source": "src/assets/editorial/unique/guide-tree-burial-header.webp",
+    "subject": "isolated broadleaf tree in an open meadow",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "5306fa174fcc0a6ca9cbca211e6f9c4e7c730f78e50323598c6f6dd596968d85",
+    "originalFile": "exec-ff290eb1-7cb0-4145-887a-1b7e8f40db0e.png",
+    "originalSha256": "dd756e2f1a3e33288c715cd156925de457225c2ec038987b35dd489a159fa1eb"
+  },
+  {
+    "key": "guide-tree-burial-interlude",
+    "source": "src/assets/editorial/unique/guide-tree-burial-interlude.webp",
+    "subject": "rain droplets on young maple leaves",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "e6a9c34a627ae9ff1cf65003f29517a96e2962636e26a4c505af2c0844adaf1c",
+    "originalFile": "exec-599efb42-a0fd-46db-b121-4bda5fad5c30.png",
+    "originalSha256": "223461faf3637f29cf9c11340d8726be727a80e400605bbb26c56c8194dac6ee"
+  },
+  {
+    "key": "guides-header",
+    "source": "src/assets/editorial/still-life.png",
+    "subject": "無地のノート、鉛筆、茶器",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "6cb02ccdb10a1283c6b8a0ddb812a71da587a78fa15d64aeb8b8887839e2ad57",
+    "originalFile": "still-life.png",
+    "originalSha256": "6cb02ccdb10a1283c6b8a0ddb812a71da587a78fa15d64aeb8b8887839e2ad57"
+  },
+  {
+    "key": "home-hero",
+    "source": "src/assets/editorial/landscape.png",
+    "subject": "朝の山並み、霧、川と草地",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "c49063895091c97a57f02267d7552287e1735b61cc0e182638ff9cb80509ab8e",
+    "originalFile": "landscape.png",
+    "originalSha256": "c49063895091c97a57f02267d7552287e1735b61cc0e182638ff9cb80509ab8e"
+  },
+  {
+    "key": "region-annaka-header",
+    "source": "src/assets/editorial/unique/region-annaka-header.webp",
+    "subject": "竹の葉の向こうに見える夕方の丘",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "94d72ce2135bab25ef916dd53194f9be2b31543011dc93b574ca7535c00b63ee",
+    "originalFile": "exec-fd8e338c-9ca3-400f-bb25-9bb2146ab8f1.png",
+    "originalSha256": "476259a42a81e82256ba2adc54e17e4a059e1ba870ecce9e1eb07fa8ff85d493"
+  },
+  {
+    "key": "region-annaka-interlude",
+    "source": "src/assets/editorial/unique/region-annaka-interlude.webp",
+    "subject": "雨上がりの小さな石橋と細い水路",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "dcf997e964e706e4ae6a184a89f9087e09cb8efc7c1357213e3f03c666375faf",
+    "originalFile": "exec-db66a59d-c17c-4b5a-b3ae-b60b3352f367.png",
+    "originalSha256": "269bdb3d9fb3924ed5499d0e30a32c7a6a25bc20b7125b4ab378e8740ba8236a"
+  },
+  {
+    "key": "region-karuizawa-header",
+    "source": "src/assets/editorial/unique/region-karuizawa-header.webp",
+    "subject": "薄霧の穏やかな白樺林",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "a3cc293cc85107c05e900a5c2cc6fb0e779a196b20ad018c32a8a79dea2dd84d",
+    "originalFile": "exec-ab7eb9c8-5a7c-41ba-8c3d-f336e007a849.png",
+    "originalSha256": "866ac3e376c4f4619c556271e3b903b79c43cef8680a6a55e75f14d7278a1364"
+  },
+  {
+    "key": "region-karuizawa-interlude",
+    "source": "src/assets/editorial/unique/region-karuizawa-interlude.webp",
+    "subject": "静かな水辺に映る黄葉の枝",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "07f82c6f6e77bb6953c21386d2993251a00b77b9cb39d48bde6e54ec12be3b28",
+    "originalFile": "exec-f663c5db-00c7-437e-9562-99fc8c3d824c.png",
+    "originalSha256": "e76e350f7d6d5540c78050da998bef3c0da2c38ca62705a2438f2c03a0669239"
+  },
+  {
+    "key": "region-komoro-header",
+    "source": "src/assets/editorial/unique/region-komoro-header.webp",
+    "subject": "丘の桜枝越しの穏やかな高原景色",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "9b76c5592b134b2334e85308fe9f492fb735d1ba4c248905dcc4a29f1905ff73",
+    "originalFile": "exec-3e83db57-7ba2-400a-bdf2-b3050d0afa46.png",
+    "originalSha256": "2bd03617f28e89c0e6ce1de07de661b21ee8f2987c2a54030e3dcd2e174f3c3e"
+  },
+  {
+    "key": "region-komoro-interlude",
+    "source": "src/assets/editorial/unique/region-komoro-interlude.webp",
+    "subject": "落ち葉と石段の小さな静かな庭",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "8abce0559302e1867f4d8c2f807e9330bdfea9c643b0115ace19917ee2fadb18",
+    "originalFile": "exec-15d87b11-4915-45e7-af58-30d6b6285067.png",
+    "originalSha256": "9a57527e693f84d82ec167afbc5347fda2f528e43c19d8b565c0337d76780c33"
+  },
+  {
+    "key": "region-miyota-header",
+    "source": "src/assets/editorial/unique/region-miyota-header.webp",
+    "subject": "広い高原の花畑と遠い空",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "e81374ac5c26042348291797df67b67e64feaaf2dcf013248da5c1ce3fb5f8b2",
+    "originalFile": "exec-f44d07e2-40c1-485c-b22b-c617db460384.png",
+    "originalSha256": "0982c95464b48a2f14e9061ff72669491356f1b44756d1c73faa3b21add7851e"
+  },
+  {
+    "key": "region-miyota-interlude",
+    "source": "src/assets/editorial/unique/region-miyota-interlude.webp",
+    "subject": "朝露の穂と陽光",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "2617fbe35b525968ea0c02cceb079efe78a60a3cc156e7c0309bb42cb36bc9a9",
+    "originalFile": "exec-a55ec37b-ed28-40e4-a54b-04af63a1f22a.png",
+    "originalSha256": "c458467576321803a5ccc0a9d2647043bcf2de8933a7322cd33ca4403a72a8c8"
+  },
+  {
+    "key": "region-saku-header",
+    "source": "src/assets/editorial/unique/region-saku-header.webp",
+    "subject": "開けた高原の畑の畔と青空",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "6bbfead2e90101bd0698cd1d685fac945b73ab1781adc59c967972bc0164782e",
+    "originalFile": "exec-73eaa9f1-2248-4a4e-811a-beed7508e1cc.png",
+    "originalSha256": "343a90457d6cc60406b3713d8c1650fae9699a90ec910c1de9eb6424ef2cbebe"
+  },
+  {
+    "key": "region-saku-interlude",
+    "source": "src/assets/editorial/unique/region-saku-interlude.webp",
+    "subject": "草むら越しに見える高原の小川",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "2da7c177614ecc98cddbd45c417f27e389358efacde98290315aa83ce2a81111",
+    "originalFile": "exec-9fdb52a7-2fa5-4e5b-a01e-4f4aeacb4646.png",
+    "originalSha256": "536ccf78074d0c84ce5e9375ca322edf04cf34ece0dd6546180e67b70ccdeaf6"
+  },
+  {
+    "key": "region-tateshina-header",
+    "source": "src/assets/editorial/unique/region-tateshina-header.webp",
+    "subject": "高原の白い雲と草原",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "2f99e86700348c038f7c4a85fb11a3806efcdbb7b8e10621e55501bdf5d1ab3f",
+    "originalFile": "exec-b020119f-2a34-48c9-83bd-6553ed031d8b.png",
+    "originalSha256": "b782d83e7a0134ae214695f933be4a1e50c4ce8e8d84e2e5c71f66ea3c42a8e4"
+  },
+  {
+    "key": "region-tateshina-interlude",
+    "source": "src/assets/editorial/unique/region-tateshina-interlude.webp",
+    "subject": "小さな池の岸辺と葦",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "3c17713ef192171db17b9a7d741317d5372dbec279441620c4e9470361879aae",
+    "originalFile": "exec-4df01aff-7014-42d9-92f0-2c29de001bfd.png",
+    "originalSha256": "25ef68666e1d7b067bb565601015367b7d50b8e19255b22617eaae591cb2c14f"
+  },
+  {
+    "key": "region-tomioka-header",
+    "source": "src/assets/editorial/unique/region-tomioka-header.webp",
+    "subject": "桑に似た緑葉の庭と暖かな壁",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "6ed21781a21e8b74e704b1f6ad3be7fe6500181f3b4b8ce4c400f004ec9ea7e2",
+    "originalFile": "exec-8682712a-f524-4f4e-884c-6853b24f994e.png",
+    "originalSha256": "0aa7024a7100ae7ca9dc9e857e5205854832fb44048df852495547321b7bdcc8"
+  },
+  {
+    "key": "region-tomioka-interlude",
+    "source": "src/assets/editorial/unique/region-tomioka-interlude.webp",
+    "subject": "ゆっくり流れる浅瀬と丸石",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "3cec83a724ad7121a55e4b4a73da45d883220b32a0f78329d0d95a732c3c5167",
+    "originalFile": "exec-5fad3e27-a101-4ede-9986-90ae2cc8e0da.png",
+    "originalSha256": "be5468b2e1a819f67cd6830cfb1c00de9ef0d0a4c0876cad2bbf910726a2655a"
+  },
+  {
+    "key": "region-ueda-header",
+    "source": "src/assets/editorial/unique/region-ueda-header.webp",
+    "subject": "午後の光を受ける川原の丸石",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "56ac37a4949b69ba7be6cfa092ef5b64581e96ff706695a3b722f67844f71ec9",
+    "originalFile": "exec-4d13407c-9c04-4317-ac27-4420cc0dd279.png",
+    "originalSha256": "4674bff95e959f3f4ed9e3f7f577ceda6ff236d5a4e4a73ff8f9e2a8bebf6162"
+  },
+  {
+    "key": "region-ueda-interlude",
+    "source": "src/assets/editorial/unique/region-ueda-interlude.webp",
+    "subject": "ゆるい丘の畑と遠くの並木",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "2fb8fd815be7ebe13c7c79a3fc76f25f68a753986ae14bad215d7cc4bc741077",
+    "originalFile": "exec-eaa9ed89-e5e3-4259-87f5-3c6f89850414.png",
+    "originalSha256": "c87ca35361a74e8a79b256c2d313cae366633a6c68e49de64143b3b6b5993e7f"
+  },
+  {
+    "key": "regions-header",
+    "source": "src/assets/editorial/woodland.png",
+    "subject": "木漏れ日の林",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "1d9c200215d58bc9d8aa54575cbae0fe4a9d620eb81b2f39fc5ed8f2f612b8c5",
+    "originalFile": "woodland.png",
+    "originalSha256": "1d9c200215d58bc9d8aa54575cbae0fe4a9d620eb81b2f39fc5ed8f2f612b8c5"
+  }
+]

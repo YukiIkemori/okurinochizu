@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { editorialImages, type EditorialKind } from '../data/visuals';
+import { getEditorialImage, editorialPosition, type EditorialKind } from '../data/visuals';
 interface Props {
   kind: EditorialKind;
   variant?: 'hero' | 'header' | 'interlude';
@@ -12,5 +12,5 @@ const sizes = variant === 'hero'
   : '(min-width: 848px) 760px, calc(100vw - 40px)';
 ---
 <picture class={'editorial-image editorial-image--' + variant}>
-  <Image src={editorialImages[kind]} alt="" widths={[480, 800, 1200, 1536]} sizes={sizes} format="webp" quality={78} loading={loading} decoding="async" fetchpriority={variant === 'hero' ? 'high' : 'auto'} />
+  <Image src={getEditorialImage(kind)} alt="" width={1536} widths={[480, 800, 1200, 1536]} sizes={sizes} format="webp" quality={78} loading={loading} decoding="async" fetchpriority={variant === 'hero' ? 'high' : 'auto'} style={'object-position:' + editorialPosition(kind)} />
 </picture>

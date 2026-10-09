@@ -122,6 +122,12 @@
 }
 
 /* Photography follows the reading layout without captions or frames. */
+.region-name-list{list-style:none;padding:0;margin:0}
+.region-name-list li{border-top:1px solid var(--line)}
+.region-name-list h3{font-family:var(--sans);font-size:19px;color:var(--ink);font-feature-settings:normal;letter-spacing:inherit;line-height:1.75;margin:0}
+.region-name-list a{display:block;padding:12px 0;text-decoration:none;min-height:48px}
+@media(max-width:760px){.region-name-list h3{font-size:18px}}
+
 .editorial-image{display:block;width:100%;margin:0;overflow:hidden}
 .editorial-image img{display:block;width:100%;height:auto;object-fit:cover;object-position:center}
 .editorial-image--hero img{aspect-ratio:3/2}

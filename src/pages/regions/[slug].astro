@@ -17,7 +17,7 @@ const schema = [{ '@context': 'https://schema.org', '@type': 'WebPage', name: ti
   <article class="wrap article-shell">
     <header class="article-head"><h1>{region.name}の葬儀・お墓</h1><p class="article-lead">{region.lead}</p><EditorialImage kind={regionVisual(region.slug)} /></header>
     <div class="article-body">
-      <Sections sections={region.sections} interlude={region.sections.length >= 4 ? (regionVisual(region.slug) === 'landscape' ? 'woodland' : 'landscape') : undefined} />
+      <Sections sections={region.sections} interlude={region.sections.length >= 4 ? regionVisual(region.slug, 'interlude') : undefined} />
       <section class="related-articles"><header class="directory-heading"><h2>関連記事</h2><a class="text-link" href="/guides/">記事一覧</a></header><ArticleList items={related} /></section>
       <section class="related-articles"><header class="directory-heading"><h2>ほかの地域</h2></header><RegionLinks items={regions.filter(r => r.slug !== region.slug)} /></section>
       <Referral referral={region.referral} slug={region.slug} region={region.slug} intent="regional-funeral" />

@@ -1,8 +1,8 @@
 {
-  "verified_at": "2026-10-09T04:22:35.204Z",
+  "verified_at": "2026-10-09T04:53:10.115Z",
   "build": {
     "status": "passed",
-    "fingerprint": "b2320c3145c4e1346c45684bc9af4dd686de27d7ce08d99e4630febb30d24543",
+    "fingerprint": "0011898832b62125f944ad99aaca00b369ad9cf1d52582d34bbca00857e002b7",
     "htmlPages": 39,
     "indexablePages": 37,
     "articles": 24,
@@ -17,8 +17,8 @@
     "url_set_unchanged": true
   },
   "browser": {
-    "startTime": "2026-10-09T04:17:10.777Z",
-    "duration": 15428.27,
+    "startTime": "2026-10-09T04:50:53.268Z",
+    "duration": 16185.237,
     "expected": 15,
     "skipped": 0,
     "unexpected": 0,
@@ -29,19 +29,20 @@
     "passed": true,
     "viewport_widths": [
       1440,
-      1024,
-      768,
-      375,
-      320
+      375
     ],
-    "conditions": 26,
+    "conditions": 72,
     "html_pages": 39,
-    "article_list_rows": 174,
+    "article_list_rows": 166,
     "article_body_columns": 1,
     "home_desktop_columns": 2,
     "home_mobile_columns": 1,
     "home_hero_desktop_columns": 2,
-    "home_hero_mobile_columns": 1
+    "home_hero_mobile_columns": 1,
+    "pictured_pages": 36,
+    "rendered_images_checked": 136,
+    "crop_adjustment_conditions": 6,
+    "region_name_list_conditions": 3
   },
   "navigation": {
     "reachable_indexable_pages": 37,
@@ -66,10 +67,10 @@
     "origin": "https://okurinochizu.jp",
     "passed": true,
     "html_responses": 39,
-    "webp_assets": 16,
+    "webp_assets": 272,
     "css_assets": 1,
     "redirects": 12,
-    "total_checks": 70,
+    "total_checks": 326,
     "standard_checks": 18,
     "firebase_home_match": true
   },
@@ -77,14 +78,16 @@
     "project": "okurinochizu",
     "hosting": "okurinochizu",
     "result": "Firebase CLI release complete",
-    "custom_domain": "All current HTML, CSS and 16 WebP assets match the verified build; retired category URLs return 301 to /guides/"
+    "custom_domain": "All HTML, CSS and 272 WebP assets match the verified build; regions list names only, all photograph placements are unique, and money notation is uniform"
   },
   "photography": {
-    "original_assets": 4,
+    "original_assets": 68,
+    "additional_generated_images": 64,
     "pictured_pages": 36,
     "image_placements": 68,
+    "unique_images": 68,
     "lazy_images": 32,
-    "responsive_webp_assets": 16,
+    "responsive_webp_assets": 272,
     "responsive_widths": [
       480,
       800,
@@ -92,6 +95,35 @@
       1536
     ],
     "decorative_alt": "",
-    "visible_captions": 0
+    "visible_captions": 0,
+    "manifest": "docs/editorial-image-manifest.json",
+    "crop_verified_build": "5cfaffc9c11fe22239a45f5dc96f211065d19916a3093e456fc04b2d213c33cd",
+    "crop_positions_unchanged_in_final_build": true
+  },
+  "money_notation": {
+    "checked_at": "2026-10-09T04:50:54.069Z",
+    "passed": true,
+    "format": "Half-width digits, three-digit commas, 円",
+    "concrete_amount_occurrences": 21,
+    "changed_occurrences": 12,
+    "benefit_table_rows": 6,
+    "benefit_table_amount": "50,000円",
+    "browser_viewport_widths": [
+      1440,
+      375,
+      320
+    ],
+    "table_scroll_inside_region": true
+  },
+  "region_directory": {
+    "passed": true,
+    "region_links": 8,
+    "visible_summaries": 0,
+    "viewport_widths": [
+      1440,
+      375,
+      320
+    ],
+    "minimum_tap_height": 48
   }
 }

@@ -1,4 +1,5 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { load } from 'cheerio';
@@ -93,6 +94,9 @@ for (const route of expectedPages) if (!pages.has(route)) fail(route, 'Expected 
 const titles = new Map();
 const descriptions = new Map();
 const outbound = new Set();
+const photographHashes = new Map();
+let picturedPages = 0;
+let photographPlacements = 0;
 const schemas = (value) => Array.isArray(value) ? value.flatMap(schemas) : value && value['@graph'] ? schemas(value['@graph']) : [value];
 for (const [route, { $, ids }] of pages) {
   if ($('html').attr('lang') !== 'ja') fail(route, 'HTML language must be ja.');
@@ -118,6 +122,29 @@ for (const [route, { $, ids }] of pages) {
   if (new Set(idList).size !== idList.length) fail(route, 'Duplicate HTML IDs.');
   if (!ids.has('main')) fail(route, 'Skip link target #main is missing.');
   const bodyText = normalize($('main').text());
+  const photoArticle = articleBySlug.get(route.match(/^\/guides\/([^/]+)\/$/)?.[1]);
+  const photoRegion = regionBySlug.get(route.match(/^\/regions\/([^/]+)\/$/)?.[1]);
+  const editorialContent = photoArticle ?? photoRegion;
+  const expectedPhotographs = editorialContent ? 1 + Number(editorialContent.sections.length >= 4) : ['/', '/guides/', '/regions/', '/about/'].includes(route) ? 1 : 0;
+  const photographs = $('picture.editorial-image img');
+  if (photographs.length !== expectedPhotographs) fail(route, `Expected ${expectedPhotographs} dedicated photographs, got ${photographs.length}.`);
+  if (photographs.length) picturedPages++;
+  for (const node of photographs.toArray()) {
+    const image = $(node);
+    photographPlacements++;
+    if (image.attr('alt') !== '') fail(route, 'Decorative photograph must have empty alt text.');
+    if (!(Number(image.attr('width')) > 0 && Number(image.attr('height')) > 0) || !image.attr('srcset') || !image.attr('sizes')) fail(route, 'Photograph needs dimensions and responsive variants.');
+    if (image.parent().hasClass('editorial-image--interlude') && image.attr('loading') !== 'lazy') fail(route, 'Body photograph must load lazily.');
+    const file = resolveFile(image.attr('src') || '');
+    if (file) {
+      const bytes = await readFile(file);
+      if (bytes.toString('ascii', 0, 4) !== 'RIFF' || bytes.toString('ascii', 8, 12) !== 'WEBP') fail(route, 'Photograph must be a valid WebP.');
+      const hash = createHash('sha256').update(bytes).digest('hex');
+      if (photographHashes.has(hash)) fail(route, `Photograph is reused from ${photographHashes.get(hash)}. Each placement must have a different image.`);
+      photographHashes.set(hash, route);
+    }
+  }
+  if ($('figcaption').length) fail(route, 'Visible image captions must not be added.');
   if ($('.sources, #sources-heading, .disclosure').length || /出典|確認日|公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ公益社との関係/.test(normalize($('body').text()))) fail(route, 'Removed source/disclosure copy remains in the public page.');
   if (route.startsWith('/guides/') && articleBySlug.has(route.split('/')[2]) || route.startsWith('/regions/') && regionBySlug.has(route.split('/')[2])) {
     if ($('[data-provider-link]').length !== 1 || $('.referral [data-provider-link]').length !== 1) fail(route, 'Guide/region must have only one provider link in its end note.');
@@ -233,7 +260,7 @@ for (const file of files.filter(file => /\.(?:html|js|css|json|xml|txt|svg)$/.te
   const text = await readFile(file, 'utf8');
   if (/-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|"private_key"\s*:|(?:ghp|gho|github_pat)_[A-Za-z0-9_]{20,}/.test(text)) fail('/' + path.relative('dist', file), 'Credential-like material appears in the public build.');
 }
-const report = { checkedAt: new Date().toISOString(), fingerprint: await fingerprintDist(), status: problems.length ? 'failed' : 'passed', htmlPages: pages.size, indexablePages: expectedIndexable.size, articles: content.articles.length, regions: content.regions.length, externalURLs: outbound.size, problems, warnings };
+const report = { checkedAt: new Date().toISOString(), fingerprint: await fingerprintDist(), status: problems.length ? 'failed' : 'passed', htmlPages: pages.size, indexablePages: expectedIndexable.size, articles: content.articles.length, regions: content.regions.length, externalURLs: outbound.size, photography: { picturedPages, placements: photographPlacements, uniqueImages: photographHashes.size }, problems, warnings };
 await mkdir('.local', { recursive: true });
 await writeFile('.local/build-validation.json', JSON.stringify(report, null, 2) + '\n');
 for (const problem of problems) console.error(`FAIL ${problem.page}: ${problem.message}`);
