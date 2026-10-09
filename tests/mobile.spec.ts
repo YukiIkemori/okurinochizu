@@ -18,7 +18,13 @@ test('small-screen navigation, reading and table layouts remain usable', async (
   await expectNoHorizontalOverflow(page);
   const table = page.getByRole('region', { name: '自治体ごとの国保の葬祭費の比較表', exact: true });
   await expect(table).toBeVisible();
-  await expect(table.locator('tbody tr')).toHaveCount(6);
+  await expect(table.locator('tbody tr')).toHaveCount(8);
+  await expect(table.locator('thead th')).toHaveText(['故人が加入していた国保', '葬祭費', '申請する方', '申請期限・確認する条件']);
+  await expect(table.locator('tbody tr').filter({ hasText: '御代田町の国保' }).getByRole('link')).toHaveAttribute('href', 'https://www.town.miyota.nagano.jp/category/kokumihoken/2179.html');
+  await page.locator('#documents').getByRole('link', { name: '葬儀後の手続き', exact: true }).click();
+  await expect(page).toHaveURL('/guides/death-procedures/#records');
+  await expect(page.locator('#records')).toBeInViewport();
+  await page.goBack();
   const question = page.locator('.faq details').first();
   await question.locator('summary').click();
   await expect(question.locator('p')).toBeVisible();

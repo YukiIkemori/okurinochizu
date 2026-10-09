@@ -288,5 +288,33 @@
     "title": "上田市｜改葬許可証の申請について",
     "url": "https://www.city.ueda.nagano.jp/soshiki/simin/90807.html",
     "checkedAt": "2026-10-08"
+  },
+  {
+    "id": "komoro-benefit",
+    "title": "小諸市｜国保給付に関する手続き",
+    "url": "https://www.city.komoro.lg.jp/soshikikarasagasu/shiminseikatsubu/shiminka/1/3/2/2044.html",
+    "checkedAt": "2026-10-09",
+    "note": "国保の被保険者死亡時、葬祭を行う方へ50,000円。死亡手続きの際に申請。期限はこのページに明記されていない。"
+  },
+  {
+    "id": "miyota-benefit",
+    "title": "御代田町｜国民健康保険の給付",
+    "url": "https://www.town.miyota.nagano.jp/category/kokumihoken/2179.html",
+    "checkedAt": "2026-10-09",
+    "note": "国保加入者の死亡時、葬祭を行った方が申請。金額は令和8年度サービス一覧表で別途確認。"
+  },
+  {
+    "id": "miyota-benefit-book",
+    "title": "御代田町｜令和8年度サービス一覧表",
+    "url": "https://www.town.miyota.nagano.jp/file/183447.pdf",
+    "checkedAt": "2026-10-09",
+    "note": "項目17「葬祭費」に国保加入者の死亡時、喪主へ50,000円、保健福祉課国保年金係と記載。"
+  },
+  {
+    "id": "kenpo-burial-application",
+    "title": "全国健康保険協会｜埋葬料（費）支給申請書",
+    "url": "https://www.kyoukaikenpo.or.jp/application_form/benefit/012/",
+    "checkedAt": "2026-10-09",
+    "note": "埋葬料・家族埋葬料は死亡年月日の翌日、埋葬費は埋葬年月日の翌日を起算日とする2年の時効。"
   }
 ]

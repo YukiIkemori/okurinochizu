@@ -22,9 +22,9 @@ const schema = [
     <div class="article-body">
       <Sections sections={article.sections} interlude={article.sections.length >= 4 ? interludeVisual(article.slug) : undefined} />
       {article.faq.length > 0 && <section class="faq" id="questions"><h2>よくある疑問</h2>{article.faq.map(faq => <details><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>}
+      <Referral referral={article.referral} slug={article.slug} intent={article.category} region={article.regions.length === 1 ? article.regions[0] : 'all'} />
       {related.length > 0 && <section class="related-articles"><header class="directory-heading"><h2>関連記事</h2><a class="text-link" href="/guides/">記事一覧</a></header><ArticleList items={related} /></section>}
       <section class="related-articles"><header class="directory-heading"><h2>地域の案内</h2></header><RegionLinks items={regions.filter(r => article.regions.length === 0 || article.regions.includes(r.slug))} /></section>
-      <Referral referral={article.referral} slug={article.slug} intent={article.category} region={article.regions.length === 1 ? article.regions[0] : 'all'} />
     </div>
   </article>
 </Base>

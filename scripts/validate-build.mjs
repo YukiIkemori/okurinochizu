@@ -37,6 +37,8 @@ const privacyURLs = new Set([
 ]);
 const providerHosts = new Set(['so-gi.com', 'www.so-gi.com']);
 const prohibitedHosts = ['mitsuwa-sougi.co.jp', 'soogi.jp', 'ansinsougi.jp', 'e-ohaka.com', 'lifedot.jp', 'e-sogi.com', 'osohshiki.jp'];
+let contextualLinks = 0;
+let publicServiceLinks = 0;
 
 for (const [kind, rows] of [['articles', content.articles], ['regions', content.regions], ['sources', registry]]) {
   const keys = rows.map(row => kind === 'sources' ? row.id : row.slug);
@@ -57,6 +59,29 @@ for (const item of [...content.articles, ...content.regions]) {
   for (const slug of item.regions || []) if (!regionBySlug.has(slug)) fail(item.slug, `Unknown region: ${slug}`);
   const sectionIds = item.sections.map(s => s.id);
   if (new Set(sectionIds).size !== sectionIds.length) fail(item.slug, 'Duplicate section IDs.');
+  const destinations = [];
+  for (const section of item.sections) {
+    if (section.table?.rows.some(row => row.length !== section.table.headers.length)) fail(item.slug, `Table cells do not match headers: ${section.id}`);
+    const links = [
+      ...(section.paragraphLinks || []).map(link => ({ ...link, textContent: section.paragraphs[link.paragraph], positionValid: Number.isInteger(link.paragraph) && link.paragraph >= 0 })),
+      ...(section.table?.links || []).map(link => ({ ...link, textContent: section.table.rows[link.row]?.[link.column], positionValid: Number.isInteger(link.row) && link.row >= 0 && Number.isInteger(link.column) && link.column >= 0 })),
+    ];
+    for (const link of links) {
+      if (!link.positionValid || !link.text || typeof link.textContent !== 'string' || link.textContent.split(link.text).length !== 2) fail(item.slug, `Inline link must match one phrase in its target: ${section.id}`);
+      let url;
+      try { url = new URL(link.href, origin); } catch { fail(item.slug, `Invalid inline URL: ${section.id}`); continue; }
+      if (url.origin === origin) {
+        const target = url.pathname.match(/^\/guides\/([^/]+)\/$/)?.[1];
+        if (!target || !articleBySlug.has(target) || target === item.slug || url.search) fail(item.slug, `Contextual link must lead directly to another guide: ${link.href}`);
+        destinations.push(url.pathname);
+        contextualLinks++;
+      } else {
+        if (url.protocol !== 'https:' || !item.sources.some(id => bySource.get(id)?.url === link.href) || providerHosts.has(url.hostname)) fail(item.slug, `Inline public-service link must be one of the item's primary sources: ${link.href}`);
+        publicServiceLinks++;
+      }
+    }
+  }
+  if (destinations.length < 1 || destinations.length > 2 || new Set(destinations).size !== destinations.length) fail(item.slug, 'Use one or two distinct contextual guide links in the body.');
   if (!providerHosts.has(new URL(item.referral.href).hostname)) fail(item.slug, 'Referral destination is not Tsubasa.');
 }
 // Detect exactly duplicated region bodies even if only the eight place names differ.
@@ -147,8 +172,19 @@ for (const [route, { $, ids }] of pages) {
   if ($('figcaption').length) fail(route, 'Visible image captions must not be added.');
   if ($('.sources, #sources-heading, .disclosure').length || /出典|確認日|公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ公益社との関係/.test(normalize($('body').text()))) fail(route, 'Removed source/disclosure copy remains in the public page.');
   if (route.startsWith('/guides/') && articleBySlug.has(route.split('/')[2]) || route.startsWith('/regions/') && regionBySlug.has(route.split('/')[2])) {
+    for (const section of editorialContent.sections) {
+      const rendered = $('.prose-section').filter((_, node) => $(node).attr('id') === section.id);
+      const paragraphs = rendered.children('p').toArray();
+      for (const [index, text] of section.paragraphs.entries()) if (normalize($(paragraphs[index]).text()) !== normalize(text)) fail(route, `Inline links altered or dropped body text: ${section.id}`);
+      const expectedLinks = [...(section.paragraphLinks || []), ...(section.table?.links || [])];
+      const renderedLinks = rendered.find('a[href]').toArray().map(node => ({ href: $(node).attr('href'), text: $(node).text() }));
+      if (renderedLinks.length !== expectedLinks.length || expectedLinks.some(link => !renderedLinks.some(renderedLink => renderedLink.href === link.href && renderedLink.text === link.text))) fail(route, `Missing or unexpected inline links: ${section.id}`);
+    }
     if ($('[data-provider-link]').length !== 1 || $('.referral [data-provider-link]').length !== 1) fail(route, 'Guide/region must have only one provider link in its end note.');
-    if (!$('.article-body').children().last().hasClass('referral')) fail(route, 'Provider note must appear at the end of the article.');
+    const note = $('.article-body > .referral');
+    const lastContentSelector = photoArticle?.faq?.length ? '.faq' : '.prose-section';
+    if (note.length !== 1 || !note.prev().is(lastContentSelector) || !note.next().hasClass('related-articles') || note.prevAll('.related-articles').length || note.nextAll().toArray().some(node => !$(node).hasClass('related-articles'))) fail(route, 'Provider note must follow the article body/FAQ directly and precede related navigation.');
+    if ($('.referral [data-provider-link]').attr('data-placement') !== 'article-end') fail(route, 'Article referral must preserve its article-end analytics placement.');
     if ($('.article-head [data-provider-link]').length || $('.referral h2, .referral .eyebrow').length) fail(route, 'Prominent provider promotion remains.');
     if (/つばさ|公益社/.test(normalize($('.article-head, .prose-section, .faq, .answer, .region-focus').text()))) fail(route, 'Provider name is woven into the editorial body.');
   }
@@ -260,7 +296,7 @@ for (const file of files.filter(file => /\.(?:html|js|css|json|xml|txt|svg)$/.te
   const text = await readFile(file, 'utf8');
   if (/-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|"private_key"\s*:|(?:ghp|gho|github_pat)_[A-Za-z0-9_]{20,}/.test(text)) fail('/' + path.relative('dist', file), 'Credential-like material appears in the public build.');
 }
-const report = { checkedAt: new Date().toISOString(), fingerprint: await fingerprintDist(), status: problems.length ? 'failed' : 'passed', htmlPages: pages.size, indexablePages: expectedIndexable.size, articles: content.articles.length, regions: content.regions.length, externalURLs: outbound.size, photography: { picturedPages, placements: photographPlacements, uniqueImages: photographHashes.size }, problems, warnings };
+const report = { checkedAt: new Date().toISOString(), fingerprint: await fingerprintDist(), status: problems.length ? 'failed' : 'passed', htmlPages: pages.size, indexablePages: expectedIndexable.size, articles: content.articles.length, regions: content.regions.length, externalURLs: outbound.size, contextualLinks, publicServiceLinks, photography: { picturedPages, placements: photographPlacements, uniqueImages: photographHashes.size }, problems, warnings };
 await mkdir('.local', { recursive: true });
 await writeFile('.local/build-validation.json', JSON.stringify(report, null, 2) + '\n');
 for (const problem of problems) console.error(`FAIL ${problem.page}: ${problem.message}`);

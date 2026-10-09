@@ -1,9 +1,11 @@
+export type InlineLink = { text: string; href: string };
 export type Section = {
   id: string;
   heading: string;
   paragraphs: string[];
+  paragraphLinks?: (InlineLink & { paragraph: number })[];
   bullets?: string[];
-  table?: { headers: string[]; rows: string[][] };
+  table?: { headers: string[]; rows: string[][]; links?: (InlineLink & { row: number; column: number })[] };
   note?: string;
 };
 export type Source = { id: string; title: string; url: string; checkedAt: string; note?: string };
