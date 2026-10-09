@@ -61,14 +61,14 @@
 .editorial-prose>h2:first-child{margin-top:0}
 .editorial-prose p,.editorial-prose li{font-size:16px}
 .editorial-prose [data-consent]{margin-block:4px}
-.operator-info{margin-bottom:18px}
 .site-footer{padding:28px 0 20px}
 .footer-top{align-items:center;padding-bottom:20px;gap:24px}
-.footer-top nav{display:block;margin:0;padding:0}
-.footer-top nav a{font-size:12px}
+.footer-operator{padding-bottom:24px}
+.footer-operator h2{font-size:17px;line-height:1.7;margin:0 0 12px}
+.footer-operator p{font-size:14px;line-height:1.9;margin:0;overflow-wrap:anywhere}
+.footer-operator p+p{margin-top:8px}
 .footer-bottom{padding-top:16px}
 .footer-bottom small{font-size:10px;margin:0}
-.footer-bottom .footer-operator{font-size:12px}
 @media(max-width:760px){
 .wrap{width:calc(100% - 40px)}
 .header-inner{min-height:76px}
@@ -90,8 +90,6 @@
 .article-lead{margin-top:18px}
 .prose-section,.faq,.related-articles{margin-top:28px}
 .footer-top{padding-bottom:18px}
-.footer-top nav{margin-top:12px}
-.footer-bottom .footer-operator{margin-top:8px}
 .referral{margin-top:24px}
 }
 @media(max-width:359px){.hero h1{font-size:30px;letter-spacing:.035em}.article-head h1{font-size:26px}.page-intro h1{font-size:29px}}

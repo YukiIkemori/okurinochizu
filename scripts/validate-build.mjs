@@ -218,7 +218,7 @@ for (const [route, { $, ids }] of pages) {
         if (element.attr('data-provider-link') === undefined) fail(route, `Unmeasured Tsubasa link: ${raw}`);
         if (!element.attr('data-placement') || !element.attr('data-intent')) fail(route, `Tsubasa link lacks placement/intent metadata: ${raw}`);
       } else if (element.attr('data-provider-link') !== undefined) fail(route, `Provider tracking is attached to a non-Tsubasa URL: ${raw}`);
-      else if (!sourceURLs.has(url.origin + url.pathname) && !privacyURLs.has(url.origin + url.pathname) && !(route === '/about/' && url.href === operator.url)) fail(route, `External link is not a verified source, privacy resource or about-page operator URL: ${raw}`);
+      else if (!sourceURLs.has(url.origin + url.pathname) && !privacyURLs.has(url.origin + url.pathname) && !(url.href === operator.url && element.closest('.site-footer .footer-operator').length === 1)) fail(route, `External link is not a verified source, privacy resource or footer operator URL: ${raw}`);
     }
   }
   const ogImage = $('meta[property="og:image"]').attr('content');

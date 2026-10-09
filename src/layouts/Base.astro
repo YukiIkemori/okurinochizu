@@ -65,9 +65,14 @@ const structuredData = [
     <footer class="site-footer">
       <div class="wrap footer-top">
         <a class="footer-brand" href="/">おくりの地図</a>
-        <nav aria-label="フッターナビゲーション"><a href="/about/">このメディアについて</a></nav>
       </div>
-      <div class="wrap footer-bottom"><small>© 2026 おくりの地図</small><small class="footer-operator">{operator.name}</small></div>
+      <section id="operator" class="wrap footer-operator" aria-labelledby="footer-operator-heading">
+        <h2 id="footer-operator-heading">運営者情報</h2>
+        <p>{operator.name}</p>
+        <p>{operator.address}</p>
+        <p><a href={operator.url}>{operator.url}</a></p>
+      </section>
+      <div class="wrap footer-bottom"><small>© 2026 おくりの地図</small></div>
     </footer>
     <div id="analytics-config" data-measurement-id={site.gaId} hidden></div>
     <script>

@@ -1,8 +1,8 @@
 {
-  "verified_at": "2026-10-09T12:34:33.537Z",
+  "verified_at": "2026-10-09T14:16:11.911Z",
   "build": {
     "status": "passed",
-    "fingerprint": "b7c0aef3f8509ea5abed14accf2a0bf957c3a4da87d15dbd7ab84502df29b848",
+    "fingerprint": "3e2d476f38bf17df3046cc369bc7dfff459ed178b63817946695903d3282362b",
     "htmlPages": 39,
     "indexablePages": 37,
     "articles": 24,
@@ -36,8 +36,8 @@
     "urlsFingerprint": "e6cf9cf3ce4454feea8130b887df5eb36075765e05a21679f3ec91e7f94af98a"
   },
   "browser": {
-    "startTime": "2026-10-09T12:29:59.348Z",
-    "duration": 26638.285,
+    "startTime": "2026-10-09T14:14:26.172Z",
+    "duration": 27451.107,
     "expected": 18,
     "skipped": 0,
     "unexpected": 0,
@@ -53,49 +53,58 @@
   },
   "layout": {
     "passed": true,
-    "checked_at": "2026-10-09T12:31:03.553Z",
+    "checked_at": "2026-10-09T14:14:54.516Z",
     "viewport_widths": [
       1440,
       375,
       320
     ],
-    "conditions": 3,
-    "page_views": 6,
-    "review_scope": "Company-only footer on home and operator details on about, with keyboard navigation and focus; all 39 generated footers separately verified",
-    "reviewed_pages": 2,
+    "conditions": 9,
+    "page_views": 9,
+    "review_scope": "Complete operator footer on home, article and about, with keyboard navigation and focus; all 39 generated footers verified and operator information removed from about main and metadata",
+    "reviewed_pages": 3,
     "built_footer_checks": 39,
-    "screenshots": 12,
+    "screenshots": 30,
     "page_overflow": 0,
     "visual_review": {
       "status": "passed",
-      "checked_at": "2026-10-09T12:32:48.340Z",
+      "checked_at": "2026-10-09T14:17:04.185Z",
       "notes": [
-        "Reviewed all three widths: desktop company name sits quietly at right of footer bottom, mobile name sits below copyright. Footer has no address or official-company external link.",
-        "About operator information remains readable at 375px and 320px; address wraps without horizontal overflow, URL and privacy link remain clearly separate.",
-        "Footer/about and official-company link focus outlines are visible. Footer Tab/Enter navigates to /about/, and intercepted company-link click reaches exactly https://tsam.co.jp/.",
-        "Initial audit expected ASCII name suffix punctuation; expectation was corrected to the final implementation instruction 株式会社tsam（ツァム）. Company name/reading were already correct; no application defect or code change was required."
+        "All three routes at 1440px, 375px and 320px retain clear, compact footer spacing after about-link removal. No blank navigation area remains.",
+        "Footer contains only the site brand, 運営者情報 heading, company name without reading, exact address, official URL and copyright. All 39 HTML footers have navigation link count zero and one correct operator set.",
+        "Mobile address wraps naturally without clipping. Official link remains visible and accessible as the next Tab destination after the brand, and Enter reaches exactly https://tsam.co.jp/.",
+        "Company clicks emit no added analytics events and have no consultation tracking attributes. No page overflow or JavaScript errors found.",
+        "About main/photograph review is inherited from the unchanged previous build; all nine current main-text projections match the previous reviewed build. No additional application revision required."
       ],
-      "evidence": ".local/operator-screen-audit.json",
-      "capture_directory": ".local/operator-screen-audit-b7c0aef3f850"
+      "evidence": ".local/footer-operator-audit.json",
+      "capture_directory": ".local/footer-operator-audit-3e2d476f38bf"
     },
     "retained_article_review": "previous_article_layout_review"
   },
   "navigation": {
-    "reachable_indexable_pages": 37,
-    "orphan_pages": [],
+    "reachable_indexable_pages": 35,
+    "orphan_pages": [
+      "/about/",
+      "/privacy/"
+    ],
     "header": [
       "記事一覧",
       "地域の案内"
     ],
     "retired_category_redirects": 12,
-    "category_menus_removed": true
+    "category_menus_removed": true,
+    "unlinked_support_pages": {
+      "paths": [
+        "/about/",
+        "/privacy/"
+      ],
+      "reason": "About footer link removed at user request; about and privacy remain available at their existing URLs and in sitemap.xml"
+    }
   },
   "privacy_presentation": {
     "settings_location": "/privacy/",
     "privacy_link_location": "/about/",
-    "footer_navigation": [
-      "/about/"
-    ],
+    "footer_navigation": [],
     "global_banner_removed": true
   },
   "live": {
@@ -114,7 +123,7 @@
     "project": "okurinochizu",
     "hosting": "okurinochizu",
     "result": "Firebase CLI release complete",
-    "custom_domain": "All published HTML, CSS and images match the verified build; company name appears in every footer and complete operator details are available on about"
+    "custom_domain": "All published HTML, CSS and images match the verified build; heading, company name, address and official website appear in every footer, with operator information removed from about main"
   },
   "photography": {
     "original_assets": 68,
@@ -278,7 +287,7 @@
     "review": "Primary sources for insurance eligibility and deadlines, crematorium fees, local procedure, inheritance and burial rules; national cost survey figures retain sample and scope"
   },
   "header": {
-    "checked_at": "2026-10-09T12:29:59.348Z",
+    "checked_at": "2026-10-09T14:14:26.172Z",
     "desktop_height": 64,
     "mobile_height": 60,
     "mobile_breakpoint": 760,
@@ -292,7 +301,8 @@
   "about": {
     "regional_reading_prompt_removed": true,
     "privacy_link_retained": true,
-    "operator_information_added": true
+    "operator_information_removed_from_main": true,
+    "operator_metadata_removed": true
   },
   "previous_article_layout_review": {
     "fingerprint": "3b84a9ca9ffe5ffe64bc090f597cc0b2a51754ef5c2b70a99127616b49568da7",
@@ -352,13 +362,17 @@
   },
   "operator": {
     "name": "株式会社tsam",
-    "reading": "ツァム",
     "address": "東京都千代田区九段南一丁目5番6号 りそな九段ビル5F",
     "url": "https://tsam.co.jp/",
-    "footer_display": "株式会社tsam",
+    "footer_heading": "運営者情報",
+    "footer_display": [
+      "株式会社tsam",
+      "東京都千代田区九段南一丁目5番6号 りそな九段ビル5F",
+      "https://tsam.co.jp/"
+    ],
     "footer_verified_pages": 39,
-    "details_location": "/about/#operator",
-    "formal_name": "株式会社tsam（ツァム）",
+    "details_location": "Global footer #operator",
+    "formal_name": "株式会社tsam",
     "official_link_in_provider_referrals": false,
     "data_file": "src/data/operator.json"
   }
