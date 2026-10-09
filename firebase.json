@@ -4,6 +4,20 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": true,
     "trailingSlash": true,
+    "redirects": [
+      {"source": "/topics/urgent", "destination": "/guides/", "type": 301},
+      {"source": "/topics/urgent/", "destination": "/guides/", "type": 301},
+      {"source": "/topics/funeral", "destination": "/guides/", "type": 301},
+      {"source": "/topics/funeral/", "destination": "/guides/", "type": 301},
+      {"source": "/topics/cost", "destination": "/guides/", "type": 301},
+      {"source": "/topics/cost/", "destination": "/guides/", "type": 301},
+      {"source": "/topics/cemetery", "destination": "/guides/", "type": 301},
+      {"source": "/topics/cemetery/", "destination": "/guides/", "type": 301},
+      {"source": "/topics/planning", "destination": "/guides/", "type": 301},
+      {"source": "/topics/planning/", "destination": "/guides/", "type": 301},
+      {"source": "/topics/procedures", "destination": "/guides/", "type": 301},
+      {"source": "/topics/procedures/", "destination": "/guides/", "type": 301}
+    ],
     "headers": [
       {
         "source": "**",

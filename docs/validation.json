@@ -1,10 +1,10 @@
 {
-  "verified_at": "2026-10-08T17:58:40.701Z",
+  "verified_at": "2026-10-09T03:26:58.993Z",
   "build": {
     "status": "passed",
-    "fingerprint": "61285226bc9219a0e9b89de2522c8f0ba7e4e3c2af20a8dbd6416490d87cbd54",
-    "htmlPages": 45,
-    "indexablePages": 43,
+    "fingerprint": "def2ce03932d091df4a9a19b129c6095ccd1622e88e0c1bd6cc3536e4b9cd2c9",
+    "htmlPages": 39,
+    "indexablePages": 37,
     "articles": 24,
     "regions": 8
   },
@@ -13,11 +13,12 @@
     "status": "passed",
     "total": 19,
     "passed": 19,
-    "failed": 0
+    "failed": 0,
+    "url_set_unchanged": true
   },
   "browser": {
-    "startTime": "2026-10-08T17:54:22.428Z",
-    "duration": 15244.888,
+    "startTime": "2026-10-09T03:22:47.536Z",
+    "duration": 15861.588000000002,
     "expected": 15,
     "skipped": 0,
     "unexpected": 0,
@@ -32,34 +33,45 @@
       320
     ],
     "conditions": 24,
-    "html_pages": 45,
-    "article_list_rows": 196,
-    "removed_elements_remaining": 0,
-    "single_column": true
+    "html_pages": 39,
+    "article_list_rows": 174,
+    "article_body_columns": 1,
+    "home_desktop_columns": 2,
+    "home_mobile_columns": 1
+  },
+  "navigation": {
+    "reachable_indexable_pages": 37,
+    "orphan_pages": [],
+    "category_menus_removed": true,
+    "header": [
+      "記事一覧",
+      "地域の案内"
+    ],
+    "retired_category_redirects": 12
   },
   "privacy_presentation": {
-    "verified_pages": 45,
+    "verified_pages": 39,
     "settings_location": "/privacy/",
     "privacy_link_location": "/about/",
     "footer_navigation": [
       "/about/"
     ],
-    "initial_analytics": "enabled unless a saved refusal exists",
     "global_banner_removed": true
   },
   "live": {
     "origin": "https://okurinochizu.jp",
     "passed": true,
-    "responses": 45,
-    "firebase_origin": "https://okurinochizu.web.app",
-    "firebase_html_responses": 45,
-    "css_matches": true,
-    "standard_checks": 18
+    "html_responses": 39,
+    "css_assets": 1,
+    "redirects": 12,
+    "total_checks": 54,
+    "standard_checks": 18,
+    "firebase_home_match": true
   },
   "deployment": {
     "project": "okurinochizu",
     "hosting": "okurinochizu",
     "result": "Firebase CLI release complete",
-    "custom_domain": "HTTPS 200 and all 45 HTML responses match the verified build"
+    "custom_domain": "All current HTML and CSS match the verified build; retired category URLs return 301 to /guides/"
   }
 }

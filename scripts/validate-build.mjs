@@ -25,7 +25,6 @@ const regionBySlug = new Map(content.regions.map(r => [r.slug, r]));
 const categorySlugs = ['urgent', 'funeral', 'cost', 'cemetery', 'planning', 'procedures'];
 const expectedIndexable = new Set([
   '/', '/guides/', '/regions/', '/about/', '/privacy/',
-  ...categorySlugs.map(slug => `/topics/${slug}/`),
   ...content.articles.map(a => `/guides/${a.slug}/`),
   ...content.regions.map(r => `/regions/${r.slug}/`),
 ]);
@@ -218,6 +217,11 @@ const llms = await readFile('dist/llms.txt', 'utf8');
 for (const item of [...content.articles.map(a => `/guides/${a.slug}/`), ...content.regions.map(r => `/regions/${r.slug}/`)]) if (!llms.includes(origin + item)) fail('/llms.txt', `Discovery index is missing ${item}`);
 const firebase = JSON.parse(await readFile('firebase.json', 'utf8'));
 if (firebase.hosting?.public !== 'dist' || firebase.hosting?.rewrites?.some(rule => rule.destination === '/index.html')) fail('firebase.json', 'Hosting must serve static pages with a real 404, without an SPA catch-all.');
+for (const slug of categorySlugs) {
+  for (const suffix of ['', '/']) {
+    if (!firebase.hosting.redirects?.some(rule => rule.source === `/topics/${slug}${suffix}` && rule.destination === '/guides/' && rule.type === 301)) fail('firebase.json', `Retired category URL must redirect to the article collection: ${slug}${suffix}`);
+  }
+}
 if (JSON.parse(await readFile('.firebaserc', 'utf8')).projects?.default !== 'okurinochizu') fail('.firebaserc', 'Unexpected Firebase project.');
 for (const [name, width, height] of [['og-image.png', 1200, 630], ['apple-touch-icon.png', 180, 180]]) {
   try {

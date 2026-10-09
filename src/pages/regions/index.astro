@@ -2,8 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import { regions, regionUrl } from '../../data/site';
 ---
-<Base title="長野県東信・群馬県西毛の8地域の葬儀・お墓案内" description="佐久市、上田市、小諸市、軽井沢町、御代田町、立科町、安中市、富岡市。地域別に家族葬、火葬場、葬祭費の窓口、お墓の選び方を案内します。" breadcrumbs={[{ name: '地域から探す' }]}>
-  <div class="wrap"><header class="page-intro"><h1>地域から探す</h1></header>
+<Base title="長野県東信・群馬県西毛の8地域の葬儀・お墓案内" description="佐久市、上田市、小諸市、軽井沢町、御代田町、立科町、安中市、富岡市。地域別に家族葬、火葬場、葬祭費の窓口、お墓の選び方を案内します。" breadcrumbs={[{ name: '地域の案内' }]}>
+  <div class="wrap"><header class="page-intro"><h1>地域の案内</h1></header>
     <section class="index-section">{['長野県', '群馬県'].map(pref => <div class="region-group"><h2>{pref}</h2><ol class="article-list">{regions.filter(r => r.prefecture === pref).map(r => <li><h3><a href={regionUrl(r.slug)}>{r.name}</a></h3><p class="article-summary">{r.focus}</p></li>)}</ol></div>)}</section>
   </div>
 </Base>

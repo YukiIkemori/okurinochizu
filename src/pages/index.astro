@@ -1,23 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
 import RegionMap from '../components/RegionMap.astro';
+import RegionLinks from '../components/RegionLinks.astro';
 import ArticleList from '../components/ArticleList.astro';
 import Referral from '../components/Referral.astro';
-import { site, articles, categories } from '../data/site';
-const essentials = ['hospital-transport', 'funeral-cost', 'family-funeral', 'tree-burial'];
+import { site, articles } from '../data/site';
+const essentials = ['hospital-transport', 'family-funeral', 'funeral-cost', 'funeral-benefit', 'tree-burial', 'death-procedures'];
 const picked = essentials.flatMap(slug => articles.filter(a => a.slug === slug));
 ---
 <Base title={site.name}>
   <section class="hero wrap">
     <h1>大切な人をおくる、<br />その前に。</h1>
-    <RegionMap />
-    <a class="text-link" href="/regions/">地域から探す</a>
   </section>
-  <section class="home-section wrap">
-    <h2>記事を読む</h2>
-    <nav class="topic-navigation" aria-label="記事のカテゴリー">{categories.map(category => <a href={'/topics/' + category.slug + '/'}>{category.name}</a>)}</nav>
+  <section class="home-section home-articles wrap" aria-labelledby="home-articles-heading">
+    <header class="directory-heading"><h2 id="home-articles-heading">記事</h2><a class="text-link" href="/guides/">すべての記事</a></header>
     <ArticleList items={picked} />
-    <a class="text-link" href="/guides/">すべての記事を読む</a>
+  </section>
+  <section class="home-section wrap" aria-labelledby="home-regions-heading">
+    <header class="directory-heading"><h2 id="home-regions-heading">地域の案内</h2></header>
+    <div class="home-region-selector"><RegionMap /><RegionLinks /></div>
     <Referral referral={{ href: 'https://so-gi.com/hall', label: 'つばさ公益社', note: '葬儀についての相談は、つばさ公益社へ。' }} slug="home" placement="home-end" intent="regional-funeral" />
   </section>
 </Base>

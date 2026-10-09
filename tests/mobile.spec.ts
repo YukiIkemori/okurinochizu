@@ -10,7 +10,7 @@ test('small-screen navigation, reading and table layouts remain usable', async (
   await expect(menu).toBeVisible();
   await menu.locator('summary').click();
   await expect(menu.locator('nav')).toBeVisible();
-  await menu.getByRole('link', { name: '知っておきたいこと', exact: true }).click();
+  await menu.getByRole('link', { name: '記事一覧', exact: true }).click();
   await expect(page).toHaveURL('/guides/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('記事一覧');
   await page.getByRole('link', { name: '葬祭費と埋葬料', exact: true }).click();
@@ -22,8 +22,12 @@ test('small-screen navigation, reading and table layouts remain usable', async (
   const question = page.locator('.faq details').first();
   await question.locator('summary').click();
   await expect(question.locator('p')).toBeVisible();
-  await page.goto('/regions/annaka/');
+  await page.locator('.region-directory').getByRole('link', { name: '安中市', exact: true }).click();
+  await expect(page).toHaveURL('/regions/annaka/');
   await expectNoHorizontalOverflow(page);
+  await page.locator('.related-articles .directory-heading').getByRole('link', { name: '記事一覧', exact: true }).click();
+  await expect(page).toHaveURL('/guides/');
+  await expect(page.locator('.article-list > li')).toHaveCount(24);
 });
 
 test('a 320-pixel viewport provides accessible controls without horizontal page overflow', async ({ page }) => {
