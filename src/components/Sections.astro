@@ -10,10 +10,11 @@ const { sections, interlude } = Astro.props;
   <>
   {interlude && index === Math.floor(sections.length / 2) && <EditorialImage kind={interlude} variant="interlude" />}
   <section id={section.id} class="prose-section">
+    {section.aliases?.map(alias => <span id={alias} class="section-alias" aria-hidden="true"></span>)}
     <h2>{section.heading}</h2>
     {section.paragraphs.map((paragraph, paragraphIndex) => <p><InlineText text={paragraph} links={section.paragraphLinks?.filter(link => link.paragraph === paragraphIndex)} /></p>)}
-    {section.bullets && <ul class="check-list">{section.bullets.map(item => <li>{item}</li>)}</ul>}
-    {section.table && <div class="table-scroll" tabindex="0" role="region" aria-label={section.heading + 'の比較表'}><table>
+    {section.bullets && (section.ordered ? <ol class="step-list">{section.bullets.map(item => <li>{item}</li>)}</ol> : <ul class="check-list">{section.bullets.map(item => <li>{item}</li>)}</ul>)}
+    {section.table && <div class="table-scroll" tabindex="0" role="region" aria-label={section.heading + 'の表'}><table>
       <thead><tr>{section.table.headers.map(label => <th scope="col">{label}</th>)}</tr></thead>
       <tbody>{section.table.rows.map((row, rowIndex) => <tr>{row.map((cell, column) => column === 0 ? <th scope="row"><InlineText text={cell} links={section.table?.links?.filter(link => link.row === rowIndex && link.column === column)} /></th> : <td><InlineText text={cell} links={section.table?.links?.filter(link => link.row === rowIndex && link.column === column)} /></td>)}</tr>)}</tbody>
     </table></div>}

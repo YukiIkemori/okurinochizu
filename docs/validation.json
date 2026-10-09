@@ -1,65 +1,122 @@
 {
-  "verified_at": "2026-10-09T10:14:08.553Z",
+  "verified_at": "2026-10-09T11:44:40.159Z",
   "build": {
     "status": "passed",
-    "fingerprint": "d7de0c1a60916a4d91117ce551baea01436a3c6ca81c8f7ddb4066ee5f1e0302",
+    "fingerprint": "3b84a9ca9ffe5ffe64bc090f597cc0b2a51754ef5c2b70a99127616b49568da7",
     "htmlPages": 39,
     "indexablePages": 37,
     "articles": 24,
     "regions": 8
   },
+  "editorial": {
+    "pages_rewritten": 32,
+    "guides": 24,
+    "regional_guides": 8,
+    "review": "Each article rebuilt around the reader’s question, then individually read and fact reviewed",
+    "section_counts": [
+      4,
+      5,
+      6
+    ],
+    "faq_pages": [
+      "/guides/grave-closure/",
+      "/guides/remains-delivery/"
+    ],
+    "rules": "docs/editorial-guidelines.md",
+    "individual_audit": "docs/research/editorial-rewrite-audit.json",
+    "urls_preserved": true,
+    "legacy_section_anchors_preserved": true
+  },
   "external_links": {
-    "checkedAt": "2026-10-09T06:54:13.037Z",
+    "checkedAt": "2026-10-09T11:15:44.223Z",
     "status": "passed",
-    "total": 32,
-    "passed": 32,
+    "total": 50,
+    "passed": 50,
     "failed": 0,
-    "url_set_unchanged": true
+    "urlsFingerprint": "e11959144e9170ba6cad93d407318d17fa5fbbcbfec1cd97d490f310ea3d1990"
   },
   "browser": {
-    "startTime": "2026-10-09T10:11:24.534Z",
-    "duration": 24157.902000000002,
+    "startTime": "2026-10-09T11:37:31.723Z",
+    "duration": 24019.973,
     "expected": 18,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0,
     "workers": 1
   },
+  "typecheck": {
+    "status": "passed",
+    "files": 45,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
   "layout": {
     "passed": true,
+    "checked_at": "2026-10-09T11:41:50.038Z",
     "viewport_widths": [
       1440,
       375,
       320
     ],
-    "conditions": 9,
-    "html_pages": 39,
-    "article_list_rows": 166,
+    "conditions": 73,
+    "title_conditions": 96,
+    "reviewed_pages": 32,
+    "review_scope": "All 32 individual pages at desktop and mobile widths; seven table pages and two transport/first-day titles also checked at 320 px, with all 32 titles separately reviewed at all three widths",
+    "visual_review": {
+      "status": "passed",
+      "checked_at": "2026-10-09T11:43:04.556Z",
+      "final_fingerprint": "3b84a9ca9ffe5ffe64bc090f597cc0b2a51754ef5c2b70a99127616b49568da7",
+      "title_review": {
+        "status": "passed",
+        "conditions": 96,
+        "fingerprint": "3b84a9ca9ffe5ffe64bc090f597cc0b2a51754ef5c2b70a99127616b49568da7",
+        "report": ".local/rewrite-screen-titles.json"
+      },
+      "body_review": {
+        "status": "passed",
+        "source_fingerprint": "7e6b323f53b5ee25d758d1969f0b43a0be3575d3665cffea0122d85db52b8dba",
+        "report": ".local/rewrite-screen-audit-before-title-chunks.json",
+        "verification": "Final browser checks confirm unchanged manuscript, photographs, paragraph typography, section layout, FAQ and referral position after title-only wrapping changes"
+      },
+      "table_review": {
+        "status": "passed",
+        "source_fingerprint": "7e6b323f53b5ee25d758d1969f0b43a0be3575d3665cffea0122d85db52b8dba",
+        "table_count": 9,
+        "page_count": 7,
+        "report": ".local/rewrite-screen-tables.json"
+      },
+      "notes": [
+        "All 32 individual rewritten pages reviewed in actual desktop/mobile screen captures. Final title-only change keeps manuscript, photographs, body heading/paragraph text, body width, typography, FAQ count and quiet referral placement identical in all 73 final conditions.",
+        "Final meaning-based title phrases are visually readable at 1440px, 375px and 320px for every individual route (96 title conditions).",
+        "No unresolved visible issue remains. Body/9-table review origins and final heading review fingerprints are recorded separately."
+      ],
+      "limitations": [
+        "Three native reading crops per route inspect top, middle and final body; whole-page layout was also reviewed in prior contact sheets. This is visual readability review, not an independent fact-check of every source."
+      ]
+    },
+    "screenshots": 146,
+    "page_overflow": 0,
+    "body_font_size_px": 16,
+    "maximum_body_width_px": 760,
     "article_body_columns": 1,
-    "home_desktop_columns": 2,
-    "home_mobile_columns": 1,
-    "home_hero_desktop_columns": 2,
-    "home_hero_mobile_columns": 1,
-    "pictured_pages": 36,
-    "crop_adjustment_conditions": 6,
-    "region_name_list_conditions": 3,
-    "checked_at": "2026-10-09T10:12:02.046Z",
-    "reviewed_pages": 3,
-    "review_scope": "Header and about-page change on home, about and hospital-transport; earlier article, table and photograph checks retained",
-    "screenshots": 17
+    "anchor_click_checks": 421,
+    "alias_anchor_click_checks": 60,
+    "contextual_link_click_checks": 141,
+    "failures": [],
+    "page_errors": []
   },
   "navigation": {
     "reachable_indexable_pages": 37,
     "orphan_pages": [],
-    "category_menus_removed": true,
     "header": [
       "記事一覧",
       "地域の案内"
     ],
-    "retired_category_redirects": 12
+    "retired_category_redirects": 12,
+    "category_menus_removed": true
   },
   "privacy_presentation": {
-    "verified_pages": 39,
     "settings_location": "/privacy/",
     "privacy_link_location": "/about/",
     "footer_navigation": [
@@ -83,7 +140,7 @@
     "project": "okurinochizu",
     "hosting": "okurinochizu",
     "result": "Firebase CLI release complete",
-    "custom_domain": "Published HTML, CSS, JavaScript and images match the verified build; compact desktop header stays visible, mobile header follows scroll direction, and the about-page regional prompt is removed"
+    "custom_domain": "All published HTML, CSS and image assets match the verified rewrite build byte for byte"
   },
   "photography": {
     "original_assets": 68,
@@ -102,65 +159,152 @@
     "decorative_alt": "",
     "visible_captions": 0,
     "manifest": "docs/editorial-image-manifest.json",
-    "crop_verified_build": "5cfaffc9c11fe22239a45f5dc96f211065d19916a3093e456fc04b2d213c33cd",
-    "crop_positions_unchanged_in_final_build": true
+    "asset_validation_checked_at": "2026-10-09T11:11:15.333Z",
+    "note": "Image assets and crop positions retained; final build and live checks verify their placement and bytes"
   },
   "money_notation": {
-    "checked_at": "2026-10-09T06:57:43.742Z",
+    "checked_at": "2026-10-09T11:37:31.256Z",
     "passed": true,
     "format": "Half-width digits, three-digit commas, 円",
-    "concrete_amount_occurrences": 25,
+    "content_amount_occurrences": 92,
+    "visible_html_amount_occurrences": 98,
+    "html_pages": 39,
     "benefit_table_rows": 8,
     "benefit_table_amount": "50,000円",
-    "browser_viewport_widths": [
-      1440,
-      375,
-      320
-    ],
     "table_scroll_inside_region": true
   },
   "region_directory": {
-    "passed": true,
     "region_links": 8,
     "visible_summaries": 0,
-    "viewport_widths": [
-      1440,
-      375,
-      320
-    ],
-    "minimum_tap_height": 48
+    "presentation": "Municipality names grouped by prefecture"
   },
   "reading_flow": {
-    "checked_at": "2026-10-09T06:57:43.742Z",
     "pages": 32,
     "contextual_links": 62,
-    "links_per_page": "1–2",
-    "public_service_links": 21,
-    "referral_position": "Directly after body/FAQ and before all related navigation",
+    "link_count_rule": "No fixed number; links placed where further explanation is useful",
+    "official_and_publisher_inline_links": 46,
+    "referral_position": "Directly after body/FAQ and before related navigation",
     "referrals_per_article": 1,
     "tracking_placement": "article-end"
   },
   "institution_review": {
-    "checked_at": "2026-10-09T06:58:20.128474+00:00",
-    "content_sha256": "998b9cab2caf1c1da8d7072effcc9d4cbd8cff38f649825d6e1a774d3c8b9368",
-    "sources_sha256": "8d87548acd17cce1177f9a5982bac9c7df73fa86cee3b85d3068c4b09d12f14f",
-    "checks": {
-      "eightMunicipalRows": true,
-      "allAmounts50000": true,
-      "noInventedDeadlineSixRows": true,
-      "sakuUedaDeadline": true,
-      "allInternalSourceIdsResolvable": true,
-      "eightFunctionalBenefitTableLinks": true
-    },
-    "review": "8自治体国保給付額・対象者・申請先、協会けんぽ業務外事由と対象者・実費上限・各期限、安中12歳以上1体料金、国内死亡届7日と国外3か月、火葬原則死亡後24時間は一次情報と整合。",
-    "suggestions_applied": {
-      "uedaPriorInsuranceEquivalentBenefitCondition": true,
-      "tomiokaPriorInsuranceQualificationLoss": true,
-      "cremationExceptionsNotAllStillbirth": true
-    }
+    "checked_at": "2026-10-09T11:14:55.084865+00:00",
+    "content_sha256": "2ce5501a2ceecfd76832461d84ddec63eef20b80d98c1f89f1c9ed10cbce3ce5",
+    "sources_sha256": "97d88151a16621af4ab0b1e4913e216ad90bfb968b2c5a8a9126f9c641746cce",
+    "pages_independently_reviewed": 32,
+    "source_registry_records": 90,
+    "status": "pass-with-explicit-research-limitations",
+    "blockers": [],
+    "residual_research_limitations": [
+      {
+        "id": "komoro-national-health-start-date",
+        "question": "小諸市国保葬祭費の具体的時効起算日",
+        "status": "official-start-date-not-found",
+        "searched": [
+          "自治体給付ページ",
+          "おくやみ冊子・申請書/例規候補",
+          "Yahoo exact municipal deadline/start-day queries"
+        ],
+        "safeWording": "保険給付の権利は行使できる時から2年で時効。具体的な起算日は各国保窓口に葬祭日と死亡日を伝え確認。",
+        "doNotSay": "国保法110条を根拠に全自治体の葬祭翌日2年と断定しない。"
+      },
+      {
+        "id": "karuizawa-national-health-start-date",
+        "question": "軽井沢町国保葬祭費の具体的時効起算日",
+        "status": "official-start-date-not-found",
+        "searched": [
+          "自治体給付ページ",
+          "おくやみ冊子・申請書/例規候補",
+          "Yahoo exact municipal deadline/start-day queries"
+        ],
+        "safeWording": "保険給付の権利は行使できる時から2年で時効。具体的な起算日は各国保窓口に葬祭日と死亡日を伝え確認。",
+        "doNotSay": "国保法110条を根拠に全自治体の葬祭翌日2年と断定しない。"
+      },
+      {
+        "id": "miyota-national-health-start-date",
+        "question": "御代田町国保葬祭費の具体的時効起算日",
+        "status": "official-start-date-not-found",
+        "searched": [
+          "自治体給付ページ",
+          "おくやみ冊子・申請書/例規候補",
+          "Yahoo exact municipal deadline/start-day queries"
+        ],
+        "safeWording": "保険給付の権利は行使できる時から2年で時効。具体的な起算日は各国保窓口に葬祭日と死亡日を伝え確認。",
+        "doNotSay": "国保法110条を根拠に全自治体の葬祭翌日2年と断定しない。"
+      },
+      {
+        "id": "tateshina-national-health-start-date",
+        "question": "立科町国保葬祭費の具体的時効起算日",
+        "status": "official-start-date-not-found",
+        "searched": [
+          "自治体給付ページ",
+          "おくやみ冊子・申請書/例規候補",
+          "Yahoo exact municipal deadline/start-day queries"
+        ],
+        "safeWording": "保険給付の権利は行使できる時から2年で時効。具体的な起算日は各国保窓口に葬祭日と死亡日を伝え確認。",
+        "doNotSay": "国保法110条を根拠に全自治体の葬祭翌日2年と断定しない。"
+      },
+      {
+        "id": "annaka-national-health-start-date",
+        "question": "安中市国保葬祭費の具体的時効起算日",
+        "status": "official-start-date-not-found",
+        "searched": [
+          "自治体給付ページ",
+          "おくやみ冊子・申請書/例規候補",
+          "Yahoo exact municipal deadline/start-day queries"
+        ],
+        "safeWording": "保険給付の権利は行使できる時から2年で時効。具体的な起算日は各国保窓口に葬祭日と死亡日を伝え確認。",
+        "doNotSay": "国保法110条を根拠に全自治体の葬祭翌日2年と断定しない。"
+      },
+      {
+        "id": "tomioka-national-health-start-date",
+        "question": "富岡市国保葬祭費の具体的時効起算日",
+        "status": "official-start-date-not-found",
+        "searched": [
+          "自治体給付ページ",
+          "おくやみ冊子・申請書/例規候補",
+          "Yahoo exact municipal deadline/start-day queries"
+        ],
+        "safeWording": "富岡市ガイドで2年以内は確認できた。起算日は窓口に葬祭日と死亡日を伝え確認。",
+        "doNotSay": "国保法110条を根拠に全自治体の葬祭翌日2年と断定しない。"
+      },
+      {
+        "id": "gunma-late-start-date",
+        "question": "群馬県後期高齢の具体的時効起算日",
+        "status": "not-in-official-benefit-page-ordinance-or-rule",
+        "searched": [
+          "葬祭費案内",
+          "2026-08条例第2条",
+          "2026-09規則第24条",
+          "公式様式31",
+          "富岡2026ガイド（2年は確認）"
+        ]
+      },
+      {
+        "id": "survey2026-religious-cost-exclusion",
+        "question": "2026公表葬儀費用が宗教者支払を含まないとの明示",
+        "status": "not-found-in-pressrelease-full-page-or-cost-chart",
+        "safeWording": "公表額は基本料金・飲食費・返礼品費の合計。宗教者への支払いがあれば家族の予算で別に整理。"
+      },
+      {
+        "id": "annaka-cremation-resident-definition",
+        "question": "安中市斎場条例の住民区分が死亡者/使用者いずれの登録に基づくか",
+        "status": "official-g-reiki-403-definition-not-retrieved",
+        "searched": [
+          "市公式火葬利用案内1537.htmlの料金表",
+          "市公式例規集リンクreiki_menu.html",
+          "条例r354RG00000409.html（403）",
+          "既存自治体公式検索結果",
+          "市サイト直接リンク"
+        ],
+        "safeWording": "市が公表する料金表の安中市民/市民以外を使い、予約時に故人と申請者の住所を伝え市民課へ適用区分を聞く。",
+        "doNotSay": "安中市営すみれケ丘霊園の墓地使用条件を火葬場料金に転用しない。"
+      }
+    ],
+    "review": "Primary sources for insurance eligibility and deadlines, crematorium fees, local procedure, inheritance and burial rules; national cost survey figures retain sample and scope"
   },
   "header": {
-    "checked_at": "2026-10-09T10:12:02.046Z",
+    "checked_at": "2026-10-09T11:37:31.723Z",
     "desktop_height": 64,
     "mobile_height": 60,
     "mobile_breakpoint": 760,
@@ -169,9 +313,6 @@
     "menu_and_keyboard": "Header stays visible during menu use and keyboard focus",
     "reduced_motion_respected": true,
     "anchor_headings_unobscured": true,
-    "rapid_menu_close_checks": 10,
-    "rapid_menu_close_failures": 0,
-    "rapid_menu_close_checked_at": "2026-10-09T10:11:31.771Z",
     "script_delivery": "Inline module included in the byte-verified HTML"
   },
   "about": {

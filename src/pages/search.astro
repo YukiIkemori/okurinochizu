@@ -1,9 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
 import { articles, regions, articleUrl, regionUrl, articleListTitle } from '../data/site';
+import type { Section } from '../data/types';
+const sectionText = (sections: Section[]) => sections.flatMap(s => [s.heading, ...s.paragraphs, ...(s.bullets || []), ...(s.table?.headers || []), ...(s.table?.rows.flat() || []), s.note || '']);
 const entries = [
-  ...articles.map(a => ({ title: articleListTitle(a), description: a.description, url: articleUrl(a.slug), category: a.category, regions: a.regions, text: [a.title, a.description, a.answer, ...a.keywords, ...a.sections.flatMap(s => [s.heading, ...s.paragraphs, ...(s.bullets || [])])].join(' ') })),
-  ...regions.map(r => ({ title: r.name + 'の葬儀・家族葬・お墓案内', description: r.description, url: regionUrl(r.slug), category: 'region', regions: [r.slug], text: [r.name, r.description, r.focus, ...r.sections.flatMap(s => [s.heading, ...s.paragraphs])].join(' ') })),
+  ...articles.map(a => ({ title: articleListTitle(a), description: a.description, url: articleUrl(a.slug), category: a.category, regions: a.regions, text: [a.title, a.description, a.lead, a.answer, ...a.keywords, ...sectionText(a.sections), ...a.faq.flatMap(faq => [faq.q, faq.a])].join(' ') })),
+  ...regions.map(r => ({ title: r.heading, description: r.description, url: regionUrl(r.slug), category: 'region', regions: [r.slug], text: [r.name, r.heading, r.pageTitle, r.description, r.lead, r.focus, ...sectionText(r.sections)].join(' ') })),
 ];
 ---
 <Base title="記事を探す" description="家族葬、葬儀費用、搬送、樹木葬、互助会。キーワードと地域から、必要な記事や地域の案内を探せます。" noindex breadcrumbs={[{ name: '記事を探す' }]}>

@@ -57,10 +57,11 @@ for (const item of [...content.articles, ...content.regions]) {
   for (const source of item.sources || []) if (!bySource.has(source)) fail(item.slug, `Unknown source ID: ${source}`);
   for (const slug of item.related || []) if (!articleBySlug.has(slug)) fail(item.slug, `Unknown related article: ${slug}`);
   for (const slug of item.regions || []) if (!regionBySlug.has(slug)) fail(item.slug, `Unknown region: ${slug}`);
-  const sectionIds = item.sections.map(s => s.id);
+  const sectionIds = item.sections.flatMap(s => [s.id, ...(s.aliases || [])]);
   if (new Set(sectionIds).size !== sectionIds.length) fail(item.slug, 'Duplicate section IDs.');
   const destinations = [];
   for (const section of item.sections) {
+    if (section.ordered && !section.bullets?.length) fail(item.slug, `Ordered list has no steps: ${section.id}`);
     if (section.table?.rows.some(row => row.length !== section.table.headers.length)) fail(item.slug, `Table cells do not match headers: ${section.id}`);
     const links = [
       ...(section.paragraphLinks || []).map(link => ({ ...link, textContent: section.paragraphs[link.paragraph], positionValid: Number.isInteger(link.paragraph) && link.paragraph >= 0 })),
@@ -81,7 +82,7 @@ for (const item of [...content.articles, ...content.regions]) {
       }
     }
   }
-  if (destinations.length < 1 || destinations.length > 2 || new Set(destinations).size !== destinations.length) fail(item.slug, 'Use one or two distinct contextual guide links in the body.');
+  if (new Set(destinations).size !== destinations.length) fail(item.slug, 'Do not repeat the same contextual guide destination in the body.');
   if (!providerHosts.has(new URL(item.referral.href).hostname)) fail(item.slug, 'Referral destination is not Tsubasa.');
 }
 // Detect exactly duplicated region bodies even if only the eight place names differ.
@@ -150,7 +151,7 @@ for (const [route, { $, ids }] of pages) {
   const photoArticle = articleBySlug.get(route.match(/^\/guides\/([^/]+)\/$/)?.[1]);
   const photoRegion = regionBySlug.get(route.match(/^\/regions\/([^/]+)\/$/)?.[1]);
   const editorialContent = photoArticle ?? photoRegion;
-  const expectedPhotographs = editorialContent ? 1 + Number(editorialContent.sections.length >= 4) : ['/', '/guides/', '/regions/', '/about/'].includes(route) ? 1 : 0;
+  const expectedPhotographs = editorialContent ? 2 : ['/', '/guides/', '/regions/', '/about/'].includes(route) ? 1 : 0;
   const photographs = $('picture.editorial-image img');
   if (photographs.length !== expectedPhotographs) fail(route, `Expected ${expectedPhotographs} dedicated photographs, got ${photographs.length}.`);
   if (photographs.length) picturedPages++;
@@ -173,6 +174,7 @@ for (const [route, { $, ids }] of pages) {
   if ($('.sources, #sources-heading, .disclosure').length || /出典|確認日|公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ公益社との関係/.test(normalize($('body').text()))) fail(route, 'Removed source/disclosure copy remains in the public page.');
   if (route.startsWith('/guides/') && articleBySlug.has(route.split('/')[2]) || route.startsWith('/regions/') && regionBySlug.has(route.split('/')[2])) {
     for (const section of editorialContent.sections) {
+      for (const alias of section.aliases || []) if (!ids.has(alias)) fail(route, `Legacy section anchor missing: ${alias}`);
       const rendered = $('.prose-section').filter((_, node) => $(node).attr('id') === section.id);
       const paragraphs = rendered.children('p').toArray();
       for (const [index, text] of section.paragraphs.entries()) if (normalize($(paragraphs[index]).text()) !== normalize(text)) fail(route, `Inline links altered or dropped body text: ${section.id}`);
@@ -251,6 +253,11 @@ for (const [route, { $, ids }] of pages) {
     if (structuredFAQs.length !== questions.length) fail(route, 'FAQ JSON-LD count differs from visible FAQs.');
     structuredFAQs.forEach((faq, index) => { if (normalize(faq.name) !== questions[index]?.q || normalize(faq.acceptedAnswer?.text) !== questions[index]?.a) fail(route, 'FAQ JSON-LD differs from the visible answer.'); });
     if (schema.citation !== undefined) fail(route, 'Removed source citations remain in public structured data.');
+  }
+  if (photoRegion) {
+    const regionalSchema = data.filter(s => s?.['@type'] === 'WebPage');
+    const schema = regionalSchema[0] || {};
+    if (regionalSchema.length !== 1 || schema.name !== photoRegion.pageTitle || schema.description !== description || schema.url !== canonical || schema.dateModified !== photoRegion.updatedAt || normalize($('h1').text()) !== normalize(photoRegion.heading)) fail(route, 'Regional title/description/URL/schema differs from its editorial content.');
   }
   for (const schema of data.filter(s => s?.['@type'] === 'CollectionPage')) {
     const items = schema.mainEntity?.itemListElement || [];

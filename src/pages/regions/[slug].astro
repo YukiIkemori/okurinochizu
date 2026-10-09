@@ -5,19 +5,20 @@ import Referral from '../../components/Referral.astro';
 import ArticleList from '../../components/ArticleList.astro';
 import RegionLinks from '../../components/RegionLinks.astro';
 import EditorialImage from '../../components/EditorialImage.astro';
+import ArticleHeading from '../../components/ArticleHeading.astro';
 import { regionVisual } from '../../data/visuals';
 import { regions, articles, regionUrl, site } from '../../data/site';
 export function getStaticPaths() { return regions.map(region => ({ params: { slug: region.slug }, props: { region } })); }
 const { region } = Astro.props;
 const related = region.related.flatMap(slug => articles.filter(a => a.slug === slug));
-const title = region.name + 'の葬儀・家族葬・お墓｜地域の手続きと相談先';
+const title = region.pageTitle;
 const schema = [{ '@context': 'https://schema.org', '@type': 'WebPage', name: title, description: region.description, dateModified: region.updatedAt, inLanguage: 'ja', url: site.url + regionUrl(region.slug), about: { '@type': 'AdministrativeArea', name: region.prefecture + region.name } }];
 ---
 <Base title={title} description={region.description} breadcrumbs={[{ name: '地域の案内', url: '/regions/' }, { name: region.name }]} schema={schema}>
   <article class="wrap article-shell">
-    <header class="article-head"><h1>{region.name}の葬儀・お墓</h1><p class="article-lead">{region.lead}</p><EditorialImage kind={regionVisual(region.slug)} /></header>
+    <header class="article-head"><ArticleHeading title={region.heading} /><p class="article-lead">{region.lead}</p><EditorialImage kind={regionVisual(region.slug)} /></header>
     <div class="article-body">
-      <Sections sections={region.sections} interlude={region.sections.length >= 4 ? regionVisual(region.slug, 'interlude') : undefined} />
+      <Sections sections={region.sections} interlude={regionVisual(region.slug, 'interlude')} />
       <Referral referral={region.referral} slug={region.slug} region={region.slug} intent="regional-funeral" />
       <section class="related-articles"><header class="directory-heading"><h2>関連記事</h2><a class="text-link" href="/guides/">記事一覧</a></header><ArticleList items={related} /></section>
       <section class="related-articles"><header class="directory-heading"><h2>ほかの地域</h2></header><RegionLinks items={regions.filter(r => r.slug !== region.slug)} /></section>

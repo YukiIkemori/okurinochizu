@@ -1,0 +1,974 @@
+{
+  "checkedAt": "2026-10-09",
+  "scope": {
+    "guides": 24,
+    "regions": 8,
+    "individualPages": 32
+  },
+  "status": "reviewed-with-recorded-research-limitations",
+  "basis": {
+    "authorReview": "担当別の32ページ原稿監査（2026-10-09 11:04 UTC）",
+    "independentFactReview": "全32ページの通読・主要数値と制度の独立確認（2026-10-09 11:14 UTC）",
+    "integrityReview": {
+      "checkedAt": "2026-10-09T11:09:15.150Z",
+      "pages": 32,
+      "reportedDuplicateParagraphs": 0,
+      "finalSectionAndFaqCountsMatched": true
+    },
+    "finalDataMatchedIndependentReview": true,
+    "note": "保存済み監査を要約し、最終srcデータのハッシュと32ページへの対応を照合した記録。別途実施した画面・SEO・計測検証の実施記録をこの本文監査に付け足していない。"
+  },
+  "hashes": {
+    "algorithm": "SHA-256",
+    "contentFile": {
+      "path": "src/data/content.json",
+      "sha256": "2ce5501a2ceecfd76832461d84ddec63eef20b80d98c1f89f1c9ed10cbce3ce5"
+    },
+    "sourceRegistry": {
+      "path": "src/data/sources.json",
+      "sha256": "97d88151a16621af4ab0b1e4913e216ad90bfb968b2c5a8a9126f9c641746cce"
+    },
+    "individualPageMethod": "全記事オブジェクトをキー順・UTF-8・空白なしのJSONに正規化して計算。",
+    "buildFingerprint": {
+      "sha256": "3b84a9ca9ffe5ffe64bc090f597cc0b2a51754ef5c2b70a99127616b49568da7",
+      "provenance": "主担当が指定した最終dist fingerprint。本文ハッシュと別に記録。"
+    }
+  },
+  "verificationScope": "制度・数値・地域条件の重要事実を担当確認と独立監査で一次資料へ照合。sourceIdsは最終原稿にひも付く出典であり、全URLの新規取得成功を意味しない。協会けんぽの再取得403時は保存済み公式本文と現行法令を使用した。",
+  "researchLimitations": [
+    {
+      "id": "national-health-start-date",
+      "summary": "国保法110条の行使可能時から2年は確認済み。小諸・軽井沢・御代田・立科・安中・富岡の具体的な起算日は未確認（富岡は2年以内をガイドで確認）。",
+      "treatment": "全市町村を葬祭翌日起算としない。遅延時は死亡日・葬祭日を加入先の国保窓口へ伝え、具体的な提出期限を聞く。"
+    },
+    {
+      "id": "gunma-late-start-date",
+      "summary": "群馬後期の給付と法定2年は確認済み。葬祭費の具体的起算日は条例・規則・案内から確定していない。",
+      "treatment": "長野後期の葬祭翌日起算を転用せず、市町村の後期窓口へ死亡日・葬祭日を伝える。"
+    },
+    {
+      "id": "survey-cost-scope",
+      "summary": "2026年全国調査は中央値再集計の公表額で、基本・飲食・返礼の合計。宗教者への支払いの統計上の除外は明示未確認。",
+      "treatment": "地域相場・最低額・平均とは呼ばず、宗教者の支払いは読者の予算で別に整理する。"
+    },
+    {
+      "id": "annaka-resident-definition",
+      "summary": "市の料金表は安中市民/市民以外。条例サイト403のため、故人・申請者のどちらの登録を基準にするか未確認。",
+      "treatment": "公表区分を忠実に使い、予約時に故人と申請者の住所を伝える。別施設の霊園条件は転用しない。"
+    },
+    {
+      "id": "nishikaruizawa-period",
+      "summary": "西軽井沢の13年/33年料金は確認済み。期間の起算日・終了後の具体条件は取得本文で確定しない。",
+      "treatment": "小諸の最後の納骨から13年後合祀を転用しない。利用する区画の使用規則を管理者へ具体的に尋ねる。"
+    },
+    {
+      "id": "remains-delivery-carrier",
+      "summary": "日本郵便の一般配送案内と受入れサービスのゆうパック指定を確認。日本郵便の国内遺骨固有FAQは見つかっていない。",
+      "treatment": "受入れ先の指定方法を説明し、ゆうパックが唯一の配送業者とは断定しない。"
+    }
+  ],
+  "pages": [
+    {
+      "url": "https://okurinochizu.jp/guides/hospital-transport/",
+      "readerQuestion": "病院から故人を運ぶとき、誰に何を伝え、何を頼めばよいか",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "葬儀社へ病院からの搬送を依頼し、迎えの場所・時刻と安置先を決める。"
+      },
+      "structureReview": "病院で聞くこと→電話の例→安置先→最初の依頼範囲と費用。",
+      "readerRoleReview": "病院で家族が亡くなった遺族。",
+      "repetitionReview": "搬送と葬儀の契約を分け、同じ費用注意を繰り返さない。",
+      "primaryInformationReview": "死亡確認・医師の書類・火葬までの安置と搬送範囲を確認。",
+      "sourceIds": [
+        "tsubasa-call",
+        "mhlw-death-manual",
+        "burial-law",
+        "nac-family-fees"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 4,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "8ec8e12f8ae9413b513087454f727ce74c686da15daa067da3c5d7a89d28292d",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/home-death/",
+      "readerQuestion": "突然の異変と、予定された在宅の看取りで、それぞれ最初にどこへ連絡するか",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "突然の意識・呼吸の異常は119番、在宅看取りは決めていた医療窓口へ連絡する。"
+      },
+      "structureReview": "最初の連絡先→医師の確認と書類→自宅・施設の安置。",
+      "readerRoleReview": "今対応する家族と、生前に療養を準備する本人を区別。",
+      "repetitionReview": "自宅死亡を一律に警察対応とする説明や重複注意を整理。",
+      "primaryInformationReview": "厚労省の診断書・検案書と異状判断、消防庁の救急案内を確認。",
+      "sourceIds": [
+        "mhlw-death-manual",
+        "fdma-ambulance-manual",
+        "tsubasa-call"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "e5fff4af261aed17f53c1ea1397ef4a8a24626d998f934675b61eb51f786934d",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/first-day/",
+      "readerQuestion": "家族が亡くなった直後、今必要なことと後で決めることは何か",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "医師の確認、搬送と安置、近しい家族への連絡から進める。"
+      },
+      "structureReview": "最初の手配→家族・寺院への連絡→形式・予算→日程→書類。",
+      "readerRoleReview": "家族が亡くなった直後の遺族。",
+      "repetitionReview": "役割分担のためだけの表と、本文を繰り返すFAQを除く。",
+      "primaryInformationReview": "医師の書類、死亡届7日、火葬許可と24時間の原則を確認。",
+      "sourceIds": [
+        "mhlw-death-manual",
+        "burial-law",
+        "ueda-death",
+        "nac-family-fees",
+        "tsubasa-call",
+        "fdma-ambulance-manual"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "d6d5dc5f3b162d733d6f09e3a3032441ebe6ded345570d471e393e84912c8a19",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/family-funeral/",
+      "readerQuestion": "家族葬は何を意味し、誰を呼び、どんな式を行えばよいか",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "家族や親しい人を中心にする葬儀で、人数や通夜の有無は一律に決まらない。"
+      },
+      "structureReview": "呼ぶ人→一日葬・直葬との違い→費用→連絡文→過ごし方。",
+      "readerRoleReview": "準備中の遺族と、生前に希望を残す本人を明示。",
+      "repetitionReview": "形式の違いを比較表で説明し、同内容のFAQを置かない。",
+      "primaryInformationReview": "形式の定義と2026年全国調査の963,900円・中央値・費用範囲を確認。",
+      "sourceIds": [
+        "tsubasa-family",
+        "tsubasa-prices",
+        "nac-family-fees",
+        "funeral-survey-2026",
+        "funeral-survey-2026-detail"
+      ],
+      "researchLimitations": [
+        "survey-cost-scope"
+      ],
+      "structure": {
+        "sections": 5,
+        "tables": 1,
+        "faq": 0
+      },
+      "articleJsonSha256": "d03c9efedf23056f1328c6db0a9c4cc83b8e861df636e8e6e0a0fb4ed15e2ada",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/one-day-funeral/",
+      "readerQuestion": "一日葬では何を省き、何を行い、どれくらいの準備期間が必要か",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "通夜を省き葬儀・告別式を一日で行う。搬送・安置の期間は別に必要。"
+      },
+      "structureReview": "式と火葬の流れ→寺院→参列予定→残る費用。",
+      "readerRoleReview": "葬儀を準備する家族。",
+      "repetitionReview": "儀式の日数と準備期間の違いを説明し、注意の言い直しを削る。",
+      "primaryInformationReview": "火葬の24時間原則と2026年全国調査の744,300円・集計範囲を確認。",
+      "sourceIds": [
+        "burial-law",
+        "tsubasa-family",
+        "tsubasa-prices",
+        "nac-family-fees",
+        "funeral-survey-2026",
+        "funeral-survey-2026-detail"
+      ],
+      "researchLimitations": [
+        "survey-cost-scope"
+      ],
+      "structure": {
+        "sections": 4,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "9938e41900f37f426601b2f1a367bdb8a5f9730bf5295db509ec662b855c44ef",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/direct-cremation/",
+      "readerQuestion": "直葬は何を行わない形式で、家族はいつ故人に会い、何に支払うのか",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "通夜・告別式を行わず火葬を中心にする。搬送・安置・納棺は必要。"
+      },
+      "structureReview": "他形式との差→火葬までの流れ→面会→総額→納骨。",
+      "readerRoleReview": "直葬を検討・依頼する家族。",
+      "repetitionReview": "主題から外れる制度注意と重複FAQを除き、面会と支出を説明。",
+      "primaryInformationReview": "火葬の24時間原則、プランごとの内容、全国調査495,600円を確認。",
+      "sourceIds": [
+        "burial-law",
+        "tsubasa-direct",
+        "tsubasa-prices",
+        "nac-family-fees",
+        "funeral-survey-2026",
+        "funeral-survey-2026-detail"
+      ],
+      "researchLimitations": [
+        "survey-cost-scope"
+      ],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "6090a2f339276c22221d0f21d39ca58779f090345f3eb95863cdc682e7b8912e",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/choose-funeral-company/",
+      "readerQuestion": "急ぎで葬儀社を決めるときと、生前に選ぶときに何を基準にすればよいか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "急ぎなら迎えと安置先、生前なら内容・人数・予算に合う見積もりと施設を比べる。"
+      },
+      "structureReview": "急ぎと事前検討を分岐し、費用・契約先・施設の使いやすさへ進む。",
+      "readerRoleReview": "急ぎの遺族と、生前に選ぶ本人・家族を区別。",
+      "repetitionReview": "共通の点数列挙や重複FAQを、具体的な電話・比較の説明へ置換。",
+      "primaryInformationReview": "国民生活センターの情報収集・複数人での打合せ・明細受領を確認。",
+      "sourceIds": [
+        "kokusen-funeral"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "855a368348702851a3a761f58b58d21c5de03978712918939d8ba058fcdf583b",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/funeral-cost/",
+      "readerQuestion": "葬儀にはおおよそいくらかかり、何を足せば家族の支払額になるか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "形式別の全国参考額を示し、プランと別払いを合わせて家族の支払額を考える。"
+      },
+      "structureReview": "形式別金額→費用内訳→増える条件→宗教者→公的料金。",
+      "readerRoleReview": "費用を調べる本人・家族。",
+      "repetitionReview": "最低価格の注意だけで終えず、相場の疑問と内訳を一続きで説明。",
+      "primaryInformationReview": "2026年全国調査の対象・中央値・費用範囲、安中の公表火葬料を確認。",
+      "sourceIds": [
+        "funeral-survey-2026",
+        "funeral-survey-2026-detail",
+        "kokusen-funeral",
+        "annaka-crematorium"
+      ],
+      "researchLimitations": [
+        "survey-cost-scope",
+        "annaka-resident-definition"
+      ],
+      "structure": {
+        "sections": 5,
+        "tables": 2,
+        "faq": 0
+      },
+      "articleJsonSha256": "3094148c2ad3e1a488da4141acd2edeca0c3e1671cf679306fc4081e8454f840",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/estimate-checklist/",
+      "readerQuestion": "見積書のどこを見れば追加額と実際の支出が分かるか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "税込合計の後に、含まれない費用と予定が変わると増える費用を見る。"
+      },
+      "structureReview": "見積書を読む順に、項目・数量・安置日数・搬送距離を整理。",
+      "readerRoleReview": "見積もりを受け取った本人・家族。",
+      "repetitionReview": "主題に必要な表・チェック項目を残し、同じFAQ・保存項目表を除く。",
+      "primaryInformationReview": "国民生活センターの明細見積もり・打合せ・188案内を確認。",
+      "sourceIds": [
+        "kokusen-funeral"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 4,
+        "tables": 1,
+        "faq": 0
+      },
+      "articleJsonSha256": "34d214862d267407b6172b0980e9d6edc8c9879e7243093d74fd1fdd491c8b34",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/funeral-benefit/",
+      "readerQuestion": "誰がいくら受け取れ、どの保険へ何をいつまでに申請するか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "8地域の国保と長野・群馬の後期は50,000円。加入保険で申請先と申請者を選ぶ。"
+      },
+      "structureReview": "加入保険→国保→後期→協会けんぽ3種類→書類→資格変更。",
+      "readerRoleReview": "故人の保険に応じて給付を申請する方。",
+      "repetitionReview": "未確認の起算日注意を8行に繰り返さず、制度別の段落へ整理。",
+      "primaryInformationReview": "8地域の給付・窓口、法定時効、確認できた起算日、協会けんぽの要件を確認。",
+      "sourceIds": [
+        "saku-benefit",
+        "ueda-benefit",
+        "komoro-benefit",
+        "karuizawa-benefit",
+        "miyota-benefit",
+        "miyota-benefit-book",
+        "tateshina-benefit",
+        "annaka-benefit",
+        "tomioka-benefit",
+        "tomioka-death-book",
+        "national-health-law",
+        "elderly-health-law",
+        "nagano-late-benefit",
+        "nagano-late-deadline",
+        "gunma-late-benefit",
+        "gunma-late-ordinance",
+        "kenpo-burial",
+        "kenpo-burial-application",
+        "tateshina-kokuho-forms"
+      ],
+      "researchLimitations": [
+        "national-health-start-date",
+        "gunma-late-start-date"
+      ],
+      "structure": {
+        "sections": 6,
+        "tables": 2,
+        "faq": 0
+      },
+      "articleJsonSha256": "1a13a8355ab8f6301e2f3da6ea8d3e5c51b25ececa2429aa1fd608bf47a28dae",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/mutual-aid-cancellation/",
+      "readerQuestion": "互助会は解約できるか、いくら返り、本人と遺族は何をすればよいか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "途中解約でき、通常は掛金から解約手数料を引いた額が戻る。"
+      },
+      "structureReview": "仕組み→返金額→本人の手順→生前代理・死亡後→相談先。",
+      "readerRoleReview": "契約者本人、生前の代理人、死亡後の遺族を区別。",
+      "repetitionReview": "返金説明と注意の重複を除き、立場ごとの申出を具体化。",
+      "primaryInformationReview": "大阪・埼玉の消費生活案内、新潟の一般約款45日返金を確認。",
+      "sourceIds": [
+        "osaka-mutual-aid",
+        "saitama-mutual-aid",
+        "niigata-mutual-aid"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "8beed2419d16a4e55249e1093f77151cb98c43aa916fe8ee67675f9a6aa3d840",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/funeral-etiquette/",
+      "readerQuestion": "遺族はどう伝え、知らせを受けた人は参列/香典/弔問をどう判断するか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "遺族が参列範囲・香典や供花の扱いを知らせ、受け手はその案内に沿う。"
+      },
+      "structureReview": "遺族の連絡→辞退文→受け手の対応→地域習慣→葬儀後。",
+      "readerRoleReview": "知らせる遺族と、知らせを受けた参列者を区別。",
+      "repetitionReview": "方式名だけの抽象説明を改め、根拠のない一般香典相場を置かない。",
+      "primaryInformationReview": "佐久市の生活改善申合せと軽井沢不参加を確認し、全家庭へ一律適用しない。",
+      "sourceIds": [
+        "saku-local-custom"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "dcabf6df80330937449a96f3aa4376d82260689fbdb4f5c3a2788cb13fc58693",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/tree-burial/",
+      "readerQuestion": "樹木葬は何で、遺骨はどうなり、費用や家族の準備はどう違うか",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "墓地内に遺骨を納めるお墓で、共同・個別や合祀の扱いが契約で違う。"
+      },
+      "structureReview": "納め方→個別期間と合祀→費用→墓参り→本人・遺族の準備。",
+      "readerRoleReview": "生前に選ぶ本人と、納骨を進める遺族を区別。",
+      "repetitionReview": "定義から納骨の理解へ進め、機械的な表・FAQ・まとめを置かない。",
+      "primaryInformationReview": "墓地内の納骨、施設の共同・個別条件、管理・供養の違いを確認。",
+      "sourceIds": [
+        "burial-law",
+        "tsubasa-tree",
+        "tsubasa-komoro-tree",
+        "tsubasa-nishikaruizawa"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 6,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "d6c9fd5897ba7c719fbdfac8c26382b9e178703ddb92cece79134361667c5ce7",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/local-tree-burial/",
+      "readerQuestion": "近隣のどこで、何人を何年、いくらで納められるか",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "小諸市八満と御代田町草越の2霊園の所在地・料金・人数条件を示す。"
+      },
+      "structureReview": "所在地→西軽井沢料金→小諸条件→期間→総額→見学。",
+      "readerRoleReview": "生前に選ぶ本人と、お参り・納骨を担う家族。",
+      "repetitionReview": "比較に必要な料金表だけ使い、宣伝文句・重複FAQを除く。",
+      "primaryInformationReview": "両施設の公式価格・追加費用・火気禁止、小諸の最後の納骨から13年を確認。",
+      "sourceIds": [
+        "tsubasa-komoro-tree",
+        "tsubasa-nishikaruizawa",
+        "tsubasa-tree"
+      ],
+      "researchLimitations": [
+        "nishikaruizawa-period"
+      ],
+      "structure": {
+        "sections": 6,
+        "tables": 1,
+        "faq": 0
+      },
+      "articleJsonSha256": "5d3d579046ab6e06e48f98084f57698ee5d95354c1fd56133285463bc56bde29",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/perpetual-care/",
+      "readerQuestion": "永代供養と樹木葬はどちらを選ぶものか、ずっと個別か、家族は何をするか",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "家族に代わる管理・供養の仕組みで、樹木葬とは別の分類として組み合わせられる。"
+      },
+      "structureReview": "仕組みとお墓の形→個別・合祀→参拝→費用→引継ぎ。",
+      "readerRoleReview": "生前契約する本人と、供養・納骨を進める家族。",
+      "repetitionReview": "個別期間と供養の継続を説明し、本文を繰り返すFAQを除く。",
+      "primaryInformationReview": "施設の供養・管理と納骨条件を確認し、永久の個別保管とは扱わない。",
+      "sourceIds": [
+        "tsubasa-tree",
+        "tsubasa-komoro-tree",
+        "tsubasa-nishikaruizawa",
+        "burial-law"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "48b1035526cfe6b7f2fbe1c7e2557398145797be536764e50a0f05ee07b31962",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/grave-closure/",
+      "readerQuestion": "墓じまいは何から、どこへ申請し、誰が何をし、いくらを見積もるか",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "遺骨を取り出し、墓石を撤去して区画を返す。新しい墓へ移す場合は改葬する。"
+      },
+      "structureReview": "家族・管理者への相談→行き先→許可→撤去返還・納骨→費用。",
+      "readerRoleReview": "現在のお墓を返したい家族・使用者。",
+      "repetitionReview": "手元供養も示して移転手順の対象を限定。空墓のFAQだけを残す。",
+      "primaryInformationReview": "墓埋法・施行規則、上田の受入証明等・1人1枚・郵送申請を確認。",
+      "sourceIds": [
+        "burial-law",
+        "burial-regulations",
+        "ueda-reburial",
+        "kokusen-grave-service",
+        "consumer-hotline"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 6,
+        "tables": 1,
+        "faq": 1
+      },
+      "articleJsonSha256": "b0d9ec62179fefb055da96d84d4b8baa00afc68b9a9ee616352d42b456d594c8",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/remains-delivery/",
+      "readerQuestion": "遺骨は郵送できるか、どう送るか、何が必要で納骨はどう分かるか",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "郵送納骨は可能。先に受入れ先と契約し、書類・指定の発送方法を整える。"
+      },
+      "structureReview": "受入れ確認→契約・書類→梱包発送→到着と納骨の記録。",
+      "readerRoleReview": "送骨して納骨を依頼したい家族。",
+      "repetitionReview": "送付と納骨を分けて説明し、配送会社の疑問だけFAQで補う。",
+      "primaryInformationReview": "受入れサービスの公式指定、日本郵便の梱包・送り状・集荷・追跡を確認。",
+      "sourceIds": [
+        "tsubasa-remains-kit",
+        "japanpost-yupack",
+        "burial-law",
+        "burial-regulations"
+      ],
+      "researchLimitations": [
+        "remains-delivery-carrier"
+      ],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 1
+      },
+      "articleJsonSha256": "62eacee33a958dbba311ffa527c202f2ce4d2872a2d99c3c16bf43636568c1d7",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/grave-selection/",
+      "readerQuestion": "お墓は何を基準に、種類と費用・家族の負担を比べるか",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "納める人、お参りする人、引継ぐ人を整理して種類・費用・負担を比べる。"
+      },
+      "structureReview": "家族の条件→お墓の形→費用→現地→契約→納骨と引継ぎ。",
+      "readerRoleReview": "生前に選ぶ本人と、遺族・将来管理する家族。",
+      "repetitionReview": "形と供養の仕組みを混同せず、見学に必要なチェック項目だけを使う。",
+      "primaryInformationReview": "納骨・改葬書類と施設条件を確認し、契約ごとの費用を固定額にしない。",
+      "sourceIds": [
+        "burial-law",
+        "tsubasa-tree",
+        "tsubasa-komoro-tree",
+        "tsubasa-nishikaruizawa",
+        "kokusen-grave-service"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 6,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "88555fe4cf6f3a6e358da9553b178941ee12183fef051ccafa17f4140d261265",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/ending-note/",
+      "readerQuestion": "エンディングノートには何を書く？",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "連絡先、葬儀・お墓の希望、契約書の保管場所を残す。遺言とは役割が異なる。"
+      },
+      "structureReview": "実務情報→希望→契約の所在→遺言→医療の意思→保管更新。",
+      "readerRoleReview": "本人の生前準備。死後の家族への引継ぎを別に説明。",
+      "repetitionReview": "項目の羅列だけで終えず、使う理由と更新方法を説明。定型FAQを除く。",
+      "primaryInformationReview": "民法の遺言方式と厚労省の人生会議・医療意思の共有を確認。",
+      "sourceIds": [
+        "tsubasa-ending-note",
+        "civil-law",
+        "mhlw-acp"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 6,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "818b504147a8da74c9549a6d96a24067c07aed1a642782d11faf6a5ed173c866",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/preconsultation/",
+      "readerQuestion": "葬儀の事前相談では何を聞く？",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "搬送・安置、希望に合う進め方、人数・日数を踏まえた費用を聞ける。"
+      },
+      "structureReview": "希望未定でも聞ける内容→質問例→見積もり→契約→家族への共有。",
+      "readerRoleReview": "本人の事前準備と、家族が相談する場合を明示。",
+      "repetitionReview": "共通の確認列挙を具体的な質問へ変え、注意から始めない。",
+      "primaryInformationReview": "国民生活センターの葬儀契約・見積もり案内を確認。",
+      "sourceIds": [
+        "tsubasa-inquiry",
+        "kokusen-funeral"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "d08508acbfada152d165960d3513fb62de8429074c59a0a87d5eeba39f95c64f",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/secular-funeral/",
+      "readerQuestion": "無宗教葬では何をする？",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "宗教儀礼に沿わず、音楽・黙祷・献花などでお別れする式を組める。"
+      },
+      "structureReview": "式の例→希望の演出→家族・納骨先→費用→公的手続き。",
+      "readerRoleReview": "式を準備する家族と、生前に希望を持つ本人。",
+      "repetitionReview": "注意より進行例を先に示し、演出・通常費用・法定手続きを分ける。",
+      "primaryInformationReview": "事業者の式の案内と火葬の公的条件を確認。進行例は一例と明示。",
+      "sourceIds": [
+        "tsubasa-music",
+        "burial-law"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "3c2d8f45b253b96463b8da197ea3e8fc46b78fb73544f6d35d6ac6b74cafb39f",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/death-procedures/",
+      "readerQuestion": "死亡後の手続きは何から始める？",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "医師の書類、死亡届と火葬許可から始め、保険・年金・契約等を順に進める。"
+      },
+      "structureReview": "死亡届→保険介護→年金→自治体支援→民間契約→相続・税。",
+      "readerRoleReview": "亡くなった後の遺族・申請者。制度ごとに対象者を区別。",
+      "repetitionReview": "同じ窓口確認を重ねず、できることと必要な書類・期限を説明。",
+      "primaryInformationReview": "戸籍・年金、3/4/10か月、相続税基礎控除、相続登記3年と経過措置を確認。",
+      "sourceIds": [
+        "family-register-law",
+        "komoro-death",
+        "ueda-death",
+        "karuizawa-death",
+        "tateshina-death",
+        "tomioka-death",
+        "nenkin-death",
+        "court-renunciation",
+        "nta-final-income-tax",
+        "nta-inheritance-deadline",
+        "nenkin-survivor-pension",
+        "nta-inheritance-tax-threshold",
+        "nta-inheritance-spouse-relief",
+        "real-estate-registration-law"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 6,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "e8f35fbd3833bbb7e855baf23062aa6dac2685f078f9c80af63255e4668f7a24",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/cremation-permit/",
+      "readerQuestion": "火葬許可証とは？",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "死亡届を出した市区町村の許可証を火葬場へ出し、返却後は納骨用に保管する。"
+      },
+      "structureReview": "取得→予約との違い→24時間の原則→持参返却→納骨・紛失・改葬。",
+      "readerRoleReview": "火葬・納骨の書類を手配する遺族。",
+      "repetitionReview": "書類の意味から利用まで一本の流れにし、重複FAQを置かない。",
+      "primaryInformationReview": "墓埋法・戸籍法、市町村の予約と窓口手順を確認。",
+      "sourceIds": [
+        "burial-law",
+        "family-register-law",
+        "komoro-death",
+        "annaka-crematorium"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "4415f68bee2e282c9c784d465245d94ab849b31b3b1204705fd8e96271ceba95",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/guides/distant-family/",
+      "readerQuestion": "遠方の家族を葬儀に呼ぶには？",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "まず逝去と調整中の状況を知らせ、確定後に場面・時刻・場所をまとめて伝える。"
+      },
+      "structureReview": "未定・確定の連絡→保存できる案内→移動→宿泊・費用→参加方法。",
+      "readerRoleReview": "連絡・日程調整を行う遺族。",
+      "repetitionReview": "旅程予約を急かす注意を除き、連絡内容と移動の役割を具体化。",
+      "primaryInformationReview": "火葬の日程条件と施設利用の案内を確認。所要時間や宿泊費を創作しない。",
+      "sourceIds": [
+        "tsubasa-halls",
+        "tsubasa-family",
+        "burial-law"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "5d28c80b9143d37a4e52f3c64b58ecfa001a8db9034d1574c57d6c2727c64007",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/regions/saku/",
+      "readerQuestion": "佐久市で家族が亡くなったら、何から始めて、どの窓口で手続きをするか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "医師の確認後に搬送・安置を決め、死亡届・火葬許可、葬儀後の給付へ進む。"
+      },
+      "structureReview": "搬送→届出と交付時間→斎場の準備→給付→遠方親族。",
+      "readerRoleReview": "家族が亡くなった後の遺族。",
+      "repetitionReview": "火葬・葬儀の料金を分け、地域習慣と移動を必要な箇所で説明。",
+      "primaryInformationReview": "市の窓口・時間、佐久平23,000/69,000円と死亡時住民登録、国保期限を確認。",
+      "sourceIds": [
+        "saku-death",
+        "saku-crematorium",
+        "saku-crematorium-guide-2026",
+        "saku-benefit",
+        "tsubasa-local-custom",
+        "fdma-emergency",
+        "saku-crematorium-ordinance",
+        "saku-crematorium-delegation"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "23af85e98789928257b712090bab4bc0d00a86f0d3fe1c1346474c561261c8ed",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/regions/ueda/",
+      "readerQuestion": "上田市で家族が亡くなったら、何から始めて、どの窓口で手続きをするか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "搬送・安置と死亡届・火葬を手配し、市のハンドブックとナビで手続きを選ぶ。"
+      },
+      "structureReview": "葬儀日程→市の手続き→2斎場の料金→戸籍の目安→給付。",
+      "readerRoleReview": "家族が亡くなった後の遺族。",
+      "repetitionReview": "届出・戸籍・給付を分け、一般的な注意より地域の実務を説明。",
+      "primaryInformationReview": "届出窓口、大星14,000/42,000円・依田窪18,000/54,000円、国保翌日期限を確認。",
+      "sourceIds": [
+        "ueda-death",
+        "ueda-handbook-2026",
+        "ueda-procedures-navi",
+        "ueda-benefit",
+        "ueda-death-notice"
+      ],
+      "researchLimitations": [],
+      "structure": {
+        "sections": 5,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "0760b17b3114b291bf46d52f02049225e5e57a13143f6a4e46b5112db7287306",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/regions/komoro/",
+      "readerQuestion": "小諸市で家族が亡くなったら、何から始めて、どの窓口で手続きをするか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "搬送・安置から始め、斎場の仮予約と役所の本予約を進める。"
+      },
+      "structureReview": "届出人と持参者→仮・本予約→地域習慣→給付と戸籍。",
+      "readerRoleReview": "家族が亡くなった後の遺族。",
+      "repetitionReview": "訃報例に故人の遺志を創作せず、生活改善の実際の方針を説明。",
+      "primaryInformationReview": "24時間業者仮予約・役所本予約、佐久平住民登録基準、国保窓口等を確認。",
+      "sourceIds": [
+        "komoro-death",
+        "komoro-benefit",
+        "saku-crematorium",
+        "saku-crematorium-guide-2026",
+        "saku-union-municipalities",
+        "tsubasa-local-custom",
+        "burial-law",
+        "national-health-law",
+        "saku-crematorium-ordinance",
+        "saku-crematorium-delegation"
+      ],
+      "researchLimitations": [
+        "national-health-start-date"
+      ],
+      "structure": {
+        "sections": 4,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "8f85eb798c08d6124c528c9e800d42a260450343645c42ddc1cf061f9339f606",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/regions/karuizawa/",
+      "readerQuestion": "軽井沢町で家族が亡くなったら、何から始めて、どの窓口で手続きをするか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "現地から搬送・安置を頼み、死亡届を手配する。保険の申請先は加入先で決まる。"
+      },
+      "structureReview": "迎えの住所→届出と許可証→遠方家族の予定→国保と町外保険。",
+      "readerRoleReview": "亡くなった方の家族。別荘滞在・町外住所の事例を区別。",
+      "repetitionReview": "搬送地と加入保険、儀式の日数と滞在予定を混同しない。",
+      "primaryInformationReview": "町のガイドブック、交付時刻、保険年金係、住所地特例の案内を確認。",
+      "sourceIds": [
+        "karuizawa-death",
+        "karuizawa-death-guide",
+        "karuizawa-benefit",
+        "family-register-law",
+        "fdma-emergency",
+        "national-health-law"
+      ],
+      "researchLimitations": [
+        "national-health-start-date"
+      ],
+      "structure": {
+        "sections": 4,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "c348a4d1e0de6e2b6e54f5c5f8e550ce3f1976c7c301f715e487814ad3cfee27",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/regions/miyota/",
+      "readerQuestion": "御代田町で家族が亡くなったら、何から始めて、どの窓口で手続きをするか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "搬送・安置を頼み、町民課で死亡届、火葬予約と許可証を手配する。"
+      },
+      "structureReview": "移動の区間→町の届出→斎場当日→給付。",
+      "readerRoleReview": "家族が亡くなった後の遺族。",
+      "repetitionReview": "納骨書類は許可証の流れへ統合。町の手数料と火葬料を分ける。",
+      "primaryInformationReview": "町民課・時間外窓口、300円、佐久平住民登録基準、国保年金係を確認。",
+      "sourceIds": [
+        "miyota-death",
+        "miyota-benefit",
+        "miyota-benefit-book",
+        "saku-crematorium-guide-2026",
+        "saku-union-municipalities",
+        "national-health-law",
+        "saku-crematorium-ordinance",
+        "saku-crematorium-delegation",
+        "saku-crematorium"
+      ],
+      "researchLimitations": [
+        "national-health-start-date"
+      ],
+      "structure": {
+        "sections": 4,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "d24582a4eac4658117c7ab95cfe8f7bd1a5ebeff60a2ae43a6154e30c497686e",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/regions/tateshina/",
+      "readerQuestion": "立科町で家族が亡くなったら、何から始めて、どの窓口で手続きをするか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "搬送・安置、死亡届と火葬から始め、葬儀後に保険・財産の手続きを整理する。"
+      },
+      "structureReview": "最初の手配→戸籍→国保請求→所有・契約していたもの。",
+      "readerRoleReview": "家族が亡くなった後の遺族。",
+      "repetitionReview": "土地等の話を葬儀後へ移し、条例から請求書・省略条件を具体化。",
+      "primaryInformationReview": "国保条例50,000円・規則34条、省略条件、町民課の担当、戸籍約1週を確認。",
+      "sourceIds": [
+        "tateshina-death",
+        "tateshina-benefit",
+        "tateshina-kokuho-rule",
+        "family-register-law",
+        "burial-law",
+        "fdma-emergency",
+        "national-health-law"
+      ],
+      "researchLimitations": [
+        "national-health-start-date"
+      ],
+      "structure": {
+        "sections": 4,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "1c454c5238c037ab30e41420cfeffca672f3763095e90b0f035406f5b1b2c819",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/regions/annaka/",
+      "readerQuestion": "安中市で家族が亡くなったら、何から始めて、どの窓口で手続きをするか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "搬送・安置を手配し、聖苑の電話予約後に死亡届と利用手続きを行う。"
+      },
+      "structureReview": "搬送→電話予約と届出→火葬・待合室料金→国保申請。",
+      "readerRoleReview": "家族が亡くなった後の遺族。",
+      "repetitionReview": "公的使用料と葬儀費用の違いを一箇所で説明し、料金だけ表にする。",
+      "primaryInformationReview": "開閉庁窓口、年齢別火葬料・待合室料、国保申請書類と旧保険条件を確認。",
+      "sourceIds": [
+        "annaka-crematorium",
+        "annaka-benefit",
+        "burial-law",
+        "family-register-law",
+        "national-health-law"
+      ],
+      "researchLimitations": [
+        "national-health-start-date",
+        "annaka-resident-definition"
+      ],
+      "structure": {
+        "sections": 4,
+        "tables": 1,
+        "faq": 0
+      },
+      "articleJsonSha256": "7f6489a81fef04ec8496a6cabbc7bd26ac4602ef4f36c1924b50d606764537a8",
+      "status": "reviewed"
+    },
+    {
+      "url": "https://okurinochizu.jp/regions/tomioka/",
+      "readerQuestion": "富岡市で家族が亡くなったら、何から始めて、どの窓口で手続きをするか。",
+      "openingAnswer": {
+        "reviewed": true,
+        "summary": "搬送・安置と火葬を手配し、死亡届後の市の手続きは予約制窓口も使える。"
+      },
+      "structureReview": "葬儀準備→おくやみ予約→国保申請→市と民間の手続き。",
+      "readerRoleReview": "家族が亡くなった後の遺族。帰省する家族の予定も説明。",
+      "repetitionReview": "予約と給付申請を分け、葬儀当日と葬儀後の手続きを混同しない。",
+      "primaryInformationReview": "8日前予約の除外日・3枠・通知・2番窓口、2026ガイドの葬祭費2年を確認。",
+      "sourceIds": [
+        "tomioka-death",
+        "tomioka-benefit",
+        "tomioka-okuyami-guide-2026",
+        "family-register-law",
+        "burial-law",
+        "fdma-emergency",
+        "national-health-law"
+      ],
+      "researchLimitations": [
+        "national-health-start-date"
+      ],
+      "structure": {
+        "sections": 4,
+        "tables": 0,
+        "faq": 0
+      },
+      "articleJsonSha256": "bece89f07fdb3a1f061cbf15777129d41e31727bb6407b009dcc131a841107d0",
+      "status": "reviewed"
+    }
+  ]
+}

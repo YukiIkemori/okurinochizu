@@ -3,28 +3,71 @@
     "id": "annaka-benefit",
     "title": "安中市｜国民健康保険の給付",
     "url": "https://www.city.annaka.lg.jp/page/1638.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/annaka-benefit.html。"
   },
   {
     "id": "annaka-crematorium",
     "title": "安中市｜火葬の利用手続き・使用料",
     "url": "https://www.city.annaka.lg.jp/page/1537.html",
-    "checkedAt": "2026-10-08",
-    "note": "公的な火葬手続きと使用料の出典です。葬儀社のプラン料金とは別に確認してください。"
+    "checkedAt": "2026-10-09",
+    "note": "公的な火葬手続きと使用料の出典です。葬儀社のプラン料金とは別に確認してください。 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/annaka-crematorium.html。"
   },
   {
     "id": "burial-law",
     "title": "e-Gov法令検索｜墓地、埋葬等に関する法律",
     "url": "https://laws.e-gov.go.jp/law/323AC0000000048",
-    "checkedAt": "2026-10-08",
-    "note": "埋火葬・改葬の許可、墓地の原則などを確認した法令です。"
+    "checkedAt": "2026-10-09",
+    "note": "現行の取得済みe-Gov一次資料を読み、死亡届の期限/提出先および火葬・改葬許可の基本を確認。法令全文は .local/institution-review に保持。"
+  },
+  {
+    "id": "burial-regulations",
+    "title": "e-Gov法令検索｜墓地、埋葬等に関する法律施行規則",
+    "url": "https://laws.e-gov.go.jp/law/323M40000100024",
+    "checkedAt": "2026-10-09",
+    "note": "API/1/lawdata/323M40000100024 の全文を取得。第2条の改葬申請事項・現管理者の証明・使用者以外の承諾、第5条の分骨証明を確認。保存: .local/rewrite-burial-sources/burial-regulation-api.html。"
+  },
+  {
+    "id": "civil-law",
+    "title": "e-Gov法令検索｜民法 第960条・第968条",
+    "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+    "checkedAt": "2026-10-09",
+    "note": "APIの原文で遺言の方式と自筆証書遺言の定めを確認。エンディングノートの記載だけで遺言と同じ効力があるとは説明しない。"
+  },
+  {
+    "id": "consumer-hotline",
+    "title": "消費者庁｜消費者ホットライン",
+    "url": "https://www.caa.go.jp/policies/policy/local_cooperation/local_consumer_administration/hotline/",
+    "checkedAt": "2026-10-09",
+    "note": "消費者ホットライン188の公的案内。国民生活センターの墓じまい費用相談と併せて使用。"
+  },
+  {
+    "id": "court-renunciation",
+    "title": "裁判所｜相続の放棄の申述",
+    "url": "https://www.courts.go.jp/saiban/syurui/syurui_kazi/kazi_06_13/index.html",
+    "checkedAt": "2026-10-09",
+    "note": "自己のために相続の開始があったことを知った時から3か月以内、申述先は被相続人の最後の住所地の家庭裁判所。遺産分割の辞退とは異なる手続きと説明。"
+  },
+  {
+    "id": "elderly-health-law",
+    "title": "e-Gov法令検索｜高齢者の医療の確保に関する法律 第160条",
+    "url": "https://laws.e-gov.go.jp/law/357AC0000000080",
+    "checkedAt": "2026-10-09",
+    "note": "後期高齢者医療給付を受ける権利は行使できる時から2年で時効。群馬の具体的起算日をこの条文から葬祭翌日とは断定しない。公式API XMLの第160条を読了。"
   },
   {
     "id": "family-register-law",
     "title": "e-Gov法令検索｜戸籍法 第86条・第87条",
     "url": "https://laws.e-gov.go.jp/law/322AC0000000224",
-    "checkedAt": "2026-10-08",
-    "note": "死亡届の期限・届出人の原則を確認した法令です。個別事情は自治体窓口へ確認してください。"
+    "checkedAt": "2026-10-09",
+    "note": "現行の取得済みe-Gov一次資料を読み、死亡届の期限/提出先および火葬・改葬許可の基本を確認。法令全文は .local/institution-review に保持。"
+  },
+  {
+    "id": "fdma-ambulance-manual",
+    "title": "総務省消防庁｜救急車利用マニュアル",
+    "url": "https://www.fdma.go.jp/publication/portal/items/portal002_japanese.pdf",
+    "checkedAt": "2026-10-09",
+    "note": "PDF本文を取得して確認。反応や呼吸の異常がある場合の119番通報、電話の指示による応急手当、手当をする人以外による救急隊の誘導を確認。"
   },
   {
     "id": "fdma-emergency",
@@ -33,115 +76,375 @@
     "checkedAt": "2026-10-08"
   },
   {
+    "id": "funeral-survey-2026",
+    "title": "鎌倉新書｜第7回お葬式に関する全国調査（2026年）",
+    "url": "https://www.kamakura-net.co.jp/newstopics/12326/",
+    "note": "2026年5月12日公表。直近2年に喪主等を経験した40歳以上2,000人のインターネット調査。形式別費用の公表額。",
+    "checkedAt": "2026-10-09"
+  },
+  {
+    "id": "funeral-survey-2026-detail",
+    "title": "鎌倉新書｜第7回お葬式に関する全国調査・調査全文",
+    "url": "https://www.e-sogi.com/guide/60603/",
+    "note": "基本料金・飲食費・返礼品費の合計と、2026年までの金額を中央値で再集計した旨を確認。全国参考値、地域の必要額/料金表ではない。",
+    "checkedAt": "2026-10-09"
+  },
+  {
+    "id": "gunma-late-benefit",
+    "title": "群馬県後期高齢者医療広域連合｜葬祭費",
+    "url": "https://www.gunma-kouiki.jp/scene/kyuhu/sousai/",
+    "checkedAt": "2026-10-09",
+    "note": "葬儀を行った方に50,000円。故人がお住まいだった市町村の後期高齢者担当窓口。期限はこのページに明記なし。"
+  },
+  {
+    "id": "gunma-late-ordinance",
+    "title": "群馬県後期高齢者医療広域連合｜後期高齢者医療に関する条例 第2条",
+    "url": "https://www.gunma-kouiki.jp/wp-content/uploads/2026/08/080101.pdf",
+    "checkedAt": "2026-10-09",
+    "note": "葬祭を行う者に50,000円。他の健康保険等から同一死亡について相当給付を受けられる場合は不支給。期限起算日は条例に記載なし。"
+  },
+  {
+    "id": "japanpost-yupack",
+    "title": "日本郵便｜ゆうパック",
+    "url": "https://www.post.japanpost.jp/service/send/domestic/delivery/yu-pack/",
+    "checkedAt": "2026-10-09",
+    "note": "国内ゆうパックの案内。送り状に受取/差出人住所氏名電話・内容品・こわれもの区分、郵便局持込/集荷、追跡、運賃は地域/サイズ別を確認。公式サイトに国内遺骨固有FAQは発見できず、遺骨のゆうパック送付は受入れサービス公式指定と併せて説明。唯一の配送事業者/補償で価値回復等は書かない。 旧URLがHTTPの移転先へ転送するため、新しいHTTPS正規ページを再取得。送り状、集荷、追跡、地域/サイズ運賃、国内サービス規定を本文で再確認。"
+  },
+  {
     "id": "karuizawa-benefit",
     "title": "軽井沢町｜国保で受けられるおもな給付",
     "url": "https://www.town.karuizawa.lg.jp/page/1136.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/karuizawa-benefit.html。"
   },
   {
     "id": "karuizawa-death",
     "title": "軽井沢町｜おくやみガイドブック",
     "url": "https://www.town.karuizawa.lg.jp/page/1764.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/karuizawa-death.html。"
+  },
+  {
+    "id": "karuizawa-death-guide",
+    "title": "軽井沢町｜おくやみガイドブック（PDF）",
+    "url": "https://www.town.karuizawa.lg.jp/uploaded/attachment/6591.pdf",
+    "note": "画像PDFを取得し紙面2/3/8/9（PDF5/6/11/12）を描画し目視読了。火葬仮予約と許可証交付、保険年金係3番窓口/電話、町外保険の施設入居者、喪主通帳写し/印鑑/会葬礼状または領収書を確認。葬祭費期限は冊子に記載なし。死亡一時金と未支給年金の期限は別制度なので流用しない。",
+    "checkedAt": "2026-10-09"
   },
   {
     "id": "kenpo-burial",
     "title": "全国健康保険協会｜埋葬料・埋葬費",
     "url": "https://www.kyoukaikenpo.or.jp/benefit/burial_charges/index.html",
-    "checkedAt": "2026-10-08",
+    "checkedAt": "2026-10-09",
     "note": "国民健康保険の葬祭費とは別の制度です。対象者と申請先を確認してください。"
+  },
+  {
+    "id": "kenpo-burial-application",
+    "title": "全国健康保険協会｜埋葬料（費）支給申請書",
+    "url": "https://www.kyoukaikenpo.or.jp/application_form/benefit/012/",
+    "checkedAt": "2026-10-09",
+    "note": "埋葬料・家族埋葬料は死亡年月日の翌日、埋葬費は埋葬年月日の翌日を起算日とする2年の時効。"
   },
   {
     "id": "kokusen-funeral",
     "title": "国民生活センター｜葬儀サービスの料金トラブル",
     "url": "https://www.kokusen.go.jp/news/data/n-20260603_2.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "事前情報収集、複数人での打合せ、見積明細と追加費用等の助言を確認。トラブル数値は不安をあおるための材料として転載しない。"
+  },
+  {
+    "id": "kokusen-grave-service",
+    "title": "国民生活センター｜墓・葬儀サービス",
+    "url": "https://www.kokusen.go.jp/soudan_topics/data/sougi.html",
+    "checkedAt": "2026-10-09",
+    "note": "墓の宗派契約・改葬時離檀料・根拠不明の高額請求の相談事例を確認。費用相場の根拠にはせず、見積項目分離と事前相談の説明に使用。"
+  },
+  {
+    "id": "komoro-benefit",
+    "title": "小諸市｜国保給付に関する手続き",
+    "url": "https://www.city.komoro.lg.jp/soshikikarasagasu/shiminseikatsubu/shiminka/1/3/2/2044.html",
+    "checkedAt": "2026-10-09",
+    "note": "国保の正しい医療の給付ページを再取得。国保被保険者死亡時に葬祭を行う方へ50,000円、死亡に伴う手続きの際に申請。新規原文 .local/rewrite-region-sources/komoro-benefit.*。後期高齢のページと区別。期限の記載なし。"
   },
   {
     "id": "komoro-death",
     "title": "小諸市｜死亡（死亡届）",
     "url": "https://www.city.komoro.lg.jp/soshikikarasagasu/shiminseikatsubu/shiminka/1/2/5/1123.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/komoro-death.html。"
+  },
+  {
+    "id": "mhlw-acp",
+    "title": "厚生労働省｜人生会議（ACP：アドバンス・ケア・プランニング）",
+    "url": "https://www.mhlw.go.jp/stf/newpage_02783.html",
+    "checkedAt": "2026-10-09",
+    "note": "希望する医療やケアを本人・家族・医療ケアチームで繰り返し話し合い共有する考え方を確認。葬儀の生前準備と療養中の意思決定を区別した。"
+  },
+  {
+    "id": "mhlw-death-manual",
+    "title": "厚生労働省｜令和8年度版死亡診断書（死体検案書）記入マニュアル",
+    "url": "https://www.mhlw.go.jp/toukei/manual/",
+    "checkedAt": "2026-10-09",
+    "note": "令和8年度版PDFの3～5頁・20頁を確認。死亡診断書と死体検案書の使い分け、診察と交付、異状がない場合は警察への届出が不要であること、死亡届との関係を確認。"
+  },
+  {
+    "id": "miyota-benefit",
+    "title": "御代田町｜国民健康保険の給付",
+    "url": "https://www.town.miyota.nagano.jp/category/kokumihoken/2179.html",
+    "checkedAt": "2026-10-09",
+    "note": "国保加入者の死亡時、葬祭を行った方が申請。金額は令和8年度サービス一覧表で別途確認。 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/miyota-benefit.html。"
+  },
+  {
+    "id": "miyota-benefit-book",
+    "title": "御代田町｜令和8年度サービス一覧表",
+    "url": "https://www.town.miyota.nagano.jp/file/183447.pdf",
+    "checkedAt": "2026-10-09",
+    "note": "令和8年度サービス一覧表の項目17に国保加入者の死亡時に喪主へ50,000円、保健福祉課国保年金係と確認。取得資料 .local/institution-review/miyota-benefit-book.*。"
   },
   {
     "id": "miyota-death",
     "title": "御代田町｜死亡（死亡届）",
     "url": "https://www.town.miyota.nagano.jp/category/koseki/2058.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/miyota-death.html。"
+  },
+  {
+    "id": "nac-family-fees",
+    "title": "国民生活センター｜依然として多い葬儀サービスの料金トラブル",
+    "url": "https://www.kokusen.go.jp/news/data/n-20260603_2.html",
+    "checkedAt": "2026-10-09",
+    "note": "2026年6月3日公表。家族葬・一日葬の広告料金と総額の相違、複数人での打合せ、明細付き見積書の受領を確認。被害例の金額やトラブル件数は本記事群には転記していない。"
+  },
+  {
+    "id": "nagano-late-benefit",
+    "title": "長野県後期高齢者医療広域連合｜葬祭費",
+    "url": "https://www.koukikourei-nagano.jp/docs/312.html",
+    "checkedAt": "2026-10-09",
+    "note": "被保険者死亡時、葬祭を行った方に50,000円。故人が住んでいた市町村担当窓口へ申請。"
+  },
+  {
+    "id": "nagano-late-deadline",
+    "title": "長野県後期高齢者医療広域連合｜葬祭費の申請期限",
+    "url": "https://www.koukikourei-nagano.jp/docs/138.html",
+    "checkedAt": "2026-10-09",
+    "note": "葬祭を行った日の翌日から2年以内。これは後期高齢の取扱いであり、未確認自治体国保の起算日に代用しない。"
+  },
+  {
+    "id": "national-health-law",
+    "title": "e-Gov法令検索｜国民健康保険法 第110条（時効）",
+    "url": "https://laws.e-gov.go.jp/law/333AC0000000192",
+    "checkedAt": "2026-10-09",
+    "note": "第110条に保険給付を受ける権利は行使できる時から2年で時効消滅と確認。自治体ごとの未確認の起算日は推測しない。一次資料 .local/rewrite-research/national-health-law-egov.xml。"
+  },
+  {
+    "id": "nenkin-death",
+    "title": "日本年金機構｜年金を受けている方が亡くなったとき",
+    "url": "https://www.nenkin.go.jp/service/jukyu/tetsuduki/kyotsu/jukyu/20140731-01.html",
+    "checkedAt": "2026-10-09",
+    "note": "未支給年金の対象、遺族の順位、請求書と添付書類、マイナンバー収録時の死亡届省略と請求の区別を確認。旧推定URLは404で、公式サービス一覧から現在のURLを特定。"
+  },
+  {
+    "id": "nenkin-survivor-pension",
+    "title": "日本年金機構｜遺族年金",
+    "url": "https://www.nenkin.go.jp/service/jukyu/seido/izokunenkin/jukyu-yoken/20150401-03.html",
+    "checkedAt": "2026-10-09",
+    "note": "遺族年金は故人によって生計を維持されていた遺族が条件を満たす場合に受ける年金。年金の加入・納付状況、遺族の年齢・優先順位などで対象が変わる。未支給年金との違いを簡潔に説明。"
+  },
+  {
+    "id": "niigata-mutual-aid",
+    "title": "新潟県｜冠婚葬祭互助会契約のトラブル",
+    "url": "https://www.pref.niigata.lg.jp/sec/shohiseikatsu/1356920768675.html",
+    "checkedAt": "2026-10-09",
+    "note": "一般的な約款の返金期限は解約申出から45日以内。預貯金ではなくサービス契約、利息なし・解約手数料が発生。全契約の法定保証と断定しない。"
+  },
+  {
+    "id": "nta-final-income-tax",
+    "title": "国税庁｜No.2022 納税者が死亡したときの確定申告（準確定申告）",
+    "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2022.htm",
+    "checkedAt": "2026-10-09",
+    "note": "申告が必要な場合に相続人等が行い、相続の開始を知った日の翌日から4か月以内。すべての遺族に義務があるとは説明しない。"
+  },
+  {
+    "id": "nta-inheritance-deadline",
+    "title": "国税庁｜No.4205 相続税の申告と納税",
+    "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4205.htm",
+    "checkedAt": "2026-10-09",
+    "note": "死亡したことを知った日の翌日から10か月以内、原則として故人の住所地所轄税務署への申告。申告が必要な場合という条件を本文に明示。"
+  },
+  {
+    "id": "nta-inheritance-spouse-relief",
+    "title": "国税庁｜No.4158 配偶者の税額の軽減",
+    "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4158.htm",
+    "checkedAt": "2026-10-09",
+    "note": "配偶者税額軽減の適用に申告書・書類の提出が必要なことを確認。軽減で税額ゼロでも申告が必要になる場合があると説明。"
+  },
+  {
+    "id": "nta-inheritance-tax-threshold",
+    "title": "国税庁｜No.4102 相続税がかかる場合",
+    "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/sozoku/4102.htm",
+    "checkedAt": "2026-10-09",
+    "note": "基礎控除30,000,000円＋6,000,000円×法定相続人の数、正味遺産額の計算で葬式費用/債務等控除と対象生前贈与加算を確認。基準超過で必ず納税と断定せず配偶者軽減等の申告要件も示した。"
   },
   {
     "id": "osaka-mutual-aid",
-    "title": "大阪市消費者センター｜冠婚葬祭互助会の注意点",
+    "title": "大阪市消費者センター｜冠婚葬祭互助会とのトラブルに注意",
     "url": "https://www.city.osaka.lg.jp/lnet/page/0000233504.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "2025年12月22日更新。互助会はサービス前払い、満期でも解約時には所定手数料控除。"
+  },
+  {
+    "id": "real-estate-registration-law",
+    "title": "e-Gov法令検索｜不動産登記法 第76条の2・令和3年法律第24号附則",
+    "url": "https://laws.e-gov.go.jp/law/416AC0000000123",
+    "checkedAt": "2026-10-09",
+    "note": "API1法令全文で相続開始と所有権取得を知った日から3年、施行前相続にも適用し知った日と施行日の遅い方を起算する附則5条6項を確認。API2のlaw_revisions履歴に令和3法律24の施行2024-04-01が明示。施行前から相続と取得を知っていた例のみ2027-03-31期限と記載。法務省/法務局/政府広報は403のため法令原文で代替確認。"
   },
   {
     "id": "saitama-mutual-aid",
     "title": "埼玉県｜冠婚葬祭互助会の契約・解約トラブル",
     "url": "https://www.pref.saitama.lg.jp/b0304/shohisoudan/jirei/sonota/20240625.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "2026年2月25日掲載。預貯金ではなく利息なし、原則約款の手数料控除、会食・ドライアイス・返礼品追加、188。"
   },
   {
     "id": "saku-benefit",
     "title": "佐久市｜国保で受けられる給付",
     "url": "https://www.city.saku.nagano.jp/kurashi/zeikin_hokenryo/kokuho_nenkin_kouki/kokuho/kokuhokyuuhukankei/kyufu.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/saku-benefit.html。"
   },
   {
     "id": "saku-crematorium",
     "title": "佐久広域連合｜佐久平斎場（火葬場）",
     "url": "https://www.areasaku.or.jp/crematorium/",
-    "checkedAt": "2026-10-08",
-    "note": "公的な火葬手続きの出典です。最新の利用案内と住民区分を確認してください。"
+    "checkedAt": "2026-10-09",
+    "note": "公的な火葬手続きの出典です。最新の利用案内と住民区分を確認してください。 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/saku-crematorium.html。"
+  },
+  {
+    "id": "saku-crematorium-delegation",
+    "title": "佐久広域連合｜佐久平斎場の事務の委託に関する規約",
+    "url": "https://www.areasaku.or.jp/gyosei/reiki/H427902500005/H427902500005_j.html",
+    "checkedAt": "2026-10-09",
+    "note": "第2条の読み替え表により佐久市斎場条例別表及び備考の市民を構成市町村の住民、本市を構成市町村とする。故人の死亡時の住民登録を基準に23,000円/69,000円の一般火葬料を適用する根拠。現行例規集は令和8年2月20日現在。原文 .local/rewrite-research/saku-crematorium-delegation.html とtxt。"
+  },
+  {
+    "id": "saku-crematorium-guide-2026",
+    "title": "佐久広域連合｜佐久平斎場及び霊柩車の利用案内（令和8年5月1日改訂）",
+    "url": "https://www.areasaku.or.jp/fs/7/6/1/3/6/_/%E4%BD%90%E4%B9%85%E5%B9%B3%E6%96%8E%E5%A0%B4%E5%8F%8A%E3%81%B3%E9%9C%8A%E6%9F%A9%E8%BB%8A%E3%81%AE%E5%88%A9%E7%94%A8%E6%A1%88%E5%86%85_%E4%BB%A4%E5%92%8C8%E5%B9%B45%E6%9C%881%E6%97%A5%EF%BC%9A%E3%80%90%E6%94%B9%E8%A8%82%E7%89%88%E3%80%91.pdf",
+    "note": "12歳以上の火葬23,000円/69,000円、当日現金、許可証2種類と骨壺持参、返却書類、所要約1時間45分、原則休業日と乗入れ車両を確認。取得PDFとテキスト .local/rewrite-region-sources/saku-crematorium-book.*。",
+    "checkedAt": "2026-10-09"
+  },
+  {
+    "id": "saku-crematorium-ordinance",
+    "title": "佐久市｜佐久市斎場条例（別表備考の住民区分）",
+    "url": "https://en3-jg.d1-law.com/saku/d1w_reiki/H427901010035/H427901010035_j.html",
+    "checkedAt": "2026-10-09",
+    "note": "別表備考1(1)は死亡者が死亡時に本市の住民基本台帳に記録されていた場合に市民料金。別途、佐久広域連合委託規約2条で本市を構成市町村へ読み替える。現行例規集は令和8年7月6日現在。原文 .local/rewrite-research/saku-crematorium-ordinance-body.html とtxt。"
+  },
+  {
+    "id": "saku-death",
+    "title": "佐久市｜戸籍の届出（死亡届）",
+    "url": "https://www.city.saku.nagano.jp/kurashi/koseki_juminhyo/koseki/todokede.html",
+    "note": "死亡届の提出先・必要物・本庁/支所/時間外窓口、許可証の交付時刻、火葬予約を確認。新規取得原文 .local/rewrite-region-sources/saku-death.html。",
+    "checkedAt": "2026-10-09"
+  },
+  {
+    "id": "saku-local-custom",
+    "title": "佐久市｜生活改善の申合せ",
+    "url": "https://www.city.saku.nagano.jp/bunka/shogai/kominkan/osirase/seikatukaizen.html",
+    "note": "葬儀の香典1,000円以内、香典返しなし、花輪・生花・供物等自粛、灰寄せ近親者中心。軽井沢町は不参加。",
+    "checkedAt": "2026-10-09"
+  },
+  {
+    "id": "saku-union-municipalities",
+    "title": "佐久広域連合｜連合について・構成市町村",
+    "url": "https://www.areasaku.or.jp/gyosei/about/",
+    "note": "佐久圏域11市町村の共同組織。ページ掲載の構成市町村に小諸市・佐久市・御代田町・軽井沢町・立科町を含むことを確認。料金区分の構成市町村の説明に使用。",
+    "checkedAt": "2026-10-09"
   },
   {
     "id": "tateshina-benefit",
     "title": "立科町｜国民健康保険条例 第7条（葬祭費）",
     "url": "https://www.town.tateshina.nagano.jp/section/reiki_int/reiki_honbun/e730RG00000318.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/tateshina-benefit.html。"
   },
   {
     "id": "tateshina-death",
     "title": "立科町｜死亡後の手続き",
     "url": "https://www.town.tateshina.nagano.jp/seikatsu/okuyami/1732.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/tateshina-death.html。"
+  },
+  {
+    "id": "tateshina-kokuho-forms",
+    "title": "立科町｜国民健康保険の様式集・町民課福祉係",
+    "url": "https://www.town.tateshina.nagano.jp/soshiki/chomin/fukushi/293.html",
+    "checkedAt": "2026-10-09",
+    "note": "国保担当は町民課福祉係、0267-88-8405。死亡届を扱う町民課住民係と区別。"
+  },
+  {
+    "id": "tateshina-kokuho-rule",
+    "title": "立科町｜国民健康保険条例施行規則 第34条（葬祭費）",
+    "url": "https://www.town.tateshina.nagano.jp/section/reiki_int/reiki_honbun/e730RG00000319.html",
+    "note": "fact_checks取得資料 .local/rewrite-research/tateshina-kokuho-rule.txt を読了。様式第20号の請求書、死亡診断書又は埋火葬許可証の写し、町で死亡事実確認済の場合の省略条件を確認。期限記載なし。",
+    "checkedAt": "2026-10-09"
   },
   {
     "id": "tomioka-benefit",
     "title": "富岡市｜国民健康保険の給付",
     "url": "https://www.city.tomioka.lg.jp/www/contents/1000000002408/index.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/tomioka-benefit.html。"
   },
   {
     "id": "tomioka-death",
     "title": "富岡市｜おくやみ窓口",
     "url": "https://www.city.tomioka.lg.jp/www/contents/1639555641108/index.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/tomioka-death.html。"
+  },
+  {
+    "id": "tomioka-death-book",
+    "title": "富岡市｜おくやみ手続きガイド 2026年4月",
+    "url": "https://www.city.tomioka.lg.jp/www/contents/1584491792631/files/okuyami202604.pdf",
+    "checkedAt": "2026-10-09",
+    "note": "国保・後期高齢の葬祭費は喪主申請、2年以内。冊子は起算日を明記しない。国保係又は医療年金係への申請。"
+  },
+  {
+    "id": "tomioka-okuyami-guide-2026",
+    "title": "富岡市｜おくやみ手続ガイド（2026年4月）",
+    "url": "https://www.city.tomioka.lg.jp/www/contents/1584491792631/files/okuyami202604.pdf",
+    "note": "fact_checks取得資料 .local/rewrite-research/tomioka-book.txt を読了。国保/後期の葬祭費申請は喪主、資格確認書等/領収書/通帳/本人確認書類、期限2年以内。起算日までは冊子に明記なし。最新必要物の確認に使用。",
+    "checkedAt": "2026-10-09"
   },
   {
     "id": "tsubasa-call",
     "title": "つばさ公益社｜緊急の方へ",
     "url": "https://so-gi.com/call",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "搬送の電話で知らせる氏名、施設名・住所、迎えの時刻、安置先、および病院紹介の葬儀社を辞退できる案内を確認。広告の迎え時間は一般化していない。"
   },
   {
     "id": "tsubasa-direct",
     "title": "つばさ公益社｜つばさの直葬",
     "url": "https://so-gi.com/price/fukushiso2019",
-    "checkedAt": "2026-10-08",
-    "note": "公式には直葬・福祉葬は事前相談が必要と記載されています。適用条件と、面会・お別れ等の内容を確認してください。"
+    "checkedAt": "2026-10-09",
+    "note": "直葬のプラン、面会等の項目、事前相談条件を確認。価格表が複数ページで一致しないため、本稿に当該社の具体額は掲載していない。"
   },
   {
     "id": "tsubasa-ending-note",
     "title": "つばさ公益社｜エンディングノートの書き方",
     "url": "https://so-gi.com/topics/566",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "希望・連絡先・書類・家族共有という実務項目を参照。法律/医療の説明は法令及び厚労省で裏づけた。"
   },
   {
     "id": "tsubasa-family",
     "title": "つばさ公益社｜つばさの家族葬",
     "url": "https://so-gi.com/price/kazokuso2019",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "葬儀費用の要素・個別プランの適用条件を参照。固定価格や宿泊可能人数を一般化しない。"
   },
   {
     "id": "tsubasa-grave-closure",
@@ -153,13 +456,15 @@
     "id": "tsubasa-halls",
     "title": "つばさ公益社｜施設案内",
     "url": "https://so-gi.com/hall",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "施設の個別利用条件を確認する対象として参照。特定の宿泊人数や設備を全施設へ一般化しない。"
   },
   {
     "id": "tsubasa-inquiry",
     "title": "つばさ公益社｜資料請求・相談窓口",
     "url": "https://so-gi.com/inquiry",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "資料請求・相談の受付を確認。相談だけで契約になるとは断定せず、費用や申込内容は手続きごとに区別して説明。"
   },
   {
     "id": "tsubasa-karuizawa",
@@ -178,15 +483,15 @@
     "id": "tsubasa-komoro-tree",
     "title": "つばさ公益社｜小諸ひらはら樹木葬霊園",
     "url": "https://so-gi.com/jyumokuso/jyumokuso-komoro",
-    "checkedAt": "2026-10-08",
-    "note": "区画ごとの料金・人数・収蔵期間を確認してください。一般的な最低価格とは区別します。"
+    "checkedAt": "2026-10-09",
+    "note": "小諸市八満691-44、ひまわり税込220,000/250,000円、さくら450,000/500,000/550,000円、最後の納骨から13年後合祀、延長有料、7寸1個/2個、3人目以降110,000円と粉骨または分骨・粉骨別料金、銘板30,000円、生前契約年3,300円、火気厳禁を確認。"
   },
   {
     "id": "tsubasa-local-custom",
     "title": "つばさ公益社｜生活改善方式について",
     "url": "https://so-gi.com/topics/436",
-    "checkedAt": "2026-10-08",
-    "note": "地域の風習の解説であり、自治体全体に共通する制度や義務を示すものではありません。"
+    "checkedAt": "2026-10-09",
+    "note": "再取得し生活改善方式が佐久・小諸地域の任意の申し合わせであることを確認。具体的な金額を地域全体共通とは説明しない。"
   },
   {
     "id": "tsubasa-miyota",
@@ -199,7 +504,8 @@
     "id": "tsubasa-music",
     "title": "つばさ公益社｜奏葬式・音楽葬の案内",
     "url": "https://so-gi.com/relief/grief/ongakusou",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "音楽葬の開式、演奏、献花等、謝辞、閉式の実例を確認。本文は一般的な一例として再構成し、心理効果や2020年実績数値を転載しない。"
   },
   {
     "id": "tsubasa-mutual-aid",
@@ -212,8 +518,8 @@
     "id": "tsubasa-nishikaruizawa",
     "title": "つばさ公益社｜西軽井沢樹木葬霊園",
     "url": "https://so-gi.com/jyumokuso/nishikaruizawa-jyumokusou",
-    "checkedAt": "2026-10-08",
-    "note": "所在地は軽井沢町ではなく御代田町です。区画・個別期間・合祀条件を契約前に確認してください。"
+    "checkedAt": "2026-10-09",
+    "note": "御代田町草越112、共同合祀90,000円、個別一人13年330,000円/33年550,000円、夫婦13年660,000円/33年880,000円、33年墓誌付帯、墓誌60,000円から、火気厳禁・石版通路を確認。起算日未掲載のため小諸と同じとは書かない。個別欄にも共同と同じ説明文があり、表で個別納骨方法を断言せず管理者説明事項に。"
   },
   {
     "id": "tsubasa-otai",
@@ -225,14 +531,15 @@
     "id": "tsubasa-prices",
     "title": "つばさ公益社｜プランと費用",
     "url": "https://so-gi.com/price",
-    "checkedAt": "2026-10-08",
-    "note": "掲載価格には適用条件があり、複数の料金表も掲載されています。最新の条件と税込総額を直接確認してください。"
+    "checkedAt": "2026-10-09",
+    "note": "一日葬・二日葬・直葬の流れと掲載項目を確認。掲載価格には適用条件があり、具体額の一般化はしていない。"
   },
   {
     "id": "tsubasa-remains-kit",
     "title": "つばさ公益社｜「おくるだけ樹木葬」埋葬キット",
     "url": "https://so-gi.com/jyumokuso/kit",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "国内ゆうパック専用キット→納骨代行→当日写真と埋葬証明書郵送、骨壺の蓋固定/緩衝材/袋/外箱、許可証と契約書等同封、共同区画を確認。165,000円税込掲載は確認したが本文は単一事業者の販売説明にしないため転記せず費用の項目を説明。"
   },
   {
     "id": "tsubasa-saku",
@@ -263,7 +570,8 @@
     "id": "tsubasa-tree",
     "title": "つばさ公益社｜樹木葬霊園",
     "url": "https://so-gi.com/jyumokuso",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": "霊園内納骨、管理・供養、維持費、宗教不問、共同/個別区画料金・見学と契約の流れを再読。最安など比較根拠のない広告表現は転記しない。"
   },
   {
     "id": "tsubasa-ueda",
@@ -275,46 +583,42 @@
     "id": "ueda-benefit",
     "title": "上田市｜葬祭費の支給（国民健康保険）",
     "url": "https://www.city.ueda.nagano.jp/soshiki/kokuhonenkin/3364.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/ueda-benefit.html。"
   },
   {
     "id": "ueda-death",
     "title": "上田市｜死亡に伴うお手続き",
     "url": "https://www.city.ueda.nagano.jp/soshiki/simin/83309.html",
-    "checkedAt": "2026-10-08"
+    "checkedAt": "2026-10-09",
+    "note": " 本リライトで一次資料を再取得して本文の該当項目を確認。原文 .local/rewrite-region-sources/ueda-death.html。"
+  },
+  {
+    "id": "ueda-death-notice",
+    "title": "上田市｜死亡届・届出窓口と火葬料",
+    "url": "https://www.city.ueda.nagano.jp/soshiki/simin/2218.html",
+    "checkedAt": "2026-10-09",
+    "note": "本庁市民課と6地域自治センターの届出窓口、平日8:30〜17:15、時間外の宿直受付、戸籍係0268-71-6353を確認。12歳以上火葬料は大星14,000/42,000円、依田窪18,000/54,000円。組織市町村は上田/東御/長和/青木、死亡届時に火葬手数料支払い。新規取得原文 .local/rewrite-region-sources/ueda-death-notice.*。"
+  },
+  {
+    "id": "ueda-handbook-2026",
+    "title": "上田市｜おくやみハンドブック",
+    "url": "https://www.city.ueda.nagano.jp/soshiki/simin/124409.html",
+    "note": "リンク先PDF https://www.city.ueda.nagano.jp/uploaded/attachment/79403.pdf を取得して読了。国保葬祭費の必要物/喪主/期限/給付担当0268-75-7101、各種手続きと窓口を確認。",
+    "checkedAt": "2026-10-09"
+  },
+  {
+    "id": "ueda-procedures-navi",
+    "title": "上田市｜おくやみ手続きナビ",
+    "url": "https://www.city.ueda.nagano.jp/soshiki/simin/123918.html",
+    "note": "市の質問型手続き案内。死亡に伴う手続きページと合わせ、必要な約60種類から該当する手続きを選ぶ案内を確認。",
+    "checkedAt": "2026-10-09"
   },
   {
     "id": "ueda-reburial",
     "title": "上田市｜改葬許可証の申請について",
     "url": "https://www.city.ueda.nagano.jp/soshiki/simin/90807.html",
-    "checkedAt": "2026-10-08"
-  },
-  {
-    "id": "komoro-benefit",
-    "title": "小諸市｜国保給付に関する手続き",
-    "url": "https://www.city.komoro.lg.jp/soshikikarasagasu/shiminseikatsubu/shiminka/1/3/2/2044.html",
     "checkedAt": "2026-10-09",
-    "note": "国保の被保険者死亡時、葬祭を行う方へ50,000円。死亡手続きの際に申請。期限はこのページに明記されていない。"
-  },
-  {
-    "id": "miyota-benefit",
-    "title": "御代田町｜国民健康保険の給付",
-    "url": "https://www.town.miyota.nagano.jp/category/kokumihoken/2179.html",
-    "checkedAt": "2026-10-09",
-    "note": "国保加入者の死亡時、葬祭を行った方が申請。金額は令和8年度サービス一覧表で別途確認。"
-  },
-  {
-    "id": "miyota-benefit-book",
-    "title": "御代田町｜令和8年度サービス一覧表",
-    "url": "https://www.town.miyota.nagano.jp/file/183447.pdf",
-    "checkedAt": "2026-10-09",
-    "note": "項目17「葬祭費」に国保加入者の死亡時、喪主へ50,000円、保健福祉課国保年金係と記載。"
-  },
-  {
-    "id": "kenpo-burial-application",
-    "title": "全国健康保険協会｜埋葬料（費）支給申請書",
-    "url": "https://www.kyoukaikenpo.or.jp/application_form/benefit/012/",
-    "checkedAt": "2026-10-09",
-    "note": "埋葬料・家族埋葬料は死亡年月日の翌日、埋葬費は埋葬年月日の翌日を起算日とする2年の時効。"
+    "note": "現納骨地が上田市の場合。申請書・受入証明書コピー（永代使用許可証等可）、一人一枚、郵送返信封筒、市民課/丸子真田武石地域自治センターを確認。分骨は市町村改葬許可不要、管理者への連絡を確認。"
   }
 ]
