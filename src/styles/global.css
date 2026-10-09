@@ -147,3 +147,22 @@
   .editorial-image--header img,.editorial-image--interlude img{aspect-ratio:2/1}
   .editorial-image--interlude{margin-block:24px}
 }
+
+/* Keep navigation available without taking space from the reading column. */
+:root{--header-height:64px}
+html{scroll-padding-top:calc(var(--header-height) + 12px)}
+.site-header{position:sticky;top:0;z-index:50;height:var(--header-height);background:var(--paper)}
+.header-inner{height:100%;min-height:0}
+.brand>span{font-size:25px}
+.brand svg{width:30px;height:30px}
+.prose-section{scroll-margin-top:12px}
+.skip-link{position:fixed;z-index:100}
+@media(max-width:760px){
+  :root{--header-height:60px}
+  .brand>span{font-size:24px}
+  .brand svg{width:28px;height:28px}
+  .mobile-menu nav{top:100%}
+  .site-header{transition:transform 180ms ease-out}
+  .site-header--hidden{transform:translateY(-100%);pointer-events:none}
+}
+@media(max-width:359px){.brand>span{font-size:22px}}

@@ -44,3 +44,53 @@ test('a 320-pixel viewport provides accessible controls without horizontal page 
   const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
   expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
 });
+
+test('mobile header follows reading direction and keeps menu and keyboard navigation usable', async ({ page }) => {
+  await isolateAnalytics(page);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/guides/hospital-transport/');
+  const header = page.locator('.site-header');
+  const top = async () => (await header.boundingBox())?.y ?? 0;
+  const bottom = async () => {
+    const box = await header.boundingBox();
+    return box ? box.y + box.height : 1;
+  };
+  await expect.poll(top).toBe(0);
+  expect((await header.boundingBox())?.height).toBeLessThanOrEqual(60);
+  await page.evaluate(() => window.scrollTo(0, 700));
+  await expect.poll(bottom).toBeLessThanOrEqual(0);
+  await page.evaluate(() => window.scrollTo(0, 500));
+  await expect.poll(top).toBe(0);
+
+  const menu = page.locator('.mobile-menu');
+  await menu.locator('summary').click();
+  await expect(menu.getByRole('link', { name: '記事一覧', exact: true })).toBeInViewport();
+  const nav = await menu.locator('nav').boundingBox();
+  const box = await header.boundingBox();
+  expect(nav!.y).toBeGreaterThanOrEqual(box!.y + box!.height - 1);
+  await page.evaluate(() => window.scrollTo(0, 1000));
+  await expect.poll(top).toBe(0);
+  await expect(menu.getByRole('link', { name: '地域の案内', exact: true })).toBeInViewport();
+  await menu.locator('summary').click();
+  await page.evaluate(() => window.scrollTo(0, 1200));
+  await expect.poll(bottom).toBeLessThanOrEqual(0);
+
+  // Keyboard access reveals navigation that was hidden during touch scrolling.
+  await page.keyboard.press('Shift+Tab');
+  await expect.poll(top).toBe(0);
+  await expect(header.locator('.brand')).toBeFocused();
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Enter');
+  await expect(menu.getByRole('link', { name: '記事一覧', exact: true })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(menu).not.toHaveAttribute('open', '');
+  await expect(menu.locator('summary')).toBeFocused();
+
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await expect.poll(top).toBe(0);
+  await expect(header.locator('.desktop-nav')).toBeVisible();
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect.poll(top).toBe(0);
+  await expectNoHorizontalOverflow(page);
+});

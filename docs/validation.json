@@ -1,8 +1,8 @@
 {
-  "verified_at": "2026-10-09T07:04:26.268Z",
+  "verified_at": "2026-10-09T10:14:08.553Z",
   "build": {
     "status": "passed",
-    "fingerprint": "7bbac8f7067664c90cd55af0fce16668c7f2a83c972e751d72593330381c10cf",
+    "fingerprint": "d7de0c1a60916a4d91117ce551baea01436a3c6ca81c8f7ddb4066ee5f1e0302",
     "htmlPages": 39,
     "indexablePages": 37,
     "articles": 24,
@@ -14,12 +14,12 @@
     "total": 32,
     "passed": 32,
     "failed": 0,
-    "url_set_unchanged": false
+    "url_set_unchanged": true
   },
   "browser": {
-    "startTime": "2026-10-09T06:56:12.979Z",
-    "duration": 20467.808,
-    "expected": 16,
+    "startTime": "2026-10-09T10:11:24.534Z",
+    "duration": 24157.902000000002,
+    "expected": 18,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0,
@@ -32,7 +32,7 @@
       375,
       320
     ],
-    "conditions": 18,
+    "conditions": 9,
     "html_pages": 39,
     "article_list_rows": 166,
     "article_body_columns": 1,
@@ -41,13 +41,12 @@
     "home_hero_desktop_columns": 2,
     "home_hero_mobile_columns": 1,
     "pictured_pages": 36,
-    "rendered_images_checked": 36,
     "crop_adjustment_conditions": 6,
     "region_name_list_conditions": 3,
-    "checked_at": "2026-10-09T06:59:49.249Z",
-    "reviewed_pages": 6,
-    "review_scope": "Six pages affected by referral placement, contextual links and benefit-table changes; previous full photography review retained separately",
-    "screenshots": 60
+    "checked_at": "2026-10-09T10:12:02.046Z",
+    "reviewed_pages": 3,
+    "review_scope": "Header and about-page change on home, about and hospital-transport; earlier article, table and photograph checks retained",
+    "screenshots": 17
   },
   "navigation": {
     "reachable_indexable_pages": 37,
@@ -74,6 +73,7 @@
     "html_responses": 39,
     "webp_assets": 272,
     "css_assets": 1,
+    "javascript_assets": 0,
     "redirects": 12,
     "total_checks": 326,
     "standard_checks": 18,
@@ -83,7 +83,7 @@
     "project": "okurinochizu",
     "hosting": "okurinochizu",
     "result": "Firebase CLI release complete",
-    "custom_domain": "Published HTML and assets match the verified build; quiet referral follows body/FAQ, 62 contextual links and 21 practical official-information links are present"
+    "custom_domain": "Published HTML, CSS, JavaScript and images match the verified build; compact desktop header stays visible, mobile header follows scroll direction, and the about-page regional prompt is removed"
   },
   "photography": {
     "original_assets": 68,
@@ -158,5 +158,24 @@
       "tomiokaPriorInsuranceQualificationLoss": true,
       "cremationExceptionsNotAllStillbirth": true
     }
+  },
+  "header": {
+    "checked_at": "2026-10-09T10:12:02.046Z",
+    "desktop_height": 64,
+    "mobile_height": 60,
+    "mobile_breakpoint": 760,
+    "desktop": "Always visible at the top",
+    "mobile": "Hidden while reading down; shown when scrolling up",
+    "menu_and_keyboard": "Header stays visible during menu use and keyboard focus",
+    "reduced_motion_respected": true,
+    "anchor_headings_unobscured": true,
+    "rapid_menu_close_checks": 10,
+    "rapid_menu_close_failures": 0,
+    "rapid_menu_close_checked_at": "2026-10-09T10:11:31.771Z",
+    "script_delivery": "Inline module included in the byte-verified HTML"
+  },
+  "about": {
+    "regional_reading_prompt_removed": true,
+    "privacy_link_retained": true
   }
 }
