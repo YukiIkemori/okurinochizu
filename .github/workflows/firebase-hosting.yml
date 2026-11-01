@@ -1,0 +1,63 @@
+# Publishes okurinochizu.jp to Firebase Hosting from GitHub, so no token has to
+# live in a local or cloud environment. Runs the same gates as `npm run deploy`
+# (check, build, external links, browser tests, release gate) before deploying.
+# Credentials: repository secret FIREBASE_SERVICE_ACCOUNT (the JSON key of a
+# service account with the Firebase Hosting Admin role on project okurinochizu).
+name: Firebase Hosting
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+  workflow_dispatch:
+
+concurrency:
+  group: firebase-hosting
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check that the deploy credential exists
+        id: cred
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -z "$SA" ]; then
+            echo "FIREBASE_SERVICE_ACCOUNT is not set; skipping the deploy."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.cred.outputs.ready == 'true'
+      - uses: actions/setup-node@v4
+        if: steps.cred.outputs.ready == 'true'
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install
+        if: steps.cred.outputs.ready == 'true'
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Check, build, external links, browser tests
+        if: steps.cred.outputs.ready == 'true'
+        run: |
+          npm run check
+          npm run build
+          # Some official sites answer 503 under load; retry only the failures once.
+          npm run validate:links || (sleep 90 && npm run validate:links -- --retry-failed)
+          npm test
+      - uses: google-github-actions/auth@v3
+        if: steps.cred.outputs.ready == 'true'
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      - name: Release gate and deploy
+        if: steps.cred.outputs.ready == 'true'
+        run: |
+          node scripts/release-gate.mjs
+          npx --yes firebase-tools deploy --only hosting --project okurinochizu --non-interactive

@@ -22,8 +22,8 @@ if (browser) {
 }
 const home = await readFile('dist/index.html', 'utf8');
 if (!/data-measurement-id="G-YH2YL4ZMCH"/.test(home)) problems.push('The published build does not contain the user-provided GA4 measurement ID.');
-if (!process.env.FIREBASE_TOKEN?.trim()) problems.push('FIREBASE_TOKEN is not bound in this environment. Add the user-provided token as an environment secret; do not place it in source files.');
+if (!process.env.FIREBASE_TOKEN?.trim() && !process.env.GOOGLE_APPLICATION_CREDENTIALS?.trim()) problems.push('No Firebase credential is bound. Use the FIREBASE_TOKEN environment secret locally, or the FIREBASE_SERVICE_ACCOUNT repository secret in GitHub Actions; never place credentials in source files.');
 if (problems.length) {
   for (const message of problems) console.error(`BLOCKED: ${message}`);
   process.exitCode = 1;
-} else console.log('Release gate passed: current build, external URLs, browser checks, GA4 ID and Firebase token binding verified.');
+} else console.log('Release gate passed: current build, external URLs, browser checks, GA4 ID and Firebase credential binding verified.');
