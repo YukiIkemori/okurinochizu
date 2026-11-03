@@ -490,6 +490,26 @@
     "originalSha256": "223461faf3637f29cf9c11340d8726be727a80e400605bbb26c56c8194dac6ee"
   },
   {
+    "key": "guide-welfare-funeral-header",
+    "source": "src/assets/editorial/unique/guide-welfare-funeral-header.webp",
+    "subject": "淡いリネンに置いた無地の封筒と白い野の花",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "1a89432c4540c1d3ee0480b8915c22ff89c85fc068efdf9f417c9b477f70279e",
+    "originalFile": "gpt-image-2-welfare-funeral-header.png",
+    "originalSha256": "694eee74bb7a4e0e88006bf6f174dff466e4e392630d699dbab9385337202b1f"
+  },
+  {
+    "key": "guide-welfare-funeral-interlude",
+    "source": "src/assets/editorial/unique/guide-welfare-funeral-interlude.webp",
+    "subject": "障子越しの朝の光と木の床",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "303703847e63ef9c977c16dd47e7aa54c0923aefc23006881d82f9b7e7a7af79",
+    "originalFile": "gpt-image-2-welfare-funeral-interlude.png",
+    "originalSha256": "93d0593bfd64b54c13d0cbf824c9359c703db26e1f1bc88b682274f2fde4270f"
+  },
+  {
     "key": "guides-header",
     "source": "src/assets/editorial/still-life.png",
     "subject": "無地のノート、鉛筆、茶器",
