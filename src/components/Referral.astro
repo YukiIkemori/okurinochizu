@@ -1,7 +1,7 @@
 ---
 import type { Referral } from '../data/types';
-interface Props { referral: Referral; slug?: string; region?: string; intent?: string; placement?: string; }
-const { referral, slug = '', region = '', intent = '', placement = 'article-end' } = Astro.props;
+interface Props { referral: Referral; slug?: string; region?: string; intent?: string; placement?: string; inline?: boolean; }
+const { referral, slug = '', region = '', intent = '', placement = 'article-end', inline = false } = Astro.props;
 const prompt = intent === 'cemetery' ? 'お墓・供養についての相談は、' : intent === 'planning' ? '葬儀の事前相談は、' : intent === 'urgent' ? '搬送や葬儀についての相談は、' : '葬儀についての相談は、';
 const destination = new URL(referral.href);
 if (destination.hostname !== 'so-gi.com' && destination.hostname !== 'www.so-gi.com') throw new Error('Unexpected referral host');
@@ -10,4 +10,4 @@ destination.searchParams.set('utm_medium', 'referral');
 destination.searchParams.set('utm_campaign', 'reader-guide');
 destination.searchParams.set('utm_content', [slug || region || 'home', placement].join('-'));
 ---
-<p class="referral">{prompt}<a href={destination.toString()} rel="noopener" data-provider-link data-content-slug={slug} data-region={region} data-intent={intent} data-placement={placement}>つばさ公益社</a>へ。</p>
+<p class={inline ? 'referral-inline' : 'referral'}>{prompt}<a href={destination.toString()} rel="noopener" data-provider-link data-content-slug={slug} data-region={region} data-intent={intent} data-placement={placement}>つばさ公益社</a>へ。</p>

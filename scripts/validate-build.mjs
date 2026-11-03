@@ -183,7 +183,10 @@ for (const [route, { $, ids }] of pages) {
       const renderedLinks = rendered.find('a[href]').toArray().map(node => ({ href: $(node).attr('href'), text: $(node).text() }));
       if (renderedLinks.length !== expectedLinks.length || expectedLinks.some(link => !renderedLinks.some(renderedLink => renderedLink.href === link.href && renderedLink.text === link.text))) fail(route, `Missing or unexpected inline links: ${section.id}`);
     }
-    if ($('[data-provider-link]').length !== 1 || $('.referral [data-provider-link]').length !== 1) fail(route, 'Guide/region must have only one provider link in its end note.');
+    const inlineNotes = $('.article-body > .referral-inline');
+    const expectedInline = photoArticle?.inlineReferralAfter ? 1 : 0;
+    if ($('.referral [data-provider-link]').length !== 1 || $('[data-provider-link]').length !== 1 + expectedInline || inlineNotes.length !== expectedInline) fail(route, 'Guide/region must have one end-note provider link, plus at most the one configured in-article note.');
+    if (expectedInline && (!inlineNotes.prev().is(`#${photoArticle.inlineReferralAfter}`) || inlineNotes.find('[data-provider-link]').attr('data-placement') !== 'in-article')) fail(route, 'In-article provider note must follow its configured section and carry the in-article placement.');
     const note = $('.article-body > .referral');
     const lastContentSelector = photoArticle?.faq?.length ? '.faq' : '.prose-section';
     if (note.length !== 1 || !note.prev().is(lastContentSelector) || !note.next().hasClass('related-articles') || note.prevAll('.related-articles').length || note.nextAll().toArray().some(node => !$(node).hasClass('related-articles'))) fail(route, 'Provider note must follow the article body/FAQ directly and precede related navigation.');

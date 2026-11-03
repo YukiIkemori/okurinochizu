@@ -17,6 +17,7 @@ export type Article = {
   answer: string; lead: string; sections: Section[];
   faq: { q: string; a: string }[]; sources: string[];
   related: string[]; regions: string[]; keywords: string[]; referral: Referral;
+  inlineReferralAfter?: string;
   publishedAt: string; updatedAt: string;
 };
 export type Region = {

@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { isolateAnalytics } from './helpers';
-const content = JSON.parse(readFileSync(new URL('../src/data/content.json', import.meta.url), 'utf8')) as { articles: { slug: string; faq: unknown[] }[] };
+const content = JSON.parse(readFileSync(new URL('../src/data/content.json', import.meta.url), 'utf8')) as { articles: { slug: string; faq: unknown[]; inlineReferralAfter?: string }[] };
 
 const regions = [
   ['saku', '佐久市'], ['ueda', '上田市'], ['komoro', '小諸市'], ['karuizawa', '軽井沢町'],
@@ -48,7 +48,10 @@ test('all article guides keep the referral after their body or FAQ and before na
   for (const article of content.articles) {
     const response = await page.goto(`/guides/${article.slug}/`);
     expect(response?.status(), `${article.slug} must have a published page`).toBe(200);
-    await expect(page.locator('[data-provider-link]')).toHaveCount(1);
+    await expect(page.locator('[data-provider-link]')).toHaveCount(article.inlineReferralAfter ? 2 : 1);
+    if (article.inlineReferralAfter) {
+      await expect(page.locator(`.article-body > #${article.inlineReferralAfter} + .referral-inline [data-provider-link]`)).toHaveAttribute('data-placement', 'in-article');
+    }
     await expect(page.locator('.article-head [data-provider-link]')).toHaveCount(0);
     await expectReferralBeforeNavigation(page, article.faq.length > 0);
   }

@@ -23,6 +23,8 @@
 
 .referral{margin:36px 0 0;font-size:15px;line-height:2}
 .page-intro h1:first-child{margin-top:0}
+.referral-inline{margin:24px 0 0;font-size:15px;line-height:2}
+.referral-inline a{text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px}
 .referral a{text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px}
 @media(max-width:760px){.referral{margin-top:28px}}
 

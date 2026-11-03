@@ -83,7 +83,8 @@
         "葬儀社への電話"
       ],
       "publishedAt": "2026-10-08",
-      "updatedAt": "2026-10-12"
+      "updatedAt": "2026-10-12",
+      "inlineReferralAfter": "call"
     },
     {
       "slug": "home-death",
@@ -170,7 +171,8 @@
         "自宅での安置"
       ],
       "publishedAt": "2026-10-08",
-      "updatedAt": "2026-10-12"
+      "updatedAt": "2026-10-12",
+      "inlineReferralAfter": "home"
     },
     {
       "slug": "first-day",
@@ -282,7 +284,8 @@
         "訃報"
       ],
       "publishedAt": "2026-10-08",
-      "updatedAt": "2026-10-12"
+      "updatedAt": "2026-10-12",
+      "inlineReferralAfter": "first"
     },
     {
       "slug": "family-funeral",
@@ -418,7 +421,8 @@
         "家族葬と一日葬の違い"
       ],
       "publishedAt": "2026-10-08",
-      "updatedAt": "2026-10-12"
+      "updatedAt": "2026-10-12",
+      "inlineReferralAfter": "money"
     },
     {
       "slug": "one-day-funeral",
@@ -516,7 +520,8 @@
         "一日葬と家族葬"
       ],
       "publishedAt": "2026-10-08",
-      "updatedAt": "2026-10-12"
+      "updatedAt": "2026-10-12",
+      "inlineReferralAfter": "flow"
     },
     {
       "slug": "direct-cremation",
@@ -621,7 +626,8 @@
         "火葬前のお別れ"
       ],
       "publishedAt": "2026-10-08",
-      "updatedAt": "2026-10-12"
+      "updatedAt": "2026-10-12",
+      "inlineReferralAfter": "total"
     },
     {
       "slug": "choose-funeral-company",
@@ -714,7 +720,8 @@
         "葬儀場"
       ],
       "publishedAt": "2026-10-08",
-      "updatedAt": "2026-10-12"
+      "updatedAt": "2026-10-12",
+      "inlineReferralAfter": "availability"
     },
     {
       "slug": "funeral-cost",
@@ -887,7 +894,8 @@
         "葬儀 相場"
       ],
       "publishedAt": "2026-10-08",
-      "updatedAt": "2026-10-12"
+      "updatedAt": "2026-10-12",
+      "inlineReferralAfter": "starting-price"
     },
     {
       "slug": "estimate-checklist",
