@@ -250,6 +250,26 @@
     "originalSha256": "45738e084b5ba4838cf0c259c5f3f8e2315bafc0d8d4f712e7a089320cf370e2"
   },
   {
+    "key": "guide-funeral-schedule-header",
+    "source": "src/assets/editorial/unique/guide-funeral-schedule-header.webp",
+    "subject": "障子窓のそばの木の台に置いた白い菊の花器、たたんだ麻布、木箱",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "5a2d4673550d60ab9efc74c32410c62213ac27b7050a6b545a6cbe11db5ed0fd",
+    "originalFile": "gpt-image-2-funeral-schedule-header.png",
+    "originalSha256": "1c25af2a87af8b44723d5dbbf12666e5fc8675375e9047ef966fde9ded7827aa"
+  },
+  {
+    "key": "guide-funeral-schedule-interlude",
+    "source": "src/assets/editorial/unique/guide-funeral-schedule-interlude.webp",
+    "subject": "夕方の光が差す縁側と庭の若木",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "a39138b5c3e06e655bd06a2a0968b54412ae8dfd8b8c312c5b8f333ba0248d7b",
+    "originalFile": "gpt-image-2-funeral-schedule-interlude.png",
+    "originalSha256": "6b97f392d7cb3cb12a41dca687d3316feb5b0903313645f1d4f023e06f25f031"
+  },
+  {
     "key": "guide-grave-closure-header",
     "source": "src/assets/editorial/unique/guide-grave-closure-header.webp",
     "subject": "irregular stream stones with low green moss",
