@@ -10,6 +10,26 @@
     "originalSha256": "d4a78fbbbd01416556929b84ab3a4944298da8f4d22ae59283f97b3b78963d17"
   },
   {
+    "key": "guide-chief-mourner-header",
+    "source": "src/assets/editorial/unique/guide-chief-mourner-header.webp",
+    "subject": "障子窓のそばの座卓に置いた急須と湯のみ二つ、たたんだ藍色の風呂敷",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "fd585b0789ba9efbe0e29ce9997ee3f5aa3018d1f74197bb0583f2c96109f728",
+    "originalFile": "gpt-image-2-chief-mourner-header.png",
+    "originalSha256": "e5f279ff1e87e38a49b94206334083fd63789ea635f2491f7ba7146cda88d96c"
+  },
+  {
+    "key": "guide-chief-mourner-interlude",
+    "source": "src/assets/editorial/unique/guide-chief-mourner-interlude.webp",
+    "subject": "午後の光が差す玄関の上がり框にそろえた二足のスリッパと、白い花の小さな花器",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "59fb391b52d03c238b0f8e63f33c4902ba14bdfa963450f7b2e218186d85b801",
+    "originalFile": "gpt-image-2-chief-mourner-interlude.png",
+    "originalSha256": "db883a661cc57fdb4a7ff23836c2ff1c56ecffd28c166ab739750677a03e03bc"
+  },
+  {
     "key": "guide-choose-funeral-company-header",
     "source": "src/assets/editorial/unique/guide-choose-funeral-company-header.webp",
     "subject": "家庭の窓辺にある木とリネンの椅子",
