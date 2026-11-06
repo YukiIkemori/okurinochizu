@@ -35,7 +35,7 @@ test('small-screen navigation, reading and table layouts remain usable', async (
   await expectNoHorizontalOverflow(page);
   await page.locator('.related-articles .directory-heading').getByRole('link', { name: '記事一覧', exact: true }).click();
   await expect(page).toHaveURL('/guides/');
-  await expect(page.locator('.article-list > li')).toHaveCount(27);
+  await expect(page.locator('.article-list > li')).toHaveCount(28);
   await page.getByRole('link', { name: '墓じまいは何から始める？', exact: true }).click();
   const question = page.locator('.faq details').first();
   await question.locator('summary').click();

@@ -270,6 +270,26 @@
     "originalSha256": "45738e084b5ba4838cf0c259c5f3f8e2315bafc0d8d4f712e7a089320cf370e2"
   },
   {
+    "key": "guide-funeral-flow-header",
+    "source": "src/assets/editorial/unique/guide-funeral-flow-header.webp",
+    "subject": "すりガラスの窓のそばの木の棚に置いた、ガラスの花器の白百合と、木の盆にのせた青磁の香立て、重ねた無地の和紙",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "ca71728cff74ed2dcc30412f6894ff128ad97d4b3fbf5b5fd51ce30cdb153951",
+    "originalFile": "gpt-image-2-funeral-flow-header.png",
+    "originalSha256": "2b53eb4ba33972d654a34b98aae7329ba990fb340186241cc6e00f60ccd74764"
+  },
+  {
+    "key": "guide-funeral-flow-interlude",
+    "source": "src/assets/editorial/unique/guide-funeral-flow-interlude.webp",
+    "subject": "夕方の光が障子越しに差す板張りの廊下と、奥の床に置いた陶器の花器の青い枝",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "1a969839e974f4ae4ac4943b95968e28c39cba251bbd346e7d408ce06d1fdc6f",
+    "originalFile": "gpt-image-2-funeral-flow-interlude.png",
+    "originalSha256": "e2c55ad8adc309f4a7b4dbbda1349a67278af4412627a6aacd14ea65cae536e9"
+  },
+  {
     "key": "guide-funeral-schedule-header",
     "source": "src/assets/editorial/unique/guide-funeral-schedule-header.webp",
     "subject": "障子窓のそばの木の台に置いた白い菊の花器、たたんだ麻布、木箱",
