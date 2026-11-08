@@ -32,6 +32,18 @@ region,keyword_family,primary_url,supporting_url,intent,priority,measured_monthl
 小諸市,互助会・解約,/regions/komoro/,/guides/mutual-aid-cancellation/,契約の切り替え,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
 小諸市,葬祭費・死亡後の手続き,/regions/komoro/,/guides/funeral-benefit/,行政申請,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
 小諸市,終活・事前相談,/regions/komoro/,/guides/preconsultation/,事前に不安を解消,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+東御市,家族葬,/regions/tomi/,/guides/family-funeral/,葬儀形式と相談,P1,未取得,Googleサジェスト（2026-11-09）に「東御市 家族葬」。検索量は取得していない
+東御市,葬儀・葬儀場,/regions/tomi/,/guides/first-day/,地域の段取りと相談,P1,未取得,Googleサジェスト（2026-11-09）に「東御市 葬儀場」。検索量は取得していない
+東御市,葬儀屋・葬儀社,/regions/tomi/,/guides/choose-funeral-company/,葬儀社選択と対応確認,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+東御市,近くの葬儀・近くで葬儀,/regions/tomi/,/guides/choose-funeral-company/,搬送と家族の移動,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+東御市,病院搬送・亡くなった方の搬送,/regions/tomi/,/guides/hospital-transport/,医療確認後の緊急搬送,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+東御市,葬儀費用・家族葬費用,/regions/tomi/,/guides/funeral-cost/,総額確認,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+東御市,合葬式墓地・樹木葬,/regions/tomi/,/guides/perpetual-care/,契約・個別期間・納骨先,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+東御市,お墓・永代供養,/regions/tomi/,/guides/grave-selection/,供養と承継,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+東御市,互助会・解約,/regions/tomi/,/guides/mutual-aid-cancellation/,契約の切り替え,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+東御市,葬祭費・死亡後の手続き,/regions/tomi/,/guides/funeral-benefit/,行政申請,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+東御市,終活・事前相談,/regions/tomi/,/guides/preconsultation/,事前に不安を解消,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+東御市,火葬場（大星斎場・依田窪斎場の料金）,/regions/tomi/,/guides/cremation-permit/,火葬の予約と料金,P1,未取得,Googleサジェスト（2026-11-09）に「大星斎場 料金」「依田窪斎場 アクセス」。検索量は取得していない
 軽井沢町,家族葬,/regions/karuizawa/,/guides/family-funeral/,葬儀形式と相談,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
 軽井沢町,葬儀・お葬式,/regions/karuizawa/,/guides/first-day/,地域の段取りと相談,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
 軽井沢町,葬儀屋・葬儀社,/regions/karuizawa/,/guides/choose-funeral-company/,葬儀社選択と対応確認,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない

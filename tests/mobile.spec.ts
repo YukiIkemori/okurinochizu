@@ -16,11 +16,11 @@ test('small-screen navigation, reading and table layouts remain usable', async (
   await page.getByRole('link', { name: '葬祭費・埋葬料はいくらもらえる？', exact: true }).click();
   await expect(page).toHaveURL('/guides/funeral-benefit/');
   await expectNoHorizontalOverflow(page);
-  const table = page.getByRole('region', { name: '国保：8地域とも葬祭費は50,000円の表', exact: true });
+  const table = page.getByRole('region', { name: '国保：9地域とも葬祭費は50,000円の表', exact: true });
   await expect(table).toBeVisible();
-  await expect(table.locator('tbody tr')).toHaveCount(8);
+  await expect(table.locator('tbody tr')).toHaveCount(9);
   await expect(table.locator('thead th')).toHaveText(['故人が加入していた国保', '葬祭費', '申請・相談する窓口']);
-  await expect(table.locator('tbody tr td:first-of-type')).toHaveText(Array(8).fill('50,000円'));
+  await expect(table.locator('tbody tr td:first-of-type')).toHaveText(Array(9).fill('50,000円'));
   await table.focus();
   await page.keyboard.press('ArrowRight');
   await expect.poll(() => table.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);

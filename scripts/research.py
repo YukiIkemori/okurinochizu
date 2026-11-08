@@ -2,7 +2,7 @@
 import concurrent.futures,datetime,json,pathlib,time,urllib.parse,urllib.request
 from bs4 import BeautifulSoup
 ROOT=pathlib.Path('.local/research'); ROOT.mkdir(parents=True,exist_ok=True)
-regions=['佐久市','上田市','小諸市','軽井沢町','御代田町','立科町','安中市','富岡市']
+regions=['佐久市','上田市','小諸市','東御市','軽井沢町','御代田町','立科町','安中市','富岡市']
 queries=[r+' '+k for r in regions for k in ['家族葬 葬儀','樹木葬 お墓','病院 搬送','葬祭費 公式','火葬場 公式']]
 queries += ['家族葬 費用 内訳','互助会 解約 国民生活センター','墓じまい 改葬 公式','死亡届 火葬許可 公式','近くの葬儀社 長野 群馬','一日葬 直葬 違い']
 def collect(pair):

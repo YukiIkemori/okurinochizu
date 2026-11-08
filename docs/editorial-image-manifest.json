@@ -710,6 +710,26 @@
     "originalSha256": "25ef68666e1d7b067bb565601015367b7d50b8e19255b22617eaae591cb2c14f"
   },
   {
+    "key": "region-tomi-header",
+    "source": "src/assets/editorial/unique/region-tomi-header.webp",
+    "subject": "午後の光を受ける高原の斜面のぶどう畑と、遠くの青い山並み",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "8c598622b3c5f533607424f1d663d07738c595513182057397bd0a13a5f965b8",
+    "originalFile": "gpt-image-2-region-tomi-header.png",
+    "originalSha256": "1fa00417469310d092ebd08c8ba84c3c208ffe6533f188eb84d36d1856865b55"
+  },
+  {
+    "key": "region-tomi-interlude",
+    "source": "src/assets/editorial/unique/region-tomi-interlude.webp",
+    "subject": "初秋の朝、霧の残る低い丘を望む畑の畦道と、道端の白い野菊",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "7c6b128d90f1c4de511af73c4e1e3e3529e4b3738dfad75ae1c81db7893961a5",
+    "originalFile": "gpt-image-2-region-tomi-interlude.png",
+    "originalSha256": "1ff18bf64d5d90d1acd7d9d44d6d4422edf1087c3de36d72ac23bc3efc799142"
+  },
+  {
     "key": "region-tomioka-header",
     "source": "src/assets/editorial/unique/region-tomioka-header.webp",
     "subject": "桑に似た緑葉の庭と暖かな壁",

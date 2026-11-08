@@ -4,7 +4,7 @@ import { isolateAnalytics } from './helpers';
 const content = JSON.parse(readFileSync(new URL('../src/data/content.json', import.meta.url), 'utf8')) as { articles: { slug: string; faq: unknown[]; inlineReferralAfter?: string }[] };
 
 const regions = [
-  ['saku', '佐久市'], ['ueda', '上田市'], ['komoro', '小諸市'], ['karuizawa', '軽井沢町'],
+  ['saku', '佐久市'], ['ueda', '上田市'], ['komoro', '小諸市'], ['tomi', '東御市'], ['karuizawa', '軽井沢町'],
   ['miyota', '御代田町'], ['tateshina', '立科町'], ['annaka', '安中市'], ['tomioka', '富岡市'],
 ];
 
@@ -23,7 +23,7 @@ async function expectReferralBeforeNavigation(page: Page, hasFaq = false) {
   expect(navigationOrderIsValid, 'the quiet referral must come before all related navigation').toBe(true);
 }
 
-test('all eight regional guides keep one quiet Tsubasa referral after the body and before navigation', async ({ page }) => {
+test('all nine regional guides keep one quiet Tsubasa referral after the body and before navigation', async ({ page }) => {
   await isolateAnalytics(page);
   for (const [slug, name] of regions) {
     const response = await page.goto(`/regions/${slug}/`);
