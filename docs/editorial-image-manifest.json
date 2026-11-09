@@ -690,6 +690,26 @@
     "originalSha256": "536ccf78074d0c84ce5e9375ca322edf04cf34ece0dd6546180e67b70ccdeaf6"
   },
   {
+    "key": "region-sakuho-header",
+    "source": "src/assets/editorial/unique/region-sakuho-header.webp",
+    "subject": "晩秋の朝、川沿いの斜面に色づくカラマツ林と、遠くの青い山並み",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "3cfb89ae57c3f9b686ac5b1787a071f1778ea12feb62d4c3b43052b0cc15bc05",
+    "originalFile": "gpt-image-2-region-sakuho-header.png",
+    "originalSha256": "0fc9ad1d055869bfaf738fb6c155b89c5ac3cc14c3e0afb6970d2ac3eb5b562b"
+  },
+  {
+    "key": "region-sakuho-interlude",
+    "source": "src/assets/editorial/unique/region-sakuho-interlude.webp",
+    "subject": "朝霧の残る針葉樹の森の、苔むした岩と倒木に囲まれた静かな池",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "d527c9a58ddd867f7d43cee320114c2984747bda825a137892fcd3109308662b",
+    "originalFile": "gpt-image-2-region-sakuho-interlude.png",
+    "originalSha256": "3c785e995591e1771023fd46b040ee1a6c282580754960217af092010ea2f514"
+  },
+  {
     "key": "region-tateshina-header",
     "source": "src/assets/editorial/unique/region-tateshina-header.webp",
     "subject": "高原の白い雲と草原",

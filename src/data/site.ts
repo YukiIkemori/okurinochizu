@@ -4,7 +4,7 @@ import type { Article, Region } from './types';
 export const site = {
   name: 'おくりの地図',
   url: 'https://okurinochizu.jp',
-  description: '長野県の東信と群馬県の西毛、9地域の葬儀・家族葬・お墓・終活を案内する情報メディア。費用、病院からの搬送、自治体の手続きまで、わかりやすくまとめます。',
+  description: '長野県の東信と群馬県の西毛、10地域の葬儀・家族葬・お墓・終活を案内する情報メディア。費用、病院からの搬送、自治体の手続きまで、わかりやすくまとめます。',
   gaId: import.meta.env.PUBLIC_GA_MEASUREMENT_ID || 'G-YH2YL4ZMCH',
 };
 export const articles = content.articles as Article[];
