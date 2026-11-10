@@ -1,5 +1,6 @@
 import content from './content.json';
-import type { Article, Region } from './types';
+import sourceRegistry from './sources.json';
+import type { Article, Region, Source } from './types';
 
 export const site = {
   name: 'おくりの地図',
@@ -21,3 +22,25 @@ export const articleUrl = (slug: string) => '/guides/' + slug + '/';
 export const articleListTitle = (article: Article) => article.title.split('｜')[0].trim();
 export const regionUrl = (slug: string) => '/regions/' + slug + '/';
 export const categoryName = (slug: string) => categories.find(c => c.slug === slug)?.name || slug;
+
+// The source note links only pages the build validator allows as ordinary links. The referred company's
+// own pages are reached only through the one measured referral, and competing funeral/cemetery
+// introduction sites are never linked (same host lists as scripts/validate-build.mjs; see README).
+const providerHosts = ['so-gi.com', 'www.so-gi.com'];
+const competingHosts = ['mitsuwa-sougi.co.jp', 'soogi.jp', 'ansinsougi.jp', 'e-ohaka.com', 'lifedot.jp', 'e-sogi.com', 'osohshiki.jp'];
+const listable = (url: string) => {
+  const { hostname } = new URL(url);
+  return !providerHosts.includes(hostname) && !competingHosts.some(host => hostname === host || hostname.endsWith('.' + host));
+};
+const sourceById = new Map((sourceRegistry as Source[]).map(source => [source.id, source]));
+/** An article's or region's recorded sources, in their recorded order, that may be linked publicly. */
+export const publicSources = (ids: string[]) => ids.flatMap(id => {
+  const source = sourceById.get(id);
+  if (!source) throw new Error(`Unknown source ID: ${id}`);
+  return listable(source.url) ? [source] : [];
+});
+/** "2026-11-10" -> "2026年11月10日", read from the recorded string without time-zone conversion. */
+export const japaneseDate = (date: string) => {
+  const [year, month, day] = date.split('-').map(Number);
+  return `${year}年${month}月${day}日`;
+};

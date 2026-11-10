@@ -1,0 +1,10 @@
+---
+import { publicSources, japaneseDate } from '../data/site';
+interface Props { ids: string[]; }
+const items = publicSources(Astro.props.ids);
+const latest = items.map(source => source.checkedAt).sort().at(-1);
+---
+{items.length > 0 && latest && <details class="source-note">
+  <summary>出典と確認日（{items.length}件・最終確認 {japaneseDate(latest)}）</summary>
+  <ul>{items.map(source => <li><a href={source.url}>{source.title}</a> <span class="source-note-date">確認日 {japaneseDate(source.checkedAt)}</span></li>)}</ul>
+</details>}

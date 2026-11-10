@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Sections from '../../components/Sections.astro';
 import Referral from '../../components/Referral.astro';
+import SourceNote from '../../components/SourceNote.astro';
 import ArticleList from '../../components/ArticleList.astro';
 import RegionLinks from '../../components/RegionLinks.astro';
 import EditorialImage from '../../components/EditorialImage.astro';
@@ -20,6 +21,7 @@ const schema = [{ '@context': 'https://schema.org', '@type': 'WebPage', name: ti
     <div class="article-body">
       <Sections sections={region.sections} interlude={regionVisual(region.slug, 'interlude')} />
       <Referral referral={region.referral} slug={region.slug} region={region.slug} intent="regional-funeral" />
+      <SourceNote ids={region.sources} />
       <section class="related-articles"><header class="directory-heading"><h2>関連記事</h2><a class="text-link" href="/guides/">記事一覧</a></header><ArticleList items={related} /></section>
       <section class="related-articles"><header class="directory-heading"><h2>ほかの地域</h2></header><RegionLinks items={regions.filter(r => r.slug !== region.slug)} /></section>
     </div>

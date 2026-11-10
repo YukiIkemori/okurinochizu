@@ -12,13 +12,16 @@ async function expectReferralBeforeNavigation(page: Page, hasFaq = false) {
   const note = page.locator('.article-body > .referral');
   await expect(note).toHaveCount(1);
   await expect(page.locator(`.article-body > ${hasFaq ? '.faq' : '.prose-section'} + .referral`)).toHaveCount(1);
-  await expect(page.locator('.article-body > .referral + .related-articles')).toHaveCount(1);
+  // Only the collapsed source note may sit between the referral and related navigation.
+  await expect(page.locator('.article-body > .referral + .related-articles, .article-body > .referral + .source-note + .related-articles')).toHaveCount(1);
   await expect(note.locator('[data-provider-link]')).toHaveAttribute('data-placement', 'article-end');
   const navigationOrderIsValid = await note.evaluate(element => {
     const siblings = Array.from(element.parentElement!.children);
     const index = siblings.indexOf(element);
+    const after = siblings.slice(index + 1);
+    if (after[0]?.classList.contains('source-note')) after.shift();
     return !siblings.slice(0, index).some(node => node.classList.contains('related-articles'))
-      && siblings.slice(index + 1).every(node => node.classList.contains('related-articles'));
+      && after.length > 0 && after.every(node => node.classList.contains('related-articles'));
   });
   expect(navigationOrderIsValid, 'the quiet referral must come before all related navigation').toBe(true);
 }

@@ -175,3 +175,13 @@ html{scroll-padding-top:calc(var(--header-height) + 12px)}
   .site-header--hidden{transform:translateY(-100%);pointer-events:none}
 }
 @media(max-width:359px){.brand>span{font-size:22px}}
+
+/* Sources and checked dates: one quiet, collapsed line after the end-of-page note. */
+.source-note{margin-top:20px;font-size:12px;line-height:1.6;color:var(--muted)}
+.source-note summary{cursor:pointer;width:fit-content;max-width:100%;padding-block:4px}
+.source-note ul{list-style:none;margin:4px 0 0;padding:0}
+.source-note li{padding-block:3px;overflow-wrap:anywhere}
+.source-note a{color:var(--ink)}
+.source-note a:hover{color:var(--rust)}
+.source-note-date{white-space:nowrap}
+@media(max-width:760px){.source-note{margin-top:16px}}

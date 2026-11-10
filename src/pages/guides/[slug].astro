@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Sections from '../../components/Sections.astro';
 import Referral from '../../components/Referral.astro';
+import SourceNote from '../../components/SourceNote.astro';
 import ArticleList from '../../components/ArticleList.astro';
 import RegionLinks from '../../components/RegionLinks.astro';
 import EditorialImage from '../../components/EditorialImage.astro';
@@ -24,6 +25,7 @@ const schema = [
       <Sections sections={article.sections} interlude={interludeVisual(article.slug)} inlineReferral={article.inlineReferralAfter ? { after: article.inlineReferralAfter, referral: article.referral, slug: article.slug, intent: article.category, region: article.regions.length === 1 ? article.regions[0] : 'all' } : undefined} />
       {article.faq.length > 0 && <section class="faq" id="questions"><h2>よくある疑問</h2>{article.faq.map(faq => <details><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>}
       <Referral referral={article.referral} slug={article.slug} intent={article.category} region={article.regions.length === 1 ? article.regions[0] : 'all'} />
+      <SourceNote ids={article.sources} />
       {related.length > 0 && <section class="related-articles"><header class="directory-heading"><h2>関連記事</h2><a class="text-link" href="/guides/">記事一覧</a></header><ArticleList items={related} /></section>}
       <section class="related-articles"><header class="directory-heading"><h2>地域の案内</h2></header><RegionLinks items={regions.filter(r => article.regions.length === 0 || article.regions.includes(r.slug))} /></section>
     </div>

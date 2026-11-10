@@ -42,7 +42,18 @@ const operatorRoute = '/operator/';
 const operatorPageURLs = new Set([operator.url, operator.representative.profileUrl]);
 const providerHosts = new Set(['so-gi.com', 'www.so-gi.com']);
 const prohibitedHosts = ['mitsuwa-sougi.co.jp', 'soogi.jp', 'ansinsougi.jp', 'e-ohaka.com', 'lifedot.jp', 'e-sogi.com', 'osohshiki.jp'];
+// Article and region pages may show exactly one collapsed <details class="source-note"> after the
+// end-of-page note: the item's recorded sources and their recorded check dates, leaving out the
+// referred company's own pages (reached only through the measured referral) and competing
+// introduction sites, which are never linked. Mirrors publicSources() in src/data/site.ts.
+const isCompetingHost = hostname => prohibitedHosts.some(host => hostname === host || hostname.endsWith('.' + host));
+const publicSourcesOf = item => (item.sources || []).map(id => bySource.get(id)).filter(source => {
+  const hostname = source && new URL(source.url).hostname;
+  return source && !providerHosts.has(hostname) && !isCompetingHost(hostname);
+});
+const japaneseDate = date => { const [year, month, day] = date.split('-').map(Number); return `${year}年${month}月${day}日`; };
 let contextualLinks = 0;
+let sourceNotePages = 0;
 let publicServiceLinks = 0;
 
 for (const [kind, rows] of [['articles', content.articles], ['regions', content.regions], ['sources', registry]]) {
@@ -176,7 +187,12 @@ for (const [route, { $, ids }] of pages) {
     }
   }
   if ($('figcaption').length) fail(route, 'Visible image captions must not be added.');
-  if ($('.sources, #sources-heading, .disclosure').length || route !== operatorRoute && /出典|確認日|公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ公益社との関係/.test(normalize($('body').text()))) fail(route, 'Removed source/disclosure copy remains in the public page.');
+  const sourceNotes = $('.source-note');
+  if (!editorialContent && sourceNotes.length) fail(route, 'The source note belongs on article and region pages only.');
+  const textOutsideSourceNote = $('body').clone();
+  if (editorialContent) textOutsideSourceNote.find('.source-note').remove();
+  if ($('.sources, #sources-heading, .disclosure').length || route !== operatorRoute && /出典|確認日|公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ公益社との関係/.test(normalize(textOutsideSourceNote.text()))) fail(route, 'Removed source/disclosure copy remains in the public page.');
+  if (/公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ/.test(normalize(sourceNotes.text()))) fail(route, 'The source note must list public sources only, without disclosure or provider copy.');
   if ($('.site-footer .footer-operator a[href="/operator/"]').length !== 1) fail(route, 'Footer must link to the operator page once.');
   if (route.startsWith('/guides/') && articleBySlug.has(route.split('/')[2]) || route.startsWith('/regions/') && regionBySlug.has(route.split('/')[2])) {
     for (const section of editorialContent.sections) {
@@ -194,7 +210,26 @@ for (const [route, { $, ids }] of pages) {
     if (expectedInline && (!inlineNotes.prev().is(`#${photoArticle.inlineReferralAfter}`) || inlineNotes.find('[data-provider-link]').attr('data-placement') !== 'in-article')) fail(route, 'In-article provider note must follow its configured section and carry the in-article placement.');
     const note = $('.article-body > .referral');
     const lastContentSelector = photoArticle?.faq?.length ? '.faq' : '.prose-section';
-    if (note.length !== 1 || !note.prev().is(lastContentSelector) || !note.next().hasClass('related-articles') || note.prevAll('.related-articles').length || note.nextAll().toArray().some(node => !$(node).hasClass('related-articles'))) fail(route, 'Provider note must follow the article body/FAQ directly and precede related navigation.');
+    const noteSources = note.next('.source-note');
+    const afterNote = noteSources.length ? noteSources.next() : note.next();
+    if (note.length !== 1 || !note.prev().is(lastContentSelector) || !afterNote.hasClass('related-articles') || note.prevAll('.related-articles').length || note.nextAll().toArray().some(node => node !== noteSources[0] && !$(node).hasClass('related-articles'))) fail(route, 'Provider note must follow the article body/FAQ directly and precede related navigation (only the source note may sit between).');
+    const expectedSources = publicSourcesOf(editorialContent);
+    if (expectedSources.length) {
+      sourceNotePages++;
+      const block = $('.article-body > .referral + details.source-note');
+      const latest = expectedSources.map(source => source.checkedAt).sort().at(-1);
+      const summary = block.children('summary');
+      const items = block.children('ul').children('li').toArray();
+      if (sourceNotes.length !== 1 || block.length !== 1) fail(route, 'Article/region pages with sources need exactly one source note, directly after the end-of-page note.');
+      else if (block.attr('open') !== undefined) fail(route, 'The source note must be closed by default.');
+      if (summary.length !== 1 || normalize(summary.text()) !== `出典と確認日（${expectedSources.length}件・最終確認 ${japaneseDate(latest)}）`) fail(route, 'Source note summary must state the source count and the latest recorded check date.');
+      if (block.find('img, svg, picture, [data-provider-link]').length || block.find('a').length !== expectedSources.length) fail(route, 'Source note must be a plain list of source links.');
+      if (items.length !== expectedSources.length || expectedSources.some((source, index) => {
+        const item = $(items[index]);
+        const link = item.children('a');
+        return link.length !== 1 || link.attr('href') !== source.url || normalize(link.text()) !== normalize(source.title) || normalize(item.children('.source-note-date').text()) !== `確認日 ${japaneseDate(source.checkedAt)}`;
+      })) fail(route, "Source note must list exactly the page's recorded sources with their recorded check dates.");
+    } else if (sourceNotes.length) fail(route, 'A page without recorded public sources must not show a source note.');
     if ($('.referral [data-provider-link]').attr('data-placement') !== 'article-end') fail(route, 'Article referral must preserve its article-end analytics placement.');
     if ($('.article-head [data-provider-link]').length || $('.referral h2, .referral .eyebrow').length) fail(route, 'Prominent provider promotion remains.');
     if (/つばさ|公益社/.test(normalize($('.article-head, .prose-section, .faq, .answer, .region-focus').text()))) fail(route, 'Provider name is woven into the editorial body.');
@@ -221,7 +256,7 @@ for (const [route, { $, ids }] of pages) {
       }
     } else if (node.name === 'a' || node.name === 'area') {
       outbound.add(url.origin + url.pathname + url.search);
-      if (prohibitedHosts.some(host => url.hostname === host || url.hostname.endsWith('.' + host))) fail(route, `Competing funeral/cemetery introduction is linked: ${url.hostname}`);
+      if (isCompetingHost(url.hostname)) fail(route, `Competing funeral/cemetery introduction is linked: ${url.hostname}`);
       if (providerHosts.has(url.hostname)) {
         if (element.attr('data-provider-link') === undefined) fail(route, `Unmeasured Tsubasa link: ${raw}`);
         if (!element.attr('data-placement') || !element.attr('data-intent')) fail(route, `Tsubasa link lacks placement/intent metadata: ${raw}`);
@@ -314,7 +349,7 @@ for (const file of files.filter(file => /\.(?:html|js|css|json|xml|txt|svg)$/.te
   const text = await readFile(file, 'utf8');
   if (/-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|"private_key"\s*:|(?:ghp|gho|github_pat)_[A-Za-z0-9_]{20,}/.test(text)) fail('/' + path.relative('dist', file), 'Credential-like material appears in the public build.');
 }
-const report = { checkedAt: new Date().toISOString(), fingerprint: await fingerprintDist(), status: problems.length ? 'failed' : 'passed', htmlPages: pages.size, indexablePages: expectedIndexable.size, articles: content.articles.length, regions: content.regions.length, externalURLs: outbound.size, contextualLinks, publicServiceLinks, photography: { picturedPages, placements: photographPlacements, uniqueImages: photographHashes.size }, problems, warnings };
+const report = { checkedAt: new Date().toISOString(), fingerprint: await fingerprintDist(), status: problems.length ? 'failed' : 'passed', htmlPages: pages.size, indexablePages: expectedIndexable.size, articles: content.articles.length, regions: content.regions.length, externalURLs: outbound.size, contextualLinks, publicServiceLinks, sourceNotePages, photography: { picturedPages, placements: photographPlacements, uniqueImages: photographHashes.size }, problems, warnings };
 await mkdir('.local', { recursive: true });
 await writeFile('.local/build-validation.json', JSON.stringify(report, null, 2) + '\n');
 for (const problem of problems) console.error(`FAIL ${problem.page}: ${problem.message}`);
