@@ -11,44 +11,46 @@ const region = (slug: string) => content.regions.find(item => item.slug === slug
 
 test.beforeEach(async ({ page }) => { await isolateAnalytics(page); });
 
-test('pages with keyPoints open with the summary box; pages without keep the lead paragraph', async ({ page }) => {
-  for (const [path, item] of [['/guides/hospital-transport/', article('hospital-transport')], ['/guides/funeral-cost/', article('funeral-cost')], ['/regions/annaka/', region('annaka')]] as const) {
+test('every guide and region page opens with the summary box in place of the lead paragraph', async ({ page }) => {
+  for (const item of [...content.articles, ...content.regions]) {
+    expect(item.keyPoints?.length ?? 0, item.slug).toBeGreaterThanOrEqual(3);
+    expect(item.keyPoints!.length, item.slug).toBeLessThanOrEqual(5);
+  }
+  for (const [path, item] of [
+    ['/guides/hospital-transport/', article('hospital-transport')], ['/guides/funeral-cost/', article('funeral-cost')], ['/guides/family-funeral/', article('family-funeral')],
+    ['/guides/home-death/', article('home-death')], ['/regions/annaka/', region('annaka')], ['/regions/saku/', region('saku')],
+  ] as const) {
     await page.goto(path);
     const summary = page.locator('.article-body > .key-points:first-child');
     await expect(summary.getByRole('heading', { level: 2 })).toHaveText('まず知っておきたいこと');
-    expect(item.keyPoints!.length).toBeGreaterThanOrEqual(3);
-    expect(item.keyPoints!.length).toBeLessThanOrEqual(5);
     await expect(summary.locator('li')).toHaveText(item.keyPoints!);
     await expect(page.locator('.article-lead')).toHaveCount(0);
-  }
-  for (const [path, item] of [['/guides/family-funeral/', article('family-funeral')], ['/guides/home-death/', article('home-death')], ['/regions/saku/', region('saku')]] as const) {
-    expect(item.keyPoints).toBeUndefined();
-    await page.goto(path);
-    await expect(page.locator('.key-points')).toHaveCount(0);
-    await expect(page.locator('.article-body > p.article-lead:first-child')).toHaveText(item.lead);
   }
 });
 
 test('the region quick-facts panel is a ruled list whose public-office phone numbers are tel links', async ({ page }) => {
-  const annaka = region('annaka');
-  await page.goto('/regions/annaka/');
-  const panel = page.locator('.article-body > section.quick-facts');
-  await expect(panel.getByRole('heading', { level: 2 })).toHaveText('早見表');
-  await expect(panel.locator('dt')).toHaveText(annaka.quickFacts!.map(fact => fact.label));
-  await expect(panel.locator('dd')).toHaveText(annaka.quickFacts!.map(fact => fact.value));
-  const phones = annaka.quickFacts!.filter(fact => fact.href?.startsWith('tel:'));
-  expect(phones.length).toBeGreaterThan(0);
-  await expect(page.locator('a[href^="tel:"]')).toHaveCount(phones.length);
-  for (const fact of phones) {
-    const link = panel.getByRole('link', { name: fact.value, exact: true });
-    await expect(link).toHaveAttribute('href', 'tel:' + fact.value.replaceAll('-', ''));
-    await expect(link).not.toHaveAttribute('data-provider-link');
-    // The same number is printed in the body, so the panel adds no new fact.
-    await expect(page.locator('.prose-section').filter({ hasText: fact.value })).not.toHaveCount(0);
+  for (const item of content.regions) {
+    const facts = item.quickFacts!;
+    expect(facts.length, item.slug).toBeGreaterThanOrEqual(3);
+    await page.goto(`/regions/${item.slug}/`);
+    const panel = page.locator('.article-body > section.quick-facts');
+    await expect(panel.getByRole('heading', { level: 2 })).toHaveText('早見表');
+    await expect(panel.locator('dt')).toHaveText(facts.map(fact => fact.label));
+    await expect(panel.locator('dd')).toHaveText(facts.map(fact => fact.value));
+    const phones = facts.filter(fact => fact.href?.startsWith('tel:'));
+    expect(phones.length, item.slug).toBeGreaterThan(0);
+    await expect(page.locator('a[href^="tel:"]')).toHaveCount(phones.length);
+    for (const fact of phones) {
+      const link = panel.getByRole('link', { name: fact.value, exact: true });
+      await expect(link).toHaveAttribute('href', 'tel:' + fact.value.replaceAll('-', ''));
+      await expect(link).not.toHaveAttribute('data-provider-link');
+      // The same number is printed in the body, so the panel adds no new fact.
+      await expect(page.locator('.prose-section').filter({ hasText: fact.value })).not.toHaveCount(0);
+    }
+    await expect(panel).not.toContainText('つばさ');
   }
-  await expect(panel).not.toContainText('つばさ');
-  // A region without recorded quickFacts simply has no panel.
-  await page.goto('/regions/saku/');
+  // Guide pages have no quick-facts panel and no phone link.
+  await page.goto('/guides/hospital-transport/');
   await expect(page.locator('.quick-facts')).toHaveCount(0);
   await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
 });
