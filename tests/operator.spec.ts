@@ -9,7 +9,7 @@ test('operator page shows the company, editorial policy and relationship, and ev
   await expect(page.locator('main')).toContainText('おくりの地図は、株式会社tsamが運営しています。');
   await expect(page.getByRole('heading', { level: 2, name: '編集の方針' })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: '紹介している葬儀社との関係' })).toBeVisible();
-  await expect(page.locator('#relationship')).toHaveText('代表の池森は、個人として株式会社つばさ公益社に出資しています。');
+  await expect(page.locator('#relationship')).toHaveText('当社代表の池森は、株式会社つばさ公益社に出資しています。');
   await expect(page.locator('main a[href="/guides/choose-funeral-company/"]')).toHaveText('葬儀社の選び方');
   await expect(page.locator('main [data-provider-link]')).toHaveCount(0);
   const organizations = (await page.locator('script[type="application/ld+json"]').allTextContents())
