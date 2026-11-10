@@ -398,11 +398,11 @@
     "note": "遺族年金は故人によって生計を維持されていた遺族が条件を満たす場合に受ける年金。年金の加入・納付状況、遺族の年齢・優先順位などで対象が変わる。未支給年金との違いを簡潔に説明。"
   },
   {
-    "id": "niigata-mutual-aid",
-    "title": "新潟県｜冠婚葬祭互助会契約のトラブル",
-    "url": "https://www.pref.niigata.lg.jp/sec/shohiseikatsu/1356920768675.html",
-    "checkedAt": "2026-10-09",
-    "note": "一般的な約款の返金期限は解約申出から45日以内。預貯金ではなくサービス契約、利息なし・解約手数料が発生。全契約の法定保証と断定しない。"
+    "id": "fukuoka-mutual-aid",
+    "title": "福岡市消費生活センター｜冠婚葬祭互助会の解約",
+    "url": "https://www.city.fukuoka.lg.jp/shimin/shohiseikatsu/life/syouhiseikatusentauhoumupeiji/kurashinohinto20240118/kurashinohinto20240509.html",
+    "checkedAt": "2026-11-10",
+    "note": "2024年5月9日掲載。互助会は割賦販売法の前払式特定取引、利息なし、未利用解約は手数料控除。解約申出日から45日以内の返金が割賦販売法で義務づけと案内(市の説明として引用)。旧出典 niigata-mutual-aid は404のため差し替え。"
   },
   {
     "id": "nta-final-income-tax",
