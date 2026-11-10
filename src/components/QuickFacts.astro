@@ -1,0 +1,9 @@
+---
+import type { QuickFact } from '../data/types';
+interface Props { facts: QuickFact[]; }
+const { facts } = Astro.props;
+---
+<section class="quick-facts" aria-labelledby="quick-facts-heading">
+  <h2 id="quick-facts-heading">早見表</h2>
+  <dl>{facts.map(fact => <div><dt>{fact.label}</dt><dd>{fact.href ? <a href={fact.href}>{fact.value}</a> : fact.value}</dd></div>)}</dl>
+</section>

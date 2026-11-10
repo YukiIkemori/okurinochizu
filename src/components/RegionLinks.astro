@@ -1,13 +1,14 @@
 ---
 import { regions, regionUrl } from '../data/site';
 import type { Region } from '../data/types';
-interface Props { items?: Region[]; }
-const { items = regions } = Astro.props;
+interface Props { items?: Region[]; headingLevel?: 2 | 3; }
+const { items = regions, headingLevel = 3 } = Astro.props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3';
 const prefectures = [...new Set(items.map(region => region.prefecture))];
 ---
 <div class="region-directory">
   {prefectures.map(prefecture => <div class="region-directory-group">
-    <h3>{prefecture}</h3>
+    <Heading>{prefecture}</Heading>
     <ul>{items.filter(region => region.prefecture === prefecture).map(region => <li><a href={regionUrl(region.slug)}>{region.name}</a></li>)}</ul>
   </div>)}
 </div>

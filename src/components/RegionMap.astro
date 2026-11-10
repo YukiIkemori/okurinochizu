@@ -1,3 +1,20 @@
+---
+// `current` marks the municipality whose page shows the map.
+interface Props { current?: string; }
+const { current } = Astro.props;
+const places = [
+  { slug: 'ueda', name: '上田市', cx: 91, cy: 162, x: 48, y: 146 },
+  { slug: 'tomi', name: '東御市', cx: 130, cy: 184, x: 122, y: 190, end: true },
+  { slug: 'komoro', name: '小諸市', cx: 177, cy: 182, x: 132, y: 165 },
+  { slug: 'miyota', name: '御代田町', cx: 238, cy: 165, x: 215, y: 147 },
+  { slug: 'karuizawa', name: '軽井沢町', cx: 286, cy: 181, x: 278, y: 210 },
+  { slug: 'saku', name: '佐久市', cx: 214, cy: 245, x: 212, y: 275 },
+  { slug: 'sakuho', name: '佐久穂町', cx: 232, cy: 300, x: 242, y: 306 },
+  { slug: 'tateshina', name: '立科町', cx: 115, cy: 233, x: 78, y: 219 },
+  { slug: 'annaka', name: '安中市', cx: 373, cy: 198, x: 373, y: 180 },
+  { slug: 'tomioka', name: '富岡市', cx: 376, cy: 256, x: 375, y: 284 },
+] as { slug: string; name: string; cx: number; cy: number; x: number; y: number; end?: boolean }[];
+---
 <figure class="map-figure">
   <svg viewBox="0 0 480 420" role="group" aria-labelledby="map-title map-description">
     <title id="map-title">長野県東信と群馬県西毛の10地域</title>
@@ -9,17 +26,8 @@
     <path d="M246 82c-14 17-34 45-42 73M216 157c21-9 37-4 56 12" stroke="#c5ccb9" stroke-width="1" fill="none" stroke-dasharray="3 5"/>
     <path d="m230 117 11-16 11 16m6 1 11-17 11 17m-50 5 7-11 7 11" fill="none" stroke="#abb69f" stroke-width="1"/>
     <text x="257" y="87" font-size="9" fill="#748169" letter-spacing="2">浅間山</text>
-    <text class="map-label" x="83" y="289">NAGANO</text><text class="map-label" x="348" y="143">GUNMA</text>
-    <a class="map-region" href="/regions/ueda/" aria-label="上田市の案内"><circle cx="91" cy="162" r="4"/><text x="48" y="146">上田市</text></a>
-    <a class="map-region" href="/regions/tomi/" aria-label="東御市の案内"><circle cx="130" cy="184" r="4"/><text x="122" y="190" text-anchor="end">東御市</text></a>
-    <a class="map-region" href="/regions/komoro/" aria-label="小諸市の案内"><circle cx="177" cy="182" r="4"/><text x="132" y="165">小諸市</text></a>
-    <a class="map-region" href="/regions/miyota/" aria-label="御代田町の案内"><circle cx="238" cy="165" r="4"/><text x="215" y="147">御代田町</text></a>
-    <a class="map-region" href="/regions/karuizawa/" aria-label="軽井沢町の案内"><circle cx="286" cy="181" r="4"/><text x="278" y="210">軽井沢町</text></a>
-    <a class="map-region" href="/regions/saku/" aria-label="佐久市の案内"><circle cx="214" cy="245" r="4"/><text x="212" y="275">佐久市</text></a>
-    <a class="map-region" href="/regions/sakuho/" aria-label="佐久穂町の案内"><circle cx="232" cy="300" r="4"/><text x="242" y="306">佐久穂町</text></a>
-    <a class="map-region" href="/regions/tateshina/" aria-label="立科町の案内"><circle cx="115" cy="233" r="4"/><text x="78" y="219">立科町</text></a>
-    <a class="map-region" href="/regions/annaka/" aria-label="安中市の案内"><circle cx="373" cy="198" r="4"/><text x="373" y="180">安中市</text></a>
-    <a class="map-region" href="/regions/tomioka/" aria-label="富岡市の案内"><circle cx="376" cy="256" r="4"/><text x="375" y="284">富岡市</text></a>
+    <text class="map-label" x="83" y="289">長野県</text><text class="map-label" x="352" y="143">群馬県</text>
+    {places.map(place => <a class={'map-region' + (place.slug === current ? ' map-region--current' : '')} href={'/regions/' + place.slug + '/'} aria-label={place.name + 'の案内'} aria-current={place.slug === current ? 'page' : undefined}><circle cx={place.cx} cy={place.cy} r={place.slug === current ? 6 : 4}/><text x={place.x} y={place.y} text-anchor={place.end ? 'end' : undefined}>{place.name}</text></a>)}
     <path d="M414 55V29m-5 10 5-10 5 10" fill="none" stroke="#6f7a67" stroke-width="1"/><text x="409" y="20" font-size="10" fill="#6f7a67">N</text>
     <path d="M72 355c32 18 64 23 97 21" fill="none" stroke="#bcc7b3" stroke-width="1"/>
   </svg>

@@ -51,10 +51,18 @@ const publicSourcesOf = item => (item.sources || []).map(id => bySource.get(id))
   const hostname = source && new URL(source.url).hostname;
   return source && !providerHosts.has(hostname) && !isCompetingHost(hostname);
 });
+const providerName = /つばさ|公益社/;
+// The consultation elements (README「相談先の表示」). No phone element exists for the provider.
+const referralLinkText = 'つばさ公益社のページを見る';
+const homeReferral = { href: 'https://so-gi.com/hall', label: '葬儀の相談は、つばさ公益社へ' };
 const japaneseDate = date => { const [year, month, day] = date.split('-').map(Number); return `${year}年${month}月${day}日`; };
 let contextualLinks = 0;
 let sourceNotePages = 0;
 let publicServiceLinks = 0;
+let providerLinkCount = 0;
+let officePhoneLinks = 0;
+let keyPointPages = 0;
+let quickFactPages = 0;
 
 for (const [kind, rows] of [['articles', content.articles], ['regions', content.regions], ['sources', registry]]) {
   const keys = rows.map(row => kind === 'sources' ? row.id : row.slug);
@@ -100,6 +108,26 @@ for (const item of [...content.articles, ...content.regions]) {
   }
   if (new Set(destinations).size !== destinations.length) fail(item.slug, 'Do not repeat the same contextual guide destination in the body.');
   if (!providerHosts.has(new URL(item.referral.href).hostname)) fail(item.slug, 'Referral destination is not Tsubasa.');
+  // 「まず知っておきたいこと」 and 「早見表」 only restate the page: no provider name, and every figure
+  // they show (amounts, times, phone numbers) must already appear in the page's own text.
+  const ownText = normalize([item.lead, item.answer, ...item.sections.flatMap(s => [s.heading, ...s.paragraphs, ...(s.bullets || []), ...(s.table?.headers || []), ...(s.table?.rows.flat() || []), s.note || '']), ...(item.faq || []).flatMap(faq => [faq.q, faq.a])].join(' '));
+  const restated = text => (text.match(/\d[\d,]*(?:-\d+)*/g) || []).every(figure => ownText.includes(figure));
+  if (item.keyPoints !== undefined) {
+    if (!Array.isArray(item.keyPoints) || item.keyPoints.length < 3 || item.keyPoints.length > 5 || item.keyPoints.some(point => typeof point !== 'string' || !point.trim() || point.length > 110)) fail(item.slug, 'keyPoints must be 3–5 short points.');
+    else if (item.keyPoints.some(point => providerName.test(point) || !restated(point))) fail(item.slug, 'keyPoints must restate facts from the page itself, without the provider name.');
+  }
+  if (item.quickFacts !== undefined) {
+    if (!regionBySlug.has(item.slug) || item.category) fail(item.slug, 'quickFacts belongs to region pages only.');
+    if (!Array.isArray(item.quickFacts) || item.quickFacts.length < 3 || item.quickFacts.some(fact => typeof fact?.label !== 'string' || !fact.label.trim() || typeof fact.value !== 'string' || !fact.value.trim())) { fail(item.slug, 'quickFacts needs at least three {label, value} rows.'); continue; }
+    for (const fact of item.quickFacts) {
+      if (providerName.test(fact.label + fact.value) || !restated(fact.value)) fail(item.slug, `Quick fact must restate a fact from the page itself, without the provider name: ${fact.label}`);
+      if (fact.href === undefined) continue;
+      if (/^tel:/.test(fact.href)) {
+        // Phone links are for public offices only, and the number must be the one printed in the body.
+        if (!/^tel:0\d{9,10}$/.test(fact.href) || fact.value.replace(/\D/g, '') !== fact.href.slice(4) || !/^0\d+(?:-\d+)+$/.test(fact.value)) fail(item.slug, `Quick-fact phone link must be the public office's number shown as its value: ${fact.label}`);
+      } else if (!item.sources.some(id => bySource.get(id)?.url === fact.href) || providerHosts.has(new URL(fact.href).hostname)) fail(item.slug, `Quick-fact link must be one of the region's recorded sources: ${fact.label}`);
+    }
+  }
 }
 // Detect exactly duplicated region bodies even if only the eight place names differ.
 const regionBodyKeys = new Map();
@@ -167,16 +195,17 @@ for (const [route, { $, ids }] of pages) {
   const photoArticle = articleBySlug.get(route.match(/^\/guides\/([^/]+)\/$/)?.[1]);
   const photoRegion = regionBySlug.get(route.match(/^\/regions\/([^/]+)\/$/)?.[1]);
   const editorialContent = photoArticle ?? photoRegion;
-  const expectedPhotographs = editorialContent ? 2 : ['/', '/guides/', '/regions/', '/about/'].includes(route) ? 1 : 0;
+  const expectedPhotographs = editorialContent || ['/', '/guides/', '/regions/', '/about/'].includes(route) ? 1 : 0;
   const photographs = $('picture.editorial-image img');
-  if (photographs.length !== expectedPhotographs) fail(route, `Expected ${expectedPhotographs} dedicated photographs, got ${photographs.length}.`);
+  if (photographs.length !== expectedPhotographs) fail(route, `Expected ${expectedPhotographs} dedicated photograph (one header image per page), got ${photographs.length}.`);
+  if ($('.editorial-image--interlude').length) fail(route, 'Interlude photographs are no longer rendered.');
   if (photographs.length) picturedPages++;
   for (const node of photographs.toArray()) {
     const image = $(node);
     photographPlacements++;
     if (image.attr('alt') !== '') fail(route, 'Decorative photograph must have empty alt text.');
     if (!(Number(image.attr('width')) > 0 && Number(image.attr('height')) > 0) || !image.attr('srcset') || !image.attr('sizes')) fail(route, 'Photograph needs dimensions and responsive variants.');
-    if (image.parent().hasClass('editorial-image--interlude') && image.attr('loading') !== 'lazy') fail(route, 'Body photograph must load lazily.');
+    if (editorialContent && (!image.parent().is('.article-body > picture.editorial-image--header') || image.attr('loading') !== 'lazy')) fail(route, 'The article/region header photograph sits in the body column and loads lazily.');
     const file = resolveFile(image.attr('src') || '');
     if (file) {
       const bytes = await readFile(file);
@@ -204,19 +233,71 @@ for (const [route, { $, ids }] of pages) {
       const renderedLinks = rendered.find('a[href]').toArray().map(node => ({ href: $(node).attr('href'), text: $(node).text() }));
       if (renderedLinks.length !== expectedLinks.length || expectedLinks.some(link => !renderedLinks.some(renderedLink => renderedLink.href === link.href && renderedLink.text === link.text))) fail(route, `Missing or unexpected inline links: ${section.id}`);
     }
+    // Page order: summary (or the lead), [consultation row], [早見表], 目次, header photograph, body.
+    const body = $('.article-body');
+    const children = body.children().toArray();
+    const indexOf = selector => children.findIndex(node => $(node).is(selector));
+    const firstSection = indexOf('.prose-section');
+    const keyPoints = editorialContent.keyPoints?.length ? editorialContent.keyPoints : null;
+    const summary = $('.key-points');
+    const lead = $('p.article-lead');
+    if (keyPoints) {
+      keyPointPages++;
+      const shown = summary.find('li').toArray().map(node => normalize($(node).text()));
+      if (summary.length !== 1 || indexOf('.key-points') !== 0 || lead.length || normalize(summary.children('h2').text()) !== 'まず知っておきたいこと' || shown.length !== keyPoints.length || keyPoints.some((point, index) => normalize(point) !== shown[index])) fail(route, 'The summary box must open the page with exactly the recorded keyPoints.');
+    } else if (summary.length || lead.length !== 1 || indexOf('p.article-lead') !== 0 || normalize(lead.text()) !== normalize(editorialContent.lead)) fail(route, 'A page without keyPoints opens with its lead paragraph.');
+    const quickFacts = photoRegion?.quickFacts?.length ? photoRegion.quickFacts : null;
+    const factsBlock = $('.quick-facts');
+    if (quickFacts) {
+      quickFactPages++;
+      const rows = factsBlock.find('dl > div').toArray();
+      if (factsBlock.length !== 1 || !factsBlock.is('.article-body > section') || indexOf('.quick-facts') > firstSection || normalize(factsBlock.children('h2').text()) !== '早見表' || rows.length !== quickFacts.length || quickFacts.some((fact, index) => {
+        const row = $(rows[index]);
+        const links = row.find('a').toArray();
+        return normalize(row.children('dt').text()) !== normalize(fact.label) || normalize(row.children('dd').text()) !== normalize(fact.value)
+          || (fact.href ? links.length !== 1 || $(links[0]).attr('href') !== fact.href || normalize($(links[0]).text()) !== normalize(fact.value) : links.length !== 0);
+      })) fail(route, 'The quick-facts panel must show exactly the recorded rows and links before the body.');
+    } else if (factsBlock.length) fail(route, 'A quick-facts panel needs recorded quickFacts on a region page.');
+    const tocItems = [...editorialContent.sections.map(section => ({ href: '#' + section.id, text: normalize(section.heading) })), ...(photoArticle?.faq?.length ? [{ href: '#questions', text: 'よくある疑問' }] : [])];
+    const tocLinks = block => block.find('a').toArray().map(node => ({ href: $(node).attr('href'), text: normalize($(node).text()) }));
+    const sameToc = links => links.length === tocItems.length && tocItems.every((item, index) => links[index].href === item.href && links[index].text === item.text);
+    const inlineToc = $('.article-body > details.toc--inline');
+    if (inlineToc.length !== 1 || inlineToc.attr('open') !== undefined || normalize(inlineToc.children('summary').text()) !== '目次' || indexOf('.toc--inline') > firstSection || !sameToc(tocLinks(inlineToc))) fail(route, 'The collapsed table of contents must list every h2 section before the body, closed by default.');
+    if ($('.article-side nav.toc--side').length !== 1 || !sameToc(tocLinks($('.article-side nav.toc--side'))) || $('.toc').length !== 2) fail(route, 'The side table of contents must list the same sections once.');
+    const photographIndex = indexOf('picture.editorial-image--header');
+    if (photographIndex < indexOf('.toc--inline') || photographIndex > firstSection) fail(route, 'The header photograph comes after the summary, quick facts and table of contents, before the body.');
+
+    // Consultation elements. Allowed, and nothing else:
+    //   1. one block at the end (.referral-card, placement article-end): heading, at most one plain line, one link;
+    //   2. on region pages and urgent guides, one row near the top (.referral-top, placement article-top),
+    //      directly after the summary box / lead;
+    //   3. the optional one-sentence note after the section named by inlineReferralAfter (placement in-article).
     const inlineNotes = $('.article-body > .referral-inline');
     const expectedInline = photoArticle?.inlineReferralAfter ? 1 : 0;
-    if ($('.referral [data-provider-link]').length !== 1 || $('[data-provider-link]').length !== 1 + expectedInline || inlineNotes.length !== expectedInline) fail(route, 'Guide/region must have one end-note provider link, plus at most the one configured in-article note.');
+    const expectedTop = photoRegion || photoArticle?.category === 'urgent' ? 1 : 0;
+    const topRows = $('.article-body > p.referral-top');
+    const card = $('.article-body > section.referral-card');
+    if (card.length !== 1 || $('.referral').length !== 1 || $('[data-provider-link]').length !== 1 + expectedTop + expectedInline || inlineNotes.length !== expectedInline || topRows.length !== expectedTop || $('.referral-top').length !== expectedTop) fail(route, 'Guide/region must have one end block, the top row only on region pages and urgent guides, and at most the one configured in-article note.');
     if (expectedInline && (!inlineNotes.prev().is(`#${photoArticle.inlineReferralAfter}`) || inlineNotes.find('[data-provider-link]').attr('data-placement') !== 'in-article')) fail(route, 'In-article provider note must follow its configured section and carry the in-article placement.');
-    const note = $('.article-body > .referral');
+    if (expectedTop && (!topRows.prev().is(keyPoints ? '.key-points' : 'p.article-lead') || topRows.find('a').length !== 1 || topRows.find('[data-provider-link]').attr('data-placement') !== 'article-top' || normalize(topRows.find('a').text()) !== referralLinkText || topRows.find('img, svg, button, h2').length)) fail(route, 'The top consultation row must directly follow the summary/lead as one plain link with the article-top placement.');
+    const cardLines = card.children('p').not('.referral-action');
+    if (normalize(card.children('h2').text()) !== editorialContent.referral.label || card.find('a').length !== 1 || normalize(card.find('a').text()) !== referralLinkText || cardLines.length > 1 || normalize(cardLines.text()).length > 40 || card.find('img, svg, picture, button, form').length) fail(route, 'The end consultation block is a heading, at most one short line and one link.');
+    for (const node of $('[data-provider-link]').toArray()) {
+      const link = $(node);
+      const destination = new URL(link.attr('href'));
+      const expected = new URL(editorialContent.referral.href);
+      const slug = editorialContent.slug;
+      if (destination.origin + destination.pathname !== expected.origin + expected.pathname || link.attr('data-content-slug') !== slug || destination.searchParams.get('utm_content') !== `${slug}-${link.attr('data-placement')}`) fail(route, "A consultation link must lead to the page's recorded referral destination with its own placement.");
+    }
+    const note = card;
     const lastContentSelector = photoArticle?.faq?.length ? '.faq' : '.prose-section';
     const noteSources = note.next('.source-note');
     const afterNote = noteSources.length ? noteSources.next() : note.next();
-    if (note.length !== 1 || !note.prev().is(lastContentSelector) || !afterNote.hasClass('related-articles') || note.prevAll('.related-articles').length || note.nextAll().toArray().some(node => node !== noteSources[0] && !$(node).hasClass('related-articles'))) fail(route, 'Provider note must follow the article body/FAQ directly and precede related navigation (only the source note may sit between).');
+    if (note.length !== 1 || !note.prev().is(lastContentSelector) || !afterNote.hasClass('related-articles') || note.prevAll('.related-articles').length || note.nextAll().toArray().some(node => node !== noteSources[0] && !$(node).hasClass('related-articles'))) fail(route, 'The end consultation block must follow the article body/FAQ directly and precede related navigation (only the source note may sit between).');
     const expectedSources = publicSourcesOf(editorialContent);
     if (expectedSources.length) {
       sourceNotePages++;
-      const block = $('.article-body > .referral + details.source-note');
+      const block = $('.article-body > .referral-card + details.source-note');
       const latest = expectedSources.map(source => source.checkedAt).sort().at(-1);
       const summary = block.children('summary');
       const items = block.children('ul').children('li').toArray();
@@ -231,8 +312,41 @@ for (const [route, { $, ids }] of pages) {
       })) fail(route, "Source note must list exactly the page's recorded sources with their recorded check dates.");
     } else if (sourceNotes.length) fail(route, 'A page without recorded public sources must not show a source note.');
     if ($('.referral [data-provider-link]').attr('data-placement') !== 'article-end') fail(route, 'Article referral must preserve its article-end analytics placement.');
-    if ($('.article-head [data-provider-link]').length || $('.referral h2, .referral .eyebrow').length) fail(route, 'Prominent provider promotion remains.');
-    if (/つばさ|公益社/.test(normalize($('.article-head, .prose-section, .faq, .answer, .region-focus').text()))) fail(route, 'Provider name is woven into the editorial body.');
+    if (providerName.test(normalize($('.article-head, .article-lead, .key-points, .quick-facts, .toc, .prose-section, .faq, .related-articles, .answer, .region-focus').text()))) fail(route, 'Provider name is woven into the editorial body.');
+  } else {
+    if ($('.key-points, .quick-facts, .toc, .referral-top, .referral-inline').length) fail(route, 'Summary, quick facts, table of contents and in-page consultation rows belong to article and region pages only.');
+    // The home page ends with the same block (placement home-end); no other page links to the provider.
+    const expectedLinks = route === '/' ? 1 : 0;
+    const card = $('main .referral-card');
+    if ($('[data-provider-link]').length !== expectedLinks || card.length !== expectedLinks) fail(route, 'Only the home page, articles and regions carry a consultation block.');
+    if (expectedLinks) {
+      const link = card.find('[data-provider-link]');
+      const destination = new URL(link.attr('href') || origin);
+      const lines = card.children('p').not('.referral-action');
+      if (normalize(card.children('h2').text()) !== homeReferral.label || card.find('a').length !== 1 || normalize(link.text()) !== referralLinkText || lines.length > 1 || normalize(lines.text()).length > 40 || link.attr('data-placement') !== 'home-end' || destination.origin + destination.pathname !== homeReferral.href || destination.searchParams.get('utm_content') !== 'home-home-end') fail(route, 'The home consultation block is a heading, at most one short line and one home-end link.');
+    }
+  }
+  if (route === '/') {
+    const urgent = $('.urgent-list a').toArray().map(node => $(node).attr('href'));
+    const regionLinks = $('.home-regions .region-directory a').toArray().map(node => $(node).attr('href'));
+    if (normalize($('.urgent > h2').text()) !== 'いま、家族が亡くなった方へ' || urgent.join() !== ['hospital-transport', 'home-death', 'first-day', 'funeral-flow'].map(slug => `/guides/${slug}/`).join()) fail(route, 'The home page opens with the four guides for a family that has just lost someone.');
+    if (normalize($('.home-regions > h2').text()) !== '地域から探す' || regionLinks.length !== content.regions.length || content.regions.some(region => !regionLinks.includes(`/regions/${region.slug}/`))) fail(route, 'The home page lists every municipality under 地域から探す.');
+    if ($('.home-top').nextAll('.home-guides').length !== 1 || $('.home-guides .article-list a').toArray().some(node => !articleBySlug.has($(node).attr('href').split('/')[2]))) fail(route, 'Guides grouped by need follow the urgent entries and the municipality index.');
+  }
+  // Consultation links are plain measured links: never a phone link, never rel=sponsored, never outside the three elements.
+  for (const node of $('[data-provider-link]').toArray()) {
+    const link = $(node);
+    const destination = new URL(link.attr('href') || origin, canonical);
+    providerLinkCount++;
+    if (!link.closest('.referral-card, .referral-top, .referral-inline').length || /sponsored/.test(link.attr('rel') || '') || destination.protocol !== 'https:') fail(route, 'A consultation link must be a plain https link inside a consultation element, without rel=sponsored.');
+    if (destination.searchParams.get('utm_source') !== 'okurinochizu' || destination.searchParams.get('utm_medium') !== 'referral' || destination.searchParams.get('utm_campaign') !== 'reader-guide') fail(route, 'A consultation link must carry the referral UTM parameters.');
+  }
+  // Phone links: only a public office's number in a region's 早見表. The provider has no phone element at all.
+  for (const node of $('a[href^="tel:"], a[href^="sms:"], a[href^="callto:"]').toArray()) {
+    const link = $(node);
+    const fact = photoRegion?.quickFacts?.find(row => row.href === link.attr('href'));
+    officePhoneLinks++;
+    if (!fact || !link.closest('.quick-facts dd').length || link.attr('data-provider-link') !== undefined || providerName.test(normalize(link.closest('div').text()))) fail(route, `Phone link is not a recorded public-office number in a region quick-facts panel: ${link.attr('href')}`);
   }
   if (/\b(?:TODO|TBD|Lorem ipsum)\b|ここに(?:本文|文章|記事)を(?:入力|挿入)/i.test(bodyText)) fail(route, 'Unfinished placeholder text is visible.');
   for (const node of $('a[href],area[href],svg a[href],link[href],script[src],img[src],source[src],form[action]').toArray()) {
@@ -349,7 +463,7 @@ for (const file of files.filter(file => /\.(?:html|js|css|json|xml|txt|svg)$/.te
   const text = await readFile(file, 'utf8');
   if (/-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|"private_key"\s*:|(?:ghp|gho|github_pat)_[A-Za-z0-9_]{20,}/.test(text)) fail('/' + path.relative('dist', file), 'Credential-like material appears in the public build.');
 }
-const report = { checkedAt: new Date().toISOString(), fingerprint: await fingerprintDist(), status: problems.length ? 'failed' : 'passed', htmlPages: pages.size, indexablePages: expectedIndexable.size, articles: content.articles.length, regions: content.regions.length, externalURLs: outbound.size, contextualLinks, publicServiceLinks, sourceNotePages, photography: { picturedPages, placements: photographPlacements, uniqueImages: photographHashes.size }, problems, warnings };
+const report = { checkedAt: new Date().toISOString(), fingerprint: await fingerprintDist(), status: problems.length ? 'failed' : 'passed', htmlPages: pages.size, indexablePages: expectedIndexable.size, articles: content.articles.length, regions: content.regions.length, externalURLs: outbound.size, contextualLinks, publicServiceLinks, sourceNotePages, providerLinks: providerLinkCount, officePhoneLinks, keyPointPages, quickFactPages, photography: { picturedPages, placements: photographPlacements, uniqueImages: photographHashes.size }, problems, warnings };
 await mkdir('.local', { recursive: true });
 await writeFile('.local/build-validation.json', JSON.stringify(report, null, 2) + '\n');
 for (const problem of problems) console.error(`FAIL ${problem.page}: ${problem.message}`);

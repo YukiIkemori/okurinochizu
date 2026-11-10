@@ -1,0 +1,8 @@
+---
+interface Props { points: string[]; }
+const { points } = Astro.props;
+---
+<section class="key-points" aria-labelledby="key-points-heading">
+  <h2 id="key-points-heading">まず知っておきたいこと</h2>
+  <ul>{points.map(point => <li>{point}</li>)}</ul>
+</section>

@@ -5,22 +5,33 @@ import RegionLinks from '../components/RegionLinks.astro';
 import ArticleList from '../components/ArticleList.astro';
 import Referral from '../components/Referral.astro';
 import EditorialImage from '../components/EditorialImage.astro';
-import { site, articles } from '../data/site';
-const essentials = ['hospital-transport', 'family-funeral', 'funeral-cost', 'funeral-benefit', 'tree-burial', 'death-procedures'];
-const picked = essentials.flatMap(slug => articles.filter(a => a.slug === slug));
+import { site, articles, needs, articlesForNeed, urgentEntries, articleUrl, articleListTitle } from '../data/site';
+const bySlug = (slug: string) => articles.filter(article => article.slug === slug);
+const urgent = urgentEntries.flatMap(entry => bySlug(entry.slug).map(article => ({ ...entry, article })));
 ---
 <Base title={site.name}>
-  <section class="hero hero-visual wrap">
-    <h1>大切な人をおくる、<br />その前に。</h1>
+  <div class="home-top wrap">
+    <h1 class="home-title">大切な人をおくる、<br />その前に。</h1>
+    <section class="urgent" aria-labelledby="urgent-heading">
+      <h2 id="urgent-heading">いま、家族が亡くなった方へ</h2>
+      <ol class="urgent-list">
+        {urgent.map(entry => <li><a href={articleUrl(entry.article.slug)}><span class="urgent-when">{entry.when}</span><span class="urgent-title">{articleListTitle(entry.article)}</span></a></li>)}
+      </ol>
+    </section>
     <EditorialImage kind="home-hero" variant="hero" />
+    <section class="home-regions" aria-labelledby="home-regions-heading">
+      <h2 id="home-regions-heading">地域から探す</h2>
+      <div class="region-finder"><RegionLinks /><RegionMap /></div>
+    </section>
+  </div>
+  <section class="home-guides wrap" aria-labelledby="home-guides-heading">
+    <header class="directory-heading"><h2 id="home-guides-heading">記事から探す</h2><a class="text-link" href="/guides/">すべての記事</a></header>
+    {needs.map(need => <section class="need-group" aria-labelledby={'need-' + need.id}>
+      <div class="need-label"><h3 id={'need-' + need.id}>{need.name}</h3><a class="text-link" href={'/guides/#' + need.id}>{need.name}の記事（{articlesForNeed(need).length}本）</a></div>
+      <ArticleList items={need.featured.flatMap(bySlug)} headingLevel={4} />
+    </section>)}
   </section>
-  <section class="home-section home-articles wrap" aria-labelledby="home-articles-heading">
-    <header class="directory-heading"><h2 id="home-articles-heading">記事</h2><a class="text-link" href="/guides/">すべての記事</a></header>
-    <ArticleList items={picked} />
-  </section>
-  <section class="home-section wrap" aria-labelledby="home-regions-heading">
-    <header class="directory-heading"><h2 id="home-regions-heading">地域の案内</h2></header>
-    <div class="home-region-selector"><RegionMap /><RegionLinks /></div>
-    <Referral referral={{ href: 'https://so-gi.com/hall', label: 'つばさ公益社', note: '葬儀についての相談は、つばさ公益社へ。' }} slug="home" placement="home-end" intent="regional-funeral" />
-  </section>
+  <div class="wrap home-referral">
+    <Referral referral={{ href: 'https://so-gi.com/hall', label: '葬儀の相談は、つばさ公益社へ', note: '' }} slug="home" placement="home-end" intent="regional-funeral" />
+  </div>
 </Base>

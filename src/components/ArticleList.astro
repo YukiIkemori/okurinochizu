@@ -1,9 +1,9 @@
 ---
 import type { Article } from '../data/types';
 import { articleUrl, articleListTitle } from '../data/site';
-interface Props { items: Article[]; headingLevel?: 2 | 3; }
+interface Props { items: Article[]; headingLevel?: 2 | 3 | 4; }
 const { items, headingLevel = 3 } = Astro.props;
-const Heading = headingLevel === 2 ? 'h2' : 'h3';
+const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
 ---
 <ol class="article-list">
   {items.map(item => (

@@ -2,9 +2,15 @@
 import Base from '../../layouts/Base.astro';
 import ArticleList from '../../components/ArticleList.astro';
 import EditorialImage from '../../components/EditorialImage.astro';
-import { articles } from '../../data/site';
+import { needs, articlesForNeed } from '../../data/site';
 ---
 <Base title="葬儀・お墓・終活の記事一覧" description="家族葬の選び方、葬儀費用の見積もり、病院からの搬送、樹木葬、互助会解約、自治体への届出。必要な記事を一覧から選べます。" breadcrumbs={[{ name: '記事一覧' }]}>
-  <div class="wrap"><header class="page-intro"><h1>記事一覧</h1><EditorialImage kind="guides-header" /></header>
-  <div class="index-section"><ArticleList items={articles} headingLevel={2} /></div></div>
+  <div class="wrap"><header class="page-intro"><h1>記事一覧</h1><EditorialImage kind="guides-header" variant="band" /></header>
+    <div class="index-section">
+      {needs.map(need => <section class="need-group" id={need.id} aria-labelledby={'need-' + need.id}>
+        <div class="need-label"><h2 id={'need-' + need.id}>{need.name}</h2></div>
+        <ArticleList items={articlesForNeed(need)} headingLevel={3} />
+      </section>)}
+    </div>
+  </div>
 </Base>

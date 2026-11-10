@@ -30,5 +30,5 @@ const positions: Partial<Record<EditorialKind, string>> = {
 export const editorialPosition = (kind: EditorialKind): string => positions[kind] ?? 'center';
 
 export const articleVisual = (slug: string): EditorialKind => `guide-${slug}-header`;
-export const interludeVisual = (slug: string): EditorialKind => `guide-${slug}-interlude`;
-export const regionVisual = (slug: string, placement: 'header' | 'interlude' = 'header'): EditorialKind => `region-${slug}-${placement}`;
+// Interlude images remain in the repository and manifest but are no longer rendered (one header image per page).
+export const regionVisual = (slug: string): EditorialKind => `region-${slug}-header`;

@@ -1,0 +1,9 @@
+---
+// The same list is rendered twice: a closed <details> in the reading column for narrow screens and a
+// sticky side column for wide ones. CSS shows exactly one of them, so no script is needed.
+interface Props { items: { id: string; heading: string }[]; variant: 'inline' | 'side'; }
+const { items, variant } = Astro.props;
+---
+{variant === 'inline'
+  ? <details class="toc toc--inline"><summary>目次</summary><nav aria-label="目次"><ol>{items.map(item => <li><a href={'#' + item.id}>{item.heading}</a></li>)}</ol></nav></details>
+  : <nav class="toc toc--side" aria-labelledby="toc-side-heading"><p id="toc-side-heading" class="toc-heading">目次</p><ol>{items.map(item => <li><a href={'#' + item.id}>{item.heading}</a></li>)}</ol></nav>}

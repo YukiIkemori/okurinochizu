@@ -1,7 +1,10 @@
 ---
 import type { Referral } from '../data/types';
-interface Props { referral: Referral; slug?: string; region?: string; intent?: string; placement?: string; inline?: boolean; }
-const { referral, slug = '', region = '', intent = '', placement = 'article-end', inline = false } = Astro.props;
+// card: the set-off block at the end of a page. top: one ruled row near the top of region pages and
+// urgent guides. inline: the optional one-sentence note after a configured section.
+interface Props { referral: Referral; slug?: string; region?: string; intent?: string; placement?: string; variant?: 'card' | 'top' | 'inline'; }
+const { referral, slug = '', region = '', intent = '', variant = 'card' } = Astro.props;
+const placement = Astro.props.placement ?? (variant === 'top' ? 'article-top' : variant === 'inline' ? 'in-article' : 'article-end');
 const prompt = intent === 'cemetery' ? 'お墓・供養についての相談は、' : intent === 'planning' ? '葬儀の事前相談は、' : intent === 'urgent' ? '搬送や葬儀についての相談は、' : '葬儀についての相談は、';
 const destination = new URL(referral.href);
 if (destination.hostname !== 'so-gi.com' && destination.hostname !== 'www.so-gi.com') throw new Error('Unexpected referral host');
@@ -9,5 +12,12 @@ destination.searchParams.set('utm_source', 'okurinochizu');
 destination.searchParams.set('utm_medium', 'referral');
 destination.searchParams.set('utm_campaign', 'reader-guide');
 destination.searchParams.set('utm_content', [slug || region || 'home', placement].join('-'));
+const link = { href: destination.toString(), rel: 'noopener', 'data-provider-link': '', 'data-content-slug': slug, 'data-region': region, 'data-intent': intent, 'data-placement': placement };
 ---
-<p class={inline ? 'referral-inline' : 'referral'}>{prompt}<a href={destination.toString()} rel="noopener" data-provider-link data-content-slug={slug} data-region={region} data-intent={intent} data-placement={placement}>つばさ公益社</a>へ。</p>
+{variant === 'card' && <section class="referral referral-card" aria-labelledby="referral-heading">
+  <h2 id="referral-heading">{referral.label}</h2>
+  <p>相談の方法と連絡先は、公式ページで確認できます。</p>
+  <p class="referral-action"><a class="button-link" {...link}>つばさ公益社のページを見る</a></p>
+</section>}
+{variant === 'top' && <p class="referral-top"><span class="referral-top-label">葬儀の相談先</span><a {...link}>つばさ公益社のページを見る</a></p>}
+{variant === 'inline' && <p class="referral-inline">{prompt}<a {...link}>つばさ公益社</a>へ。</p>}

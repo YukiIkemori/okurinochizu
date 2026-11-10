@@ -18,7 +18,7 @@ const schema = [{
 }];
 ---
 <Base title="運営者情報" description="おくりの地図の運営会社、所在地、代表者、編集の方針と、紹介している葬儀社との関係を掲載しています。" breadcrumbs={[{ name: '運営者情報' }]} schema={schema}>
-  <div class="wrap"><header class="page-intro"><h1>運営者情報</h1><p class="lead">おくりの地図は、{operator.name}が運営しています。</p></header>
+  <div class="wrap wrap--reading"><header class="page-intro"><h1>運営者情報</h1><p class="lead">おくりの地図は、{operator.name}が運営しています。</p></header>
   <div class="editorial-prose">
     <dl class="operator-details">
       <div><dt>運営会社</dt><dd>{operator.name}</dd></div>
@@ -38,12 +38,11 @@ const schema = [{
   </div></div>
 </Base>
 <style>
-  .operator-details { margin: 0; border-top: 1px solid var(--line); }
-  .operator-details > div { display: grid; grid-template-columns: 9em 1fr; gap: 6px 20px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .operator-details dt { font-weight: 600; font-size: 15px; line-height: 2.1; }
-  .operator-details dd { margin: 0; font-size: 15px; line-height: 2.1; overflow-wrap: anywhere; }
+  .operator-details { margin: 0; border-top: 2px solid var(--green); }
+  .operator-details > div { display: grid; grid-template-columns: 8em 1fr; gap: 4px 20px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .operator-details dt { font-weight: 600; font-size: 15px; line-height: 1.9; color: var(--green); }
+  .operator-details dd { margin: 0; line-height: 1.9; overflow-wrap: anywhere; }
   @media (max-width: 760px) {
     .operator-details > div { grid-template-columns: 1fr; }
-    .operator-details dt, .operator-details dd { font-size: 14px; }
   }
 </style>

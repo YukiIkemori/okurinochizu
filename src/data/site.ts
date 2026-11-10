@@ -18,6 +18,23 @@ export const categories = [
   { slug: 'planning', name: 'これからの支度', short: '事前相談・終活', description: 'まだ決めなくても大丈夫。家族に伝えることや、事前相談で聞いておきたいことをまとめます。', number: '05' },
   { slug: 'procedures', name: '手続きと参列', short: '届出・香典・遠方の家族', description: '死亡届、火葬許可、参列の連絡。役所の手続きと、人への伝え方を確認します。', number: '06' },
 ];
+/** Reader needs used to group guides on the home page and the guide index. Every category belongs to one group. */
+export const needs = [
+  { id: 'funeral', name: '葬儀の前後', categories: ['urgent', 'funeral'], featured: ['family-funeral', 'funeral-schedule', 'choose-funeral-company'] },
+  { id: 'money', name: '費用とお金', categories: ['cost'], featured: ['funeral-cost', 'estimate-checklist', 'funeral-benefit'] },
+  { id: 'procedures', name: '手続き', categories: ['procedures'], featured: ['death-procedures', 'cremation-permit', 'funeral-etiquette'] },
+  { id: 'grave', name: 'お墓と終活', categories: ['cemetery', 'planning'], featured: ['tree-burial', 'grave-closure', 'preconsultation'] },
+];
+export const articlesForNeed = (need: (typeof needs)[number]) => articles.filter(article => need.categories.includes(article.category));
+/** The guides for a reader whose family member has just died, in the order they are needed. */
+export const urgentEntries = [
+  { slug: 'hospital-transport', when: '病院で亡くなったとき' },
+  { slug: 'home-death', when: '自宅で亡くなったとき' },
+  { slug: 'first-day', when: '最初に何をするか知りたいとき' },
+  { slug: 'funeral-flow', when: '火葬・納骨までの流れを知りたいとき' },
+];
+/** Region pages and urgent guides show the one-row consultation line near the top (README). */
+export const hasTopReferral = (article: Article) => article.category === 'urgent';
 export const articleUrl = (slug: string) => '/guides/' + slug + '/';
 export const articleListTitle = (article: Article) => article.title.split('｜')[0].trim();
 export const regionUrl = (slug: string) => '/regions/' + slug + '/';

@@ -1,16 +1,13 @@
 ---
 import type { Section } from '../data/types';
-import type { EditorialKind } from '../data/visuals';
-import EditorialImage from './EditorialImage.astro';
 import InlineText from './InlineText.astro';
 import Referral from './Referral.astro';
 import type { Referral as ReferralData } from '../data/types';
-interface Props { sections: Section[]; interlude?: EditorialKind; inlineReferral?: { after: string; referral: ReferralData; slug: string; intent: string; region: string }; }
-const { sections, interlude, inlineReferral } = Astro.props;
+interface Props { sections: Section[]; inlineReferral?: { after: string; referral: ReferralData; slug: string; intent: string; region: string }; }
+const { sections, inlineReferral } = Astro.props;
 ---
-{sections.map((section, index) => (
+{sections.map(section => (
   <>
-  {interlude && index === Math.floor(sections.length / 2) && <EditorialImage kind={interlude} variant="interlude" />}
   <section id={section.id} class="prose-section">
     {section.aliases?.map(alias => <span id={alias} class="section-alias" aria-hidden="true"></span>)}
     <h2>{section.heading}</h2>
@@ -22,6 +19,6 @@ const { sections, interlude, inlineReferral } = Astro.props;
     </table></div>}
     {section.note && <p>{section.note}</p>}
   </section>
-  {inlineReferral && inlineReferral.after === section.id && <Referral referral={inlineReferral.referral} slug={inlineReferral.slug} intent={inlineReferral.intent} region={inlineReferral.region} placement="in-article" inline />}
+  {inlineReferral && inlineReferral.after === section.id && <Referral referral={inlineReferral.referral} slug={inlineReferral.slug} intent={inlineReferral.intent} region={inlineReferral.region} variant="inline" />}
   </>
 ))}
