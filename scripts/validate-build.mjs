@@ -26,7 +26,7 @@ const articleBySlug = new Map(content.articles.map(a => [a.slug, a]));
 const regionBySlug = new Map(content.regions.map(r => [r.slug, r]));
 const categorySlugs = ['urgent', 'funeral', 'cost', 'cemetery', 'planning', 'procedures'];
 const expectedIndexable = new Set([
-  '/', '/guides/', '/regions/', '/about/', '/privacy/',
+  '/', '/guides/', '/regions/', '/about/', '/operator/', '/privacy/',
   ...content.articles.map(a => `/guides/${a.slug}/`),
   ...content.regions.map(r => `/regions/${r.slug}/`),
 ]);
@@ -36,6 +36,10 @@ const privacyURLs = new Set([
   'https://policies.google.com/technologies/partner-sites',
   'https://tools.google.com/dlpage/gaoptout',
 ]);
+// The operator page (/operator/) is the one page that names the company, its representative's
+// researcher profile and the relationship with the referred funeral company.
+const operatorRoute = '/operator/';
+const operatorPageURLs = new Set([operator.url, operator.representative.profileUrl]);
 const providerHosts = new Set(['so-gi.com', 'www.so-gi.com']);
 const prohibitedHosts = ['mitsuwa-sougi.co.jp', 'soogi.jp', 'ansinsougi.jp', 'e-ohaka.com', 'lifedot.jp', 'e-sogi.com', 'osohshiki.jp'];
 let contextualLinks = 0;
@@ -172,7 +176,8 @@ for (const [route, { $, ids }] of pages) {
     }
   }
   if ($('figcaption').length) fail(route, 'Visible image captions must not be added.');
-  if ($('.sources, #sources-heading, .disclosure').length || /出典|確認日|公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ公益社との関係/.test(normalize($('body').text()))) fail(route, 'Removed source/disclosure copy remains in the public page.');
+  if ($('.sources, #sources-heading, .disclosure').length || route !== operatorRoute && /出典|確認日|公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ公益社との関係/.test(normalize($('body').text()))) fail(route, 'Removed source/disclosure copy remains in the public page.');
+  if ($('.site-footer .footer-operator a[href="/operator/"]').length !== 1) fail(route, 'Footer must link to the operator page once.');
   if (route.startsWith('/guides/') && articleBySlug.has(route.split('/')[2]) || route.startsWith('/regions/') && regionBySlug.has(route.split('/')[2])) {
     for (const section of editorialContent.sections) {
       for (const alias of section.aliases || []) if (!ids.has(alias)) fail(route, `Legacy section anchor missing: ${alias}`);
@@ -221,7 +226,7 @@ for (const [route, { $, ids }] of pages) {
         if (element.attr('data-provider-link') === undefined) fail(route, `Unmeasured Tsubasa link: ${raw}`);
         if (!element.attr('data-placement') || !element.attr('data-intent')) fail(route, `Tsubasa link lacks placement/intent metadata: ${raw}`);
       } else if (element.attr('data-provider-link') !== undefined) fail(route, `Provider tracking is attached to a non-Tsubasa URL: ${raw}`);
-      else if (!sourceURLs.has(url.origin + url.pathname) && !privacyURLs.has(url.origin + url.pathname) && !(url.href === operator.url && element.closest('.site-footer .footer-operator').length === 1)) fail(route, `External link is not a verified source, privacy resource or footer operator URL: ${raw}`);
+      else if (!sourceURLs.has(url.origin + url.pathname) && !privacyURLs.has(url.origin + url.pathname) && !(url.href === operator.url && element.closest('.site-footer .footer-operator').length === 1) && !(route === operatorRoute && operatorPageURLs.has(url.href) && element.closest('main').length === 1)) fail(route, `External link is not a verified source, privacy resource or operator URL: ${raw}`);
     }
   }
   const ogImage = $('meta[property="og:image"]').attr('content');
@@ -231,6 +236,8 @@ for (const [route, { $, ids }] of pages) {
     try { data.push(...schemas(JSON.parse($(node).text()))); } catch { fail(route, 'Invalid JSON-LD.'); }
   }
   if (!data.some(s => s?.['@type'] === 'WebSite' && s.url === origin && s.inLanguage === 'ja')) fail(route, 'WebSite JSON-LD is missing or inconsistent.');
+  const organizations = data.filter(s => s?.['@type'] === 'Organization');
+  if (route === operatorRoute ? organizations.length !== 1 || organizations[0].name !== operator.name || organizations[0].url !== operator.url || organizations[0].founder?.name !== operator.representative.name || organizations[0].founder?.sameAs !== operator.representative.profileUrl || !ids.has('relationship') : organizations.length) fail(route, 'Operator Organization JSON-LD and the relationship note belong on the operator page only.');
   const breadcrumbs = data.filter(s => s?.['@type'] === 'BreadcrumbList');
   const visibleCrumbs = $('.breadcrumbs li').toArray().map(node => normalize($(node).text()));
   if (visibleCrumbs.length) {

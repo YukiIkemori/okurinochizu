@@ -2,5 +2,13 @@
   "name": "株式会社tsam",
   "reading": "ツァム",
   "address": "東京都千代田区九段南一丁目5番6号 りそな九段ビル5F",
-  "url": "https://tsam.co.jp/"
+  "addressRegion": "東京都",
+  "streetAddress": "千代田区九段南一丁目5番6号 りそな九段ビル5F",
+  "url": "https://tsam.co.jp/",
+  "representative": {
+    "name": "池森 裕毅",
+    "jobTitle": "代表取締役",
+    "affiliation": "信州大学",
+    "profileUrl": "https://soar-rd.shinshu-u.ac.jp/search/detail.html?systemId=yCTpuFyC&lang=ja&st=researcher"
+  }
 }

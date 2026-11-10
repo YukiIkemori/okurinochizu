@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import operator from '../data/operator.json';
+const representative = operator.representative;
+const schema = [{
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: operator.name,
+  url: operator.url,
+  address: { '@type': 'PostalAddress', addressRegion: operator.addressRegion, streetAddress: operator.streetAddress, addressCountry: 'JP' },
+  founder: {
+    '@type': 'Person',
+    name: representative.name,
+    jobTitle: representative.jobTitle,
+    affiliation: { '@type': 'CollegeOrUniversity', name: representative.affiliation },
+    sameAs: representative.profileUrl,
+  },
+}];
+---
+<Base title="運営者情報" description="おくりの地図の運営会社、所在地、代表者、編集の方針と、紹介している葬儀社との関係を掲載しています。" breadcrumbs={[{ name: '運営者情報' }]} schema={schema}>
+  <div class="wrap"><header class="page-intro"><h1>運営者情報</h1><p class="lead">おくりの地図は、{operator.name}が運営しています。</p></header>
+  <div class="editorial-prose">
+    <dl class="operator-details">
+      <div><dt>運営会社</dt><dd>{operator.name}</dd></div>
+      <div><dt>所在地</dt><dd>{operator.address}</dd></div>
+      <div><dt>代表者</dt><dd>{representative.jobTitle} {representative.name}（信州大学 社会基盤研究所 特任教授。専門はスタートアップ）<br /><a href={representative.profileUrl} rel="noopener">信州大学 研究者総覧</a></dd></div>
+      <div><dt>ウェブサイト</dt><dd><a href={operator.url} rel="noopener">{operator.url}</a></dd></div>
+    </dl>
+    <h2>編集の方針</h2>
+    <ul>
+      <li>火葬場の料金や受付時間、届出の窓口などは、自治体の案内や法令などの公式情報で確かめたことだけを載せています。出典と確認日はページ内に示しています。</li>
+      <li>公式情報で確かめられないことは断定せず、問い合わせ先を案内しています。</li>
+      <li>本サイトは代表者の大学での活動とは別のもので、信州大学は内容に関わっていません。</li>
+    </ul>
+    <h2>紹介している葬儀社との関係</h2>
+    <p>ページの末尾などで、相談先として株式会社つばさ公益社を紹介しています。<span id="relationship">代表の池森は、個人として株式会社つばさ公益社に出資しています。</span>紹介による紹介料や広告料は、当社も池森個人も受け取っていません。</p>
+    <p>葬儀社を選ぶときは、つばさ公益社に限らず、複数の葬儀社から見積もりを取って比べることをおすすめします。（<a href="/guides/choose-funeral-company/">葬儀社の選び方</a>）</p>
+  </div></div>
+</Base>
+<style>
+  .operator-details { margin: 0; border-top: 1px solid var(--line); }
+  .operator-details > div { display: grid; grid-template-columns: 9em 1fr; gap: 6px 20px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .operator-details dt { font-weight: 600; font-size: 15px; line-height: 2.1; }
+  .operator-details dd { margin: 0; font-size: 15px; line-height: 2.1; overflow-wrap: anywhere; }
+  @media (max-width: 760px) {
+    .operator-details > div { grid-template-columns: 1fr; }
+    .operator-details dt, .operator-details dd { font-size: 14px; }
+  }
+</style>

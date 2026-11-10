@@ -2,7 +2,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 import { isolateAnalytics } from './helpers';
 
-for (const path of ['/', '/guides/hospital-transport/', '/regions/annaka/', '/search/', '/privacy/']) {
+for (const path of ['/', '/guides/hospital-transport/', '/regions/annaka/', '/search/', '/privacy/', '/operator/']) {
   test(`keyboard and WCAG A/AA access on ${path}`, async ({ page }) => {
     await isolateAnalytics(page);
     await page.goto(path);

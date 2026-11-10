@@ -67,7 +67,7 @@ const structuredData = [
         <a class="footer-brand" href="/">おくりの地図</a>
       </div>
       <section id="operator" class="wrap footer-operator" aria-labelledby="footer-operator-heading">
-        <h2 id="footer-operator-heading">運営者情報</h2>
+        <h2 id="footer-operator-heading"><a href="/operator/" aria-current={Astro.url.pathname === '/operator/' ? 'page' : undefined}>運営者情報</a></h2>
         <p>{operator.name}</p>
         <p>{operator.address}</p>
         <p><a href={operator.url}>{operator.url}</a></p>

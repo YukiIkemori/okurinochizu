@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { site, articles, regions, articleUrl, regionUrl } from '../data/site';
 export const GET: APIRoute = () => {
   const pages = [
-    ...['/', '/guides/', '/regions/', '/about/', '/privacy/'].map(path => ({ path, lastmod: '' })),
+    ...['/', '/guides/', '/regions/', '/about/', '/operator/', '/privacy/'].map(path => ({ path, lastmod: '' })),
     ...articles.map(a => ({ path: articleUrl(a.slug), lastmod: a.updatedAt })),
     ...regions.map(r => ({ path: regionUrl(r.slug), lastmod: r.updatedAt })),
   ];
