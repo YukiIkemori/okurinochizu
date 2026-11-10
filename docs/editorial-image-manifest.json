@@ -710,6 +710,16 @@
     "originalSha256": "3c785e995591e1771023fd46b040ee1a6c282580754960217af092010ea2f514"
   },
   {
+    "key": "region-koumi-header",
+    "source": "src/assets/editorial/unique/region-koumi-header.webp",
+    "subject": "晩秋の朝、霧の立つ静かな湖と、湖面に映る色づいたカラマツ林と針葉樹、遠くの青い山並み",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "bef0dc2ed863a2b3cb3811f79fa09a3a8be86d07bc6aae72c1b2745ac9116e80",
+    "originalFile": "gpt-image-2-region-koumi-header.png",
+    "originalSha256": "57b6b279503e278fb71500a5a236f3d47a48f51489d0eff250d7abdc96a50fb5"
+  },
+  {
     "key": "region-tateshina-header",
     "source": "src/assets/editorial/unique/region-tateshina-header.webp",
     "subject": "高原の白い雲と草原",

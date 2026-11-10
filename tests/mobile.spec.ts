@@ -121,7 +121,7 @@ test('the home first screen on a phone serves a family in a hurry: urgent guides
   // 地域から探す and all ten municipalities fit on the first screen; the photograph comes after them.
   await expect(page.getByRole('heading', { level: 2, name: '地域から探す' })).toBeInViewport();
   const regionLinks = page.locator('.home-regions .region-directory a');
-  await expect(regionLinks).toHaveCount(10);
+  await expect(regionLinks).toHaveCount(11);
   expect(await bottomOf('.home-regions')).toBeLessThanOrEqual(phone.height);
   expect((await page.locator('.home-top picture.editorial-image').boundingBox())!.y).toBeGreaterThanOrEqual(await bottomOf('.home-regions'));
   for (const box of await regionLinks.evaluateAll(links => links.map(link => link.getBoundingClientRect().toJSON()))) {

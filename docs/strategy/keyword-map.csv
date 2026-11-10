@@ -89,6 +89,18 @@ region,keyword_family,primary_url,supporting_url,intent,priority,measured_monthl
 佐久穂町,葬祭費・死亡後の手続き,/regions/sakuho/,/guides/funeral-benefit/,行政申請,P2,未取得,Googleサジェスト（2026-11-10）に「佐久穂町 お悔やみ」「佐久穂町 おくやみ」（訃報を探す意図を含む可能性あり）。「佐久穂町 葬祭費」「佐久穂町 死亡届」の候補は0件。検索量は取得していない
 佐久穂町,終活・事前相談,/regions/sakuho/,/guides/preconsultation/,事前に不安を解消,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
 佐久穂町,火葬場（佐久平斎場の予約と料金）,/regions/sakuho/,/guides/cremation-permit/,火葬の予約と料金,P1,未取得,Googleサジェスト（2026-11-10）に「佐久平斎場 予約」「佐久平斎場 予約システム」「佐久平斎場 アクセス」。「佐久穂町 火葬場」「佐久穂町 斎場」の候補は0件。検索量は取得していない
+小海町,家族葬,/regions/koumi/,/guides/family-funeral/,葬儀形式と相談,P1,未取得,Googleサジェスト（2026-11-11）で「小海町 家族葬」の候補は0件。検索意図に基づく設計。検索量は取得していない
+小海町,葬儀・葬儀場,/regions/koumi/,/guides/first-day/,地域の段取りと相談,P1,未取得,Googleサジェスト（2026-11-11）に「小海町 葬儀場」「小海町 葬儀」（「小海町 葬儀」「小海町 そ」の候補）。検索量は取得していない
+小海町,葬儀屋・葬儀社,/regions/koumi/,/guides/choose-funeral-company/,葬儀社選択と対応確認,P1,未取得,Googleサジェスト（2026-11-11）で「小海町 葬儀社」の候補は0件。検索意図に基づく設計。検索量は取得していない
+小海町,近くの葬儀・近くで葬儀,/regions/koumi/,/guides/choose-funeral-company/,搬送と家族の移動,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+小海町,病院搬送・亡くなった方の搬送,/regions/koumi/,/guides/hospital-transport/,医療確認後の緊急搬送,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+小海町,葬儀費用・家族葬費用,/regions/koumi/,/guides/funeral-cost/,総額確認,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+小海町,樹木葬,/regions/koumi/,/guides/local-tree-burial/,契約・個別期間・納骨先,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+小海町,お墓・墓地,/regions/koumi/,/guides/grave-selection/,供養と承継,P2,未取得,Googleサジェスト（2026-11-11）で「小海町 霊園」「小海町 墓地」の候補は0件。町のサイトに町営墓地の案内は見当たらない。検索量は取得していない
+小海町,互助会・解約,/regions/koumi/,/guides/mutual-aid-cancellation/,契約の切り替え,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+小海町,葬祭費・死亡後の手続き,/regions/koumi/,/guides/funeral-benefit/,行政申請,P2,未取得,Googleサジェスト（2026-11-11）に「小海町 お悔やみ」（訃報を探す意図を含む可能性あり）と「小海町役場」。「小海町 葬祭費」「小海町 死亡届」の候補は0件。検索量は取得していない
+小海町,終活・事前相談,/regions/koumi/,/guides/preconsultation/,事前に不安を解消,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+小海町,火葬場（佐久平斎場の予約と料金）,/regions/koumi/,/guides/cremation-permit/,火葬の予約と料金,P1,未取得,Googleサジェスト（2026-11-11）に「小海町 火葬場」と「佐久平斎場 予約」「佐久平斎場 予約システム」「佐久平斎場 アクセス」。「小海町 斎場」の候補は0件。検索量は取得していない
 安中市,家族葬,/regions/annaka/,/guides/family-funeral/,葬儀形式と相談,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
 安中市,葬儀・お葬式,/regions/annaka/,/guides/first-day/,地域の段取りと相談,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
 安中市,葬儀屋・葬儀社,/regions/annaka/,/guides/choose-funeral-company/,葬儀社選択と対応確認,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない

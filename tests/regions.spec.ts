@@ -8,7 +8,7 @@ const content = JSON.parse(readFileSync(new URL('../src/data/content.json', impo
 
 const regions = [
   ['saku', '佐久市'], ['ueda', '上田市'], ['komoro', '小諸市'], ['tomi', '東御市'], ['karuizawa', '軽井沢町'],
-  ['miyota', '御代田町'], ['tateshina', '立科町'], ['sakuho', '佐久穂町'], ['annaka', '安中市'], ['tomioka', '富岡市'],
+  ['miyota', '御代田町'], ['tateshina', '立科町'], ['sakuho', '佐久穂町'], ['koumi', '小海町'], ['annaka', '安中市'], ['tomioka', '富岡市'],
 ];
 const linkText = 'つばさ公益社のページを見る';
 
@@ -59,7 +59,7 @@ async function expectNoPhoneOrPushyElements(page: Page) {
   expect(floating, 'consultation links must scroll with the page').toBe(0);
 }
 
-test('all ten regional guides show the top row and the end block, with no phone or floating element', async ({ page }) => {
+test('all eleven regional guides show the top row and the end block, with no phone or floating element', async ({ page }) => {
   await isolateAnalytics(page);
   for (const [slug, name] of regions) {
     const response = await page.goto(`/regions/${slug}/`);
