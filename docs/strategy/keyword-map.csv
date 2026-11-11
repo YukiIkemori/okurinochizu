@@ -123,3 +123,15 @@ region,keyword_family,primary_url,supporting_url,intent,priority,measured_monthl
 富岡市,互助会・解約,/regions/tomioka/,/guides/mutual-aid-cancellation/,契約の切り替え,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
 富岡市,葬祭費・死亡後の手続き,/regions/tomioka/,/guides/funeral-benefit/,行政申請,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
 富岡市,終活・事前相談,/regions/tomioka/,/guides/preconsultation/,事前に不安を解消,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+長和町,家族葬,/regions/nagawa/,/guides/family-funeral/,葬儀形式と相談,P1,未取得,Googleサジェスト（2026-11-12）で「長和町 家族葬」の候補は0件。検索意図に基づく設計。検索量は取得していない
+長和町,葬儀・葬儀場,/regions/nagawa/,/guides/first-day/,地域の段取りと相談,P1,未取得,Googleサジェスト（2026-11-12）で「長和町 葬儀」「長和町 葬」の候補は0件（「長和町 そ」はそば・観光の候補のみ）。検索量は取得していない
+長和町,葬儀屋・葬儀社,/regions/nagawa/,/guides/choose-funeral-company/,葬儀社選択と対応確認,P1,未取得,Googleサジェスト（2026-11-12）で「長和町 葬儀社」の候補は0件。検索意図に基づく設計。検索量は取得していない
+長和町,近くの葬儀・近くで葬儀,/regions/nagawa/,/guides/choose-funeral-company/,搬送と家族の移動,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+長和町,病院搬送・亡くなった方の搬送,/regions/nagawa/,/guides/hospital-transport/,医療確認後の緊急搬送,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+長和町,葬儀費用・家族葬費用,/regions/nagawa/,/guides/funeral-cost/,総額確認,P1,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+長和町,樹木葬,/regions/nagawa/,/guides/local-tree-burial/,契約・個別期間・納骨先,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+長和町,お墓・墓地（大桜墓地公園）,/regions/nagawa/,/guides/grave-selection/,供養と承継,P2,未取得,Googleサジェスト（2026-11-12）で「長和町 墓地」「長和町 霊園」「大桜墓地公園」の候補は0件。町のサイトに大桜墓地公園の手続きの案内あり。検索量は取得していない
+長和町,互助会・解約,/regions/nagawa/,/guides/mutual-aid-cancellation/,契約の切り替え,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+長和町,葬祭費・死亡後の手続き,/regions/nagawa/,/guides/funeral-benefit/,行政申請,P2,未取得,Googleサジェスト（2026-11-12）に「長和町 お悔やみ」（訃報を探す意図を含む可能性あり）と「長和町役場」「長和町役場 電話番号」「長和町役場和田庁舎」。「長和町 葬祭費」「長和町 死亡届」の候補は0件。検索量は取得していない
+長和町,終活・事前相談,/regions/nagawa/,/guides/preconsultation/,事前に不安を解消,P2,未取得,検索意図に基づく設計。各自治体別の検索量は取得していない
+長和町,火葬場（依田窪斎場・大星斎場の予約と料金）,/regions/nagawa/,/guides/cremation-permit/,火葬の予約と料金,P1,未取得,Googleサジェスト（2026-11-12）に「長和町 火葬場」「依田窪斎場」「依田窪斎場 アクセス」「上田地域広域連合 依田窪斎場」「大星斎場 料金」。「長和町 斎場」「依田窪斎場 予約」の候補は0件。検索量は取得していない

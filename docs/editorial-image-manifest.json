@@ -720,6 +720,16 @@
     "originalSha256": "57b6b279503e278fb71500a5a236f3d47a48f51489d0eff250d7abdc96a50fb5"
   },
   {
+    "key": "region-nagawa-header",
+    "source": "src/assets/editorial/unique/region-nagawa-header.webp",
+    "subject": "晩秋の曇った朝、石の多い澄んだ山あいの川と、川岸の色づいたカラマツ林と針葉樹、霧のかかる遠くの青い山並み",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "6183dab1be39d11d44a50fc5b0322e2639b69ae4e49d09d5b3bdf08289493b9e",
+    "originalFile": "gpt-image-2-region-nagawa-header.png",
+    "originalSha256": "fa6ecf9766a3e8a07c55cecba14ba4f144862ff6674a49413f275f139d27a597"
+  },
+  {
     "key": "region-tateshina-header",
     "source": "src/assets/editorial/unique/region-tateshina-header.webp",
     "subject": "高原の白い雲と草原",

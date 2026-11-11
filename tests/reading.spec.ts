@@ -121,7 +121,7 @@ test('home, collections and search use the ruled lists; guides are grouped by ne
   await expect(page.getByRole('heading', { level: 2, name: 'いま、家族が亡くなった方へ' })).toBeInViewport();
   await expect(page.locator('.urgent-list a')).toHaveCount(4);
   await expect(page.getByRole('heading', { level: 2, name: '地域から探す' })).toBeVisible();
-  await expect(page.locator('.home-regions .region-directory a')).toHaveCount(11);
+  await expect(page.locator('.home-regions .region-directory a')).toHaveCount(12);
   await expect(page.locator('.home-regions .map-figure')).toBeVisible();
   await expect(page.locator('.home-guides .need-group h3')).toHaveText(['葬儀の前後', '費用とお金', '手続き', 'お墓と終活']);
   await page.locator('.home-guides .need-group').nth(1).locator('.need-label a').click();
@@ -132,7 +132,7 @@ test('home, collections and search use the ruled lists; guides are grouped by ne
   // Every guide appears in exactly one group.
   expect(new Set(await page.locator('.article-list a').evaluateAll(links => links.map(link => link.getAttribute('href')))).size).toBe(28);
   await page.goto('/regions/');
-  await expect(page.locator('.region-directory a')).toHaveCount(11);
+  await expect(page.locator('.region-directory a')).toHaveCount(12);
   await expect(page.locator('.region-directory h2')).toHaveText(['長野県', '群馬県']);
   await page.locator('.region-directory').getByRole('link', { name: '富岡市', exact: true }).click();
   await expect(page).toHaveURL('/regions/tomioka/');

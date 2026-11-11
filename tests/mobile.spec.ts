@@ -16,11 +16,11 @@ test('small-screen navigation, reading and table layouts remain usable', async (
   await page.getByRole('link', { name: '葬祭費・埋葬料はいくらもらえる？', exact: true }).click();
   await expect(page).toHaveURL('/guides/funeral-benefit/');
   await expectNoHorizontalOverflow(page);
-  const table = page.getByRole('region', { name: '国保：10地域は葬祭費50,000円。小海町は町に確認の表', exact: true });
+  const table = page.getByRole('region', { name: '国保：11地域は葬祭費50,000円。小海町は町に確認の表', exact: true });
   await expect(table).toBeVisible();
-  await expect(table.locator('tbody tr')).toHaveCount(11);
+  await expect(table.locator('tbody tr')).toHaveCount(12);
   await expect(table.locator('thead th')).toHaveText(['故人が加入していた国保', '葬祭費', '申請・相談する窓口']);
-  await expect(table.locator('tbody tr td:first-of-type')).toHaveText([...Array(8).fill('50,000円'), '町の案内に記載なし', ...Array(2).fill('50,000円')]);
+  await expect(table.locator('tbody tr td:first-of-type')).toHaveText([...Array(8).fill('50,000円'), '町の案内に記載なし', ...Array(3).fill('50,000円')]);
   await table.focus();
   await page.keyboard.press('ArrowRight');
   await expect.poll(() => table.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
@@ -121,7 +121,7 @@ test('the home first screen on a phone serves a family in a hurry: urgent guides
   // 地域から探す and all ten municipalities fit on the first screen; the photograph comes after them.
   await expect(page.getByRole('heading', { level: 2, name: '地域から探す' })).toBeInViewport();
   const regionLinks = page.locator('.home-regions .region-directory a');
-  await expect(regionLinks).toHaveCount(11);
+  await expect(regionLinks).toHaveCount(12);
   expect(await bottomOf('.home-regions')).toBeLessThanOrEqual(phone.height);
   expect((await page.locator('.home-top picture.editorial-image').boundingBox())!.y).toBeGreaterThanOrEqual(await bottomOf('.home-regions'));
   for (const box of await regionLinks.evaluateAll(links => links.map(link => link.getBoundingClientRect().toJSON()))) {
