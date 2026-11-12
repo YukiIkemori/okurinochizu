@@ -13,14 +13,15 @@ const places = [
   { slug: 'koumi', name: '小海町', cx: 224, cy: 328, x: 214, y: 334, end: true },
   { slug: 'tateshina', name: '立科町', cx: 115, cy: 233, x: 78, y: 219 },
   { slug: 'nagawa', name: '長和町', cx: 104, cy: 266, x: 96, y: 272, end: true },
+  { slug: 'aoki', name: '青木村', cx: 62, cy: 192, x: 56, y: 212, end: true },
   { slug: 'annaka', name: '安中市', cx: 373, cy: 198, x: 373, y: 180 },
   { slug: 'tomioka', name: '富岡市', cx: 376, cy: 256, x: 375, y: 284 },
 ] as { slug: string; name: string; cx: number; cy: number; x: number; y: number; end?: boolean }[];
 ---
 <figure class="map-figure">
   <svg viewBox="0 0 480 420" role="group" aria-labelledby="map-title map-description">
-    <title id="map-title">長野県東信と群馬県西毛の12地域</title>
-    <desc id="map-description">上田市、東御市、小諸市、佐久市、佐久穂町、小海町、立科町、長和町、御代田町、軽井沢町、安中市、富岡市。各地域の名前から案内ページへ移動できます。模式図のため距離や境界は正確ではありません。</desc>
+    <title id="map-title">長野県東信と群馬県西毛の13地域</title>
+    <desc id="map-description">上田市、東御市、小諸市、佐久市、佐久穂町、小海町、立科町、長和町、青木村、御代田町、軽井沢町、安中市、富岡市。各地域の名前から案内ページへ移動できます。模式図のため距離や境界は正確ではありません。</desc>
     <defs><pattern id="map-lines" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><line x1="0" y1="0" x2="0" y2="10" stroke="#d9dece" stroke-width=".6"/></pattern></defs>
     <path d="M47 143 88 111 99 63 143 54 160 90 206 99 222 82 260 91 275 126 310 139 304 185 284 218 302 250 271 274 255 309 214 344 177 333 158 348 120 315 94 273 55 255 35 211Z" fill="#e7eadc" stroke="#d0d7c3" stroke-width="1"/>
     <path d="m310 139 24-36 48-5 46 21 23 49-10 42 12 34-28 45-50 23-52-20-21-42-18-32 20-33Z" fill="url(#map-lines)" stroke="#d0d7c3" stroke-width="1"/>

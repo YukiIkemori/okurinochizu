@@ -109,7 +109,7 @@ button { cursor: pointer; }
 .urgent-when { grid-column: 2; font-size: 17px; font-weight: 600; line-height: 1.5; }
 .urgent-title { grid-column: 2; font-size: 14px; line-height: 1.5; color: var(--soft); }
 .urgent-list a:hover .urgent-title { color: inherit; }
-.home-regions { grid-area: regions; margin-top: 26px; }
+.home-regions { grid-area: regions; margin-top: 18px; }
 .home-regions > h2 { font-size: 20px; line-height: 1.5; padding-bottom: 8px; border-bottom: 2px solid var(--green); }
 .home-top > .editorial-image--hero { grid-area: image; margin-top: 36px; }
 .home-guides { margin-top: 44px; }

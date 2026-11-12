@@ -730,6 +730,16 @@
     "originalSha256": "fa6ecf9766a3e8a07c55cecba14ba4f144862ff6674a49413f275f139d27a597"
   },
   {
+    "key": "region-aoki-header",
+    "source": "src/assets/editorial/unique/region-aoki-header.webp",
+    "subject": "晩秋の午後、低い山に囲まれた静かな盆地の、刈り取りを終えた田と色づいた雑木林の丘、遠くの青い山並み",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "67b551e135c61cd978d2434d8f4be8de14a1ef79d2f999f2d58cc401be33852d",
+    "originalFile": "gpt-image-2-region-aoki-header.png",
+    "originalSha256": "82c534d49cd1263a4470cac18b4675065cc16f4d325fa51912dc3e859f5eb5ea"
+  },
+  {
     "key": "region-tateshina-header",
     "source": "src/assets/editorial/unique/region-tateshina-header.webp",
     "subject": "高原の白い雲と草原",
