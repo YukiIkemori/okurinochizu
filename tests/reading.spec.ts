@@ -128,9 +128,9 @@ test('home, collections and search use the ruled lists; guides are grouped by ne
   await expect(page).toHaveURL('/guides/#money');
   await expect(page.locator('.index-section .need-group h2')).toHaveText(['葬儀の前後', '費用とお金', '手続き', 'お墓と終活']);
   await expect(page.locator('#money h2')).toBeInViewport();
-  await expect(page.locator('.article-list > li')).toHaveCount(28);
+  await expect(page.locator('.article-list > li')).toHaveCount(29);
   // Every guide appears in exactly one group.
-  expect(new Set(await page.locator('.article-list a').evaluateAll(links => links.map(link => link.getAttribute('href')))).size).toBe(28);
+  expect(new Set(await page.locator('.article-list a').evaluateAll(links => links.map(link => link.getAttribute('href')))).size).toBe(29);
   await page.goto('/regions/');
   await expect(page.locator('.region-directory a')).toHaveCount(13);
   await expect(page.locator('.region-directory h2')).toHaveText(['長野県', '群馬県']);

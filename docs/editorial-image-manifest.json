@@ -70,6 +70,16 @@
     "originalSha256": "c0f025d24d3dea38c28abb51ad69bdd0a3a5d23642afa17f4df8d770942c53c5"
   },
   {
+    "key": "guide-critical-condition-header",
+    "source": "src/assets/editorial/unique/guide-critical-condition-header.webp",
+    "subject": "早朝の淡い光が差すすりガラスの窓辺の木の窓台に置いた、白い山茶花を一枝挿したガラスの花器と、たたんだ無地の麻布の上に置いた革ベルトの腕時計",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "39d2083b81fb8f98037c3981ee1443973373a981ad4d4a7cfe88626d3a3fa16c",
+    "originalFile": "gpt-image-2-critical-condition-header.png",
+    "originalSha256": "fe925726a8d74ce13ad7f4d18d999021bdb35aafe33f1340e624af69655b7388"
+  },
+  {
     "key": "guide-death-procedures-header",
     "source": "src/assets/editorial/unique/guide-death-procedures-header.webp",
     "subject": "無地の書類を整理するアコーディオン式フォルダー",

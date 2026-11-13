@@ -20,7 +20,7 @@ export const categories = [
 ];
 /** Reader needs used to group guides on the home page and the guide index. Every category belongs to one group. */
 export const needs = [
-  { id: 'funeral', name: '葬儀の前後', categories: ['urgent', 'funeral'], featured: ['family-funeral', 'funeral-schedule', 'choose-funeral-company'] },
+  { id: 'funeral', name: '葬儀の前後', categories: ['urgent', 'funeral'], featured: ['family-funeral', 'critical-condition', 'choose-funeral-company'] },
   { id: 'money', name: '費用とお金', categories: ['cost'], featured: ['funeral-cost', 'estimate-checklist', 'funeral-benefit'] },
   { id: 'procedures', name: '手続き', categories: ['procedures'], featured: ['death-procedures', 'cremation-permit', 'funeral-etiquette'] },
   { id: 'grave', name: 'お墓と終活', categories: ['cemetery', 'planning'], featured: ['tree-burial', 'grave-closure', 'preconsultation'] },
