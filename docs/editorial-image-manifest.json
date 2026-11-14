@@ -220,6 +220,16 @@
     "originalSha256": "e29d13dd041fd5666ca1e56ed7dde5688639db82bee3be852be0d06da0aa4a6b"
   },
   {
+    "key": "guide-forty-ninth-day-header",
+    "source": "src/assets/editorial/unique/guide-forty-ninth-day-header.webp",
+    "subject": "晩秋の午後、画面外の障子越しの柔らかな光が差す板張りの床に置いた、薄紫と白の野菊と枯れ草を挿した素焼きの花器、たたんだ藍染めの布、白木の蓋付きの小箱",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "817cd177226d5cf3b9b4f8deefbf351eb2c5a523ce64d0694ed618926c99a0b9",
+    "originalFile": "gpt-image-2-forty-ninth-day-header.png",
+    "originalSha256": "b0b41a5db14ccd1c16b77a848e54de527924e3fb4035e7f23f23dad20f44c497"
+  },
+  {
     "key": "guide-funeral-benefit-header",
     "source": "src/assets/editorial/unique/guide-funeral-benefit-header.webp",
     "subject": "籐の浅いトレーに整えた無地の書類",
