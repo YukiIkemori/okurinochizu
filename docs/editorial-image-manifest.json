@@ -310,6 +310,16 @@
     "originalSha256": "e2c55ad8adc309f4a7b4dbbda1349a67278af4412627a6aacd14ea65cae536e9"
   },
   {
+    "key": "guide-funeral-greeting-header",
+    "source": "src/assets/editorial/unique/guide-funeral-greeting-header.webp",
+    "subject": "晩秋の夕方、画面外の窓からの柔らかな光が差す木の文机に置いた、無地の生成りの和紙数枚、竹の筆置きに載せた細い筆、青磁の水滴、白い小菊を一輪挿した竹の花入れ",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "21a5cd6cb14bad8d053a4d8ebd88abb4ac9271dbf680fcb3f9450a6f241ea964",
+    "originalFile": "gpt-image-2-funeral-greeting-header.png",
+    "originalSha256": "4deb0bdeb3ee0d9f9b7d3cb2030ce8fe3f3804fed3c4b1852754538e483ec626"
+  },
+  {
     "key": "guide-funeral-schedule-header",
     "source": "src/assets/editorial/unique/guide-funeral-schedule-header.webp",
     "subject": "障子窓のそばの木の台に置いた白い菊の花器、たたんだ麻布、木箱",
