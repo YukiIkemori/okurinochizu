@@ -202,7 +202,7 @@ test('the region page reads well at 390 and 320 pixels: summary, quick facts and
     await expectNoHorizontalOverflow(page);
     await expect(page.locator('.key-points')).toBeInViewport();
     const rows = page.locator('.quick-facts dl > div');
-    await expect(rows).toHaveCount(9);
+    await expect(rows).toHaveCount(10);
     for (const box of await rows.evaluateAll(all => all.map(row => ({ row: row.getBoundingClientRect().toJSON(), label: row.querySelector('dt')!.getBoundingClientRect().toJSON(), value: row.querySelector('dd')!.getBoundingClientRect().toJSON() })))) {
       // Label column on the left, value column on the right, both inside the row.
       expect(box.label.right).toBeLessThanOrEqual(box.value.left);
