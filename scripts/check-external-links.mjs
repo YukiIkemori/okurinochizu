@@ -84,8 +84,13 @@ await Promise.all(Array.from({ length: Math.min(3, selected.length) }, async () 
   }
 }));
 results.sort((a, b) => a.url.localeCompare(b.url));
-const failed = results.filter(row => !row.ok);
-const report = { checkedAt: new Date().toISOString(), urlsFingerprint: fingerprintURLs(unique), status: failed.length ? 'failed' : 'passed', total: results.length, passed: results.length - failed.length, failed: failed.length, results };
+// Profile links on the operator page are not cited facts. When their host is down
+// (network error or 5xx), report it but do not block a release; a 4xx still blocks.
+const NON_BLOCKING_HOSTS = new Set(['soar-rd.shinshu-u.ac.jp']);
+const transient = row => !row.ok && NON_BLOCKING_HOSTS.has(new URL(row.url).hostname) && (row.status == null || row.status >= 500);
+for (const row of results.filter(transient)) console.log(`WARN non-blocking outage ${safeURL(row.url)}`);
+const failed = results.filter(row => !row.ok && !transient(row));
+const report = { checkedAt: new Date().toISOString(), urlsFingerprint: fingerprintURLs(unique), status: failed.length ? 'failed' : 'passed', total: results.length, passed: results.length - failed.length, failed: failed.length, warnings: results.filter(transient).length, results };
 await mkdir('.local', { recursive: true });
 await writeFile('.local/external-link-report.json', JSON.stringify(report, null, 2) + '\n');
 console.log(`External links ${report.status}: ${report.passed}/${report.total} reachable. Report: .local/external-link-report.json`);
