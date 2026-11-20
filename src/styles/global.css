@@ -271,6 +271,10 @@ tbody th { font-weight: 600; }
 .footer-operator h2 a { display: inline-flex; align-items: center; min-height: 44px; }
 .footer-operator p { font-size: 14px; line-height: 1.8; margin: 0; overflow-wrap: anywhere; }
 .footer-operator p a { display: inline-block; padding-block: 10px; }
+/* このメディアについて／プライバシー: a ruled row of plain text links in the weight of the operator heading. */
+.footer-nav { border-top: 1px solid var(--line); padding-block: 4px; }
+.footer-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 28px; }
+.footer-nav a { display: inline-flex; align-items: center; min-height: 44px; font: 600 16px/1.7 var(--sans); letter-spacing: .04em; }
 .footer-bottom { border-top: 1px solid var(--line); padding-top: 14px; }
 .footer-bottom small { font-size: 14px; color: var(--muted); }
 

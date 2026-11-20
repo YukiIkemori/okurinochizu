@@ -222,7 +222,11 @@ for (const [route, { $, ids }] of pages) {
   if (editorialContent) textOutsideSourceNote.find('.source-note').remove();
   if ($('.sources, #sources-heading, .disclosure').length || route !== operatorRoute && /出典|確認日|公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ公益社との関係/.test(normalize(textOutsideSourceNote.text()))) fail(route, 'Removed source/disclosure copy remains in the public page.');
   if (/公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ/.test(normalize(sourceNotes.text()))) fail(route, 'The source note must list public sources only, without disclosure or provider copy.');
-  if ($('.site-footer .footer-operator a[href="/operator/"]').length !== 1) fail(route, 'Footer must link to the operator page once.');
+  // Footer: the brand, the operator block (heading link, name, address, official site) and one ruled row
+  // of two plain text links, このメディアについて and プライバシー. No other link, icon or control.
+  const footerLinks = $('.site-footer a').toArray().map(node => `${$(node).attr('href')} ${normalize($(node).text())}`);
+  const expectedFooterLinks = ['/ おくりの地図', '/operator/ 運営者情報', `${operator.url} ${operator.url}`, '/about/ このメディアについて', '/privacy/ プライバシー'];
+  if ($('.site-footer .footer-operator h2 a[href="/operator/"]').length !== 1 || $('.site-footer nav.footer-nav li > a').length !== 2 || footerLinks.join('|') !== expectedFooterLinks.join('|') || $('.site-footer').find('img, svg, picture, button, form, [data-provider-link]').length) fail(route, 'Footer must carry exactly the operator link, the operator details and the plain text links to the about and privacy pages.');
   if (route.startsWith('/guides/') && articleBySlug.has(route.split('/')[2]) || route.startsWith('/regions/') && regionBySlug.has(route.split('/')[2])) {
     for (const section of editorialContent.sections) {
       for (const alias of section.aliases || []) if (!ids.has(alias)) fail(route, `Legacy section anchor missing: ${alias}`);

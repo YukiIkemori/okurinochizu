@@ -11,6 +11,8 @@ const { title, description = site.description, noindex = false, breadcrumbs = []
 const canonical = new URL(Astro.url.pathname, site.url).toString();
 const fullTitle = title === site.name ? site.name + '｜長野・群馬の葬儀、お墓、終活の地域案内' : title + '｜' + site.name;
 const verification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+// Beside the operator link, the footer carries these two plain text links and nothing else (README).
+const footerLinks = [{ href: '/about/', text: 'このメディアについて' }, { href: '/privacy/', text: 'プライバシー' }];
 const structuredData = [
   { '@context': 'https://schema.org', '@type': 'WebSite', '@id': site.url + '/#website', name: site.name, url: site.url, inLanguage: 'ja', description: site.description },
   ...schema,
@@ -72,6 +74,9 @@ const structuredData = [
         <p>{operator.address}</p>
         <p><a href={operator.url}>{operator.url}</a></p>
       </section>
+      <nav class="wrap footer-nav" aria-label="フッター">
+        <ul>{footerLinks.map(link => <li><a href={link.href} aria-current={Astro.url.pathname === link.href ? 'page' : undefined}>{link.text}</a></li>)}</ul>
+      </nav>
       <div class="wrap footer-bottom"><small>© 2026 おくりの地図</small></div>
     </footer>
     <div id="analytics-config" data-measurement-id={site.gaId} hidden></div>
