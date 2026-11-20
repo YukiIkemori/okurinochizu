@@ -115,7 +115,7 @@ test('a host other than okurinochizu.jp starts no analytics: no tag, no data lay
 
 test('the test flag is ignored on the Firebase default hosts, and okurinochizu.jp needs no flag', async ({ page, baseURL }) => {
   const tags = await isolateAnalytics(page);
-  for (const origin of ['http://okurinochizu.web.app', 'http://okurinochizu.firebaseapp.com', 'http://www.okurinochizu.jp', 'http://okurinochizu.jp.example.com']) {
+  for (const origin of ['https://okurinochizu.web.app', 'https://okurinochizu.firebaseapp.com', 'https://www.okurinochizu.jp', 'https://okurinochizu.jp.example.com']) {
     await serveLocalBuildAs(page, origin, baseURL!);
     await page.goto(origin + '/guides/family-funeral/');
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
@@ -129,13 +129,13 @@ test('on the production hostname analytics starts by itself and measures a provi
   // The local build is served as okurinochizu.jp inside the browser; the Google tag is a stand-in
   // and no test flag is set, so this is the code path a real visitor runs.
   const tags = await mockGoogleTag(page);
-  await serveLocalBuildAs(page, 'http://okurinochizu.jp', baseURL!);
-  await page.goto('http://okurinochizu.jp/regions/saku/?private=value');
+  await serveLocalBuildAs(page, 'https://okurinochizu.jp', baseURL!);
+  await page.goto('https://okurinochizu.jp/regions/saku/?private=value');
   expect(await page.evaluate(() => window.__okurinochizuAnalyticsTest)).toBeUndefined();
   await expect.poll(() => tags).toEqual(['https://www.googletagmanager.com/gtag/js?id=' + measurementId]);
   const config = (await layer(page)).find(entry => entry[0] === 'config');
   expect(config?.[1]).toBe(measurementId);
-  expect(config?.[2]).toMatchObject({ send_page_view: true, page_location: 'http://okurinochizu.jp/regions/saku/' });
+  expect(config?.[2]).toMatchObject({ send_page_view: true, page_location: 'https://okurinochizu.jp/regions/saku/' });
   const selector = '.referral-top [data-provider-link]';
   await preventExternalNavigation(page, selector);
   await page.locator(selector).click();
