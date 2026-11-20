@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { isolateAnalytics } from './helpers';
 
 test('operator page shows the company, editorial policy and relationship, and every footer links to it', async ({ page }) => {

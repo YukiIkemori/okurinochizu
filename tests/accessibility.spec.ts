@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { isolateAnalytics } from './helpers';
 
 for (const path of ['/', '/guides/hospital-transport/', '/regions/annaka/', '/search/', '/privacy/', '/operator/']) {

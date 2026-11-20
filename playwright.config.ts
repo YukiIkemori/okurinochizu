@@ -1,6 +1,15 @@
 import { defineConfig, devices } from '@playwright/test';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { fingerprintDist } from './scripts/lib/build-fingerprint.mjs';
+
+// tests/fixtures.ts aborts every request to Google Analytics / Tag Manager for the whole test, so
+// browser checks can never send a page view. A spec that takes `test` straight from
+// @playwright/test would run without that guard.
+const testsDirectory = new URL('./tests/', import.meta.url);
+for (const name of readdirSync(testsDirectory).filter(file => file.endsWith('.spec.ts'))) {
+  const source = readFileSync(new URL(name, testsDirectory), 'utf8');
+  if (/^import (?!type )[^;]*from '@playwright\/test'/m.test(source) || !/^import \{[^}]*\btest\b[^}]*\} from '\.\/fixtures';/m.test(source)) throw new Error(`tests/${name} must import test from ./fixtures (the guard that keeps tests from reaching Google).`);
+}
 
 export default defineConfig({
   testDir: './tests',

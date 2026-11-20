@@ -1,4 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { readFileSync } from 'node:fs';
 import { isolateAnalytics } from './helpers';
 const content = JSON.parse(readFileSync(new URL('../src/data/content.json', import.meta.url), 'utf8')) as {

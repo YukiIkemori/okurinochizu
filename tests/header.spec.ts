@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { blockGoogleMeasurement, expect, test } from './fixtures';
 import { isolateAnalytics, expectNoHorizontalOverflow } from './helpers';
 
 test('desktop navigation stays compact and visible while reading, including without JavaScript', async ({ page, browser }) => {
@@ -19,6 +19,7 @@ test('desktop navigation stays compact and visible while reading, including with
   await expectNoHorizontalOverflow(page);
 
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1440, height: 900 } });
+  await blockGoogleMeasurement(context);
   const fallback = await context.newPage();
   await fallback.goto('/guides/hospital-transport/');
   await fallback.mouse.wheel(0, 600);

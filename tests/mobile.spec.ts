@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+import { blockGoogleMeasurement, expect, test } from './fixtures';
 import { expectNoHorizontalOverflow, isolateAnalytics } from './helpers';
 
 test('small-screen navigation, reading and table layouts remain usable', async ({ page }) => {
@@ -184,6 +184,7 @@ test('on a phone the table of contents is a closed details that opens without sc
   expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
 
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: phone });
+  await blockGoogleMeasurement(context);
   const fallback = await context.newPage();
   await fallback.goto('/regions/annaka/');
   const plain = fallback.locator('.article-body > details.toc--inline');

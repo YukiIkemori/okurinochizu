@@ -1,7 +1,14 @@
 type Consent = 'granted' | 'denied';
 declare global {
-  interface Window { dataLayer: unknown[]; gtag?: (...args: unknown[]) => void; }
+  interface Window { dataLayer: unknown[]; gtag?: (...args: unknown[]) => void; __okurinochizuAnalyticsTest?: boolean; }
 }
+// Analytics runs on the production host only. Local previews, browser tests in CI and the Firebase
+// default hosts (*.web.app, *.firebaseapp.com) never load the Google tag or queue an event.
+// Browser tests set window.__okurinochizuAnalyticsTest before this script loads, and intercept every
+// request to Google, to exercise this code on a loopback host. The flag is ignored on any other host.
+const productionHost = 'okurinochizu.jp';
+const loopbackHost = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
+const measuredHost = location.hostname === productionHost || (loopbackHost && window.__okurinochizuAnalyticsTest === true);
 const id = document.querySelector<HTMLElement>('#analytics-config')?.dataset.measurementId || '';
 const key = 'okurinochizu.analytics.v1';
 let consent: Consent = 'granted';
@@ -45,7 +52,7 @@ function withoutParameters(value: string) {
   try { const url = new URL(value); return url.origin + url.pathname; } catch { return ''; }
 }
 function startAnalytics() {
-  if (!/^G-[A-Z0-9]+$/.test(id)) return;
+  if (!measuredHost || !/^G-[A-Z0-9]+$/.test(id)) return;
   (window as unknown as Record<string, unknown>)['ga-disable-' + id] = false;
   if (initialized) {
     window.gtag?.('consent', 'update', { analytics_storage: 'granted' });
@@ -74,7 +81,7 @@ document.addEventListener('click', event => {
   const target = event.target;
   if (!(target instanceof Element)) return;
   const anchor = target.closest<HTMLAnchorElement>('a[data-provider-link]');
-  if (!anchor || consent !== 'granted') return;
+  if (!anchor || !measuredHost || consent !== 'granted') return;
   const destination = new URL(anchor.href);
   if (!['so-gi.com', 'www.so-gi.com'].includes(destination.hostname)) return;
   window.gtag?.('event', 'provider_referral_click', {

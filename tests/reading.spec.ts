@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { readFileSync } from 'node:fs';
 import { expectNoHorizontalOverflow, isolateAnalytics, layer, preventExternalNavigation } from './helpers';
 
