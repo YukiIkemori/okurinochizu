@@ -28,7 +28,7 @@ npm run validate:links
 npm run deploy
 ```
 
-`npm run deploy` は型・生成 HTML・公開条件のチェックを通した後に Hosting のみを公開する。Firestore、Functions、Authentication などは変更しない。外部リンクの実測はネットワーク制限による未確認と URL 自体の失敗を区別する。
+`npm run deploy` は型・生成 HTML・公開条件のチェックを通した後に Hosting のみを公開する。Firestore、Functions、Authentication などは変更しない。外部リンクの実測は、どのホストでも通信エラー・タイムアウト・5xx を警告（公開は止めない）、4xx を失敗（公開を止める）として区別する。警告は実行の最後に一覧で表示されるので、週次の確認で再実行する。1件も応答がない場合は確認する側の通信の問題として失敗にする。
 
 公開後、Firebase CLI の成功結果だけで終えず、実際の HTTPS 配信で次を確認する。
 

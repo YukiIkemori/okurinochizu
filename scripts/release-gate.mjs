@@ -14,7 +14,9 @@ const build = await report('.local/build-validation.json');
 const links = await report('.local/external-link-report.json');
 const browser = await report('.local/playwright-report.json');
 if (build && (build.status !== 'passed' || build.fingerprint !== fingerprint)) problems.push('Build validation failed or belongs to a different build. Run npm run build.');
-if (links && (links.status !== 'passed' || links.urlsFingerprint !== fingerprintURLs(await externalURLs()))) problems.push('External links have not all passed for the current URL set. Run npm run validate:links.');
+// Outage warnings (network error, timeout, 5xx) do not block a release; a failed link (4xx or a refused redirect) does.
+if (links && (links.status !== 'passed' || links.failed > 0 || links.urlsFingerprint !== fingerprintURLs(await externalURLs()))) problems.push('External links have failures or were not checked for the current URL set. Run npm run validate:links.');
+if (links?.warnings > 0) console.warn(`NOTE: ${links.warnings} external link(s) were unreachable (network error, timeout or 5xx) at the last check. Not blocking; see the warnings in .local/external-link-report.json.`);
 if (links && Date.now() - Date.parse(links.checkedAt) > 7 * 86400000) problems.push('External-link verification is over seven days old. Run npm run validate:links.');
 if (browser) {
   if (browser.config?.metadata?.buildFingerprint !== fingerprint) problems.push('Browser tests belong to a different build. Run npm test against the current dist.');

@@ -20,6 +20,8 @@ if (process.argv.includes('--retry-failed')) {
   selected = previous.results.filter(row => !row.ok).map(row => row.url);
 }
 const safeURL = raw => { const url = new URL(raw); return url.origin + url.pathname; };
+// A URL or redirect this checker refuses to follow. Unlike a network error, it is not an outage.
+class Refusal extends Error {}
 async function checkURL(raw) {
   let current = raw;
   const redirects = [];
@@ -27,8 +29,8 @@ async function checkURL(raw) {
   try {
     for (let hop = 0; hop < 9; hop++) {
       const url = new URL(current);
-      if (url.protocol !== 'https:' || url.username || url.password || /^(localhost|127\.|0\.|\[::1\])/.test(url.hostname)) throw new Error('Refused a non-public/HTTPS redirect.');
-      if ([...url.searchParams.keys()].some(key => /(?:token|secret|password|api[_-]?key|credential)/i.test(key))) throw new Error('Refused a credential-like URL parameter.');
+      if (url.protocol !== 'https:' || url.username || url.password || /^(localhost|127\.|0\.|\[::1\])/.test(url.hostname)) throw new Refusal('Refused a non-public/HTTPS redirect.');
+      if ([...url.searchParams.keys()].some(key => /(?:token|secret|password|api[_-]?key|credential)/i.test(key))) throw new Refusal('Refused a credential-like URL parameter.');
       // GET works on official sites that reject HEAD. Stop reading after headers;
       // this validates reachability without downloading every PDF or large page.
       const response = await fetch(url, {
@@ -45,15 +47,22 @@ async function checkURL(raw) {
         continue;
       }
       const result = { url: raw, finalURL: safeURL(current), status, redirects, contentType, durationMs: Date.now() - start, ok: status >= 200 && status < 300 };
-      if (!result.ok) result.reason = [401, 403, 429].includes(status) ? 'restricted-or-rate-limited' : 'http-error';
+      if (!result.ok) result.reason = [401, 403, 429].includes(status) ? 'restricted-or-rate-limited' : status >= 500 ? 'server-error' : 'http-error';
       return result;
     }
-    throw new Error('Too many redirects.');
+    throw new Refusal('Too many redirects.');
   } catch (error) {
     // Never print credentials, headers, raw response bodies, or environment data.
-    return { url: raw, finalURL: safeURL(current), status: null, redirects, durationMs: Date.now() - start, ok: false, reason: error.name === 'TimeoutError' ? 'timeout' : 'network-or-redirect-error' };
+    return { url: raw, finalURL: safeURL(current), status: null, redirects, durationMs: Date.now() - start, ok: false, reason: error instanceof Refusal ? 'refused-url-or-redirect' : error.name === 'TimeoutError' ? 'timeout' : 'network-error' };
   }
 }
+// An outage is not a broken link. For any host, a network error, a timeout or a 5xx answer is a
+// warning: it is listed and counted, but does not fail the run or block a release. Every 4xx
+// (404 and 410 included) fails, and so does a refused URL or redirect. 401/403/429 keep their
+// earlier meaning: reported as restricted-or-rate-limited, not retried, and a failure.
+const isWarning = row => !row.ok && (row.reason === 'network-error' || row.reason === 'timeout' || (row.status !== null && row.status >= 500));
+const label = row => row.ok ? 'PASS' : isWarning(row) ? 'WARN' : 'FAIL';
+const describe = row => `${row.status ?? '-'} ${row.reason} ${safeURL(row.url)}`;
 const hostQueues = new Map();
 async function serialForHost(raw, action) {
   const host = new URL(raw).hostname;
@@ -78,20 +87,30 @@ await Promise.all(Array.from({ length: Math.min(3, selected.length) }, async () 
         retry.retryOfStatus = result.status;
         result = retry;
       }
+      if (!result.ok) result.severity = isWarning(result) ? 'warning' : 'failure';
       results.push(result);
-      console.log(`${result.ok ? 'PASS' : 'FAIL'} ${result.status ?? result.reason} ${safeURL(raw)}${result.redirects.length ? ` (${result.redirects.length} redirects)` : ''}`);
+      console.log(`${label(result)} ${result.status ?? result.reason} ${safeURL(raw)}${result.redirects.length ? ` (${result.redirects.length} redirects)` : ''}`);
     });
   }
 }));
 results.sort((a, b) => a.url.localeCompare(b.url));
-// Profile links on the operator page are not cited facts. When their host is down
-// (network error or 5xx), report it but do not block a release; a 4xx still blocks.
-const NON_BLOCKING_HOSTS = new Set(['soar-rd.shinshu-u.ac.jp']);
-const transient = row => !row.ok && NON_BLOCKING_HOSTS.has(new URL(row.url).hostname) && (row.status == null || row.status >= 500);
-for (const row of results.filter(transient)) console.log(`WARN non-blocking outage ${safeURL(row.url)}`);
-const failed = results.filter(row => !row.ok && !transient(row));
-const report = { checkedAt: new Date().toISOString(), urlsFingerprint: fingerprintURLs(unique), status: failed.length ? 'failed' : 'passed', total: results.length, passed: results.length - failed.length, failed: failed.length, warnings: results.filter(transient).length, results };
+const reachable = results.filter(row => row.ok);
+const warned = results.filter(isWarning);
+const failed = results.filter(row => !row.ok && !isWarning(row));
+// If not one URL answered at all, the checker itself has no network. That verifies nothing, so it
+// is not treated as an outage of every site.
+const noNetwork = results.length > 0 && results.every(row => row.status === null && isWarning(row));
+const report = { checkedAt: new Date().toISOString(), urlsFingerprint: fingerprintURLs(unique), status: failed.length || noNetwork ? 'failed' : 'passed', total: results.length, passed: reachable.length, warnings: warned.length, failed: failed.length, warningURLs: warned.map(row => row.url), failedURLs: failed.map(row => row.url), results };
 await mkdir('.local', { recursive: true });
 await writeFile('.local/external-link-report.json', JSON.stringify(report, null, 2) + '\n');
-console.log(`External links ${report.status}: ${report.passed}/${report.total} reachable. Report: .local/external-link-report.json`);
-if (failed.length) process.exitCode = 1;
+console.log(`\nExternal links ${report.status}: ${report.passed}/${report.total} reachable, ${report.warnings} warning(s), ${report.failed} failed. Report: .local/external-link-report.json`);
+if (failed.length) {
+  console.log(`\nFailed (${failed.length}) — fix or replace these links; they block a release:`);
+  for (const row of failed) console.log(`  FAIL ${describe(row)}`);
+}
+if (warned.length) {
+  console.log(`\nWarnings (${warned.length}) — network error, timeout or 5xx. Not blocking; check again at the weekly review (npm run validate:links -- --retry-failed):`);
+  for (const row of warned) console.log(`  WARN ${describe(row)}`);
+}
+if (noNetwork) console.log('\nNot one URL answered. This is the checker\'s own network rather than an outage, so the run fails.');
+if (report.status !== 'passed') process.exitCode = 1;

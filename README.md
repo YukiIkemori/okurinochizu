@@ -32,6 +32,13 @@ npm run deploy
 
 ブラウザテストはGoogleへ何も送りません。テスト用のホスト（127.0.0.1）では解析自体が始まりません。`tests/helpers.ts` の `isolateAnalytics` を呼んだテストだけが、テスト専用の印（`window.__okurinochizuAnalyticsTest`。`localhost`・`127.0.0.1` 以外のホストでは無視されます）を読み込み前に立て、Googleのタグを空の代用品に差し替えたうえで解析のコードを動かし、送るはずの内容（`dataLayer`）を照合します。さらに `tests/fixtures.ts` が、すべてのテストで `google-analytics.com` と `googletagmanager.com` への通信を遮断し、印を立てていないページが通信を試みた場合や、通信がブラウザの外へ出た場合はテストを失敗させます。テストは必ず `./fixtures` の `test` を使います（`playwright.config.ts` が確認します）。`GOOGLE_REQUEST_LOG=ファイル名` を付けて実行すると、試みられた通信と結果を1行ずつ記録します。
 
+外部リンクの確認（`npm run validate:links`）は、リンク切れと一時的な障害を分けて扱います（2026-11-20 運営者決定）。
+
+- **失敗（公開を止める）**：4xxの応答すべて（404・410を含む）、および確認用プログラムが追わないURL・転送（https以外や内部ホストへの転送、認証情報らしいパラメーター、転送の繰り返し）。401・403・429は従来どおり `restricted-or-rate-limited`（アクセス制限またはアクセス過多）として記録し、再試行せず、失敗として扱います。
+- **警告（公開は止めない）**：どのホストでも、通信エラー・タイムアウト・5xxの応答。408・425・500・502・503・504は1.5秒後に1回だけ再試行し、その結果で判定します。
+- 警告は実行の最後に一覧で表示し、`.local/external-link-report.json` の `warnings`（件数）と `warningURLs` に残します。警告だけなら終了コードは0、`status` は `passed` で、公開ゲートも通ります（件数を NOTE として表示）。週次の確認では、この一覧を見て `npm run validate:links -- --retry-failed`（失敗と警告のURLだけを再確認）を実行し、続いている障害はリンク先を確かめます。
+- 1件も応答が得られなかった場合は、サイト側の障害ではなく確認する側の通信の問題なので、失敗にします。
+
 Firebase認証は環境設定のsecret `FIREBASE_TOKEN` を使用。独自ドメイン・Search Console・GA4管理画面で必要な操作と、公開後の確認は [公開手順](docs/deployment.md) に記載しています。コードの完成・GitHub保存と、本番公開の成功は別の状態です。
 
 ## 編集・調査

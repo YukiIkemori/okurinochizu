@@ -49,7 +49,8 @@ jobs:
         run: |
           npm run check
           npm run build
-          # Some official sites answer 503 under load; retry only the failures once.
+          # Outages (network error, timeout, 5xx) are warnings and do not fail this step.
+          # If a link really failed (4xx), re-check the failed and warned URLs once.
           npm run validate:links || (sleep 90 && npm run validate:links -- --retry-failed)
           npm test
       - uses: google-github-actions/auth@v3
