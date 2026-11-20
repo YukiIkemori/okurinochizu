@@ -136,7 +136,7 @@ test('the home first screen on a phone serves a family in a hurry: urgent guides
 test('text is at least 16px for reading and 14px elsewhere, and controls are at least 44px tall on a phone', async ({ page }) => {
   await isolateAnalytics(page);
   await page.setViewportSize(phone);
-  for (const path of ['/', '/guides/', '/regions/', '/guides/hospital-transport/', '/guides/funeral-benefit/', '/guides/grave-closure/', '/regions/annaka/', '/search/', '/operator/', '/about/', '/privacy/']) {
+  for (const path of ['/', '/guides/', '/regions/', '/guides/hospital-transport/', '/guides/funeral-benefit/', '/guides/grave-closure/', '/regions/annaka/', '/regions/saku/', '/regions/karuizawa/', '/search/', '/operator/', '/about/', '/privacy/']) {
     await page.goto(path);
     await page.locator('details:not(.mobile-menu)').evaluateAll(all => all.forEach(details => { (details as HTMLDetailsElement).open = true; }));
     const sizes = await page.evaluate(() => {
@@ -214,8 +214,15 @@ test('the region page reads well at 390 and 320 pixels: summary, quick facts and
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
     expect(results.violations, JSON.stringify(results.violations, null, 2)).toEqual([]);
   }
-  for (const path of ['/', '/guides/', '/regions/', '/guides/hospital-transport/', '/guides/funeral-cost/']) {
+  for (const path of ['/', '/guides/', '/regions/', '/guides/hospital-transport/', '/guides/funeral-cost/', '/regions/saku/', '/regions/karuizawa/', '/regions/tomioka/']) {
     await page.goto(path);
     await expectNoHorizontalOverflow(page);
   }
+  // The longest top-row label wraps inside the 320px column; the company name in brackets stays whole.
+  const row = page.locator('.referral-top');
+  await page.goto('/regions/karuizawa/');
+  await expect(row.locator('a')).toHaveText('軽井沢町周辺の式場と費用を見る（つばさ公益社）');
+  const boxes = await row.evaluate(element => ({ row: element.getBoundingClientRect().toJSON(), link: element.querySelector('a')!.getBoundingClientRect().toJSON(), provider: element.querySelector('.referral-top-provider')!.getClientRects().length }));
+  expect(boxes.link.right).toBeLessThanOrEqual(boxes.row.right + 0.5);
+  expect(boxes.provider).toBe(1);
 });

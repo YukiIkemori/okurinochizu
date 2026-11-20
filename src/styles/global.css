@@ -193,6 +193,7 @@ button { cursor: pointer; }
 .referral-top { display: flex; flex-wrap: wrap; align-items: center; gap: 0 16px; margin-top: 20px; padding: 2px 0; border-block: 1px solid var(--line); }
 .referral-top-label { font-size: 14px; font-weight: 600; letter-spacing: .08em; color: var(--green); }
 .referral-top a { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; }
+.referral-top-provider { white-space: nowrap; }
 
 /* 早見表: label column and value column, like a timetable. */
 .quick-facts { margin-top: 32px; }

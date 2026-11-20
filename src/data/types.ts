@@ -11,7 +11,10 @@ export type Section = {
   note?: string;
 };
 export type Source = { id: string; title: string; url: string; checkedAt: string; note?: string };
-export type Referral = { href: string; label: string; note: string };
+/** `topLabel` (region pages only): the link text of the top consultation row, naming what the
+ *  destination page actually shows, e.g. 「佐久市の式場と費用を見る（つばさ公益社）」. Without it the row
+ *  uses the generic 「つばさ公益社のページを見る」. The allowed wordings are listed in the README. */
+export type Referral = { href: string; label: string; note: string; topLabel?: string };
 /** One row of a region's 早見表. With `href`, the whole value becomes the link: `tel:` + digits for a
  *  public office's phone number, or the https URL of one of the region's recorded sources. */
 export type QuickFact = { label: string; value: string; href?: string };
@@ -30,6 +33,8 @@ export type Region = {
   pageTitle: string; heading: string;
   lead: string; focus: string; sections: Section[]; sources: string[];
   related: string[]; referral: Referral; updatedAt: string;
+  /** Section id followed by the one-sentence consultation note (placement `in-article`), as on guides. */
+  inlineReferralAfter?: string;
   /** 「まず知っておきたいこと」: 3–5 short points restating facts already on this page. */
   keyPoints?: string[];
   /** 「早見表」: the page's key numbers and offices, restating facts already on this page. */

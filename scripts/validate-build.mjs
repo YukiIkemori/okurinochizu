@@ -54,6 +54,25 @@ const publicSourcesOf = item => (item.sources || []).map(id => bySource.get(id))
 const providerName = /つばさ|公益社/;
 // The consultation elements (README「相談先の表示」). No phone element exists for the provider.
 const referralLinkText = 'つばさ公益社のページを見る';
+// A region page may name its destination in the top row instead (referral.topLabel). The wording is
+// fixed, and a label that names the municipality needs a destination under that municipality's own
+// path on so-gi.com; a label that names a hall needs a hall page. Whether the halls are inside the
+// municipality (「◯◯の式場」) or only nearby (「◯◯周辺の式場」) is checked by hand against the page
+// and recorded in the README.
+const prefectureDirectories = { 長野県: 'nagano', 群馬県: 'gunma' };
+const topLabelProblem = region => {
+  const label = region.referral.topLabel;
+  if (label === undefined) return null;
+  const destination = new URL(region.referral.href).pathname.replace(/\/$/, '');
+  const ownPath = `/${prefectureDirectories[region.prefecture]}/${region.slug}`;
+  if ([`${region.name}の式場と費用を見る（つばさ公益社）`, `${region.name}周辺の式場と費用を見る（つばさ公益社）`].includes(label)) return destination === ownPath || destination.startsWith(ownPath + '/') ? null : `「${label}」 names the municipality, but the destination is not its own page: ${destination}`;
+  if (/^つばさホール[^\s（）]{1,10}の案内を見る（つばさ公益社）$/.test(label)) return /\/hall-[a-z0-9-]+$/.test(destination) ? null : `「${label}」 names a hall, but the destination is not a hall page: ${destination}`;
+  return `Top-row label is not one of the allowed wordings: 「${label}」`;
+};
+// The one-sentence in-article note. Guides: after the section named by inlineReferralAfter. Regions:
+// only these three, after the section on the venue for a family funeral (owner decision 2026-11-20:
+// the municipality has both that section and one of the provider's halls).
+const regionInlineNotes = { saku: 'family-funeral', ueda: 'family-funeral', tomioka: 'family-funeral' };
 const homeReferral = { href: 'https://so-gi.com/hall', label: '葬儀の相談は、つばさ公益社へ' };
 const japaneseDate = date => { const [year, month, day] = date.split('-').map(Number); return `${year}年${month}月${day}日`; };
 let contextualLinks = 0;
@@ -108,6 +127,13 @@ for (const item of [...content.articles, ...content.regions]) {
   }
   if (new Set(destinations).size !== destinations.length) fail(item.slug, 'Do not repeat the same contextual guide destination in the body.');
   if (!providerHosts.has(new URL(item.referral.href).hostname)) fail(item.slug, 'Referral destination is not Tsubasa.');
+  const isRegion = content.regions.includes(item);
+  if (item.inlineReferralAfter !== undefined && !item.sections.some(section => section.id === item.inlineReferralAfter)) fail(item.slug, `inlineReferralAfter must name one of the page's sections: ${item.inlineReferralAfter}`);
+  if (isRegion) {
+    if ((item.inlineReferralAfter ?? null) !== (regionInlineNotes[item.slug] ?? null)) fail(item.slug, 'On region pages the in-article note is limited to saku, ueda and tomioka, after their family-funeral venue section.');
+    const problem = topLabelProblem(item);
+    if (problem) fail(item.slug, problem);
+  } else if (item.referral.topLabel !== undefined) fail(item.slug, 'referral.topLabel belongs to region pages only; urgent guides keep the generic top row.');
   // 「まず知っておきたいこと」 and 「早見表」 only restate the page: no provider name, and every figure
   // they show (amounts, times, phone numbers) must already appear in the page's own text.
   const ownText = normalize([item.lead, item.answer, ...item.sections.flatMap(s => [s.heading, ...s.paragraphs, ...(s.bullets || []), ...(s.table?.headers || []), ...(s.table?.rows.flat() || []), s.note || '']), ...(item.faq || []).flatMap(faq => [faq.q, faq.a])].join(' '));
@@ -274,16 +300,22 @@ for (const [route, { $, ids }] of pages) {
     // Consultation elements. Allowed, and nothing else:
     //   1. one block at the end (.referral-card, placement article-end): heading, at most one plain line, one link;
     //   2. on region pages and urgent guides, one row near the top (.referral-top, placement article-top),
-    //      directly after the summary box / lead;
-    //   3. the optional one-sentence note after the section named by inlineReferralAfter (placement in-article).
+    //      directly after the summary box / lead. Its link text is the generic one, or on a region page
+    //      the region's referral.topLabel;
+    //   3. the one-sentence note after the section named by inlineReferralAfter (placement in-article):
+    //      optional on guides, and on region pages only where regionInlineNotes allows it.
+    // So a region page has 2 links (3 with the note), an urgent guide 2–3, any other guide 1–2.
     const inlineNotes = $('.article-body > .referral-inline');
-    const expectedInline = photoArticle?.inlineReferralAfter ? 1 : 0;
+    const expectedInline = editorialContent.inlineReferralAfter ? 1 : 0;
     const expectedTop = photoRegion || photoArticle?.category === 'urgent' ? 1 : 0;
+    const topLinkText = photoRegion?.referral.topLabel || referralLinkText;
     const topRows = $('.article-body > p.referral-top');
     const card = $('.article-body > section.referral-card');
-    if (card.length !== 1 || $('.referral').length !== 1 || $('[data-provider-link]').length !== 1 + expectedTop + expectedInline || inlineNotes.length !== expectedInline || topRows.length !== expectedTop || $('.referral-top').length !== expectedTop) fail(route, 'Guide/region must have one end block, the top row only on region pages and urgent guides, and at most the one configured in-article note.');
-    if (expectedInline && (!inlineNotes.prev().is(`#${photoArticle.inlineReferralAfter}`) || inlineNotes.find('[data-provider-link]').attr('data-placement') !== 'in-article')) fail(route, 'In-article provider note must follow its configured section and carry the in-article placement.');
-    if (expectedTop && (!topRows.prev().is(keyPoints ? '.key-points' : 'p.article-lead') || topRows.find('a').length !== 1 || topRows.find('[data-provider-link]').attr('data-placement') !== 'article-top' || normalize(topRows.find('a').text()) !== referralLinkText || topRows.find('img, svg, button, h2').length)) fail(route, 'The top consultation row must directly follow the summary/lead as one plain link with the article-top placement.');
+    if (card.length !== 1 || $('.referral').length !== 1 || $('[data-provider-link]').length !== 1 + expectedTop + expectedInline || inlineNotes.length !== expectedInline || $('.referral-inline').length !== expectedInline || topRows.length !== expectedTop || $('.referral-top').length !== expectedTop) fail(route, 'Guide/region must have one end block, the top row only on region pages and urgent guides, and at most the one configured in-article note.');
+    if (expectedInline && (!inlineNotes.prev().is(`#${editorialContent.inlineReferralAfter}`) || inlineNotes.find('a').length !== 1 || inlineNotes.find('[data-provider-link]').attr('data-placement') !== 'in-article' || normalize(inlineNotes.find('a').text()) !== 'つばさ公益社' || !/^[^。]{1,20}相談は、つばさ公益社へ。$/.test(normalize(inlineNotes.text())) || inlineNotes.find('img, svg, button, strong').length)) fail(route, 'In-article provider note must be the one plain sentence after its configured section, with the in-article placement.');
+    if (expectedTop && (!topRows.prev().is(keyPoints ? '.key-points' : 'p.article-lead') || topRows.find('a').length !== 1 || topRows.find('[data-provider-link]').attr('data-placement') !== 'article-top' || normalize(topRows.find('a').text()) !== topLinkText || normalize(topRows.text()) !== '葬儀の相談先' + topLinkText || topRows.find('img, svg, button, h2').length)) fail(route, 'The top consultation row must directly follow the summary/lead as one plain link with the article-top placement and the recorded link text.');
+    const placements = $('[data-provider-link]').toArray().map(node => $(node).attr('data-placement'));
+    if (placements.join() !== [...(expectedTop ? ['article-top'] : []), ...(expectedInline ? ['in-article'] : []), 'article-end'].join()) fail(route, 'Consultation links must appear in the order top row, in-article note, end block.');
     const cardLines = card.children('p').not('.referral-action');
     if (normalize(card.children('h2').text()) !== editorialContent.referral.label || card.find('a').length !== 1 || normalize(card.find('a').text()) !== referralLinkText || cardLines.length > 1 || normalize(cardLines.text()).length > 40 || card.find('img, svg, picture, button, form').length) fail(route, 'The end consultation block is a heading, at most one short line and one link.');
     for (const node of $('[data-provider-link]').toArray()) {

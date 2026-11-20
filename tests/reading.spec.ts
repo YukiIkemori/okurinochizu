@@ -93,9 +93,12 @@ test('each article and region page shows one header photograph after the summary
   await expect(page.locator('.other-regions .map-region--current')).toHaveAttribute('href', '/regions/annaka/');
 });
 
-test('the top row and the home block send provider_referral_click with their own placement', async ({ page }) => {
+test('the top row, the in-article note and the home block send provider_referral_click with their own placement', async ({ page }) => {
   for (const [path, selector, expected] of [
     ['/regions/annaka/', '.referral-top [data-provider-link]', { content_slug: 'annaka', region: 'annaka', intent: 'regional-funeral', placement: 'article-top' }],
+    ['/regions/saku/', '.referral-top [data-provider-link]', { content_slug: 'saku', region: 'saku', intent: 'regional-funeral', placement: 'article-top' }],
+    ['/regions/saku/', '.referral-inline [data-provider-link]', { content_slug: 'saku', region: 'saku', intent: 'regional-funeral', placement: 'in-article' }],
+    ['/regions/tomioka/', '.referral-inline [data-provider-link]', { content_slug: 'tomioka', region: 'tomioka', intent: 'regional-funeral', placement: 'in-article' }],
     ['/guides/hospital-transport/', '.referral-top [data-provider-link]', { content_slug: 'hospital-transport', region: 'all', intent: 'urgent', placement: 'article-top' }],
     ['/guides/hospital-transport/', '.referral-inline [data-provider-link]', { content_slug: 'hospital-transport', intent: 'urgent', placement: 'in-article' }],
     ['/', '.referral-card [data-provider-link]', { content_slug: 'home', intent: 'regional-funeral', placement: 'home-end' }],

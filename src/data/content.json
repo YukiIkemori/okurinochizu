@@ -5302,8 +5302,10 @@
       "referral": {
         "href": "https://so-gi.com/nagano/saku",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "佐久市の式場と費用を見る（つばさ公益社）"
       },
+      "inlineReferralAfter": "family-funeral",
       "updatedAt": "2026-11-18",
       "heading": "佐久市で家族が亡くなったら",
       "pageTitle": "佐久市の家族葬・葬儀｜佐久平斎場の予約・火葬と手続き"
@@ -5575,8 +5577,10 @@
       "referral": {
         "href": "https://so-gi.com/nagano/ueda",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "上田市の式場と費用を見る（つばさ公益社）"
       },
+      "inlineReferralAfter": "family-funeral",
       "updatedAt": "2026-11-19",
       "heading": "上田市で家族が亡くなったら",
       "pageTitle": "上田市の家族葬・葬儀｜大星斎場・依田窪斎場の料金と流れ"
@@ -5780,7 +5784,8 @@
       "referral": {
         "href": "https://so-gi.com/nagano/komoro",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "小諸市の式場と費用を見る（つばさ公益社）"
       },
       "updatedAt": "2026-11-11",
       "heading": "小諸市で家族が亡くなったら",
@@ -6026,7 +6031,8 @@
       "referral": {
         "href": "https://so-gi.com/nagano/tomi",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "東御市の式場と費用を見る（つばさ公益社）"
       },
       "updatedAt": "2026-11-11",
       "heading": "東御市で家族が亡くなったら",
@@ -6239,7 +6245,8 @@
       "referral": {
         "href": "https://so-gi.com/nagano/karuizawa",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "軽井沢町周辺の式場と費用を見る（つばさ公益社）"
       },
       "updatedAt": "2026-11-11",
       "heading": "軽井沢町で家族が亡くなったら",
@@ -6436,7 +6443,8 @@
       "referral": {
         "href": "https://so-gi.com/nagano/miyota",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "御代田町周辺の式場と費用を見る（つばさ公益社）"
       },
       "updatedAt": "2026-11-11",
       "heading": "御代田町で家族が亡くなったら",
@@ -6650,7 +6658,8 @@
       "referral": {
         "href": "https://so-gi.com/nagano/tateshina",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "立科町周辺の式場と費用を見る（つばさ公益社）"
       },
       "updatedAt": "2026-11-11",
       "heading": "立科町で家族が亡くなったら",
@@ -6972,7 +6981,8 @@
       "referral": {
         "href": "https://so-gi.com/nagano/sakuho",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "佐久穂町周辺の式場と費用を見る（つばさ公益社）"
       },
       "updatedAt": "2026-11-11",
       "heading": "佐久穂町で家族が亡くなったら",
@@ -7302,7 +7312,8 @@
       "referral": {
         "href": "https://so-gi.com/nagano/koumi",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "小海町周辺の式場と費用を見る（つばさ公益社）"
       },
       "updatedAt": "2026-11-11",
       "heading": "小海町で家族が亡くなったら",
@@ -7642,7 +7653,8 @@
       "referral": {
         "href": "https://so-gi.com/nagano/nagawa",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "長和町周辺の式場と費用を見る（つばさ公益社）"
       },
       "updatedAt": "2026-11-12",
       "heading": "長和町で家族が亡くなったら",
@@ -7982,7 +7994,8 @@
       "referral": {
         "href": "https://so-gi.com/nagano/aoki",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "青木村周辺の式場と費用を見る（つばさ公益社）"
       },
       "updatedAt": "2026-11-13",
       "heading": "青木村で家族が亡くなったら",
@@ -8207,7 +8220,8 @@
       "referral": {
         "href": "https://so-gi.com/gunma/tomioka/hall-tomioka",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "つばさホール富岡の案内を見る（つばさ公益社）"
       },
       "updatedAt": "2026-11-17",
       "heading": "安中市で家族が亡くなったら",
@@ -8500,8 +8514,10 @@
       "referral": {
         "href": "https://so-gi.com/gunma/tomioka/hall-tomioka",
         "label": "葬儀の相談は、つばさ公益社へ",
-        "note": ""
+        "note": "",
+        "topLabel": "富岡市の式場と費用を見る（つばさ公益社）"
       },
+      "inlineReferralAfter": "family-funeral",
       "updatedAt": "2026-11-20",
       "heading": "富岡市で家族が亡くなったら",
       "pageTitle": "富岡市の家族葬・葬儀｜かぶら聖苑の式場・料金と流れ"
