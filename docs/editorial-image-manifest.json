@@ -10,6 +10,16 @@
     "originalSha256": "d4a78fbbbd01416556929b84ab3a4944298da8f4d22ae59283f97b3b78963d17"
   },
   {
+    "key": "facility-sakudaira-saijo-header",
+    "source": "src/assets/editorial/unique/facility-sakudaira-saijo-header.webp",
+    "subject": "初冬の朝、霜の降りた枯れ草の野を通る細い土の小径と、葉を落とした落葉樹の木立、朝もやの向こうの遠くの青い山並み",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "43b9f9581c11a90fefd182c9db520ea57429b00ca6a775fe290aba4b26475aeb",
+    "originalFile": "gpt-image-2-facility-sakudaira-saijo-header.png",
+    "originalSha256": "881268e2d0afadedac9adcdaf1326d046db65c101012701c5b647ccef3909e02"
+  },
+  {
     "key": "guide-chief-mourner-header",
     "source": "src/assets/editorial/unique/guide-chief-mourner-header.webp",
     "subject": "障子窓のそばの座卓に置いた急須と湯のみ二つ、たたんだ藍色の風呂敷",

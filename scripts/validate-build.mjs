@@ -24,11 +24,19 @@ if (!Array.isArray(registry)) throw new Error('src/data/sources.json must contai
 const bySource = new Map(registry.map(s => [s.id, s]));
 const articleBySlug = new Map(content.articles.map(a => [a.slug, a]));
 const regionBySlug = new Map(content.regions.map(r => [r.slug, r]));
+// Facility pages (/facilities/<slug>/) are checked like region pages. They record no referral of their
+// own: the end block uses the referral of the region where the facility stands (README).
+if (!Array.isArray(content.facilities)) throw new Error('src/data/content.json must contain a facilities array.');
+const facilityBySlug = new Map(content.facilities.map(f => [f.slug, f]));
+const isFacility = item => content.facilities.includes(item);
+const referralOf = item => isFacility(item) ? regionBySlug.get(item.region)?.referral : item.referral;
+const facilitiesOfRegion = slug => content.facilities.filter(f => f.regions.includes(slug));
 const categorySlugs = ['urgent', 'funeral', 'cost', 'cemetery', 'planning', 'procedures'];
 const expectedIndexable = new Set([
-  '/', '/guides/', '/regions/', '/about/', '/operator/', '/privacy/',
+  '/', '/guides/', '/regions/', '/facilities/', '/about/', '/operator/', '/privacy/',
   ...content.articles.map(a => `/guides/${a.slug}/`),
   ...content.regions.map(r => `/regions/${r.slug}/`),
+  ...content.facilities.map(f => `/facilities/${f.slug}/`),
 ]);
 const expectedPages = new Set([...expectedIndexable, '/search/', '/404.html']);
 const sourceURLs = new Set(registry.map(s => new URL(s.url).origin + new URL(s.url).pathname));
@@ -82,8 +90,9 @@ let providerLinkCount = 0;
 let officePhoneLinks = 0;
 let keyPointPages = 0;
 let quickFactPages = 0;
+let facilityPages = 0;
 
-for (const [kind, rows] of [['articles', content.articles], ['regions', content.regions], ['sources', registry]]) {
+for (const [kind, rows] of [['articles', content.articles], ['regions', content.regions], ['facilities', content.facilities], ['sources', registry]]) {
   const keys = rows.map(row => kind === 'sources' ? row.id : row.slug);
   if (new Set(keys).size !== keys.length) fail(kind, 'Duplicate IDs or slugs.');
 }
@@ -93,8 +102,18 @@ for (const source of registry) {
   if (url.protocol !== 'https:') fail(source.id, 'Source URL must use HTTPS.');
   if (url.username || url.password || hasCredentialParameter(url)) fail(source.id, 'A source URL contains credential-like information.');
 }
-for (const item of [...content.articles, ...content.regions]) {
+for (const item of [...content.articles, ...content.regions, ...content.facilities]) {
   if (!item.sections?.length || !item.sources?.length) fail(item.slug, 'Editorial content must have sections and primary sources.');
+  if (isFacility(item)) {
+    // A facility stands in one region (whose referral its end block uses) and is used by the listed regions.
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.slug || '') || !regionBySlug.has(item.region) || !Array.isArray(item.regions) || !item.regions.length || new Set(item.regions).size !== item.regions.length) { fail(item.slug, 'A facility needs a slug, the region where it stands and the regions that use it.'); continue; }
+    if (item.referral !== undefined || item.inlineReferralAfter !== undefined || item.faq !== undefined || item.category !== undefined) fail(item.slug, 'A facility page records no referral, in-article note, FAQ or category: its end block is the referral of the region where it stands.');
+    for (const key of ['name', 'postalCode', 'prefecture', 'locality', 'street', 'phone', 'pageTitle', 'heading', 'description', 'summary', 'lead']) if (typeof item[key] !== 'string' || !item[key].trim()) fail(item.slug, `Facility field is missing: ${key}`);
+    if (!validDate(item.publishedAt)) fail(item.slug, 'A facility needs a publication date.');
+    if (!item.keyPoints?.length || !item.quickFacts?.length) fail(item.slug, 'A facility page needs keyPoints and quickFacts.');
+    if (!String(item.pageTitle).startsWith(item.name) || !String(item.heading).includes(item.name)) fail(item.slug, "The facility's title and heading must name the facility, with the name leading the title.");
+    if (providerName.test([item.name, item.pageTitle, item.heading, item.description, item.summary, item.lead].join(' '))) fail(item.slug, 'Provider name is woven into the facility metadata.');
+  }
   if (!validDate(item.updatedAt) || (item.publishedAt && (!validDate(item.publishedAt) || item.publishedAt > item.updatedAt))) fail(item.slug, 'Publication/update dates are invalid.');
   if (item.category && !categorySlugs.includes(item.category)) fail(item.slug, 'Unknown category.');
   for (const source of item.sources || []) if (!bySource.has(source)) fail(item.slug, `Unknown source ID: ${source}`);
@@ -116,7 +135,9 @@ for (const item of [...content.articles, ...content.regions]) {
       try { url = new URL(link.href, origin); } catch { fail(item.slug, `Invalid inline URL: ${section.id}`); continue; }
       if (url.origin === origin) {
         const target = url.pathname.match(/^\/guides\/([^/]+)\/$/)?.[1];
-        if (!target || !articleBySlug.has(target) || target === item.slug || url.search) fail(item.slug, `Contextual link must lead directly to another guide: ${link.href}`);
+        // A facility page may also link, from its body, to the region pages of the municipalities that use it.
+        const usingRegion = isFacility(item) && item.regions.includes(url.pathname.match(/^\/regions\/([^/]+)\/$/)?.[1]);
+        if (usingRegion ? url.search || url.hash : !target || !articleBySlug.has(target) || target === item.slug || url.search) fail(item.slug, `Contextual link must lead directly to another guide${isFacility(item) ? ' or to a region that uses the facility' : ''}: ${link.href}`);
         destinations.push(url.pathname);
         contextualLinks++;
       } else {
@@ -126,14 +147,14 @@ for (const item of [...content.articles, ...content.regions]) {
     }
   }
   if (new Set(destinations).size !== destinations.length) fail(item.slug, 'Do not repeat the same contextual guide destination in the body.');
-  if (!providerHosts.has(new URL(item.referral.href).hostname)) fail(item.slug, 'Referral destination is not Tsubasa.');
+  if (!providerHosts.has(new URL(referralOf(item).href).hostname)) fail(item.slug, 'Referral destination is not Tsubasa.');
   const isRegion = content.regions.includes(item);
   if (item.inlineReferralAfter !== undefined && !item.sections.some(section => section.id === item.inlineReferralAfter)) fail(item.slug, `inlineReferralAfter must name one of the page's sections: ${item.inlineReferralAfter}`);
   if (isRegion) {
     if ((item.inlineReferralAfter ?? null) !== (regionInlineNotes[item.slug] ?? null)) fail(item.slug, 'On region pages the in-article note is limited to saku, ueda and tomioka, after their family-funeral venue section.');
     const problem = topLabelProblem(item);
     if (problem) fail(item.slug, problem);
-  } else if (item.referral.topLabel !== undefined) fail(item.slug, 'referral.topLabel belongs to region pages only; urgent guides keep the generic top row.');
+  } else if (!isFacility(item) && item.referral.topLabel !== undefined) fail(item.slug, 'referral.topLabel belongs to region pages only; urgent guides keep the generic top row.');
   // 「まず知っておきたいこと」 and 「早見表」 only restate the page: no provider name, and every figure
   // they show (amounts, times, phone numbers) must already appear in the page's own text.
   const ownText = normalize([item.lead, item.answer, ...item.sections.flatMap(s => [s.heading, ...s.paragraphs, ...(s.bullets || []), ...(s.table?.headers || []), ...(s.table?.rows.flat() || []), s.note || '']), ...(item.faq || []).flatMap(faq => [faq.q, faq.a])].join(' '));
@@ -143,7 +164,7 @@ for (const item of [...content.articles, ...content.regions]) {
     else if (item.keyPoints.some(point => providerName.test(point) || !restated(point))) fail(item.slug, 'keyPoints must restate facts from the page itself, without the provider name.');
   }
   if (item.quickFacts !== undefined) {
-    if (!regionBySlug.has(item.slug) || item.category) fail(item.slug, 'quickFacts belongs to region pages only.');
+    if (!(isRegion || isFacility(item)) || item.category) fail(item.slug, 'quickFacts belongs to region and facility pages only.');
     if (!Array.isArray(item.quickFacts) || item.quickFacts.length < 3 || item.quickFacts.some(fact => typeof fact?.label !== 'string' || !fact.label.trim() || typeof fact.value !== 'string' || !fact.value.trim())) { fail(item.slug, 'quickFacts needs at least three {label, value} rows.'); continue; }
     for (const fact of item.quickFacts) {
       if (providerName.test(fact.label + fact.value) || !restated(fact.value)) fail(item.slug, `Quick fact must restate a fact from the page itself, without the provider name: ${fact.label}`);
@@ -151,9 +172,13 @@ for (const item of [...content.articles, ...content.regions]) {
       if (/^tel:/.test(fact.href)) {
         // Phone links are for public offices only, and the number must be the one printed in the body.
         if (!/^tel:0\d{9,10}$/.test(fact.href) || fact.value.replace(/\D/g, '') !== fact.href.slice(4) || !/^0\d+(?:-\d+)+$/.test(fact.value)) fail(item.slug, `Quick-fact phone link must be the public office's number shown as its value: ${fact.label}`);
+        // On a facility page the only phone link is the facility's own published number.
+        if (isFacility(item) && fact.value !== item.phone) fail(item.slug, `A facility's phone link must be the facility's own recorded number: ${fact.label}`);
       } else if (!item.sources.some(id => bySource.get(id)?.url === fact.href) || providerHosts.has(new URL(fact.href).hostname)) fail(item.slug, `Quick-fact link must be one of the region's recorded sources: ${fact.label}`);
     }
   }
+  // The address and phone number used in a facility's structured data are printed in its own text.
+  if (isFacility(item) && [item.postalCode, item.street, item.phone].some(value => !ownText.includes(value))) fail(item.slug, "A facility's recorded postal code, street address and phone number must appear in its body.");
 }
 // Detect exactly duplicated region bodies even if only the eight place names differ.
 const regionBodyKeys = new Map();
@@ -220,7 +245,8 @@ for (const [route, { $, ids }] of pages) {
   const bodyText = normalize($('main').text());
   const photoArticle = articleBySlug.get(route.match(/^\/guides\/([^/]+)\/$/)?.[1]);
   const photoRegion = regionBySlug.get(route.match(/^\/regions\/([^/]+)\/$/)?.[1]);
-  const editorialContent = photoArticle ?? photoRegion;
+  const photoFacility = facilityBySlug.get(route.match(/^\/facilities\/([^/]+)\/$/)?.[1]);
+  const editorialContent = photoArticle ?? photoRegion ?? photoFacility;
   const expectedPhotographs = editorialContent || ['/', '/guides/', '/regions/', '/about/'].includes(route) ? 1 : 0;
   const photographs = $('picture.editorial-image img');
   if (photographs.length !== expectedPhotographs) fail(route, `Expected ${expectedPhotographs} dedicated photograph (one header image per page), got ${photographs.length}.`);
@@ -243,7 +269,7 @@ for (const [route, { $, ids }] of pages) {
   }
   if ($('figcaption').length) fail(route, 'Visible image captions must not be added.');
   const sourceNotes = $('.source-note');
-  if (!editorialContent && sourceNotes.length) fail(route, 'The source note belongs on article and region pages only.');
+  if (!editorialContent && sourceNotes.length) fail(route, 'The source note belongs on article, region and facility pages only.');
   const textOutsideSourceNote = $('body').clone();
   if (editorialContent) textOutsideSourceNote.find('.source-note').remove();
   if ($('.sources, #sources-heading, .disclosure').length || route !== operatorRoute && /出典|確認日|公式情報確認|無償(?:の)?送客|広告収入|紹介報酬|つばさ公益社との関係/.test(normalize(textOutsideSourceNote.text()))) fail(route, 'Removed source/disclosure copy remains in the public page.');
@@ -253,7 +279,7 @@ for (const [route, { $, ids }] of pages) {
   const footerLinks = $('.site-footer a').toArray().map(node => `${$(node).attr('href')} ${normalize($(node).text())}`);
   const expectedFooterLinks = ['/ おくりの地図', '/operator/ 運営者情報', `${operator.url} ${operator.url}`, '/about/ このメディアについて', '/privacy/ プライバシー'];
   if ($('.site-footer .footer-operator h2 a[href="/operator/"]').length !== 1 || $('.site-footer nav.footer-nav li > a').length !== 2 || footerLinks.join('|') !== expectedFooterLinks.join('|') || $('.site-footer').find('img, svg, picture, button, form, [data-provider-link]').length) fail(route, 'Footer must carry exactly the operator link, the operator details and the plain text links to the about and privacy pages.');
-  if (route.startsWith('/guides/') && articleBySlug.has(route.split('/')[2]) || route.startsWith('/regions/') && regionBySlug.has(route.split('/')[2])) {
+  if (editorialContent) {
     for (const section of editorialContent.sections) {
       for (const alias of section.aliases || []) if (!ids.has(alias)) fail(route, `Legacy section anchor missing: ${alias}`);
       const rendered = $('.prose-section').filter((_, node) => $(node).attr('id') === section.id);
@@ -276,7 +302,7 @@ for (const [route, { $, ids }] of pages) {
       const shown = summary.find('li').toArray().map(node => normalize($(node).text()));
       if (summary.length !== 1 || indexOf('.key-points') !== 0 || lead.length || normalize(summary.children('h2').text()) !== 'まず知っておきたいこと' || shown.length !== keyPoints.length || keyPoints.some((point, index) => normalize(point) !== shown[index])) fail(route, 'The summary box must open the page with exactly the recorded keyPoints.');
     } else if (summary.length || lead.length !== 1 || indexOf('p.article-lead') !== 0 || normalize(lead.text()) !== normalize(editorialContent.lead)) fail(route, 'A page without keyPoints opens with its lead paragraph.');
-    const quickFacts = photoRegion?.quickFacts?.length ? photoRegion.quickFacts : null;
+    const quickFacts = (photoRegion ?? photoFacility)?.quickFacts?.length ? (photoRegion ?? photoFacility).quickFacts : null;
     const factsBlock = $('.quick-facts');
     if (quickFacts) {
       quickFactPages++;
@@ -287,7 +313,7 @@ for (const [route, { $, ids }] of pages) {
         return normalize(row.children('dt').text()) !== normalize(fact.label) || normalize(row.children('dd').text()) !== normalize(fact.value)
           || (fact.href ? links.length !== 1 || $(links[0]).attr('href') !== fact.href || normalize($(links[0]).text()) !== normalize(fact.value) : links.length !== 0);
       })) fail(route, 'The quick-facts panel must show exactly the recorded rows and links before the body.');
-    } else if (factsBlock.length) fail(route, 'A quick-facts panel needs recorded quickFacts on a region page.');
+    } else if (factsBlock.length) fail(route, 'A quick-facts panel needs recorded quickFacts on a region or facility page.');
     const tocItems = [...editorialContent.sections.map(section => ({ href: '#' + section.id, text: normalize(section.heading) })), ...(photoArticle?.faq?.length ? [{ href: '#questions', text: 'よくある疑問' }] : [])];
     const tocLinks = block => block.find('a').toArray().map(node => ({ href: $(node).attr('href'), text: normalize($(node).text()) }));
     const sameToc = links => links.length === tocItems.length && tocItems.every((item, index) => links[index].href === item.href && links[index].text === item.text);
@@ -305,6 +331,8 @@ for (const [route, { $, ids }] of pages) {
     //   3. the one-sentence note after the section named by inlineReferralAfter (placement in-article):
     //      optional on guides, and on region pages only where regionInlineNotes allows it.
     // So a region page has 2 links (3 with the note), an urgent guide 2–3, any other guide 1–2.
+    // A facility page has the end block only (1 link): no top row and no in-article note.
+    const referral = referralOf(editorialContent);
     const inlineNotes = $('.article-body > .referral-inline');
     const expectedInline = editorialContent.inlineReferralAfter ? 1 : 0;
     const expectedTop = photoRegion || photoArticle?.category === 'urgent' ? 1 : 0;
@@ -317,13 +345,14 @@ for (const [route, { $, ids }] of pages) {
     const placements = $('[data-provider-link]').toArray().map(node => $(node).attr('data-placement'));
     if (placements.join() !== [...(expectedTop ? ['article-top'] : []), ...(expectedInline ? ['in-article'] : []), 'article-end'].join()) fail(route, 'Consultation links must appear in the order top row, in-article note, end block.');
     const cardLines = card.children('p').not('.referral-action');
-    if (normalize(card.children('h2').text()) !== editorialContent.referral.label || card.find('a').length !== 1 || normalize(card.find('a').text()) !== referralLinkText || cardLines.length > 1 || normalize(cardLines.text()).length > 40 || card.find('img, svg, picture, button, form').length) fail(route, 'The end consultation block is a heading, at most one short line and one link.');
+    if (normalize(card.children('h2').text()) !== referral.label || card.find('a').length !== 1 || normalize(card.find('a').text()) !== referralLinkText || cardLines.length > 1 || normalize(cardLines.text()).length > 40 || card.find('img, svg, picture, button, form').length) fail(route, 'The end consultation block is a heading, at most one short line and one link.');
     for (const node of $('[data-provider-link]').toArray()) {
       const link = $(node);
       const destination = new URL(link.attr('href'));
-      const expected = new URL(editorialContent.referral.href);
+      const expected = new URL(referral.href);
       const slug = editorialContent.slug;
       if (destination.origin + destination.pathname !== expected.origin + expected.pathname || link.attr('data-content-slug') !== slug || destination.searchParams.get('utm_content') !== `${slug}-${link.attr('data-placement')}`) fail(route, "A consultation link must lead to the page's recorded referral destination with its own placement.");
+      if (photoFacility && link.attr('data-region') !== photoFacility.region) fail(route, "A facility page's consultation link belongs to the region where the facility stands.");
     }
     const note = card;
     const lastContentSelector = photoArticle?.faq?.length ? '.faq' : '.prose-section';
@@ -349,12 +378,28 @@ for (const [route, { $, ids }] of pages) {
     } else if (sourceNotes.length) fail(route, 'A page without recorded public sources must not show a source note.');
     if ($('.referral [data-provider-link]').attr('data-placement') !== 'article-end') fail(route, 'Article referral must preserve its article-end analytics placement.');
     if (providerName.test(normalize($('.article-head, .article-lead, .key-points, .quick-facts, .toc, .prose-section, .faq, .related-articles, .answer, .region-focus').text()))) fail(route, 'Provider name is woven into the editorial body.');
+    // Related navigation between facility pages and region pages comes from the facility data alone.
+    const hrefsOf = selector => $(selector).toArray().map(node => $(node).attr('href'));
+    const sameList = (found, expected) => found.length === expected.length && expected.every((href, index) => found[index] === href);
+    if (photoFacility) {
+      facilityPages++;
+      if ($('.faq, .referral-top, .referral-inline').length) fail(route, 'A facility page has no FAQ, top consultation row or in-article note.');
+      if (!sameList(hrefsOf('.article-body > .related-articles.facility-regions .region-directory a'), photoFacility.regions.map(slug => `/regions/${slug}/`))) fail(route, 'A facility page lists the region pages that use it, in the recorded order.');
+      if (!sameList(hrefsOf('.article-body > .related-articles:not(.facility-regions) .article-list a'), photoFacility.related.map(slug => `/guides/${slug}/`))) fail(route, 'A facility page lists its recorded related guides.');
+    }
+    const regionFacilities = photoRegion ? facilitiesOfRegion(photoRegion.slug) : [];
+    if (!sameList(hrefsOf('.article-body > .related-articles.related-facilities .facility-list a'), regionFacilities.map(f => `/facilities/${f.slug}/`)) || $('.related-facilities').length !== (regionFacilities.length ? 1 : 0) || $('.related-facilities').prevAll('.prose-section, .referral-card').length === 0 && regionFacilities.length) fail(route, 'A region page links the facility pages its residents use, in the related navigation only.');
   } else {
     if ($('.key-points, .quick-facts, .toc, .referral-top, .referral-inline').length) fail(route, 'Summary, quick facts, table of contents and in-page consultation rows belong to article and region pages only.');
     // The home page ends with the same block (placement home-end); no other page links to the provider.
     const expectedLinks = route === '/' ? 1 : 0;
     const card = $('main .referral-card');
-    if ($('[data-provider-link]').length !== expectedLinks || card.length !== expectedLinks) fail(route, 'Only the home page, articles and regions carry a consultation block.');
+    if ($('[data-provider-link]').length !== expectedLinks || card.length !== expectedLinks) fail(route, 'Only the home page, articles, regions and facility pages carry a consultation block.');
+    // The facility index and the region index list every facility page; no other collection page does.
+    const facilityLinks = $('main .facility-list a').toArray().map(node => `${$(node).attr('href')} ${normalize($(node).text())}`);
+    const expectedFacilityLinks = ['/facilities/', '/regions/'].includes(route) ? content.facilities.map(f => `/facilities/${f.slug}/ ${f.name}`) : [];
+    if (facilityLinks.join('|') !== expectedFacilityLinks.join('|')) fail(route, 'The facility index and the region index list every facility page by name; other pages list none.');
+    if (route === '/regions/' && content.facilities.length && $('main a[href="/facilities/"]').length !== 1) fail(route, 'The region index links to the facility index once.');
     if (expectedLinks) {
       const link = card.find('[data-provider-link]');
       const destination = new URL(link.attr('href') || origin);
@@ -380,9 +425,9 @@ for (const [route, { $, ids }] of pages) {
   // Phone links: only a public office's number in a region's 早見表. The provider has no phone element at all.
   for (const node of $('a[href^="tel:"], a[href^="sms:"], a[href^="callto:"]').toArray()) {
     const link = $(node);
-    const fact = photoRegion?.quickFacts?.find(row => row.href === link.attr('href'));
+    const fact = (photoRegion ?? photoFacility)?.quickFacts?.find(row => row.href === link.attr('href'));
     officePhoneLinks++;
-    if (!fact || !link.closest('.quick-facts dd').length || link.attr('data-provider-link') !== undefined || providerName.test(normalize(link.closest('div').text()))) fail(route, `Phone link is not a recorded public-office number in a region quick-facts panel: ${link.attr('href')}`);
+    if (!fact || !link.closest('.quick-facts dd').length || link.attr('data-provider-link') !== undefined || providerName.test(normalize(link.closest('div').text()))) fail(route, `Phone link is not a recorded public-office number in a region or facility quick-facts panel: ${link.attr('href')}`);
   }
   if (/\b(?:TODO|TBD|Lorem ipsum)\b|ここに(?:本文|文章|記事)を(?:入力|挿入)/i.test(bodyText)) fail(route, 'Unfinished placeholder text is visible.');
   for (const node of $('a[href],area[href],svg a[href],link[href],script[src],img[src],source[src],form[action]').toArray()) {
@@ -455,6 +500,16 @@ for (const [route, { $, ids }] of pages) {
     const schema = regionalSchema[0] || {};
     if (regionalSchema.length !== 1 || schema.name !== photoRegion.pageTitle || schema.description !== description || schema.url !== canonical || schema.dateModified !== photoRegion.updatedAt || normalize($('h1').text()) !== normalize(photoRegion.heading)) fail(route, 'Regional title/description/URL/schema differs from its editorial content.');
   }
+  if (photoFacility) {
+    // WebPage about the facility itself: only the name, address and phone number recorded from the operator's page.
+    const pageSchema = data.filter(s => s?.['@type'] === 'WebPage');
+    const schema = pageSchema[0] || {};
+    const about = schema.about || {};
+    const address = about.address || {};
+    if (pageSchema.length !== 1 || schema.name !== photoFacility.pageTitle || schema.description !== description || schema.url !== canonical || schema.datePublished !== photoFacility.publishedAt || schema.dateModified !== photoFacility.updatedAt || normalize($('h1').text()) !== normalize(photoFacility.heading)) fail(route, 'Facility title/description/URL/schema differs from its editorial content.');
+    if (about['@type'] !== 'Crematorium' || about.name !== photoFacility.name || about.telephone !== photoFacility.phone || address.postalCode !== photoFacility.postalCode || address.addressRegion !== photoFacility.prefecture || address.addressLocality !== photoFacility.locality || address.streetAddress !== photoFacility.street || Object.keys(about).some(key => !['@type', 'name', 'telephone', 'address'].includes(key))) fail(route, "Facility structured data must carry exactly the facility's recorded name, address and phone number.");
+    if (data.some(s => ['Review', 'AggregateRating', 'LocalBusiness', 'FuneralHome'].includes(s?.['@type'])) || about.aggregateRating || about.review) fail(route, 'A facility page carries no reviews or ratings.');
+  }
   for (const schema of data.filter(s => s?.['@type'] === 'CollectionPage')) {
     const items = schema.mainEntity?.itemListElement || [];
     items.forEach((item, index) => {
@@ -480,7 +535,7 @@ for (const route of expectedIndexable) if (!sitemapPaths.has(route)) fail('/site
 const robots = await readFile('dist/robots.txt', 'utf8');
 if (!/^User-agent: \*$/m.test(robots) || !/^Allow: \/$/m.test(robots) || !robots.includes(`Sitemap: ${origin}/sitemap.xml`) || /^Disallow: \/$/m.test(robots)) fail('/robots.txt', 'Production robots policy is incorrect.');
 const llms = await readFile('dist/llms.txt', 'utf8');
-for (const item of [...content.articles.map(a => `/guides/${a.slug}/`), ...content.regions.map(r => `/regions/${r.slug}/`)]) if (!llms.includes(origin + item)) fail('/llms.txt', `Discovery index is missing ${item}`);
+for (const item of [...content.articles.map(a => `/guides/${a.slug}/`), ...content.regions.map(r => `/regions/${r.slug}/`), ...content.facilities.map(f => `/facilities/${f.slug}/`)]) if (!llms.includes(origin + item)) fail('/llms.txt', `Discovery index is missing ${item}`);
 const firebase = JSON.parse(await readFile('firebase.json', 'utf8'));
 if (firebase.hosting?.public !== 'dist' || firebase.hosting?.rewrites?.some(rule => rule.destination === '/index.html')) fail('firebase.json', 'Hosting must serve static pages with a real 404, without an SPA catch-all.');
 for (const slug of categorySlugs) {
@@ -499,10 +554,10 @@ for (const file of files.filter(file => /\.(?:html|js|css|json|xml|txt|svg)$/.te
   const text = await readFile(file, 'utf8');
   if (/-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|"private_key"\s*:|(?:ghp|gho|github_pat)_[A-Za-z0-9_]{20,}/.test(text)) fail('/' + path.relative('dist', file), 'Credential-like material appears in the public build.');
 }
-const report = { checkedAt: new Date().toISOString(), fingerprint: await fingerprintDist(), status: problems.length ? 'failed' : 'passed', htmlPages: pages.size, indexablePages: expectedIndexable.size, articles: content.articles.length, regions: content.regions.length, externalURLs: outbound.size, contextualLinks, publicServiceLinks, sourceNotePages, providerLinks: providerLinkCount, officePhoneLinks, keyPointPages, quickFactPages, photography: { picturedPages, placements: photographPlacements, uniqueImages: photographHashes.size }, problems, warnings };
+const report = { checkedAt: new Date().toISOString(), fingerprint: await fingerprintDist(), status: problems.length ? 'failed' : 'passed', htmlPages: pages.size, indexablePages: expectedIndexable.size, articles: content.articles.length, regions: content.regions.length, facilities: content.facilities.length, facilityPages, externalURLs: outbound.size, contextualLinks, publicServiceLinks, sourceNotePages, providerLinks: providerLinkCount, officePhoneLinks, keyPointPages, quickFactPages, photography: { picturedPages, placements: photographPlacements, uniqueImages: photographHashes.size }, problems, warnings };
 await mkdir('.local', { recursive: true });
 await writeFile('.local/build-validation.json', JSON.stringify(report, null, 2) + '\n');
 for (const problem of problems) console.error(`FAIL ${problem.page}: ${problem.message}`);
 for (const warning of warnings) console.warn(`NOTE ${warning.page}: ${warning.message}`);
-console.log(`Build validation ${report.status}: ${report.htmlPages} HTML pages, ${report.indexablePages} indexable pages, ${report.articles} guides, ${report.regions} regions, ${report.externalURLs} external URLs.`);
+console.log(`Build validation ${report.status}: ${report.htmlPages} HTML pages, ${report.indexablePages} indexable pages, ${report.articles} guides, ${report.regions} regions, ${report.facilities} facilities, ${report.externalURLs} external URLs.`);
 if (problems.length) process.exitCode = 1;

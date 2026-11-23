@@ -6,7 +6,7 @@ import { isolateAnalytics } from './helpers';
 type Source = { id: string; title: string; url: string; checkedAt: string };
 type Item = { slug: string; sources: string[] };
 const read = (file: string) => JSON.parse(readFileSync(new URL(file, import.meta.url), 'utf8'));
-const content = read('../src/data/content.json') as { articles: Item[]; regions: Item[] };
+const content = read('../src/data/content.json') as { articles: Item[]; regions: Item[]; facilities: Item[] };
 const registry = new Map((read('../src/data/sources.json') as Source[]).map(source => [source.id, source]));
 // The referred company's pages and competing introduction sites are never listed (README).
 const unlisted = ['so-gi.com', 'e-sogi.com', 'mitsuwa-sougi.co.jp', 'soogi.jp', 'ansinsougi.jp', 'e-ohaka.com', 'lifedot.jp', 'osohshiki.jp'];
@@ -19,9 +19,10 @@ const summaryFor = (sources: Source[]) => `出典と確認日（${sources.length
 const pages = [
   ...content.articles.map(item => ({ path: `/guides/${item.slug}/`, sources: listed(item) })),
   ...content.regions.map(item => ({ path: `/regions/${item.slug}/`, sources: listed(item) })),
+  ...content.facilities.map(item => ({ path: `/facilities/${item.slug}/`, sources: listed(item) })),
 ];
 
-test('every article and region with recorded sources has one closed source note after the referral', async ({ page }) => {
+test('every article, region and facility page with recorded sources has one closed source note after the referral', async ({ page }) => {
   await isolateAnalytics(page);
   for (const { path, sources } of pages) {
     await page.goto(path);
@@ -71,7 +72,7 @@ test('the source note summary is reachable and operable from the keyboard', asyn
 
 test('home, collections, about, operator, privacy and search pages have no source note', async ({ page }) => {
   await isolateAnalytics(page);
-  for (const path of ['/', '/guides/', '/regions/', '/about/', '/operator/', '/privacy/', '/search/']) {
+  for (const path of ['/', '/guides/', '/regions/', '/facilities/', '/about/', '/operator/', '/privacy/', '/search/']) {
     await page.goto(path);
     await expect(page.locator('.source-note'), path).toHaveCount(0);
   }

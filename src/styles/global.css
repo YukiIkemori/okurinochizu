@@ -153,6 +153,8 @@ button { cursor: pointer; }
 .index-section { padding-bottom: 56px; }
 .index-section > .need-group:first-child { margin-top: 8px; }
 .index-section > .region-finder { margin-top: 24px; border-top: 2px solid var(--green); }
+/* Facility pages listed as the same ruled rows as articles. */
+.index-section > .facility-list:first-child { border-top: 2px solid var(--green); }
 
 /* Collection, search and plain text pages */
 .page-intro { padding: 10px 0 20px; }
@@ -237,6 +239,10 @@ th, td { vertical-align: top; padding: 12px 16px 12px 0; border-bottom: 1px soli
 th:last-child, td:last-child { padding-right: 0; }
 thead th { font-size: 14px; font-weight: 600; color: var(--green); border-bottom: 1px solid var(--green); white-space: nowrap; }
 tbody th { font-weight: 600; }
+/* Facility pages: fee tables of three short columns fit a phone without scrolling sideways.
+   The row label breaks only at its space (「霊安室 24時間まで」), never inside a word. */
+.article-shell--facility :is(th, td) { min-width: 0; }
+.article-shell--facility tbody th { width: 44%; word-break: keep-all; overflow-wrap: anywhere; }
 .faq { margin-top: 44px; scroll-margin-top: 12px; }
 .faq details { border-bottom: 1px solid var(--line); }
 .faq summary { cursor: pointer; padding: 13px 0; font-weight: 600; line-height: 1.7; }

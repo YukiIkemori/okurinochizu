@@ -1,6 +1,6 @@
 import content from './content.json';
 import sourceRegistry from './sources.json';
-import type { Article, Region, Source } from './types';
+import type { Article, Facility, Region, Source } from './types';
 
 export const site = {
   name: 'おくりの地図',
@@ -10,6 +10,7 @@ export const site = {
 };
 export const articles = content.articles as Article[];
 export const regions = content.regions as Region[];
+export const facilities = content.facilities as Facility[];
 export const categories = [
   { slug: 'urgent', name: 'いま、必要なこと', short: '搬送・最初の手順', description: '病院からの搬送、安置、最初の連絡。急いでいるときに、ひとつずつ確認できる案内です。', number: '01' },
   { slug: 'funeral', name: '葬儀を考える', short: '家族葬・葬儀社選び', description: '家族葬、一日葬、直葬の違いと、葬儀社を選ぶときの確認事項を整理します。', number: '02' },
@@ -38,6 +39,15 @@ export const hasTopReferral = (article: Article) => article.category === 'urgent
 export const articleUrl = (slug: string) => '/guides/' + slug + '/';
 export const articleListTitle = (article: Article) => article.title.split('｜')[0].trim();
 export const regionUrl = (slug: string) => '/regions/' + slug + '/';
+export const facilityUrl = (slug: string) => '/facilities/' + slug + '/';
+/** The region page of the municipality where a facility stands; the facility page ends with its referral. */
+export const facilityRegion = (facility: Facility) => {
+  const region = regions.find(item => item.slug === facility.region);
+  if (!region) throw new Error(`Facility ${facility.slug} names an unknown region: ${facility.region}`);
+  return region;
+};
+/** The facilities used by a region's residents, for the list under a region page's related links. */
+export const facilitiesForRegion = (slug: string) => facilities.filter(facility => facility.regions.includes(slug));
 export const categoryName = (slug: string) => categories.find(c => c.slug === slug)?.name || slug;
 
 // The source note links only pages the build validator allows as ordinary links. The referred company's

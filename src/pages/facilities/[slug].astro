@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import Sections from '../../components/Sections.astro';
+import Referral from '../../components/Referral.astro';
+import SourceNote from '../../components/SourceNote.astro';
+import ArticleList from '../../components/ArticleList.astro';
+import RegionLinks from '../../components/RegionLinks.astro';
+import EditorialImage from '../../components/EditorialImage.astro';
+import ArticleHeading from '../../components/ArticleHeading.astro';
+import KeyPoints from '../../components/KeyPoints.astro';
+import QuickFacts from '../../components/QuickFacts.astro';
+import Toc from '../../components/Toc.astro';
+import { facilityVisual } from '../../data/visuals';
+import { facilities, regions, articles, facilityUrl, facilityRegion, site } from '../../data/site';
+// A public crematorium or funeral facility. Same parts and order as a region page, without the top
+// consultation row and the in-article note: the only consultation element is the end block, which
+// uses the referral of the region where the facility stands (README「斎場・火葬場のページ」).
+export function getStaticPaths() { return facilities.map(facility => ({ params: { slug: facility.slug }, props: { facility } })); }
+const { facility } = Astro.props;
+const home = facilityRegion(facility);
+const usedBy = facility.regions.flatMap(slug => regions.filter(region => region.slug === slug));
+const related = facility.related.flatMap(slug => articles.filter(article => article.slug === slug));
+const toc = facility.sections.map(({ id, heading }) => ({ id, heading }));
+const schema = [{
+  '@context': 'https://schema.org', '@type': 'WebPage', name: facility.pageTitle, description: facility.description,
+  datePublished: facility.publishedAt, dateModified: facility.updatedAt, inLanguage: 'ja', url: site.url + facilityUrl(facility.slug),
+  about: {
+    '@type': 'Crematorium', name: facility.name, telephone: facility.phone,
+    address: { '@type': 'PostalAddress', postalCode: facility.postalCode, addressRegion: facility.prefecture, addressLocality: facility.locality, streetAddress: facility.street, addressCountry: 'JP' },
+  },
+}];
+---
+<Base title={facility.pageTitle} description={facility.description} breadcrumbs={[{ name: '斎場・火葬場の案内', url: '/facilities/' }, { name: facility.name }]} schema={schema}>
+  <article class="wrap article-shell article-shell--facility">
+    <header class="article-head"><ArticleHeading title={facility.heading} /></header>
+    <aside class="article-side"><Toc items={toc} variant="side" /></aside>
+    <div class="article-body">
+      <KeyPoints points={facility.keyPoints} />
+      <QuickFacts facts={facility.quickFacts} />
+      <Toc items={toc} variant="inline" />
+      <EditorialImage kind={facilityVisual(facility.slug)} />
+      <Sections sections={facility.sections} />
+      <Referral referral={home.referral} slug={facility.slug} region={home.slug} intent="regional-funeral" />
+      <SourceNote ids={facility.sources} />
+      <section class="related-articles facility-regions"><header class="directory-heading"><h2>この斎場を使う地域の案内</h2><a class="text-link" href="/regions/">地域の案内</a></header><RegionLinks items={usedBy} /></section>
+      <section class="related-articles"><header class="directory-heading"><h2>関連記事</h2><a class="text-link" href="/guides/">記事一覧</a></header><ArticleList items={related} /></section>
+    </div>
+  </article>
+</Base>

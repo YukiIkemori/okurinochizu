@@ -15,8 +15,9 @@ export type Source = { id: string; title: string; url: string; checkedAt: string
  *  destination page actually shows, e.g. 「佐久市の式場と費用を見る（つばさ公益社）」. Without it the row
  *  uses the generic 「つばさ公益社のページを見る」. The allowed wordings are listed in the README. */
 export type Referral = { href: string; label: string; note: string; topLabel?: string };
-/** One row of a region's 早見表. With `href`, the whole value becomes the link: `tel:` + digits for a
- *  public office's phone number, or the https URL of one of the region's recorded sources. */
+/** One row of a region's or facility's 早見表. With `href`, the whole value becomes the link: `tel:` +
+ *  digits for a public office's (or the public facility's own) phone number, or the https URL of one of
+ *  the page's recorded sources. */
 export type QuickFact = { label: string; value: string; href?: string };
 export type Article = {
   slug: string; title: string; description: string; category: string;
@@ -39,4 +40,24 @@ export type Region = {
   keyPoints?: string[];
   /** 「早見表」: the page's key numbers and offices, restating facts already on this page. */
   quickFacts?: QuickFact[];
+};
+/** A public crematorium or funeral facility (`/facilities/<slug>/`). The page reuses the region page's
+ *  parts; it has no top consultation row and no in-article note, and its end block is the referral of
+ *  the region where the facility stands (`region`), so no referral is recorded here. */
+export type Facility = {
+  slug: string; name: string;
+  /** Slug of the region page of the municipality where the facility stands. */
+  region: string;
+  /** Slugs of the region pages whose residents use the facility, in the order they are listed. */
+  regions: string[];
+  /** The address and phone number the operator publishes; used for the page's structured data. */
+  postalCode: string; prefecture: string; locality: string; street: string; phone: string;
+  pageTitle: string; heading: string; description: string;
+  /** One line for lists (the facility index, the region index and region pages). */
+  summary: string;
+  lead: string; sections: Section[]; sources: string[];
+  /** Guide slugs listed under 関連記事. */
+  related: string[];
+  keyPoints: string[]; quickFacts: QuickFact[];
+  publishedAt: string; updatedAt: string;
 };

@@ -3,9 +3,15 @@ import Base from '../../layouts/Base.astro';
 import EditorialImage from '../../components/EditorialImage.astro';
 import RegionLinks from '../../components/RegionLinks.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import FacilityList from '../../components/FacilityList.astro';
+import { facilities } from '../../data/site';
 ---
 <Base title="長野県東信・群馬県西毛の13地域の葬儀・お墓案内" description="佐久市、上田市、小諸市、東御市、軽井沢町、御代田町、立科町、佐久穂町、小海町、長和町、青木村、安中市、富岡市。地域別に家族葬、火葬場、葬祭費の窓口、お墓の選び方を案内します。" breadcrumbs={[{ name: '地域の案内' }]}>
   <div class="wrap"><header class="page-intro"><h1>地域の案内</h1><EditorialImage kind="regions-header" variant="band" /></header>
     <section class="index-section"><div class="region-finder"><RegionLinks headingLevel={2} /><RegionMap /></div></section>
+    {facilities.length > 0 && <section class="index-section facility-index" aria-labelledby="facility-index-heading">
+      <header class="directory-heading"><h2 id="facility-index-heading">斎場・火葬場の案内</h2><a class="text-link" href="/facilities/">一覧を見る</a></header>
+      <FacilityList headingLevel={3} />
+    </section>}
   </div>
 </Base>

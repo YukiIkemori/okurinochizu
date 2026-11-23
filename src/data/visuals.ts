@@ -5,7 +5,7 @@ import woodland from '../assets/editorial/woodland.png';
 import stillLife from '../assets/editorial/still-life.png';
 
 export type EditorialKind = 'home-hero' | 'guides-header' | 'regions-header' | 'about-header'
-  | `guide-${string}-${'header' | 'interlude'}` | `region-${string}-${'header' | 'interlude'}`;
+  | `guide-${string}-${'header' | 'interlude'}` | `region-${string}-${'header' | 'interlude'}` | `facility-${string}-header`;
 
 const uniqueImages = import.meta.glob<{ default: ImageMetadata }>('../assets/editorial/unique/*.webp', { eager: true });
 const editorialImages: Record<string, ImageMetadata> = {
@@ -32,3 +32,5 @@ export const editorialPosition = (kind: EditorialKind): string => positions[kind
 export const articleVisual = (slug: string): EditorialKind => `guide-${slug}-header`;
 // Interlude images remain in the repository and manifest but are no longer rendered (one header image per page).
 export const regionVisual = (slug: string): EditorialKind => `region-${slug}-header`;
+// A facility page's image is a quiet landscape, never a picture of the facility itself (docs/editorial-images.md).
+export const facilityVisual = (slug: string): EditorialKind => `facility-${slug}-header`;

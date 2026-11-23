@@ -1,0 +1,16 @@
+---
+import type { Facility } from '../data/types';
+import { facilities, facilityUrl } from '../data/site';
+// The same ruled rows as the article list: the facility's name and one recorded line.
+interface Props { items?: Facility[]; headingLevel?: 2 | 3; }
+const { items = facilities, headingLevel = 3 } = Astro.props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3';
+---
+<ol class="article-list facility-list">
+  {items.map(item => (
+    <li>
+      <Heading><a href={facilityUrl(item.slug)}>{item.name}</a></Heading>
+      <p class="article-summary">{item.summary}</p>
+    </li>
+  ))}
+</ol>

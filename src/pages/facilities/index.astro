@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import FacilityList from '../../components/FacilityList.astro';
+import { facilities } from '../../data/site';
+// A plain index of the facility pages: no photograph, no consultation block (README「斎場・火葬場のページ」).
+const description = facilities.map(facility => facility.name).join('、') + '。公営の斎場・火葬場ごとに、火葬の予約の順番、使用料、休業日、当日の持ち物、アクセスを案内します。';
+---
+<Base title="長野県東信・群馬県西毛の斎場・火葬場の案内" description={description} breadcrumbs={[{ name: '斎場・火葬場の案内' }]}>
+  <div class="wrap wrap--reading"><header class="page-intro"><h1>斎場・火葬場の案内</h1><p class="lead">公営の斎場・火葬場ごとに、火葬の予約の順番、使用料、休業日、当日の持ち物、アクセスをまとめています。</p></header>
+    <section class="index-section"><FacilityList headingLevel={2} /></section>
+  </div>
+</Base>

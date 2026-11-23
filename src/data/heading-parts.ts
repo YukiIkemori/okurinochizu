@@ -44,6 +44,7 @@ const titleParts: Record<string, readonly string[]> = {
   '青木村で家族が亡くなったら': ['青木村で', '家族が亡くなったら'],
   '安中市で家族が亡くなったら': ['安中市で', '家族が亡くなったら'],
   '富岡市で家族が亡くなったら': ['富岡市で', '家族が亡くなったら'],
+  '佐久平斎場の予約・火葬料・アクセス': ['佐久平斎場の', '予約・火葬料・', 'アクセス'],
 };
 
 export function headingParts(title: string): string[] {

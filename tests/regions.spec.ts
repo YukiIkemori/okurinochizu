@@ -139,7 +139,7 @@ test('the home page ends with the same block and no other page links to the prov
   await expect(block.locator('a')).toHaveAttribute('data-placement', 'home-end');
   await expectNoPhoneOrPushyElements(page);
   await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
-  for (const path of ['/guides/', '/regions/', '/about/', '/privacy/', '/operator/', '/search/']) {
+  for (const path of ['/guides/', '/regions/', '/facilities/', '/about/', '/privacy/', '/operator/', '/search/']) {
     await page.goto(path);
     await expect(page.locator('[data-provider-link]'), path).toHaveCount(0);
     await expect(page.locator('a[href^="tel:"]'), path).toHaveCount(0);
