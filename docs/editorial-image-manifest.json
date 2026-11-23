@@ -20,6 +20,16 @@
     "originalSha256": "881268e2d0afadedac9adcdaf1326d046db65c101012701c5b647ccef3909e02"
   },
   {
+    "key": "facility-oboshi-saijo-header",
+    "source": "src/assets/editorial/unique/facility-oboshi-saijo-header.webp",
+    "subject": "初冬の晴れた午後、なだらかな丘の斜面に広がる枯れたススキの原と、奥の葉を落とした雑木林、薄い雲のかかる遠くの青い山並み",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "01fb1d5063c897269a2a7a93cd7f00655d1615c91ab99ea3b91be5ddd1e21349",
+    "originalFile": "gpt-image-2-facility-oboshi-saijo-header.png",
+    "originalSha256": "7ce162c8e755a6a0b803499b455c3a03427a4e474405a4f9c31bf76c10367f3e"
+  },
+  {
     "key": "guide-chief-mourner-header",
     "source": "src/assets/editorial/unique/guide-chief-mourner-header.webp",
     "subject": "障子窓のそばの座卓に置いた急須と湯のみ二つ、たたんだ藍色の風呂敷",
