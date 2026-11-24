@@ -30,6 +30,16 @@
     "originalSha256": "7ce162c8e755a6a0b803499b455c3a03427a4e474405a4f9c31bf76c10367f3e"
   },
   {
+    "key": "facility-sumiregaoka-seien-header",
+    "source": "src/assets/editorial/unique/facility-sumiregaoka-seien-header.webp",
+    "subject": "初冬の朝、枯れ草の丘の斜面と赤い実をつけた野ばらの枝、その向こうに朝霧のたなびく低い里山の稜線が幾重にも重なる風景",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "84e891224e6bf25a73053a045c6be93a51490578a716e170a6dab4fbc08c232e",
+    "originalFile": "gpt-image-2-facility-sumiregaoka-seien-header.png",
+    "originalSha256": "ba157358ad4901f3cee787450c86365d07f08267ef936184d5d9ab6a7966a437"
+  },
+  {
     "key": "guide-chief-mourner-header",
     "source": "src/assets/editorial/unique/guide-chief-mourner-header.webp",
     "subject": "障子窓のそばの座卓に置いた急須と湯のみ二つ、たたんだ藍色の風呂敷",
