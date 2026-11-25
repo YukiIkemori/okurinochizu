@@ -40,6 +40,16 @@
     "originalSha256": "ba157358ad4901f3cee787450c86365d07f08267ef936184d5d9ab6a7966a437"
   },
   {
+    "key": "facility-kabura-seien-header",
+    "source": "src/assets/editorial/unique/facility-kabura-seien-header.webp",
+    "subject": "初冬の夕方近くの柔らかな光の中、葉を落とした柿の木の枝に残る橙色の実と、その向こうに広がる刈り取りの済んだ田んぼと枯れ草の畦、遠くに霞む低い山並み",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "5876f273713116b950e6183fc26dddc1e2a9d35c6113b6268231241da3f683ec",
+    "originalFile": "gpt-image-2-facility-kabura-seien-header.png",
+    "originalSha256": "ad4e6423c1772e36fe34c68898450c266fe9ba3d8290ac55fb0d5c7a0fe919fe"
+  },
+  {
     "key": "guide-chief-mourner-header",
     "source": "src/assets/editorial/unique/guide-chief-mourner-header.webp",
     "subject": "障子窓のそばの座卓に置いた急須と湯のみ二つ、たたんだ藍色の風呂敷",

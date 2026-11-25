@@ -1,6 +1,6 @@
 # おくりの地図
 
-長野県東信・群馬県西毛の13自治体を対象にした、葬儀・お墓・終活の情報メディア。31記事、13地域案内、公営の斎場・火葬場の案内（`/facilities/`、現在は佐久平斎場・大星斎場・すみれケ丘聖苑の3ページ）を静的HTMLで配信し、つばさ公益社の関連する公式ページへ案内します。
+長野県東信・群馬県西毛の13自治体を対象にした、葬儀・お墓・終活の情報メディア。31記事、13地域案内、公営の斎場・火葬場の案内（`/facilities/`、現在は佐久平斎場・大星斎場・すみれケ丘聖苑・かぶら聖苑の4ページ）を静的HTMLで配信し、つばさ公益社の関連する公式ページへ案内します。
 
 - 正式ドメイン：`https://okurinochizu.jp/`
 - Firebase：`okurinochizu` / Hosting
@@ -107,7 +107,7 @@ Firebase認証は環境設定のsecret `FIREBASE_TOKEN` を使用。独自ドメ
 
 ### 斎場・火葬場のページ（`/facilities/`、2026-11-23 追加）
 
-公営の斎場・火葬場ごとに1ページを置きます（`/facilities/<slug>/`、最初のページは `sakudaira-saijo`＝佐久平斎場、2026-11-24 に `oboshi-saijo`＝大星斎場、2026-11-25 に `sumiregaoka-seien`＝すみれケ丘聖苑を追加）。施設名での検索（予約・料金・アクセスなど）に、公式資料で確かめた内容だけで答えるページです。一覧は `/facilities/`。
+公営の斎場・火葬場ごとに1ページを置きます（`/facilities/<slug>/`、最初のページは `sakudaira-saijo`＝佐久平斎場、2026-11-24 に `oboshi-saijo`＝大星斎場、2026-11-25 に `sumiregaoka-seien`＝すみれケ丘聖苑、2026-11-26 に `kabura-seien`＝かぶら聖苑を追加）。施設名での検索（予約・料金・アクセスなど）に、公式資料で確かめた内容だけで答えるページです。一覧は `/facilities/`。
 
 - **構成**：地域ページと同じ部品を同じ順に並べます。パンくず（ホーム／斎場・火葬場の案内／施設名）、H1、要点、早見表、目次、ヘッダー画像1枚、本文の節、末尾の相談ブロック、出典の折りたたみ、「この斎場を使う地域の案内」（`regions` の地域ページ）、「関連記事」（`related`）。冒頭の相談行・本文中の一文・FAQはありません。新しい見た目の部品は作りません。
 - **データ**（`content.json` の `facilities`、型は `Facility`）：`slug`・`name`・`region`（施設が立つ自治体の地域 slug。相談ブロックはこの地域の `referral`）・`regions`（その施設を使う地域 slug の一覧。検索の地域絞り込みと相互リンクに使う）・`postalCode`／`prefecture`／`locality`／`street`／`phone`（運営者が公表している所在地と電話）・`pageTitle`（施設名で始める）・`heading`・`description`・`summary`（一覧に出す1行）・`lead`・`keyPoints`・`quickFacts`・`sections`・`sources`・`related`・`publishedAt`・`updatedAt`。
