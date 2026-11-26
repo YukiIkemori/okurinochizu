@@ -50,6 +50,16 @@
     "originalSha256": "ad4e6423c1772e36fe34c68898450c266fe9ba3d8290ac55fb0d5c7a0fe919fe"
   },
   {
+    "key": "facility-yodakubo-saijo-header",
+    "source": "src/assets/editorial/unique/facility-yodakubo-saijo-header.webp",
+    "subject": "初冬の曇った朝、ゆるやかに曲がる浅い川と手前の丸石の川原、岸の枯れたヨシ、対岸の葉を落とした柳の木立、うっすら雪をかぶった遠くの低い山並み",
+    "width": 1536,
+    "height": 1024,
+    "sha256": "1660f449b6098e30c4ddc26fe943a00c781d277de8033c12bf6a7467dd43b33e",
+    "originalFile": "gpt-image-2-facility-yodakubo-saijo-header.png",
+    "originalSha256": "15fd41e3a52d10a8e670da8667d085056f5745f03f87aa97a561e7c964d17a59"
+  },
+  {
     "key": "guide-chief-mourner-header",
     "source": "src/assets/editorial/unique/guide-chief-mourner-header.webp",
     "subject": "障子窓のそばの座卓に置いた急須と湯のみ二つ、たたんだ藍色の風呂敷",
